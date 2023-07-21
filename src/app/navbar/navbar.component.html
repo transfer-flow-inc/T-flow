@@ -1,6 +1,15 @@
 <nav class="navbar">
 
-  <ul class="nav-list">
+  <div class="toggler">
+
+    <li class="nav-toggler">
+      <a class="nav-link nav-icon" routerLink="/" routerLinkActive="active">
+        <fa-icon [icon]="navIcon" (click)="openMenu()"></fa-icon>
+      </a>
+    </li>
+  </div>
+
+  <ul class="nav-list" [ngClass]="navbarToggleValue">
 
     <li class="nav-element">
       <a class="nav-link" routerLink="/" routerLinkActive="active">

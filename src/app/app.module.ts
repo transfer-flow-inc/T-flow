@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
 import { NavbarComponent } from './navbar/navbar.component';
 import {NgOptimizedImage} from "@angular/common";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -41,7 +42,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     BrowserModule,
     AppRoutingModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
-    NgOptimizedImage
+    NgOptimizedImage,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
