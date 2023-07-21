@@ -36,9 +36,66 @@
 body.dark.nav-link::before {
   background-color: var(--color);
 }
+
+/*
 .nav-link:hover::before {
   transform: scaleX(1);
 }
 .active::before {
   transform: scaleX(1);
+}
+*/
+
+.nav-toggler {
+  display: none;
+}
+
+@media screen and (max-width: 965px) {
+  .reverse {
+    animation: toggleReverse 0.3s ease-in-out !important;
+  }
+  .hide {
+    display: none !important;
+  }
+  .show {
+    animation: toggle 0.3s ease-in-out;
+  }
+  .nav-toggler {
+    display: block;
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+  }
+  li:last-child {
+    margin-bottom: 1.5rem;
+  }
+  .nav-icon {
+    font-size: 2rem;
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@keyframes toggle {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes toggleReverse {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
 }
