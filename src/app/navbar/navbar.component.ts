@@ -12,6 +12,7 @@ export class NavbarComponent {
   navIcon: IconDefinition = faBars;
   navbarToggleValue: string = 'hide';
   private isMenuOpen: boolean = false;
+  imgTheme: string = 'assets/images/logo-light.png';
 
   constructor() { }
 
