@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgcCookieConsentService, NgcInitializationErrorEvent, NgcInitializingEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from "ngx-cookieconsent";
-import { Subscription }   from 'rxjs';
+import {filter, map, Subscription} from 'rxjs';
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,12 @@ export class AppComponent implements OnInit, OnDestroy {
   private revokeChoiceSubscription!: Subscription;
   private noCookieLawSubscription!: Subscription;
 
-  constructor(private cookieService: NgcCookieConsentService){}
+  constructor(
+    private cookieService: NgcCookieConsentService,
+    private router: Router,
+    private titleService: Title,
+    private route: ActivatedRoute
+  ){}
 
   ngOnInit() {
 
@@ -62,6 +69,33 @@ export class AppComponent implements OnInit, OnDestroy {
       (event: NgcNoCookieLawEvent) => {
 
       });
+
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+    } else if (theme === 'light') {
+      document.body.classList.add('light');
+      document.body.classList.remove('dark');
+    }
+
+    this.router.events
+      .pipe(
+        filter((event: any) => event instanceof NavigationEnd),
+        map(() => {
+          const child: ActivatedRoute | null = this.route.firstChild;
+          let title = child && child.snapshot.data['title'];
+          if (title) {
+            return title;
+          }
+        })
+      )
+      .subscribe((title) => {
+        if (title) {
+          this.titleService.setTitle(`T-flow - ${title}`);
+        }
+      });
+
   }
 
   ngOnDestroy() {

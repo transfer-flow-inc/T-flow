@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+
+}
+.light {
+    transition: 0.7s linear;
+    background-color: whitesmoke !important;
+    color: #212121 !important;
+    --color : #212121;
+    --background: whitesmoke;
+}
+.dark {
+    transition: 0.7s linear;
+    background-color: #212121 !important;
+    color: whitesmoke !important;
+    --color : whitesmoke;
+    --background: #212121;
+}
