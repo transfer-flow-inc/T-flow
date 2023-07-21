@@ -1,8 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+
+const cookieConfig:NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'localhost' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+  },
+  palette: {
+    popup: {
+      background: '#212121'
+    },
+    button: {
+      background: 'green',
+    }
+  },
+  theme: 'classic',
+  type: 'opt-out',
+  content: {
+    message: 'Ce site internet utilise des cookies pour vous garantir la meilleure expérience sur notre site.',
+    allow: 'Autoriser les cookies',
+    deny: 'Refuser',
+    link: 'En savoir plus',
+    target: '_blank',
+    href: 'https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser',
+    policy: 'Politique de confidentialité'
+  },
+  position: 'bottom-right',
+};
 
 @NgModule({
   declarations: [
@@ -10,7 +36,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgcCookieConsentModule.forRoot(cookieConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
