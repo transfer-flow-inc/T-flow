@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+import { NavbarComponent } from './navbar/navbar.component';
+import {NgOptimizedImage} from "@angular/common";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -27,17 +29,19 @@ const cookieConfig:NgcCookieConsentConfig = {
     href: 'https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser',
     policy: 'Politique de confidentialité'
   },
-  position: 'bottom-right',
+  position: 'bottom-left',
 };
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgcCookieConsentModule.forRoot(cookieConfig)
+    NgcCookieConsentModule.forRoot(cookieConfig),
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]
