@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, Inject} from '@angular/core';
 import { NgcCookieConsentService, NgcInitializationErrorEvent, NgcInitializingEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from "ngx-cookieconsent";
 import {filter, map, Subscription} from 'rxjs';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -25,10 +26,13 @@ export class AppComponent implements OnInit, OnDestroy {
     private cookieService: NgcCookieConsentService,
     private router: Router,
     private titleService: Title,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document
   ){}
 
   ngOnInit() {
+
+    this.document.body.classList.add('dark');
 
     this.popupOpenSubscription = this.cookieService.popupOpen$.subscribe(
       () => {
