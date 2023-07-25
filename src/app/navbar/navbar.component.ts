@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
-import {faBars, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +13,9 @@ export class NavbarComponent {
   navbarToggleValue: string = 'hide';
   private isMenuOpen: boolean = false;
   imgTheme: string = 'assets/images/logo-light.png';
+  helpIcon: IconDefinition = faGear;
+  popup: string = 'hidden';
+  closeIcon: IconDefinition = faXmark;
 
   constructor() { }
 
@@ -28,9 +31,12 @@ export class NavbarComponent {
         }, 200);
         this.navbarToggleValue = 'reverse';
       } else {
-        this.navbarToggleValue = 'show';
+        this.navbarToggleValue = 'showNav';
       }
     }
 
+    togglePopup() {
+      this.popup = this.popup === 'hidden' ? 'show' : 'hidden';
+    }
 
 }

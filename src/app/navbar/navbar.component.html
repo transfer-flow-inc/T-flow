@@ -3,7 +3,7 @@
   <div class="toggler">
 
     <li class="nav-toggler">
-      <a class="nav-link nav-icon" routerLink="/" routerLinkActive="active">
+      <a class="nav-icon">
         <fa-icon [icon]="navIcon" (click)="openMenu()"></fa-icon>
       </a>
     </li>
@@ -12,30 +12,30 @@
   <ul class="nav-list" [ngClass]="navbarToggleValue">
 
     <li class="nav-element">
-      <a class="nav-link" routerLink="/" routerLinkActive="active">
+      <a class="" routerLink="/accueil">
         <img class="nav-logo" [src]="imgTheme" alt="logo T-flow">
       </a>
     </li>
 
-   <div class="middle-element">
-    <li class="nav-element">
-      <a class="nav-link" routerLink="/" routerLinkActive="active">
-        Home
-      </a>
-    </li>
+    <div class="middle-element">
+      <li class="nav-element">
+        <a class="nav-link" routerLink="/accueil" routerLinkActive="active">
+          Home
+        </a>
+      </li>
 
-    <li class="nav-element">
-      <a class="nav-link" routerLink="/" routerLinkActive="active">
-        About
-      </a>
-    </li>
+      <li class="nav-element">
+        <a class="nav-link" routerLink="/" routerLinkActive="active">
+          About
+        </a>
+      </li>
 
-    <li class="nav-element">
-      <a class="nav-link" routerLink="/" routerLinkActive="active">
-        Cgu
-      </a>
-    </li>
-  </div>
+      <li class="nav-element">
+        <a class="nav-link" routerLink="/" routerLinkActive="active">
+          Cgu
+        </a>
+      </li>
+    </div>
 
     <li class="nav-element">
       <a class="nav-link" routerLink="/" routerLinkActive="active">
@@ -48,5 +48,25 @@
 </nav>
 
 <div class="help-icon">
-<p>?</p>
+
+  <fa-icon class="icon" [icon]="helpIcon" animation="spin" (click)="togglePopup()"></fa-icon>
+
+  <div class="popup-help" [ngClass]="popup">
+    <fa-icon class="iconClose" [icon]="closeIcon" (click)="togglePopup()"></fa-icon>
+
+    <p>Theme sombre:</p>
+
+    <div class="checkbox-wrapper-8">
+      <input type="checkbox" id="cb3-8" class="tgl tgl-skewed">
+      <label for="cb3-8" data-tg-on="ON" data-tg-off="OFF" class="tgl-btn"></label>
+    </div>
+
+    <p>Animation:</p>
+
+    <div class="checkbox-wrapper-8">
+      <input type="checkbox" id="cb3-8.1" class="tgl tgl-skewed" checked>
+      <label for="cb3-8.1" data-tg-on="ON" data-tg-off="OFF" class="tgl-btn"></label>
+    </div>
+  </div>
+
 </div>
