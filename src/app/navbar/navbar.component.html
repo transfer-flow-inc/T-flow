@@ -57,7 +57,7 @@
     <p>Theme sombre:</p>
 
     <div class="checkbox-wrapper-8">
-      <input type="checkbox" id="cb3-8" class="tgl tgl-skewed">
+      <input type="checkbox" id="cb3-8" class="tgl tgl-skewed" (click)="toggleTheme()" [checked]="isDarkTheme">
       <label for="cb3-8" data-tg-on="ON" data-tg-off="OFF" class="tgl-btn"></label>
     </div>
 
