@@ -56,7 +56,7 @@ body.dark.nav-link::before {
   transform: scaleX(1);
 }
 .help-icon {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   transform: translate(-3rem, -2rem);
