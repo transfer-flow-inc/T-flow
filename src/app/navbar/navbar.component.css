@@ -27,7 +27,7 @@ body.dark.nav-link::before {
   background-color: transparent !important;
 }
 .nav-link:hover {
-  color: var(--light-blue);
+  color: orange;
 }
 .nav-link::before {
   content: "";
@@ -38,7 +38,7 @@ body.dark.nav-link::before {
   height: 0.15rem;
   bottom: -0.2rem;
   left: 0;
-  background-color: var(--light-blue);
+  background-color: orange;
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -54,6 +54,9 @@ body.dark.nav-link::before {
 }
 .active::before {
   transform: scaleX(1);
+}
+.active {
+  color: orange;
 }
 .help-icon {
   position: fixed;
