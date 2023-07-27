@@ -89,7 +89,7 @@ body.dark.nav-link::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   font-size: 1rem ;
   color: var(--background);
   padding: 3rem;
