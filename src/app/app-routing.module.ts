@@ -5,9 +5,8 @@ import {CguComponent} from "./cgu/cgu.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 
 const routes: Routes = [
-  // { 'path' : "" , redirectTo: "accueil", pathMatch: "full"},
-  // { 'path' : "accueil" , component: HomepageComponent, data: { title: 'Accueil'}},
-  { 'path' : "" , component: HomepageComponent},
+  { 'path' : "" , redirectTo: "accueil", pathMatch: "full"},
+  { 'path' : "accueil" , component: HomepageComponent, data: { title: 'Accueil'}},
   { 'path' : "cgu" , component: CguComponent, data: { title: 'CGU'}},
   { 'path' : "**" , component: NotFoundComponent, data: { title: 'Cette page n\'existe pas'}},
 ];
