@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, Inject} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import { NgcCookieConsentService, NgcInitializationErrorEvent, NgcInitializingEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from "ngx-cookieconsent";
 import {filter, map, Subscription} from 'rxjs';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
@@ -10,7 +10,7 @@ import {DOCUMENT} from "@angular/common";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
 
   //keep refs to subscriptions to be able to unsubscribe later
   private popupOpenSubscription!: Subscription;
@@ -102,14 +102,5 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy() {
-    this.popupOpenSubscription.unsubscribe();
-    this.popupCloseSubscription.unsubscribe();
-    this.initializingSubscription.unsubscribe();
-    this.initializedSubscription.unsubscribe();
-    this.initializationErrorSubscription.unsubscribe();
-    this.statusChangeSubscription.unsubscribe();
-    this.revokeChoiceSubscription.unsubscribe();
-    this.noCookieLawSubscription.unsubscribe();
-  }
+
 }
