@@ -8,6 +8,7 @@ import {NgOptimizedImage} from "@angular/common";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { HomepageComponent } from './homepage/homepage.component';
 import { CguComponent } from './cgu/cgu.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -45,7 +46,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     AppComponent,
     NavbarComponent,
     HomepageComponent,
-    CguComponent
+    CguComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
