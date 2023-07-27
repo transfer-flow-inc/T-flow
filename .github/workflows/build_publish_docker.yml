@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: transferflow_angular
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-publish:
@@ -23,10 +23,10 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Build and tag Docker image
-        run: docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+        run: docker build -t ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }} .
 
       - name: Publish Docker image
         run: |
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }}
+          docker tag ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }} ${{ env.REGISTRY }}/${{ github.repository }}:latest
+          docker push ${{ env.REGISTRY }}/${{ github.repository }}:latest
