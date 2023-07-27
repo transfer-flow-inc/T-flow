@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: transferflow-angular
+  IMAGE_NAME: transferflow_angular
 
 jobs:
   build-and-publish:
