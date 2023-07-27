@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
 import { NavbarComponent } from './navbar/navbar.component';
-import {NgOptimizedImage} from "@angular/common";
+import {HashLocationStrategy, LocationStrategy, NgOptimizedImage} from "@angular/common";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { HomepageComponent } from './homepage/homepage.component';
 import { CguComponent } from './cgu/cgu.component';
@@ -56,7 +56,11 @@ const cookieConfig:NgcCookieConsentConfig = {
     NgOptimizedImage,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
