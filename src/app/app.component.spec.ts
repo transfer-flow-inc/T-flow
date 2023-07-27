@@ -12,7 +12,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 describe('AppComponent', () => {
 
   const CookiesServiceStub = {
-    popupOpen$: jest.fn(of),
+
   }
 
   beforeEach(async () => {
