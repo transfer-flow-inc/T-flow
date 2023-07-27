@@ -32,6 +32,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
+    this.router.events.subscribe((val) => {
+
+        if(val instanceof NavigationEnd){
+          console.log(val);
+        }
+    });
+
     this.document.body.classList.add('dark');
 
     this.popupOpenSubscription = this.cookieService.popupOpen$.subscribe(
