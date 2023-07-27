@@ -247,6 +247,11 @@ label.tgl-btn {
   .reverse {
     animation: toggleReverse 0.3s ease-in-out !important;
   }
+  .help-icon {
+    font-size: 2rem;
+    height: 3rem;
+    width: 3rem;
+  }
   .hide {
     display: none !important;
   }
@@ -259,6 +264,14 @@ label.tgl-btn {
   .nav-list {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+    border-bottom: white solid 0.1rem ;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
   }
   li:last-child {
     margin-bottom: 1.5rem;
@@ -269,6 +282,9 @@ label.tgl-btn {
     margin: auto;
     display: flex;
     justify-content: flex-end;
+  }
+  .nav-icon:hover {
+    cursor: pointer;
   }
   .middle-element {
     display: flex;
