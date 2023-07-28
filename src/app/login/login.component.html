@@ -1,0 +1,79 @@
+
+<section class="section-login">
+
+
+  <section class="section-left">
+
+    <h1 class="unselectable">Se connecter</h1>
+
+    <form class="form-left" method="POST" #loginForm="ngForm" >
+
+
+      <input class="form-input"
+             type="email" name="email"
+             placeholder="name@example.fr"
+             title="Veuillez entrer une adresse email valide"
+             aria-label="Email"
+             required
+             email
+      >
+
+<section class="password-container">
+
+        <input [type]="showPassword ? 'text' : 'password'"
+               title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial"
+               class="form-input"
+               aria-label="Password"
+               name="password"
+               placeholder="Mot de passe"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}"
+               required
+        >
+        <a (click)="showPassword = !showPassword"><fa-icon class="eyes" [icon]="showPassword ? faEyeSlash : faEye" ></fa-icon></a>
+        </section>
+
+      <!--
+      <p class="credential-error">{{error}}</p>
+      -->
+
+      <button [disabled]="loginForm.invalid"
+              [class.invalid]="loginForm.invalid && (loginForm.dirty || loginForm.touched)"
+              [class.valid]="loginForm.valid"
+              class="form-button unselectable"
+              type="submit"
+      >Se connecter</button>
+      <p class="no-account unselectable">Vous n'avez pas de compte ? <a routerLink="/s'inscrire" class="no-account">cliquez ici</a></p>
+
+    </form>
+
+  </section>
+
+<section class="section-center">
+  <hr class="vertical-line">
+
+  <p class="or unselectable">Or</p>
+
+  <hr class="vertical-line">
+</section>
+
+  <section class="section-right">
+
+    <a class="sso-login unselectable" href="">
+      <img class="sso-img" src="assets/logo/logo-google.png" alt="">
+      <p class="sso-text">Se connecter avec Google</p>
+    </a>
+
+    <a class="sso-login unselectable" href="">
+      <img class="sso-img" src="assets/logo/logo-facebook.png" alt="">
+      <p class="sso-text">Se connecter avec Facebook</p>
+    </a>
+
+    <a class="sso-login unselectable" href="">
+      <img class="sso-img sso-apple" src="assets/logo/logo-apple.png" alt="">
+      <p class="sso-text">Se connecter avec Apple</p>
+    </a>
+
+  </section>
+
+
+</section>

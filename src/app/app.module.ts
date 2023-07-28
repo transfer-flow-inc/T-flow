@@ -9,6 +9,10 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { HomepageComponent } from './homepage/homepage.component';
 import { CguComponent } from './cgu/cgu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TransferComponent } from './transfer/transfer.component';
+import { LoginComponent } from './login/login.component';
+import {FormsModule} from "@angular/forms";
+import { RegisterComponent } from './register/register.component';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -47,14 +51,18 @@ const cookieConfig:NgcCookieConsentConfig = {
     NavbarComponent,
     HomepageComponent,
     CguComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TransferComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     NgOptimizedImage,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

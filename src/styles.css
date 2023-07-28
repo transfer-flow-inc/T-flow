@@ -6,13 +6,13 @@
   box-sizing: border-box;
 }
 :root {
-  --color: #15202b;
+  --background: #15202b;
   --background: whitesmoke;
   --light-blue: #03a9f4;
   --dark-blue: #15202b;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
+font-family: 'Montserrat', sans-serif;
 }
 .light {
     transition: 0.7s linear;
@@ -20,6 +20,8 @@ body {
     color: #15202b !important;
     --color : #15202b;
     --background: whitesmoke;
+    --filter-login : invert();
+    --filter-login-reverse : none;
 }
 .dark {
     transition: 0.7s linear;
@@ -27,4 +29,12 @@ body {
     color: whitesmoke !important;
     --color : whitesmoke;
     --background: #15202b;
+    --filter-login : none !important;
+    --filter-login-reverse : invert();
+}
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
