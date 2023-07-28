@@ -55,8 +55,8 @@
 
       <!-- <p class="credential-error">{{error}}</p> -->
 
-      <p class="condition"><input type="checkbox" [checked]="isChecked" (click)="changeIsChecked()"> J'ai lu et j'accepte les conditions
-        d'utilisation</p>
+      <p class="condition"><input class="input-checkbox" type="checkbox" [checked]="isChecked" (click)="changeIsChecked()"> J'ai lu et j'accepte les<a routerLink="/cgu" class="link-cgu">conditions
+        d'utilisation</a></p>
 
       <button
         class="form-button unselectable"
