@@ -10,7 +10,7 @@ body.dark.nav-link::before {
   margin: 0 5rem;
   list-style: none;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .middle-element {
   display: flex;
@@ -240,6 +240,13 @@ label.tgl-btn {
 .checkbox-wrapper-8 .tgl-skewed:checked + .tgl-btn:active:after {
   left: 10%;
 }
+.block {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
 
 /* MEDIA QUERIES */
 
@@ -267,7 +274,7 @@ label.tgl-btn {
     align-items: center;
     justify-content: center;
     background-color: var(--background);
-    border-bottom: white solid 0.1rem ;
+    border-bottom: var(--color) solid 0.1rem ;
     margin: 0;
     position: relative;
     z-index: 1;
@@ -286,10 +293,16 @@ label.tgl-btn {
   .nav-icon:hover {
     cursor: pointer;
   }
-  .middle-element {
+  .block {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .nav-logo {
+    display: none;
+  }
+  .logo {
+    display: none;
   }
 }
 

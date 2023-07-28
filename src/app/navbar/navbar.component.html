@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar unselectable">
 
   <div class="toggler">
 
@@ -11,37 +11,47 @@
 
   <ul class="nav-list" [ngClass]="navbarToggleValue">
 
-    <li class="nav-element">
-      <a class="" routerLink="/accueil">
-        <img class="nav-logo" [src]="imgTheme" alt="logo T-flow">
-      </a>
-    </li>
+<div class="block">
 
-    <div class="middle-element">
-      <li class="nav-element">
+       <li class="nav-element">
         <a class="nav-link" routerLink="/accueil" routerLinkActive="active">
           Home
         </a>
       </li>
 
       <li class="nav-element">
-        <a class="nav-link" routerLink="/" routerLinkActive="active">
-          About
+        <a class="nav-link" routerLink="/transfert" routerLinkActive="active">
+          Transfert
         </a>
       </li>
 
-      <li class="nav-element">
+        <li class="nav-element">
         <a class="nav-link" routerLink="/cgu" routerLinkActive="active">
           Cgu
         </a>
       </li>
+
     </div>
 
+    <div class="block logo">
+
+      <li class="nav-element">
+      <a class="" routerLink="/accueil">
+        <img class="nav-logo" [src]="imgTheme" alt="logo T-flow">
+      </a>
+    </li>
+
+    </div>
+
+    <div class="block">
+
     <li class="nav-element">
-      <a class="nav-link" routerLink="/" routerLinkActive="active">
+      <a class="nav-link" routerLink="/se-connecter" routerLinkActive="active">
         Se connecter
       </a>
     </li>
+
+    </div>
 
   </ul>
 
@@ -49,7 +59,7 @@
 
 <div class="help-icon">
 
-  <fa-icon class="icon" [icon]="helpIcon" animation="spin" (click)="togglePopup()"></fa-icon>
+  <fa-icon class="icon" [icon]="helpIcon" (click)="togglePopup()"></fa-icon>
 
   <div class="popup-help" [ngClass]="popup">
     <fa-icon class="iconClose" [icon]="closeIcon" (click)="togglePopup()"></fa-icon>
