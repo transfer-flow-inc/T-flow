@@ -36,9 +36,7 @@
       <p class="credential-error">{{error}}</p>
       -->
 
-      <button [disabled]="loginForm.invalid"
-              [class.invalid]="loginForm.invalid && (loginForm.dirty || loginForm.touched)"
-              [class.valid]="loginForm.valid"
+      <button
               class="form-button unselectable"
               type="submit"
       >Se connecter</button>
