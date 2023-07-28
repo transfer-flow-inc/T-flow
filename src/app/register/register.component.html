@@ -1,1 +1,101 @@
-<p>register works!</p>
+<section class="section-login">
+
+
+  <section class="section-left">
+
+    <h1 class="title">S'inscrire</h1>
+
+    <form class="form-left" method="POST">
+
+      <input class="form-input"
+             type="text"
+             name="lastName"
+             placeholder="Nom"
+             title="Veuillez entrer un nom valide"
+             aria-label="Nom"
+             required
+             minlength="3"
+      >
+
+      <input class="form-input"
+             type="text"
+             name="firstName"
+             placeholder="Prénom"
+             title="Veuillez entrer un prénom valide"
+             aria-label="Prénom"
+             required
+             minlength="3"
+      >
+
+
+      <input class="form-input"
+             type="email" name="email"
+             placeholder="name@example.fr"
+             title="Veuillez entrer une adresse email valide"
+             aria-label="Email"
+             required
+             email
+      >
+
+      <section class="password-container">
+
+        <input [type]="showPassword ? 'text' : 'password'"
+               title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial"
+               class="form-input"
+               aria-label="Password"
+               name="password"
+               placeholder="Mot de passe"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}"
+               required
+        >
+        <a (click)="showPassword = !showPassword">
+          <fa-icon class="eyes" [icon]="showPassword ? faEyeSlash : faEye"></fa-icon>
+        </a>
+      </section>
+
+      <!-- <p class="credential-error">{{error}}</p> -->
+
+      <p class="condition"><input type="checkbox" [checked]="isChecked" (click)="changeIsChecked()"> J'ai lu et j'accepte les conditions
+        d'utilisation</p>
+
+      <button
+        class="form-button unselectable"
+        type="submit"
+      >Se connecter
+      </button>
+      <p class="no-account unselectable">Vous avez déjà un compte ? <a routerLink="/se-connecter" class="no-account">cliquez
+        ici</a></p>
+
+    </form>
+
+  </section>
+
+  <section class="section-center">
+    <hr class="vertical-line">
+
+    <p class="or unselectable">Or</p>
+
+    <hr class="vertical-line">
+  </section>
+
+  <section class="section-right">
+
+    <a class="sso-login unselectable" href="">
+      <img class="sso-img" src="assets/logo/logo-google.png" alt="">
+      <p class="sso-text">S'inscrire avec Google</p>
+    </a>
+
+    <a class="sso-login unselectable" href="">
+      <img class="sso-img" src="assets/logo/logo-facebook.png" alt="">
+      <p class="sso-text">S'inscrire avec Facebook</p>
+    </a>
+
+    <a class="sso-login unselectable" href="">
+      <img class="sso-img sso-apple" src="assets/logo/logo-apple.png" alt="">
+      <p class="sso-text">S'inscrire avec Apple</p>
+    </a>
+
+  </section>
+
+
+</section>
