@@ -1,1 +1,39 @@
-<p>transfer works!</p>
+<section class="card-container">
+  <div class="card-left">
+    <form action="">
+      <input type="text" placeholder="Votre email :">
+      <input type="text" placeholder="Vos destinataires :">
+      <textarea placeholder="Votre message:"></textarea>
+    </form>
+  </div>
+
+  <div ng2FileDrop
+       [uploader]="uploader"
+       class="drop card-middle">
+    <input type="file" id="file-input" (onFileSelected)="calculateSizeAllFile()" class="upload" ng2FileSelect [uploader]="uploader" (change)="checkFile()"
+           multiple>
+    <label for="file-input">
+      <div class="upload-div" id="file-input">
+        <p>Glissez vos fichiers ici</p>
+        <p>ou</p>
+        <p>Cliquez pour sélectionner</p>
+      </div>
+    </label>
+  </div>
+
+  <div class="card-right">
+    <h2 class="title-file">Vos Fichiers:</h2>
+    <p class="noFile" *ngIf="uploader.queue.length === 0">Aucun fichier sélectionné</p>
+    <p  *ngIf="uploader.queue.length > 0">poids total de vos fichiers : {{ sizeAllFile | number : ".0" }} {{typeSizeFormat}}</p>
+    <ul class="list-file" *ngIf="uploader.queue.length > 0">
+      <li class="list-element" *ngFor="let file of uploader.queue" >
+        <p class="text-file" *ngIf="file.file.size/1024/1024 < 1">{{file.file.name}} - {{file.file.size / 1024 | number:'.0'}} Ko</p>
+        <p class="text-file" *ngIf="file.file.size/1024/1024 < 1000 && file.file.size/1024/1024 > 1">{{file.file.name}}
+          - {{file.file.size / 1024 / 1024 | number:'.0'}} Mo</p>
+        <p class="text-file" *ngIf="file.file.size/1024/1024 > 1000">{{file.file.name}}
+          - {{ file.file.size / 1024 / 1024 / 1024 | number: '.0'  }} Go</p>
+        <fa-icon class="iconBin" [icon]="binIcon" (click)="deleteFile(file)"></fa-icon>
+      </li>
+    </ul>
+  </div>
+</section>

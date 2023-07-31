@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TransferComponent } from './transfer.component';
+import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
+import {FileUploadModule} from "ng2-file-upload";
 
 describe('TransferComponent', () => {
   let component: TransferComponent;
@@ -8,7 +10,8 @@ describe('TransferComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransferComponent ]
+      declarations: [ TransferComponent ],
+      imports: [ FontAwesomeTestingModule, FileUploadModule ]
     })
     .compileComponents();
 

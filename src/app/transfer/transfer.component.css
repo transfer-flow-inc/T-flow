@@ -1,0 +1,93 @@
+.drop {
+  border: 2px dashed #ccc;
+  color: #ccc;
+}
+.upload {
+  height: 100%;
+  display: none;
+}
+label {
+  height: 100%;
+}
+.upload-div {
+  height: inherit;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--color);
+  font-weight: 600;
+}
+.upload-div:hover {
+  cursor: pointer;
+}
+.card-container {
+  display: flex;
+  gap : 2rem;
+  min-height: 70vh;
+  width: 90vw;
+  margin: auto;
+}
+.card-left {
+  width: 80rem;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 1rem ;
+  backdrop-filter: blur(0.2rem);
+}
+.card-middle {
+  width:80rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+}
+.card-right {
+  width:80rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+}
+.list-file {
+  list-style: none;
+  width: 20rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: var(--background);
+  overflow-x: hidden  ;
+  overflow-y: auto;
+  max-height:20rem;
+}
+.list-element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  background-color: var(--color);
+  color: var(--background);
+  margin: 0.5rem;
+}
+.title-file {
+  font-weight: 600;
+  margin-top: 3rem;
+}
+.text-file {
+  word-break: break-all;
+  padding-right: 1rem ;
+}
+.iconBin {
+  font-size: 1.2rem;
+}
+.iconBin:hover {
+  cursor: pointer;
+}
+.noFile {
+  text-align: center;
+}
