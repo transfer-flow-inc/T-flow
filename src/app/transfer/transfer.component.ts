@@ -15,6 +15,7 @@ export class TransferComponent implements OnInit {
   typeSizeFormat : string = 'Ko';
 
   public uploader : FileUploader = new FileUploader({url: 'http://localhost:8080/upload'});
+  public emailList : FileUploader = new FileUploader({url: 'http://localhost:8080/upload'});
 
   ngOnInit(): void {
   }
