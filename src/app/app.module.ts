@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LocationStrategy, NgOptimizedImage, PathLocationStrategy} from "@angular/common";
+import { NgOptimizedImage} from "@angular/common";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { HomepageComponent } from './homepage/homepage.component';
 import { CguComponent } from './cgu/cgu.component';
@@ -13,6 +13,8 @@ import { TransferComponent } from './transfer/transfer.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
 import { RegisterComponent } from './register/register.component';
+import {FileUploadModule} from "ng2-file-upload";
+
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -62,7 +64,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     NgcCookieConsentModule.forRoot(cookieConfig),
     NgOptimizedImage,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
