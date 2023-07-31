@@ -3,6 +3,7 @@ body.dark.nav-link::before {
 }
 .navbar {
   padding: 1rem 0;
+  width: 90vw;
 }
 .nav-list {
   display: flex;
@@ -10,10 +11,12 @@ body.dark.nav-link::before {
   margin: 0 5rem;
   list-style: none;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 90vw;
 }
 .middle-element {
   display: flex;
+  align-items: center;
   gap: 3rem;
 }
 .nav-link {

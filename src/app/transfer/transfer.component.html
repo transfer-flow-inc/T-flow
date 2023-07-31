@@ -1,9 +1,10 @@
 <section class="card-container">
   <div class="card-left">
-    <form action="">
-      <input type="text" placeholder="Votre email :">
-      <input type="text" placeholder="Vos destinataires :">
-      <textarea placeholder="Votre message:"></textarea>
+    <form class="form-sender" action="">
+      <input class="input-text" type="text" placeholder="Votre email :">
+      <input class="input-text" type="text" placeholder="Vos destinataires :">
+      <textarea class="input-textarea" [rows]="3" [cols]="3" placeholder="Votre message:"></textarea>
+      <button class="btn-send" type="submit">Envoyer</button>
     </form>
   </div>
 
