@@ -1,8 +1,7 @@
 <section class="card-container">
   <div class="card-left">
     <form class="form-sender" action="">
-      <input class="input-text" type="text" placeholder="Votre email :">
-      <input ( class="input-text" type="text" placeholder="Vos destinataires :" multiple>
+      <input class="input-text" type="text" placeholder="Vos destinataires :" multiple>
       <textarea class="input-textarea" [rows]="3" [cols]="3" placeholder="Votre message:"></textarea>
       <button class="btn-send" type="submit">Envoyer</button>
     </form>
@@ -22,7 +21,7 @@
     </label>
   </div>
 
-  <div class="card-right">
+  <div class="card-right" [@fileCard] *ngIf="uploader.queue.length > 0">
     <h2 class="title-file">Vos Fichiers:</h2>
     <p class="noFile" *ngIf="uploader.queue.length === 0">Aucun fichier sélectionné</p>
     <p  *ngIf="uploader.queue.length > 0">poids total de vos fichiers : {{ sizeAllFile | number : ".0" }} {{typeSizeFormat}}</p>

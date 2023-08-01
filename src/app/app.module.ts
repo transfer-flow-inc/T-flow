@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
 import { RegisterComponent } from './register/register.component';
 import {FileUploadModule} from "ng2-file-upload";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 const cookieConfig:NgcCookieConsentConfig = {
@@ -60,6 +61,7 @@ const cookieConfig:NgcCookieConsentConfig = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     NgOptimizedImage,
