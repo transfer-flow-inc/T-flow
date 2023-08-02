@@ -44,7 +44,6 @@ label {
   backdrop-filter: blur(0.2rem);
   background-color: var(--color);
   color: var(--background);
-  z-index: -1;
 }
 .card-middle {
   min-width:25rem;
@@ -158,6 +157,49 @@ label {
   color: var(--color);
 }
 
+.list-email {
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+}
+.input-error {
+    border: 0.2rem solid red;
+}
+.tag-email {
+    background-color: var(--background);
+    color: var(--color);
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+}
+.tag-email fa-icon {
+    padding-left: 0.5rem ;
+}
+.tag-email fa-icon:hover {
+    cursor: pointer;
+}
+.list-span {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    width: 95%;
+    margin: auto;
+}
+.deleteFile {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--color);
+    color: var(--background);
+    font-weight: 600;
+    border: 0.2rem solid var(--background);
+    margin: 0.5rem;
+}
+.deleteFile:hover {
+    cursor: pointer;
+    background-color: var(--background);
+    color: var(--color);
+}
 @media screen and (max-width: 970px) {
   .card-container {
     display: flex;
