@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FileUploader} from "ng2-file-upload";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
-import {faTrashAlt} from "@fortawesome/free-solid-svg-icons";
+import {faTrashAlt, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
@@ -25,6 +25,9 @@ export class TransferComponent implements OnInit {
   binIcon: IconDefinition = faTrashAlt;
   sizeAllFile: number = 0;
   typeSizeFormat: string = 'Ko';
+  emailInput: string = '';
+  emails: string[] = [];
+  supressEmailIcon: IconDefinition = faXmark  ;
 
   public uploader: FileUploader = new FileUploader({url: 'http://localhost:8080/upload'});
 
@@ -48,6 +51,10 @@ export class TransferComponent implements OnInit {
     this.calculateSizeAllFile()
   }
 
+  deleteAllFile() {
+    this.uploader.clearQueue();
+  }
+
   calculateSizeAllFile() {
     this.sizeAllFile = 0;
     for (let i = 0; i < this.uploader.queue.length; i++) {
@@ -65,6 +72,22 @@ export class TransferComponent implements OnInit {
     }
 
 
+  }
+
+  checkIfEmailIsValid(event: any) {
+      let email: string = event.target.value
+      let emailRegex: RegExp = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
+      if (email.match(emailRegex)) {
+        this.emails.push(email);
+        event.target.value = '';
+        this.emailInput = '';
+      } else {
+        this.emailInput = 'input-error';
+      }
+  }
+
+  deleteEmail(email: string) {
+    this.emails.splice(this.emails.indexOf(email), 1);
   }
 
 
