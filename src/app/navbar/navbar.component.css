@@ -1,10 +1,12 @@
 body.dark.nav-link::before {
   background-color: var(--color);
 }
+
 .navbar {
   padding: 1rem 0;
-  width: 90vw;
+  width: 100%;
 }
+
 .nav-list {
   display: flex;
   gap: 1.5rem;
@@ -14,11 +16,13 @@ body.dark.nav-link::before {
   justify-content: space-between;
   width: 90vw;
 }
+
 .middle-element {
   display: flex;
   align-items: center;
   gap: 3rem;
 }
+
 .nav-link {
   display: flex;
   text-align: center;
@@ -29,9 +33,11 @@ body.dark.nav-link::before {
   position: relative;
   background-color: transparent !important;
 }
+
 .nav-link:hover {
   color: orange;
 }
+
 .nav-link::before {
   content: "";
   position: absolute;
@@ -45,26 +51,33 @@ body.dark.nav-link::before {
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
+
 .nav-logo {
   height: 5rem;
 }
+
 .nav-icon {
   font-size: 1.5rem;
   color: var(--color);
 }
+
 .nav-link:hover::before {
   transform: scaleX(1);
 }
+
 .active::before {
   transform: scaleX(1);
 }
+
 .active {
   color: orange;
 }
+
 .help-icon {
   position: fixed;
   bottom: 0;
   right: 0;
+  border: 0.1rem solid var(--background);
   transform: translate(-3rem, -2rem);
   height: 2.5rem;
   width: 2.5rem;
@@ -75,81 +88,97 @@ body.dark.nav-link::before {
   align-items: center;
   font-size: 1.2rem;
   color: var(--background);
+  z-index: 1;
 }
+
 .help-icon:hover {
   cursor: pointer;
 }
+
 .icon:hover {
   cursor: pointer;
 }
+
 .popup-help {
-  position: absolute;
+  border-radius: 1rem;
+  font-size: 1rem;
+  background-color: var(--color);
+  position: fixed;
   bottom: 0;
   right: 0;
-  transform: translate(0, 0);
-  background-color: var(--color);
+  height: 15rem;
+  padding: 2rem;
   width: 15rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  font-size: 1rem ;
+  border: 0.01rem solid var(--background);
   color: var(--background);
-  padding: 3rem;
-  height: 12rem;
+  z-index: -1;
 }
+
 .close {
   position: absolute;
   top: 0.3rem;
   right: 1rem;
 }
-.hidden {
-  display: none;
-}
+
 .popup-help.show {
-  animation: popup 0.1s linear;
+  animation: popup 0.4s linear;
+}
+
+.popup-help.reversePopup {
+  animation: popupReverse 0.4s linear;
+}
+
+.popup-help.hidden {
+  display: none;
 }
 
 .nav-toggler {
   display: none;
 }
+
 .iconClose {
   position: absolute;
   top: 0.5rem;
   right: 1rem;
   font-size: 1.5rem;
 }
+
 label.tgl-btn {
   transform: scale(0.8) !important;
 }
+
 .checkbox-wrapper-8 .tgl {
   display: none;
 }
 
 .checkbox-wrapper-8 .tgl,
-  .checkbox-wrapper-8 .tgl:after,
-  .checkbox-wrapper-8 .tgl:before,
-  .checkbox-wrapper-8 .tgl *,
-  .checkbox-wrapper-8 .tgl *:after,
-  .checkbox-wrapper-8 .tgl *:before,
-  .checkbox-wrapper-8 .tgl + .tgl-btn {
+.checkbox-wrapper-8 .tgl:after,
+.checkbox-wrapper-8 .tgl:before,
+.checkbox-wrapper-8 .tgl *,
+.checkbox-wrapper-8 .tgl *:after,
+.checkbox-wrapper-8 .tgl *:before,
+.checkbox-wrapper-8 .tgl + .tgl-btn {
   box-sizing: border-box;
 }
 
 .checkbox-wrapper-8 .tgl::-moz-selection,
-  .checkbox-wrapper-8 .tgl:after::-moz-selection,
-  .checkbox-wrapper-8 .tgl:before::-moz-selection,
-  .checkbox-wrapper-8 .tgl *::-moz-selection,
-  .checkbox-wrapper-8 .tgl *:after::-moz-selection,
-  .checkbox-wrapper-8 .tgl *:before::-moz-selection,
-  .checkbox-wrapper-8 .tgl + .tgl-btn::-moz-selection,
-  .checkbox-wrapper-8 .tgl::selection,
-  .checkbox-wrapper-8 .tgl:after::selection,
-  .checkbox-wrapper-8 .tgl:before::selection,
-  .checkbox-wrapper-8 .tgl *::selection,
-  .checkbox-wrapper-8 .tgl *:after::selection,
-  .checkbox-wrapper-8 .tgl *:before::selection,
-  .checkbox-wrapper-8 .tgl + .tgl-btn::selection {
+.checkbox-wrapper-8 .tgl:after::-moz-selection,
+.checkbox-wrapper-8 .tgl:before::-moz-selection,
+.checkbox-wrapper-8 .tgl *::-moz-selection,
+.checkbox-wrapper-8 .tgl *:after::-moz-selection,
+.checkbox-wrapper-8 .tgl *:before::-moz-selection,
+.checkbox-wrapper-8 .tgl + .tgl-btn::-moz-selection,
+.checkbox-wrapper-8 .tgl::selection,
+.checkbox-wrapper-8 .tgl:after::selection,
+.checkbox-wrapper-8 .tgl:before::selection,
+.checkbox-wrapper-8 .tgl *::selection,
+.checkbox-wrapper-8 .tgl *:after::selection,
+.checkbox-wrapper-8 .tgl *:before::selection,
+.checkbox-wrapper-8 .tgl + .tgl-btn::selection {
   background: none;
 }
 
@@ -167,7 +196,7 @@ label.tgl-btn {
 }
 
 .checkbox-wrapper-8 .tgl + .tgl-btn:after,
-  .checkbox-wrapper-8 .tgl + .tgl-btn:before {
+.checkbox-wrapper-8 .tgl + .tgl-btn:before {
   position: relative;
   display: block;
   content: "";
@@ -198,7 +227,7 @@ label.tgl-btn {
 }
 
 .checkbox-wrapper-8 .tgl-skewed + .tgl-btn:after,
-  .checkbox-wrapper-8 .tgl-skewed + .tgl-btn:before {
+.checkbox-wrapper-8 .tgl-skewed + .tgl-btn:before {
   display: inline-block;
   transition: all 0.2s ease;
   width: 100%;
@@ -243,6 +272,7 @@ label.tgl-btn {
 .checkbox-wrapper-8 .tgl-skewed:checked + .tgl-btn:active:after {
   left: 10%;
 }
+
 .block {
   display: flex;
   gap: 2rem;
@@ -257,35 +287,47 @@ label.tgl-btn {
   .reverse {
     animation: toggleReverse 0.3s ease-in-out !important;
   }
+
   .help-icon {
     font-size: 2rem;
     height: 3rem;
     width: 3rem;
   }
+
   .hide {
     display: none !important;
   }
+
   .showNav {
-    animation: toggle 0.3s ease-in-out;
+    animation: toggle 0.3s linear;
   }
+
   .nav-toggler {
     display: block;
   }
+
   .nav-list {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: var(--background);
-    border-bottom: var(--color) solid 0.1rem ;
+    border-bottom: var(--color) solid 0.1rem;
+    width: 100vw;
     margin: 0;
     position: relative;
     z-index: 1;
     padding: 2rem;
   }
+
   li:last-child {
     margin-bottom: 1.5rem;
   }
+
+  .block {
+    width: fit-content;
+  }
+
   .nav-icon {
     font-size: 2rem;
     width: 90vw;
@@ -293,17 +335,21 @@ label.tgl-btn {
     display: flex;
     justify-content: flex-end;
   }
+
   .nav-icon:hover {
     cursor: pointer;
   }
+
   .block {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .nav-logo {
     display: none;
   }
+
   .logo {
     display: none;
   }
@@ -313,14 +359,16 @@ label.tgl-btn {
 
 @keyframes toggle {
   0% {
-    transform: translateY(-100%);
+
     opacity: 0;
+    transform: translateY(-100%);
   }
   100% {
     transform: translateY(0);
     opacity: 1;
   }
 }
+
 @keyframes toggleReverse {
   0% {
     transform: translateY(0);
@@ -331,15 +379,37 @@ label.tgl-btn {
     opacity: 0;
   }
 }
+
 @keyframes popup {
   0% {
     height: 0;
     width: 0;
     opacity: 0;
+
+  }
+  50% {
+    opacity: 0;
   }
   100% {
+    opacity: 1;
     height: 15rem;
     width: 15rem;
+  }
+}
+
+@keyframes popupReverse {
+  0% {
     opacity: 1;
+    height: 15rem;
+    width: 15rem;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    height: 0;
+    width: 0;
+    opacity: 0;
+
   }
 }

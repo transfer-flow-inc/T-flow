@@ -12,7 +12,9 @@ export class NavbarComponent implements OnInit {
 
   navIcon: IconDefinition = faBars;
   navbarToggleValue: string = 'hide';
+  popupToggleValue: string = 'hidden';
   private isMenuOpen: boolean = false;
+  private isPopupOpen: boolean = false;
   imgTheme: string = 'assets/images/logo-light.png';
   helpIcon: IconDefinition = faGear;
   popup: string = 'hidden';
@@ -39,7 +41,19 @@ export class NavbarComponent implements OnInit {
   }
 
   togglePopup() {
-    this.popup = this.popup === 'hidden' ? 'show' : 'hidden';
+
+      this.isPopupOpen = !this.isPopupOpen;
+
+      if (!this.isPopupOpen) {
+        // add a delay to the toggle to allow the animation to complete
+        setTimeout(() => {
+          this.popupToggleValue = 'hidden';
+        }, 200);
+        this.popupToggleValue = 'reversePopup';
+      } else {
+        this.popupToggleValue = 'show';
+      }
+
   }
 
 
