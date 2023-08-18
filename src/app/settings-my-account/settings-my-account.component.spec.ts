@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { SettingsMyAccountComponent } from './settings-my-account.component';
+import { SettingsNavbarComponent } from '../settings-navbar/settings-navbar.component';
+import {InjectionToken} from "@angular/core";
 
 describe('SettingsMyAccountComponent', () => {
   let component: SettingsMyAccountComponent;
@@ -8,9 +10,9 @@ describe('SettingsMyAccountComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingsMyAccountComponent ]
-    })
-    .compileComponents();
+      declarations: [SettingsMyAccountComponent, SettingsNavbarComponent],
+      imports: [RouterTestingModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SettingsMyAccountComponent);
     component = fixture.componentInstance;
@@ -20,4 +22,5 @@ describe('SettingsMyAccountComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-settings-my-account',
@@ -19,7 +20,8 @@ export class SettingsMyAccountComponent implements OnInit {
 
   constructor(
     private cookiesService: CookiesService,
-    private jwtService: JwtTokenService
+    private jwtService: JwtTokenService,
+    private router : Router
   ) { }
 
 
@@ -27,7 +29,8 @@ export class SettingsMyAccountComponent implements OnInit {
 
       let token = this.cookiesService.get('token');
       if (!token) {
-        window.location.href = '/se-connecter';
+        this.router.navigate(['/se-connecter']).then(r => console.log(r));
+        return;
       }
 
       this.jwtService.setToken(token);
