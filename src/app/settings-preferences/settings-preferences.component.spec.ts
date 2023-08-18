@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SettingsPreferencesComponent } from './settings-preferences.component';
+import {SettingsNavbarComponent} from "../settings-navbar/settings-navbar.component";
 
 describe('SettingsPreferencesComponent', () => {
   let component: SettingsPreferencesComponent;
@@ -8,7 +9,7 @@ describe('SettingsPreferencesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingsPreferencesComponent ]
+      declarations: [ SettingsPreferencesComponent, SettingsNavbarComponent ]
     })
     .compileComponents();
 

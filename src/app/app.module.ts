@@ -80,7 +80,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         FontAwesomeModule,
         FormsModule,
         FileUploadModule,
-        HttpClientModule
+        HttpClientModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
