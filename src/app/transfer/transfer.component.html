@@ -1,11 +1,14 @@
 <section class="card-container">
   <div class="card-left">
     <form class="form-sender" action="">
+      <p class="title-file unselectable">Envoyer</p>
       <div class="list-email">
         <div class="list-span">
         <span class="tag-email" *ngFor="let email of emails">{{ email }} <fa-icon [icon]="supressEmailIcon" (click)="deleteEmail(email)"></fa-icon> </span>
         </div>
-          <input [ngClass]="emailInput" class="input-text" (keydown.enter)="checkIfEmailIsValid($event)" type="text" placeholder="Vos destinataires :" multiple>
+          <input [ngClass]="emailInput" class="input-text" (keydown.enter)="checkIfEmailIsValid($event)" (focusout)="checkIfEmailIsValid($event)" type="text" placeholder="Vos destinataires :" multiple>
+          <p class="error-email" *ngIf="isEmailError">Veuillez entrer une adresse email valide</p>
+          <p class="error-email" *ngIf="isEmailAlreadyExist">Cette adresse email est déjà enregistrée</p>
       </div>
       <textarea class="input-textarea" [rows]="3" [cols]="3" placeholder="Votre message:"></textarea>
       <button class="btn-send" type="submit">Envoyer</button>

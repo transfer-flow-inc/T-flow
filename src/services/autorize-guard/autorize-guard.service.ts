@@ -3,6 +3,7 @@ import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from "@angular/rout
 import {Observable} from "rxjs";
 import {LocalStorageService} from "../local-storage/local-storage.service";
 import {JwtTokenService} from "../jwt-token/jwt-token.service";
+import {CookiesService} from "../cookies/cookies.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,7 @@ import {JwtTokenService} from "../jwt-token/jwt-token.service";
 export class AutorizeGuardService {
 
   constructor(
-    private router: Router,
-    private authStorageService: LocalStorageService,
+    private authStorageService: CookiesService,
     private jwtService : JwtTokenService
   ) {
   }
@@ -20,7 +20,7 @@ export class AutorizeGuardService {
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
 
-    if (this.jwtService.jwtToken == "" && localStorage.getItem("token") == null) {
+    if (this.jwtService.jwtToken == "" && this.authStorageService.get("token") == "") {
       window.location.href = '/se-connecter';
       return false;
     }
@@ -29,11 +29,11 @@ export class AutorizeGuardService {
 
     if (this.jwtService.isTokenExpired()) {
       window.location.href = "/se-connecter";
-      this.authStorageService.remove("token");
+      this.authStorageService.delete("token");
       return false;
     } else {
 
-      if (localStorage.getItem("token")) {
+      if (this.authStorageService.get("token")) {
         return true;
       } else {
         window.location.href = "/se-connecter";

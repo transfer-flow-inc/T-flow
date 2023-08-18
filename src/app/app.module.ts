@@ -15,6 +15,8 @@ import {FormsModule} from "@angular/forms";
 import {RegisterComponent} from './register/register.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HttpClientService} from "../services/httpClient/http-client.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -36,11 +38,10 @@ const cookieConfig: NgcCookieConsentConfig = {
         }
     },
     theme: 'classic',
-    type: 'opt-out',
+    type: 'info',
     content: {
         message: 'Ce site internet utilise des cookies pour vous garantir la meilleure expérience sur notre site.',
-        allow: 'Autoriser les cookies',
-        deny: 'Refuser',
+        dismiss: 'J\'ai compris',
         link: 'En savoir plus',
         target: '_blank',
         href: 'https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser',
@@ -68,7 +69,8 @@ const cookieConfig: NgcCookieConsentConfig = {
         NgOptimizedImage,
         FontAwesomeModule,
         FormsModule,
-        FileUploadModule
+        FileUploadModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

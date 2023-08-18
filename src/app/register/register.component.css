@@ -159,6 +159,11 @@ hr {
   margin: 1rem;
   color: var(--background);
 }
+.text-condition {
+  color: var(--background);
+  display: flex; gap: 0.5rem;
+  margin: 0.5rem;
+}
 .input-checkbox {
   -webkit-appearance: none;
   appearance: none;
@@ -168,35 +173,45 @@ hr {
   color: currentColor;
   width: 1.15em;
   height: 1.15em;
-  border: 0.15em solid green;
+  border: 0.15em solid red;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
   display: grid;
   place-content: center;
+}
+h1 {
+text-align: center;
+margin: 1rem;
+color: var(--background);
 }
 .input-checkbox::before {
     content: "";
     width: 0.65em;
     height: 0.65em;
     transform: scale(0);
+    box-shadow: inset 1em 1em red;
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--form-control-color);
-    background-color: green;
     transform-origin: bottom left;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
 .input-checkbox:checked::before {
     transform: scale(1);
+    box-shadow: inset 1em 1em green;
 }
-.input-checkbox:focus {
-    outline: max(2px, 0.15em) solid green;
-    outline-offset: max(2px, 0.15em);
+.remplir {
+  width: fit-content;
+}
+.input-checkbox:checked {
+    border-color: green !important;
 }
 .title {
   margin: 0 auto;
-  color: var(--background);
+  color: var(--color);
   text-align: center;
 }
+  .sso-login:hover {
+    cursor: pointer;
+  }
 @media screen and (max-width: 1023px){
 
   * {
@@ -221,6 +236,7 @@ hr {
   .sso-login {
     width: 20rem;
   }
+
   .section-login {
     height: fit-content;
   }
