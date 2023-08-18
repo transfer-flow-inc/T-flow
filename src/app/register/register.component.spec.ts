@@ -2,7 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterComponent } from './register.component';
 import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
-
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
@@ -10,7 +11,7 @@ describe('RegisterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RegisterComponent ],
-      imports: [ FontAwesomeTestingModule ]
+      imports: [ FontAwesomeTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule ],
     })
     .compileComponents();
 

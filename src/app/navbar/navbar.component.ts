@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {DOCUMENT} from "@angular/common";
+import {CookiesService} from "../../services/cookies/cookies.service";
 
 @Component({
   selector: 'app-navbar',
@@ -20,8 +21,10 @@ export class NavbarComponent implements OnInit {
   popup: string = 'hidden';
   closeIcon: IconDefinition = faXmark;
   isDarkTheme: boolean = true;
+  isConnect: boolean = false;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  constructor(@Inject(DOCUMENT) private document: Document,
+              private cookiesService: CookiesService) {
   }
 
   openMenu() {
@@ -77,6 +80,10 @@ export class NavbarComponent implements OnInit {
 
     this.isDarkTheme = localStorage.getItem('theme') !== 'light';
     this.imgTheme = this.isDarkTheme ? 'assets/images/logo-dark.png' : 'assets/images/logo-light.png';
+
+    let token = this.cookiesService.get("token");
+
+    this.isConnect = token != "";
 
   }
 

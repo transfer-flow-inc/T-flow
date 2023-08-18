@@ -19,7 +19,7 @@
         </a>
       </li>
 
-      <li class="nav-element">
+      <li class="nav-element" *ngIf="isConnect">
         <a class="nav-link" routerLink="/transfert" routerLinkActive="active">
           Transfert
         </a>
@@ -46,9 +46,15 @@
     <div class="block">
 
     <li class="nav-element">
-      <a class="nav-link" routerLink="/se-connecter" routerLinkActive="active">
+
+      <a class="nav-link" routerLink="/se-connecter" routerLinkActive="active" *ngIf="!isConnect">
         Se connecter
       </a>
+
+      <a class="nav-link" routerLink="/reglages" routerLinkActive="active" *ngIf="isConnect">
+        Réglages
+      </a>
+
     </li>
 
     </div>
