@@ -5,9 +5,143 @@
   height: 80vh;
   background-color: var(--color);
   border-radius: 1rem;
+  color: var(--background);
 }
 app-settings-navbar {
   height: 100%;
   display: flex;
   align-items: center;
+}
+.section-settings {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  border: 1rem red;
+  overflow: auto;
+  color: var(--background);
+}
+.img-user {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  margin: 2rem;
+}
+.user-button {
+  padding: 1rem 2rem;
+  border: 0.15rem solid var(--background);
+  border-radius: 1rem;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--background);
+}
+.user-button:hover {
+  background-color: var(--background);
+  color: var(--color);
+}
+.user-text {
+  color: var(--background);
+  font-size: 1.5rem;
+}
+.section-settings-left {
+  width: 30%;
+}
+.settings-component {
+  color: var(--background);
+  padding-right: 3rem;
+}
+.input-update {
+  padding: 1rem;
+  margin: 0 1rem;
+}
+.input-update:focus {
+  outline: none;
+}
+.input-email {
+    width: -moz-available;
+  width: -webkit-fill-available;
+}
+.invalid {
+  border-bottom: 0.2rem solid red !important;
+  border: 0;
+}
+.valid {
+  border-bottom: 0.2rem solid green !important;
+  border: 0;
+}
+.form-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center ;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.user-button-update {
+  padding: 1rem 2rem;
+  border: 0.15rem solid var(--background);
+  border-radius: 1rem;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--background);
+  margin: 1rem;
+}
+.user-button-update:hover {
+  background-color: var(--background);
+  color: var(--color);
+}
+.fade {
+  color: #212121 !important;
+}
+@media screen and (max-width: 1020px) {
+  .container-settings {
+    flex-direction: column;
+    height: auto;
+  }
+  .section-settings {
+    margin: 4rem auto;
+    overflow: unset;
+  }
+  .section-settings-left {
+   width: 100%;
+    margin:auto;
+  }
+  .settings-component {
+    padding: 0;
+  }
+  .user-text {
+    font-size: 1.2rem;
+  }
+  app-settings-navbar {
+    justify-content: center;
+  }
+  .form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .input-update {
+    width: 100%;
+    margin: 1rem 0 !important;
+  }
+  .input-email {
+    margin: 0;
+  }
+  .section-update {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+@media screen and (max-width: 450px){
+  .container-settings {
+    width: 100%;
+  }
+  .user-text {
+    font-size: 1rem;
+  }
 }

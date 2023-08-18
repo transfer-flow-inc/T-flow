@@ -43,6 +43,11 @@ export class JwtTokenService {
     return this.getDecodeToken() ? this.getDecodeToken()['userEmail'] : null;
   }
 
+  getUserPlan() {
+    this.getDecodeToken();
+    return this.getDecodeToken() ? this.getDecodeToken()['userPlan'] : null;
+  }
+
   getToken() {
     return this.jwtToken;
   }
