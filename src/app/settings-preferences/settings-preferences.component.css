@@ -1,0 +1,13 @@
+.container-settings {
+  display: flex;
+  width: 80vw;
+  margin: auto;
+  height: 80vh;
+  background-color: var(--color);
+  border-radius: 1rem;
+}
+app-settings-navbar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}

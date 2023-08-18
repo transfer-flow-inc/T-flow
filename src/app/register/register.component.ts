@@ -61,23 +61,6 @@ export class RegisterComponent {
 
   }
 
-  remplirNil() {
-    if (this.firstNameValue == "") {
-      this.firstNameValue = "Thibault";
-      this.lastNameValue = "BRUHAT";
-      this.emailValue = "test@test.fr";
-      this.passwordValue = "Bonjour.63";
-      this.isChecked = true;
-    } else {
-      this.firstNameValue = "";
-      this.lastNameValue = "";
-      this.emailValue = "";
-      this.passwordValue = "";
-      this.isChecked = false;
-    }
-  }
-
-
   changeIsChecked() {
     this.isChecked = !this.isChecked;
   }
