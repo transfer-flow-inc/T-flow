@@ -7,16 +7,20 @@ import {TokenInterface} from "../../interfaces/Token/token-interface";
 })
 export class HttpClientService {
 
+
+
   constructor(
     private httpClient: HttpClient
   ) { }
+
+
 
 
   login(url: string, email: string, password: string) {
     return this.httpClient.post<TokenInterface>(url, {email, password});
   }
 
-  register(url :string , firstName:string, lastName:string ,email:string, password:string) {
+  register<TokenInterface>(url :string , firstName:string, lastName:string ,email:string, password:string) {
     return this.httpClient.post<TokenInterface>(url, {firstName, lastName, email, password })
   }
 

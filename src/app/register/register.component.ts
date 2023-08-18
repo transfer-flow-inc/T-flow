@@ -6,7 +6,6 @@ import {CookiesService} from "../../services/cookies/cookies.service";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {environment} from "../../environements/evironement-dev";
-import {identity} from "rxjs";
 
 @Component({
   selector: 'app-register',
@@ -34,7 +33,6 @@ export class RegisterComponent {
 
   register(){
     if (this.isChecked) {
-      // @ts-ignore
       this.service.register<TokenInterface>(environment.apiURL + "auth/register", this.firstNameValue, this.lastNameValue, this.emailValue, this.passwordValue)
         .subscribe({
           next: (data) => {
