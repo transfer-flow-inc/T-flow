@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-waiting-verification',
@@ -15,6 +16,7 @@ export class WaitingVerificationComponent implements OnInit {
   constructor(
     private cookieService: CookiesService,
     private jwtService: JwtTokenService,
+    private router: Router
   ) {
   }
 
@@ -23,11 +25,16 @@ export class WaitingVerificationComponent implements OnInit {
 
     this.token = this.cookieService.get("validation");
 
+
+
     if (!this.token) {
-      window.location.href = "/accueil";
+      this.router.navigate(['/se-connecter']).then();
+      return;
     }
     this.jwtService.setToken(this.token);
     this.email = <string>this.jwtService.getUserEmail();
+
+
 
 
   }
