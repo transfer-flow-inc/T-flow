@@ -6,6 +6,8 @@
 
     <h1 class="unselectable">Se connecter</h1>
 
+    <p class="need-validation" *ngIf="needValidation">Votre compte est en attente de validation veuillez verifier vos mails</p>
+
     <form class="form-left" method="POST" #loginForm="ngForm" (submit)="login()">
 
 

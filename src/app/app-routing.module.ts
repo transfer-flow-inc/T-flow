@@ -11,6 +11,7 @@ import {SettingsMyAccountComponent} from "./settings-my-account/settings-my-acco
 import {SettingsPreferencesComponent} from "./settings-preferences/settings-preferences.component";
 import {SettingsSubscriptionComponent} from "./settings-subscription/settings-subscription.component";
 import {LogoutComponent} from "./logout/logout.component";
+import {WaitingVerificationComponent} from "./waiting-verification/waiting-verification.component";
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { 'path' : "s'inscrire", component: RegisterComponent, data: { title: 'S\'inscrire'}},
   { 'path' : "se-deconnecter", component: LogoutComponent, data: { title: 'Se déconnecter'}},
   { 'path' : "transfert", component : TransferComponent,canActivate : [AutorizeGuardService], data: { title: 'Transfert'}},
+  { 'path' : "attente-de-verification", component: WaitingVerificationComponent, data: { title: 'Attente de vérification'}},
   { 'path' : "reglages", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Réglages'}},
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},
   { 'path' : "reglages/mes-preferences", component: SettingsPreferencesComponent, canActivate : [AutorizeGuardService], data: { title: 'Mes préférences'}},

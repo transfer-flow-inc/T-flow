@@ -22,6 +22,7 @@ import { SettingsMyAccountComponent } from './settings-my-account/settings-my-ac
 import { SettingsPreferencesComponent } from './settings-preferences/settings-preferences.component';
 import { SettingsSubscriptionComponent } from './settings-subscription/settings-subscription.component';
 import { LogoutComponent } from './logout/logout.component';
+import { WaitingVerificationComponent } from './waiting-verification/waiting-verification.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -69,7 +70,8 @@ const cookieConfig: NgcCookieConsentConfig = {
         SettingsMyAccountComponent,
         SettingsPreferencesComponent,
         SettingsSubscriptionComponent,
-        LogoutComponent
+        LogoutComponent,
+        WaitingVerificationComponent
     ],
     imports: [
         BrowserModule,
