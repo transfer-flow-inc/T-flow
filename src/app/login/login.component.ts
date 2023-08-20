@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import { faEye , faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
@@ -13,7 +13,7 @@ import {CookiesService} from "../../services/cookies/cookies.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent{
 
   faEye : IconDefinition = faEye;
   faEyeSlash : IconDefinition = faEyeSlash;
@@ -22,6 +22,7 @@ export class LoginComponent {
   passwordValue: string = "";
   token : TokenInterface = {token: ""};
   error : string = "";
+  needValidation : boolean = false;
 
 
   constructor(private httpService : HttpClientService,
@@ -31,6 +32,11 @@ export class LoginComponent {
 
 
   login(){
+
+    if (this.cookiesService.get("validation")){
+      this.needValidation = true;
+      return;
+    }
 
     this.httpService.login(environment.apiURL + "auth/authenticate", this.emailValue, this.passwordValue)
       .subscribe({

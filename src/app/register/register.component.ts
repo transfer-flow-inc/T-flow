@@ -6,6 +6,7 @@ import {CookiesService} from "../../services/cookies/cookies.service";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {environment} from "../../environements/evironement-dev";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -25,9 +26,11 @@ export class RegisterComponent {
   isChecked: boolean = false;
   error: string = "";
 
-  constructor(private service : HttpClientService,
-              private cookiesService: CookiesService ,
-              private jwtService : JwtTokenService)
+  constructor(
+    private service : HttpClientService,
+    private router : Router,
+    private cookiesService : CookiesService,
+  )
   {}
 
 
@@ -36,12 +39,11 @@ export class RegisterComponent {
       this.service.register<TokenInterface>(environment.apiURL + "auth/register", this.firstNameValue, this.lastNameValue, this.emailValue, this.passwordValue)
         .subscribe({
           next: (data) => {
-            this.token = data;
-            if (this.token.token != null) {
-              this.cookiesService.set("token", this.token.token, 3);
-              this.jwtService.setToken(this.token.token);
-              window.location.href = "/accueil";
-            }
+
+            this.cookiesService.set("validation", data.token, 30);
+
+            this.router.navigate(['/attente-de-verification']).then();
+
           },
           error: (err) => {
 

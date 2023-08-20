@@ -3,6 +3,9 @@ h1 {
   margin: 1rem;
   color: var(--background);
 }
+.need-validation {
+  color: red;
+}
 .credential-error {
   color: red;
   font-weight: 600;
