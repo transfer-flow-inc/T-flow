@@ -15,14 +15,12 @@ import {FormsModule} from "@angular/forms";
 import {RegisterComponent} from './register/register.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientService} from "../services/httpClient/http-client.service";
 import {HttpClientModule} from "@angular/common/http";
 import { SettingsNavbarComponent } from './settings-navbar/settings-navbar.component';
 import { SettingsMyAccountComponent } from './settings-my-account/settings-my-account.component';
 import { SettingsPreferencesComponent } from './settings-preferences/settings-preferences.component';
 import { SettingsSubscriptionComponent } from './settings-subscription/settings-subscription.component';
 import { LogoutComponent } from './logout/logout.component';
-import { WaitingVerificationComponent } from './waiting-verification/waiting-verification.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -71,7 +69,6 @@ const cookieConfig: NgcCookieConsentConfig = {
         SettingsPreferencesComponent,
         SettingsSubscriptionComponent,
         LogoutComponent,
-        WaitingVerificationComponent
     ],
     imports: [
         BrowserModule,

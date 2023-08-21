@@ -4,7 +4,6 @@ import { faEye , faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
-import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {environment} from "../../environements/evironement-dev";
 import {Router} from "@angular/router";
 
@@ -29,7 +28,6 @@ export class RegisterComponent {
   constructor(
     private service : HttpClientService,
     private router : Router,
-    private cookiesService : CookiesService,
   )
   {}
 
@@ -40,9 +38,8 @@ export class RegisterComponent {
         .subscribe({
           next: (data) => {
 
-            this.cookiesService.set("validation", data.token, 30);
 
-            this.router.navigate(['/attente-de-verification']).then();
+            this.router.navigate(["/accueil"]).then();
 
           },
           error: (err) => {

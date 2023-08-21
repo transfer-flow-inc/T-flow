@@ -33,11 +33,6 @@ export class LoginComponent{
 
   login(){
 
-    if (this.cookiesService.get("validation")){
-      this.needValidation = true;
-      return;
-    }
-
     this.httpService.login(environment.apiURL + "auth/authenticate", this.emailValue, this.passwordValue)
       .subscribe({
 
