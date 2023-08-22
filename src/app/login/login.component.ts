@@ -6,6 +6,8 @@ import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {environment} from "../../environements/evironement-dev";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {CookiesService} from "../../services/cookies/cookies.service";
+import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -27,7 +29,10 @@ export class LoginComponent{
 
   constructor(private httpService : HttpClientService,
               private cookiesService : CookiesService,
-              private jwtService : JwtTokenService) { }
+              private jwtService : JwtTokenService,
+              private flashMessageService: FlashMessageService,
+              private router : Router
+              ) { }
 
 
 
@@ -43,7 +48,9 @@ export class LoginComponent{
             if (this.token.token != null) {
               this.cookiesService.set("token", this.token.token, 3);
               this.jwtService.setToken(this.token.token);
-              window.location.href = "/accueil";
+              this.router.navigate(['/accueil']).then(() => {
+                this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
+              });
             }
 
           },

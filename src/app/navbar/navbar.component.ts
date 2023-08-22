@@ -1,8 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {DOCUMENT} from "@angular/common";
 import {CookiesService} from "../../services/cookies/cookies.service";
+import {HttpClientService} from "../../services/httpClient/http-client.service";
 
 @Component({
   selector: 'app-navbar',
@@ -16,16 +17,17 @@ export class NavbarComponent implements OnInit {
   popupToggleValue: string = 'hidden';
   private isMenuOpen: boolean = false;
   private isPopupOpen: boolean = false;
-  imgTheme: string = 'assets/images/logo-light.png';
+  imgTheme: string = 'assets/images/logo_with_text_dark.png';
   helpIcon: IconDefinition = faGear;
   popup: string = 'hidden';
   closeIcon: IconDefinition = faXmark;
   isDarkTheme: boolean = true;
-  isConnect: boolean = false;
+  isAuthenticated: boolean = false;
 
   constructor(@Inject(DOCUMENT) private document: Document,
-              private cookiesService: CookiesService) {
-  }
+              private cookiesService: CookiesService,
+              private httpClientService: HttpClientService,
+  ) {}
 
   openMenu() {
 
@@ -67,10 +69,10 @@ export class NavbarComponent implements OnInit {
 
     if (document.body.classList.contains('dark')) {
       localStorage.setItem('theme', 'dark');
-      this.imgTheme = 'assets/images/logo-dark.png';
+      this.imgTheme = 'assets/images/logo_with_text_dark.png';
     } else {
       localStorage.setItem('theme', 'light');
-      this.imgTheme = 'assets/images/logo-light.png';
+      this.imgTheme = 'assets/images/logo_with_text_light.png';
     }
 
 
@@ -78,12 +80,13 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
+    this.httpClientService.isAuthenticated$.subscribe((loggedIn) => {
+      this.isAuthenticated = loggedIn;
+    });
     this.isDarkTheme = localStorage.getItem('theme') !== 'light';
-    this.imgTheme = this.isDarkTheme ? 'assets/images/logo-dark.png' : 'assets/images/logo-light.png';
+    this.imgTheme = this.isDarkTheme ? 'assets/images/logo_with_text_dark.png' : 'assets/images/logo_with_text_light.png';
 
-    let token = this.cookiesService.get("token");
 
-    this.isConnect = token != "";
 
   }
 
