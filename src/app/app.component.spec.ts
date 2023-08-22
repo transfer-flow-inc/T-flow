@@ -4,6 +4,8 @@ import { AppComponent } from './app.component';
 import {NgcCookieConsentService} from "ngx-cookieconsent";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import {HttpClientService} from "../services/httpClient/http-client.service";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 
 
@@ -17,7 +19,8 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule
       ],
       declarations: [
         AppComponent,
