@@ -1,13 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
-import { faEye , faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {CookiesService} from "../../services/cookies/cookies.service";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {environment} from "../../environements/evironement-dev";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
-import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 
 @Component({
   selector: 'app-register',
@@ -16,33 +14,34 @@ import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 })
 export class RegisterComponent {
 
-  faEye : IconDefinition = faEye;
-  faEyeSlash : IconDefinition = faEyeSlash;
+  faEye: IconDefinition = faEye;
+  faEyeSlash: IconDefinition = faEyeSlash;
   showPassword: boolean = false;
   passwordValue: string = "";
   emailValue: string = "";
   firstNameValue: string = "";
   lastNameValue: string = "";
-  token : TokenInterface = {token: ""};
+  token: TokenInterface = {token: ""};
   isChecked: boolean = false;
   error: string = "";
 
   constructor(
-    private service : HttpClientService,
-    private router : Router,
+    private service: HttpClientService,
+    private router: Router,
     private flashMessageService: FlashMessageService
-  )
-  {}
+  ) {
+  }
 
 
-  register(){
+  register() {
     if (this.isChecked) {
       this.service.register<TokenInterface>(environment.apiURL + "auth/register", this.firstNameValue, this.lastNameValue, this.emailValue, this.passwordValue)
         .subscribe({
           next: () => {
             this.flashMessageService.addMessage(`Veuillez vérifier votre boite mail à l'adresse : ${this.emailValue}, pour valider votre compte !`, 'warning', 4000);
 
-           this.router.navigate(['/accueil']).then(() => {});
+            this.router.navigate(['/accueil']).then(() => {
+            });
 
 
           },

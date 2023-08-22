@@ -77,27 +77,27 @@ export class TransferComponent implements OnInit {
   }
 
   checkIfEmailIsValid(event: any) {
-      let email: string = event.target.value
-      if (email === '') {
-        return;
-      }
-      let emailRegex: RegExp = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
-      if (email.match(emailRegex)) {
-        if (this.emails.indexOf(email) !== -1) {
-          this.emailInput = 'input-error';
-          this.isEmailAlreadyExist = true;
-          return;
-        } else {
-          this.isEmailAlreadyExist = false;
-        }
-        this.emails.push(email);
-        event.target.value = '';
-        this.emailInput = '';
-        this.isEmailError = false;
-      } else {
+    let email: string = event.target.value
+    if (email === '') {
+      return;
+    }
+    let emailRegex: RegExp = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
+    if (email.match(emailRegex)) {
+      if (this.emails.indexOf(email) !== -1) {
         this.emailInput = 'input-error';
-        this.isEmailError = true;
+        this.isEmailAlreadyExist = true;
+        return;
+      } else {
+        this.isEmailAlreadyExist = false;
       }
+      this.emails.push(email);
+      event.target.value = '';
+      this.emailInput = '';
+      this.isEmailError = false;
+    } else {
+      this.emailInput = 'input-error';
+      this.isEmailError = true;
+    }
   }
 
   deleteEmail(email: string) {

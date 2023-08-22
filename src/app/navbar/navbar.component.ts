@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {DOCUMENT} from "@angular/common";
@@ -25,9 +25,9 @@ export class NavbarComponent implements OnInit {
   isAuthenticated: boolean = false;
 
   constructor(@Inject(DOCUMENT) private document: Document,
-              private cookiesService: CookiesService,
               private httpClientService: HttpClientService,
-  ) {}
+  ) {
+  }
 
   openMenu() {
 
@@ -35,7 +35,6 @@ export class NavbarComponent implements OnInit {
     this.navIcon = this.isMenuOpen ? faXmark : faBars;
 
     if (!this.isMenuOpen) {
-      // add a delay to the toggle to allow the animation to complete
       setTimeout(() => {
         this.navbarToggleValue = 'hide';
       }, 200);
@@ -47,17 +46,16 @@ export class NavbarComponent implements OnInit {
 
   togglePopup() {
 
-      this.isPopupOpen = !this.isPopupOpen;
+    this.isPopupOpen = !this.isPopupOpen;
 
-      if (!this.isPopupOpen) {
-        // add a delay to the toggle to allow the animation to complete
-        setTimeout(() => {
-          this.popupToggleValue = 'hidden';
-        }, 200);
-        this.popupToggleValue = 'reversePopup';
-      } else {
-        this.popupToggleValue = 'show';
-      }
+    if (!this.isPopupOpen) {
+      setTimeout(() => {
+        this.popupToggleValue = 'hidden';
+      }, 200);
+      this.popupToggleValue = 'reversePopup';
+    } else {
+      this.popupToggleValue = 'show';
+    }
 
   }
 
@@ -85,7 +83,6 @@ export class NavbarComponent implements OnInit {
     });
     this.isDarkTheme = localStorage.getItem('theme') !== 'light';
     this.imgTheme = this.isDarkTheme ? 'assets/images/logo_with_text_dark.png' : 'assets/images/logo_with_text_light.png';
-
 
 
   }
