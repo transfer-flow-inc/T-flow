@@ -19,7 +19,7 @@
         </a>
       </li>
 
-      <li class="nav-element" *ngIf="isConnect">
+      <li class="nav-element" *ngIf="isAuthenticated">
         <a class="nav-link" routerLink="/transfert" routerLinkActive="active">
           Transfert
         </a>
@@ -47,11 +47,11 @@
 
     <li class="nav-element">
 
-      <a class="nav-link" routerLink="/se-connecter" routerLinkActive="active" *ngIf="!isConnect">
+      <a class="nav-link" routerLink="/se-connecter" routerLinkActive="active" *ngIf="!isAuthenticated">
         Se connecter
       </a>
 
-      <a class="nav-link" routerLink="/reglages/mon-compte" routerLinkActive="active" *ngIf="isConnect">
+      <a class="nav-link" routerLink="/reglages/mon-compte" routerLinkActive="active" *ngIf="isAuthenticated">
         Réglages
       </a>
 

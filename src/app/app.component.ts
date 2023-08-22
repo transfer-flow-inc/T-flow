@@ -6,6 +6,7 @@ import {Title} from "@angular/platform-browser";
 import {DOCUMENT} from "@angular/common";
 import {FlashMessage} from "../interfaces/Flash-message/flash-message-interface";
 import {FlashMessageService} from "../services/flash-message/flash-message.service";
+import {CookiesService} from "../services/cookies/cookies.service";
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private cookieService: NgcCookieConsentService,
+    private myCookieService: CookiesService,
     private router: Router,
     private titleService: Title,
     private route: ActivatedRoute,
@@ -43,9 +45,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
 
+
     this.flashMessageService.getMessage().subscribe((flashMessage) => {
       this.flashMessage = flashMessage;
-      this.cdr.detectChanges(); // Manually trigger change detection
       if (this.flashMessage) {
         setTimeout(() => {
           this.flashMessageService.deleteFlashMessage(flashMessage) ; // Remove the message after the specified duration

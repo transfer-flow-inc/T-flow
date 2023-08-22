@@ -58,7 +58,10 @@ body.dark.nav-link::before {
 }
 
 .nav-logo {
-  height: 5rem;
+  height: 4rem;
+}
+.block {
+  width: 33%;
 }
 
 .nav-icon {
