@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CookiesService} from "../../services/cookies/cookies.service";
+
 
 @Component({
   selector: 'app-homepage',
@@ -8,6 +8,9 @@ import {CookiesService} from "../../services/cookies/cookies.service";
 })
 export class HomepageComponent{
 
+
+
+  constructor() {}
 
 
 }

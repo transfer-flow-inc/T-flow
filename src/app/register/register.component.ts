@@ -6,6 +6,8 @@ import {CookiesService} from "../../services/cookies/cookies.service";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {environment} from "../../environements/evironement-dev";
 import {Router} from "@angular/router";
+import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 
 @Component({
   selector: 'app-register',
@@ -28,6 +30,7 @@ export class RegisterComponent {
   constructor(
     private service : HttpClientService,
     private router : Router,
+    private flashMessageService: FlashMessageService
   )
   {}
 
@@ -36,10 +39,11 @@ export class RegisterComponent {
     if (this.isChecked) {
       this.service.register<TokenInterface>(environment.apiURL + "auth/register", this.firstNameValue, this.lastNameValue, this.emailValue, this.passwordValue)
         .subscribe({
-          next: (data) => {
+          next: () => {
+            this.flashMessageService.addMessage(`Veuillez vérifier votre boite mail à l'adresse : ${this.emailValue}, pour valider votre compte !`, 'warning', 4000);
 
+           this.router.navigate(['/accueil']).then(() => {});
 
-            this.router.navigate(["/accueil"]).then();
 
           },
           error: (err) => {
