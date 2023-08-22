@@ -21,6 +21,7 @@ import { SettingsMyAccountComponent } from './settings-my-account/settings-my-ac
 import { SettingsPreferencesComponent } from './settings-preferences/settings-preferences.component';
 import { SettingsSubscriptionComponent } from './settings-subscription/settings-subscription.component';
 import { LogoutComponent } from './logout/logout.component';
+import {FlashMessageService} from "../services/flash-message/flash-message.service";
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -81,7 +82,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         FileUploadModule,
         HttpClientModule,
     ],
-    providers: [],
+    providers: [FlashMessageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
