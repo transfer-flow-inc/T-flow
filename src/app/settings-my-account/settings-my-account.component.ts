@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class SettingsMyAccountComponent implements OnInit {
 
-  user : { firstName: string; lastName: string; authMethod: string; email: string, plan: string } = {
+  user: { firstName: string; lastName: string; authMethod: string; email: string, plan: string } = {
     firstName: "",
     lastName: "",
     email: "",
@@ -21,31 +21,30 @@ export class SettingsMyAccountComponent implements OnInit {
   constructor(
     private cookiesService: CookiesService,
     private jwtService: JwtTokenService,
-    private router : Router
-  ) { }
+    private router: Router
+  ) {
+  }
 
 
   ngOnInit(): void {
 
-      let token = this.cookiesService.get('token');
-      if (!token) {
-        this.router.navigate(['/se-connecter']).then(r => console.log(r));
-        return;
-      }
+    let token = this.cookiesService.get('token');
+    if (!token) {
+      this.router.navigate(['/se-connecter']).then(r => console.log(r));
+      return;
+    }
 
-      this.jwtService.setToken(token);
-
-
-      this.user.firstName = <string>this.jwtService.getUserFirstName();
-      this.user.lastName = <string>this.jwtService.getUserLastName();
-      this.user.email = <string>this.jwtService.getUserEmail();
-      if (this.jwtService.getUserAuthenticationMethod() == "spring_database" ){
-        this.user.authMethod = "Compte crée sur le site";
-      } else {
-        this.user.authMethod = "Compte sso";
-      }
+    this.jwtService.setToken(token);
 
 
+    this.user.firstName = <string>this.jwtService.getUserFirstName();
+    this.user.lastName = <string>this.jwtService.getUserLastName();
+    this.user.email = <string>this.jwtService.getUserEmail();
+    if (this.jwtService.getUserAuthenticationMethod() == "spring_database") {
+      this.user.authMethod = "Compte crée sur le site";
+    } else {
+      this.user.authMethod = "Compte sso";
+    }
 
 
   }

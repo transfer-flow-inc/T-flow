@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CookiesService} from "../../services/cookies/cookies.service";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 
 @Component({
@@ -10,8 +9,9 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 export class LogoutComponent implements OnInit {
 
   constructor(
-    private httpService : HttpClientService,
-  ) { }
+    private httpService: HttpClientService,
+  ) {
+  }
 
   ngOnInit(): void {
 
