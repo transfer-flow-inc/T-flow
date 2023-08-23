@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
@@ -8,6 +8,7 @@ import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {Router} from "@angular/router";
+import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
 
 
 @Component({
@@ -15,7 +16,7 @@ import {Router} from "@angular/router";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent{
 
   faEye: IconDefinition = faEye;
   faEyeSlash: IconDefinition = faEyeSlash;
@@ -31,7 +32,8 @@ export class LoginComponent {
               private cookiesService: CookiesService,
               private jwtService: JwtTokenService,
               private flashMessageService: FlashMessageService,
-              private router: Router
+              private router: Router,
+              private googleSsoService: GoogleSsoService,
   ) {
   }
 
@@ -67,5 +69,12 @@ export class LoginComponent {
       });
 
   }
+
+  signInWithGoogle() {
+    this.googleSsoService.signInWithGoogle()
+  }
+
+
+
 
 }

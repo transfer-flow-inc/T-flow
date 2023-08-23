@@ -7,6 +7,7 @@ import {DOCUMENT} from "@angular/common";
 import {FlashMessage} from "../interfaces/Flash-message/flash-message-interface";
 import {FlashMessageService} from "../services/flash-message/flash-message.service";
 import {CookiesService} from "../services/cookies/cookies.service";
+import {HttpClientService} from "../services/httpClient/http-client.service";
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
   constructor(
     private cookieService: NgcCookieConsentService,
     private myCookieService: CookiesService,
+    private httpClientService: HttpClientService,
     private router: Router,
     private titleService: Title,
     private route: ActivatedRoute,
@@ -43,6 +45,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // For english users
+console.log('%cHold Up!', 'color:red; font-size: 8rem; font-weight: bold;')
+console.log("%cIf someone told you to copy and paste something here, they're trying to hack you. Don't do it!", "color: white; font-size: 20px; font-weight: bold;")
+// For french users
+console.log('%cAttention!', 'color:red; font-size: 8rem; font-weight: bold;')
+console.log("%cSi quelqu'un vous a dit de copier et coller quelque chose ici, il essaie de vous pirater. Ne le faites pas!", "color: white; font-size: 20px; font-weight: bold;")
+
+    if (this.myCookieService.get('token')) {
+      this.httpClientService.isAuthenticated.next(true);
+    }
 
 
 

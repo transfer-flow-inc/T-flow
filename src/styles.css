@@ -38,3 +38,6 @@ font-family: 'Montserrat', sans-serif;
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
+.cc-dismiss:hover {
+  background-color: red !important;
+}

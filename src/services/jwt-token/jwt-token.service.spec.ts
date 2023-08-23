@@ -6,7 +6,9 @@ describe('JwtTokenService', () => {
   let service: JwtTokenService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [JwtTokenService]
+    });
     service = TestBed.inject(JwtTokenService);
   });
 

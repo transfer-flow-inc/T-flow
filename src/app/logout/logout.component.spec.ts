@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogoutComponent } from './logout.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {OAuthModule} from "angular-oauth2-oidc";
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -10,7 +11,7 @@ describe('LogoutComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LogoutComponent ],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, OAuthModule.forRoot()],
     })
     .compileComponents();
 
