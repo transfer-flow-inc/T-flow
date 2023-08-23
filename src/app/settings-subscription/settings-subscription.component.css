@@ -1,11 +1,20 @@
 .container-settings {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 80vw;
   margin: auto;
   height: 80vh;
   background-color: var(--color);
   border-radius: 1rem;
   color: var(--background);
+}
+.container-plan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 app-settings-navbar {
   height: 100%;
@@ -36,6 +45,7 @@ app-settings-navbar {
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--background);
+  text-decoration: none;
 }
 .user-button:hover {
   background-color: var(--background);

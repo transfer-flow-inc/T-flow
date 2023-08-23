@@ -5,7 +5,8 @@
 
   <div class="section-settings">
 
-    <p>Nom : {{this.user.lastName}}</p>
+    <img class="img-user" [src]="user.avatar">
+    <p *ngIf="asLastname">Nom : {{this.user.lastName}}</p>
     <p>Prénom : {{this.user.firstName}}</p>
     <p>Email : {{this.user.email}}</p>
     <p>Type de compte : {{this.user.authMethod}}</p>

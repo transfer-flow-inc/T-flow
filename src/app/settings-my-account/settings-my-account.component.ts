@@ -25,6 +25,7 @@ export class SettingsMyAccountComponent implements OnInit {
     authMethod: ""
   }
 
+  asLastname: boolean = true;
   accountStatus: string = "";
 
   constructor(
@@ -39,15 +40,21 @@ export class SettingsMyAccountComponent implements OnInit {
 
     let token = this.cookiesService.get('token');
     if (!token) {
-      this.router.navigate(['/se-connecter']).then(r => console.log(r));
+      this.router.navigate(['/se-connecter']).then();
       return;
     }
 
     this.jwtService.setToken(token);
 
 
+
     this.user.firstName = <string>this.jwtService.getUserFirstName();
-    this.user.lastName = <string>this.jwtService.getUserLastName();
+
+    if (<string>this.jwtService.getUserLastName() == "" || <string>this.jwtService.getUserLastName() == " ") {
+      this.asLastname = false;
+    } else {
+      this.user.lastName = <string>this.jwtService.getUserLastName();
+    }
     this.user.email = <string>this.jwtService.getUserEmail();
     if (this.jwtService.getUserAuthenticationMethod() == "spring_database") {
       this.user.authMethod = "Compte crée sur le site";
@@ -63,6 +70,13 @@ export class SettingsMyAccountComponent implements OnInit {
       this.accountStatus = "Compte non vérifié";
     }
 
+    if (this.jwtService.getUserAvatar()) {
+      this.user.avatar = <string>this.jwtService.getUserAvatar();
+    } else {
+      this.user.avatar = "assets/images/logo_dark.png";
+    }
+
+    console.log(this.jwtService.getUserAvatar())
 
   }
 
