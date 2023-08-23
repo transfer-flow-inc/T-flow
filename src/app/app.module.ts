@@ -18,12 +18,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import { SettingsNavbarComponent } from './settings-navbar/settings-navbar.component';
 import { SettingsMyAccountComponent } from './settings-my-account/settings-my-account.component';
-import { SettingsPreferencesComponent } from './settings-preferences/settings-preferences.component';
 import { SettingsSubscriptionComponent } from './settings-subscription/settings-subscription.component';
 import { LogoutComponent } from './logout/logout.component';
 import {FlashMessageService} from "../services/flash-message/flash-message.service";
 import {OAuthModule} from "angular-oauth2-oidc";
-import {JwtTokenService} from "../services/jwt-token/jwt-token.service";
+import { SettingsAllTransferComponent } from './settings-all-transfer/settings-all-transfer.component';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -69,9 +69,10 @@ const cookieConfig: NgcCookieConsentConfig = {
         RegisterComponent,
         SettingsNavbarComponent,
         SettingsMyAccountComponent,
-        SettingsPreferencesComponent,
         SettingsSubscriptionComponent,
         LogoutComponent,
+        SettingsAllTransferComponent,
+        SubscriptionsComponent,
     ],
     imports: [
         BrowserModule,

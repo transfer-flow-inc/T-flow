@@ -58,6 +58,11 @@ export class JwtTokenService {
     return this.getDecodeToken() ? JSON.parse(this.getDecodeToken()['isAccountVerified']) : false;
   }
 
+  getUserAvatar(): string | null {
+    this.getDecodeToken();
+    return this.getDecodeToken() ? this.getDecodeToken()['avatar'] : null;
+  }
+
   getToken() {
     return this.jwtToken;
   }

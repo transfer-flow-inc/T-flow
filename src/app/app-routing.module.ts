@@ -8,9 +8,10 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {AutorizeGuardService} from "../services/autorize-guard/autorize-guard.service";
 import {SettingsMyAccountComponent} from "./settings-my-account/settings-my-account.component";
-import {SettingsPreferencesComponent} from "./settings-preferences/settings-preferences.component";
 import {SettingsSubscriptionComponent} from "./settings-subscription/settings-subscription.component";
 import {LogoutComponent} from "./logout/logout.component";
+import {SettingsAllTransferComponent} from "./settings-all-transfer/settings-all-transfer.component";
+import {SubscriptionsComponent} from "./subscriptions/subscriptions.component";
 
 
 const routes: Routes = [
@@ -21,9 +22,10 @@ const routes: Routes = [
   { 'path' : "s'inscrire", component: RegisterComponent, data: { title: 'S\'inscrire'}},
   { 'path' : "se-deconnecter", component: LogoutComponent, data: { title: 'Se déconnecter'}},
   { 'path' : "transfert", component : TransferComponent,canActivate : [AutorizeGuardService], data: { title: 'Transfert'}},
+  { 'path' : "tout-les-abonnements", component: SubscriptionsComponent, data: { title: 'Tout les abonnements'}},
   { 'path' : "reglages", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Réglages'}},
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},
-  { 'path' : "reglages/mes-preferences", component: SettingsPreferencesComponent, canActivate : [AutorizeGuardService], data: { title: 'Mes préférences'}},
+  { 'path' : "reglages/mes-transferts", component: SettingsAllTransferComponent, canActivate : [AutorizeGuardService], data: { title: 'Mes Transferts'}},
   { 'path' : "reglages/mon-abonnement", component: SettingsSubscriptionComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon abonnement'}},
   { 'path' : "**" , component: NotFoundComponent, data: { title: 'Cette page n\'existe pas'}},
 ];
