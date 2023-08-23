@@ -14,19 +14,19 @@
 <div class="block">
 
        <li class="nav-element">
-        <a class="nav-link" routerLink="/accueil" routerLinkActive="active">
+        <a class="nav-link" (click)="openMenu()" routerLink="/accueil" routerLinkActive="active">
           Home
         </a>
       </li>
 
       <li class="nav-element" *ngIf="isAuthenticated">
-        <a class="nav-link" routerLink="/transfert" routerLinkActive="active">
+        <a class="nav-link" (click)="openMenu()" routerLink="/transfert" routerLinkActive="active">
           Transfert
         </a>
       </li>
 
         <li class="nav-element">
-        <a class="nav-link" routerLink="/cgu" routerLinkActive="active">
+        <a class="nav-link" (click)="openMenu()" routerLink="/cgu" routerLinkActive="active">
           Cgu
         </a>
       </li>
@@ -36,7 +36,7 @@
     <div class="block logo">
 
       <li class="nav-element">
-      <a class="" routerLink="/accueil">
+      <a class="" (click)="openMenu()" routerLink="/accueil">
         <img class="nav-logo" [src]="imgTheme" alt="logo T-flow">
       </a>
     </li>
@@ -47,11 +47,11 @@
 
     <li class="nav-element">
 
-      <a class="nav-link" routerLink="/se-connecter" routerLinkActive="active" *ngIf="!isAuthenticated">
+      <a class="nav-link" (click)="openMenu()" routerLink="/se-connecter" routerLinkActive="active" *ngIf="!isAuthenticated">
         Se connecter
       </a>
 
-      <a class="nav-link" routerLink="/reglages/mon-compte" routerLinkActive="active" *ngIf="isAuthenticated">
+      <a class="nav-link" (click)="openMenu()" routerLink="/reglages/mon-compte" routerLinkActive="active" *ngIf="isAuthenticated">
         Réglages
       </a>
 

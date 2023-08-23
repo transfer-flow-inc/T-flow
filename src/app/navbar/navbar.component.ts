@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) private document: Document,
               private httpClientService: HttpClientService,
-              private googleSsoService: GoogleSsoService,
   ) {
   }
 
@@ -85,7 +84,6 @@ export class NavbarComponent implements OnInit {
     });
     this.isDarkTheme = localStorage.getItem('theme') !== 'light';
     this.imgTheme = this.isDarkTheme ? 'assets/images/logo_with_text_dark.png' : 'assets/images/logo_with_text_light.png';
-
 
   }
 

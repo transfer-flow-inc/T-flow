@@ -9,6 +9,7 @@ import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {Router} from "@angular/router";
 import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
+import {OAuthEvent, OAuthService} from "angular-oauth2-oidc";
 
 
 @Component({
@@ -16,7 +17,7 @@ import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent{
+export class LoginComponent implements OnInit{
 
   faEye: IconDefinition = faEye;
   faEyeSlash: IconDefinition = faEyeSlash;
@@ -34,6 +35,7 @@ export class LoginComponent{
               private flashMessageService: FlashMessageService,
               private router: Router,
               private googleSsoService: GoogleSsoService,
+              private oAuthService: OAuthService
   ) {
   }
 
@@ -71,10 +73,23 @@ export class LoginComponent{
   }
 
   signInWithGoogle() {
-    this.googleSsoService.signInWithGoogle()
+    this.googleSsoService.signInWithGoogle();
   }
 
 
+  ngOnInit() {
+    this.oAuthService.events.subscribe((event: OAuthEvent) => {
+      if (event.type === 'token_received') {
+        const userClaims = this.oAuthService.getIdentityClaims();
+        this.httpService.loginWithGoogle(environment.apiURL + "auth/google", userClaims).subscribe((token) => {
+          this.cookiesService.set("token", token.token, 30);
+          this.router.navigate(['/accueil']).then(() => {
+            this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
+          });
+        });
+      }
+    });
+  }
 
 
 }

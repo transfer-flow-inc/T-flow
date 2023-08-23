@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
@@ -6,13 +6,17 @@ import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {environment} from "../../environements/evironement-dev";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {OAuthEvent, OAuthService} from "angular-oauth2-oidc";
+import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
+import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
+import {CookiesService} from "../../services/cookies/cookies.service";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
 
   faEye: IconDefinition = faEye;
   faEyeSlash: IconDefinition = faEyeSlash;
@@ -28,7 +32,12 @@ export class RegisterComponent {
   constructor(
     private service: HttpClientService,
     private router: Router,
-    private flashMessageService: FlashMessageService
+    private flashMessageService: FlashMessageService,
+    private oAuthService: OAuthService,
+    private googleSsoService: GoogleSsoService,
+    private httpService: HttpClientService,
+    private cookiesService: CookiesService,
+    private jwtService: JwtTokenService
   ) {
   }
 
@@ -61,6 +70,25 @@ export class RegisterComponent {
     }
 
 
+  }
+
+  signInWithGoogle() {
+    this.googleSsoService.signInWithGoogle();
+  }
+
+
+  ngOnInit() {
+    this.oAuthService.events.subscribe((event: OAuthEvent) => {
+      if (event.type === 'token_received') {
+        const userClaims = this.oAuthService.getIdentityClaims();
+        this.httpService.loginWithGoogle(environment.apiURL + "auth/google", userClaims).subscribe((token) => {
+          this.cookiesService.set("token", token.token, 30);
+          this.router.navigate(['/accueil']).then(() => {
+            this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
+          });
+        });
+      }
+    });
   }
 
   changeIsChecked() {

@@ -149,7 +149,8 @@ hr {
   margin: auto !important;
   height: 10rem !important;
   width: 0 !important;
-  border: 0.01rem solid var(--background) !important;
+  border: 0.10rem solid var(--background) !important;
+  border-radius: 5rem;
 }
 .section-center {
   display: flex;
@@ -219,11 +220,26 @@ hr {
     width: 15rem;
     font-size: 0.8rem;
   }
+  .vertical-line {
+    all: unset;
+    rotate: 90deg;
+    z-index: 0;
+  }
   .section-center{
-    overflow: hidden;
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .or {
+    rotate: initial;
+    display: block;
+    margin: 1rem auto;
+    background-color: var(--color);
+    z-index: 1;
+    padding: 2rem;
   }
   .vertical-line {
-    border: 0.1rem solid #212121;
     margin: auto;
   }
   .title {
