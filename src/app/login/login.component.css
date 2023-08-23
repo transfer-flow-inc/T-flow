@@ -189,7 +189,7 @@ hr {
     width: fit-content;
   }
   .sso-login {
-    width: 20rem;
+    width: 21rem;
   }
   .section-login {
     height: fit-content;
@@ -215,7 +215,12 @@ hr {
     width: 15rem;
   }
   .sso-login {
-    width: 17rem;
+    min-width: 15rem !important;
+    width: 15rem;
+    font-size: 0.8rem;
+  }
+  .section-center{
+    overflow: hidden;
   }
   .vertical-line {
     border: 0.1rem solid #212121;

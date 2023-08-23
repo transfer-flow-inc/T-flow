@@ -22,6 +22,8 @@ import { SettingsPreferencesComponent } from './settings-preferences/settings-pr
 import { SettingsSubscriptionComponent } from './settings-subscription/settings-subscription.component';
 import { LogoutComponent } from './logout/logout.component';
 import {FlashMessageService} from "../services/flash-message/flash-message.service";
+import {OAuthModule} from "angular-oauth2-oidc";
+import {JwtTokenService} from "../services/jwt-token/jwt-token.service";
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -49,7 +51,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         dismiss: 'J\'ai compris',
         link: 'En savoir plus',
         target: '_blank',
-        href: 'https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser',
+        href: 'https://www.cnil.fr/fr/definition/cookie',
         policy: 'Politique de confidentialité'
     },
     position: 'bottom-left',
@@ -81,6 +83,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         FormsModule,
         FileUploadModule,
         HttpClientModule,
+        OAuthModule.forRoot(),
     ],
     providers: [FlashMessageService],
     bootstrap: [AppComponent]

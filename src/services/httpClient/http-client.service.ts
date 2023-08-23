@@ -11,7 +11,7 @@ import {FlashMessageService} from "../flash-message/flash-message.service";
 })
 export class HttpClientService {
 
-  private isAuthenticated = new BehaviorSubject<boolean>(false);
+  isAuthenticated = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticated.asObservable();
 
   constructor(
@@ -26,6 +26,11 @@ export class HttpClientService {
   login(url: string, email: string, password: string) {
     this.isAuthenticated.next(true);
     return this.httpClient.post<TokenInterface>(url, {email, password});
+  }
+
+  loginWithGoogle(url: string, googleSsoInterface: object) {
+    this.isAuthenticated.next(true);
+    return this.httpClient.post<TokenInterface>(url, googleSsoInterface);
   }
 
   register<TokenInterface>(url: string, firstName: string, lastName: string, email: string, password: string) {

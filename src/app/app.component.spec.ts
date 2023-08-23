@@ -5,6 +5,7 @@ import {NgcCookieConsentService} from "ngx-cookieconsent";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {OAuthModule} from "angular-oauth2-oidc";
 
 
 describe('AppComponent', () => {
@@ -15,7 +16,8 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        OAuthModule.forRoot()
       ],
       declarations: [
         AppComponent,

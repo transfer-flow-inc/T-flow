@@ -4,6 +4,7 @@ import { LoginComponent } from './login.component';
 import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {OAuthModule} from "angular-oauth2-oidc";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -12,7 +13,7 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports : [ FontAwesomeTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule ]
+      imports : [ FontAwesomeTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule, OAuthModule.forRoot() ]
     })
     .compileComponents();
 

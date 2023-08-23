@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {Router} from "@angular/router";
+import {UserInterface} from "../../interfaces/User/user-interface";
 
 @Component({
   selector: 'app-settings-my-account',
@@ -10,13 +11,21 @@ import {Router} from "@angular/router";
 })
 export class SettingsMyAccountComponent implements OnInit {
 
-  user: { firstName: string; lastName: string; authMethod: string; email: string, plan: string } = {
+  user: UserInterface = {
+    id: 0,
     firstName: "",
     lastName: "",
+    username: "",
     email: "",
-    authMethod: "",
-    plan: ""
+    password: "",
+    avatar: "",
+    roles: [""],
+    isAccountVerified: false,
+    plan: "",
+    authMethod: ""
   }
+
+  accountStatus: string = "";
 
   constructor(
     private cookiesService: CookiesService,
@@ -42,8 +51,16 @@ export class SettingsMyAccountComponent implements OnInit {
     this.user.email = <string>this.jwtService.getUserEmail();
     if (this.jwtService.getUserAuthenticationMethod() == "spring_database") {
       this.user.authMethod = "Compte crée sur le site";
+    } else if (this.jwtService.getUserAuthenticationMethod() == "google_sso") {
+      this.user.authMethod = "Compte crée avec Google";
+    }
+    if (this.jwtService.getUserPlan() == "FREE") {
+      this.user.plan = "Pas d'abonnement actif";
+    }
+    if (this.jwtService.getUserAccountStatus()) {
+      this.accountStatus = "Compte vérifié";
     } else {
-      this.user.authMethod = "Compte sso";
+      this.accountStatus = "Compte non vérifié";
     }
 
 

@@ -28,6 +28,11 @@ export class JwtTokenService {
     return this.getDecodeToken() ? this.getDecodeToken()['lastName'] : null;
   }
 
+  getUserAuthMethod(): string | null {
+    this.getDecodeToken();
+    return this.getDecodeToken() ? this.getDecodeToken()['authMethod'] : null;
+  }
+
   getUserAuthenticationMethod(): string | null {
     this.getDecodeToken();
     return this.getDecodeToken() ? this.getDecodeToken()['authMethod'] : null;
@@ -45,7 +50,12 @@ export class JwtTokenService {
 
   getUserPlan() {
     this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['userPlan'] : null;
+    return this.getDecodeToken() ? this.getDecodeToken()['plan'] : null;
+  }
+
+  getUserAccountStatus(): boolean {
+    this.getDecodeToken();
+    return this.getDecodeToken() ? JSON.parse(this.getDecodeToken()['isAccountVerified']) : false;
   }
 
   getToken() {

@@ -4,6 +4,7 @@ import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {DOCUMENT} from "@angular/common";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
 
 @Component({
   selector: 'app-navbar',
@@ -26,6 +27,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) private document: Document,
               private httpClientService: HttpClientService,
+              private googleSsoService: GoogleSsoService,
   ) {
   }
 
