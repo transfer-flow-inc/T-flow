@@ -26,6 +26,7 @@ export class LogoutComponent implements OnInit {
         this.httpService.logout();
       } else {
         this.googleSsoService.signOut();
+        this.cookiesService.delete('token');
       }
     }
 

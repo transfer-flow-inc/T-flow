@@ -236,7 +236,9 @@ color: var(--background);
   .sso-login {
     width: 20rem;
   }
-
+  .no-account {
+    text-align: center;
+  }
   .section-login {
     height: fit-content;
   }
@@ -261,11 +263,30 @@ color: var(--background);
     width: 15rem;
   }
   .sso-login {
-    width: 17rem;
+    min-width: 15rem !important;
+    width: 15rem;
+    font-size: 0.8rem;
+  }
+  .section-center{
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .or {
+    rotate: initial;
+    display: block;
+    margin: 1rem auto;
+    background-color: var(--color);
+    z-index: 1;
+    padding: 2rem;
   }
   .vertical-line {
     border: 0.1rem solid #212121;
     margin: auto;
+    all: unset;
+    rotate: 90deg;
+    z-index: 0;
   }
   .title {
     font-size: 1rem;
