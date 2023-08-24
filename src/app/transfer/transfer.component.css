@@ -43,6 +43,7 @@ label {
   margin: auto;
 }
 .card-left {
+  position: relative;
   min-width: 25rem;
   display: flex;
   flex-direction: column;
@@ -81,6 +82,9 @@ label {
   margin: 0.5rem;
   min-height: 2rem;
 }
+.hide {
+  display: none;
+}
 .list-element {
   display: flex;
   align-items: center;
@@ -95,7 +99,7 @@ label {
 }
 .title-file {
   font-weight: 600;
-  margin-top: 3rem;
+  font-size: 2rem;
 }
 .text-file {
   word-break: break-all;
@@ -106,6 +110,7 @@ label {
 }
 .iconBin:hover {
   cursor: pointer;
+  color: orange;
 }
 .noFile {
   text-align: center;
@@ -174,6 +179,44 @@ label {
 }
 .input-error {
     border: 0.2rem solid red;
+}
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: 900;
+}
+.loader-progress{
+  text-align: center;
+}
+.loader-container {
+  width: 50rem;
+  background-color: white;
+}
+.loader-view {
+  width: 0;
+  padding: 1rem 0 0 0;
+  background-color: orange;
+  border-radius:0 1rem 1rem 0;
+  transition: 0.1s linear;
+}
+.show-timeout {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.success-message {
+  color: green;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.thanks-message {
+  color: var(--color);
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 .tag-email {
     background-color: var(--background);

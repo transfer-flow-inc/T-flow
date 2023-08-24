@@ -76,7 +76,6 @@ export class SettingsMyAccountComponent implements OnInit {
       this.user.avatar = "assets/images/logo_dark.png";
     }
 
-    console.log(this.jwtService.getUserAvatar())
 
   }
 

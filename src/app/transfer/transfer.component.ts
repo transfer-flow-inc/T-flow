@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FileUploader} from "ng2-file-upload";
+import {FileLikeObject, FileUploader} from "ng2-file-upload";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faTrashAlt, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {animate, style, transition, trigger} from "@angular/animations";
+import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {environment} from "../../environements/evironement-dev";
+import {CookiesService} from "../../services/cookies/cookies.service";
 
 @Component({
   selector: 'app-transfer',
@@ -30,12 +33,64 @@ export class TransferComponent implements OnInit {
   supressEmailIcon: IconDefinition = faXmark;
   isEmailError: boolean = false;
   isEmailAlreadyExist: boolean = false;
+  message: string = 'Pour l\'instant je le gère pas';
+  files: FileLikeObject[] = [];
+  loaderProgress: number = 0;
+  uploader:FileUploader;
+  showOrUpload: string = '';
+  showTimeout: boolean = false;
 
-  public uploader: FileUploader = new FileUploader({url: 'http://localhost:8080/upload'});
+  constructor (
+    private httpClient : HttpClientService,
+    private cookiesService: CookiesService,
+  ) {
+    this.uploader = new FileUploader({
+      url: environment.apiURL + 'folder/upload',
+      authToken: 'Bearer ' + this.cookiesService.get('token'),
+      additionalParameter: {
+        emails: this.emails,
+        message: this.message,
+      },
+      isHTML5: true,
+    });
 
-  ngOnInit(): void {
+    this.uploader.onProgressAll = (progress: any) => {
+
+      this.loaderProgress = progress;
+      if (this.loaderProgress === 100) {
+        this.loaderProgress = 0;
+        this.showTimeout = true;
+        setTimeout(() => {
+        this.showOrUpload = '';
+        this.showTimeout = false;
+          },1500)
+      } else {
+        // add a delay to show the loader
+
+          this.showOrUpload = 'hide';
+
+
+      }
+
+    }
   }
 
+
+
+
+  ngOnInit(): void {
+
+  }
+
+  uploadFile() {
+    this.uploader.uploadAll();
+    this.uploader.onCompleteAll = () => {
+      this.uploader.clearQueue();
+      this.emails = [];
+      this.sizeAllFile = 0;
+      this.message = '';
+    }
+  }
 
   checkFile() {
     for (let i = 0; i < this.uploader.queue.length; i++) {

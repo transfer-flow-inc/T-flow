@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit{
           this.token = data;
 
           if (this.token.token != null) {
-            this.cookiesService.set("token", this.token.token, 3);
+            this.cookiesService.set("token", this.token.token, 30);
+            this.httpService.isAuthenticated.next(true);
             this.jwtService.setToken(this.token.token);
             this.router.navigate(['/accueil']).then(() => {
               this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit{
         },
         error: (err) => {
 
+          this.httpService.isAuthenticated.next(false);
           if (err.status == 403) {
             return this.error = "Email ou mot de passe incorrect !";
           } else {
@@ -81,11 +83,16 @@ export class LoginComponent implements OnInit{
     this.oAuthService.events.subscribe((event: OAuthEvent) => {
       if (event.type === 'token_received') {
         const userClaims = this.oAuthService.getIdentityClaims();
-        this.httpService.loginWithGoogle(environment.apiURL + "auth/google", userClaims).subscribe((token) => {
-          this.cookiesService.set("token", token.token, 30);
-          this.router.navigate(['/accueil']).then(() => {
-            this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
-          });
+        this.httpService.loginWithGoogle(environment.apiURL + "auth/google", userClaims).subscribe( {
+          next: (token) => {
+            this.httpService.isAuthenticated.next(true);
+            this.cookiesService.set("token", token.token, 30);
+            this.router.navigate(['/accueil']).then(() => {
+              this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
+            });
+          }, error: (err) => {
+            this.httpService.isAuthenticated.next(false);
+          }
         });
       }
     });

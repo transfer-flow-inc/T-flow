@@ -5,7 +5,6 @@ import {TokenInterface} from "../../../interfaces/Token/token-interface";
 import {CookiesService} from "../../cookies/cookies.service";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../../flash-message/flash-message.service";
-import {environment} from "../../../environements/evironement-dev";
 
 const oAuthConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
