@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {BehaviorSubject} from "rxjs";
 import {CookiesService} from "../cookies/cookies.service";
@@ -22,14 +22,21 @@ export class HttpClientService {
   ) {
   }
 
+    token = this.cookiesService.get('token');
+
+    httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.token,
+        'Content-Type': 'multipart/form-data',
+      })
+    };
+
 
   login(url: string, email: string, password: string) {
-    this.isAuthenticated.next(true);
     return this.httpClient.post<TokenInterface>(url, {email, password});
   }
 
   loginWithGoogle(url: string, googleSsoInterface: object) {
-    this.isAuthenticated.next(true);
     return this.httpClient.post<TokenInterface>(url, googleSsoInterface);
   }
 
@@ -46,6 +53,10 @@ export class HttpClientService {
         this.flashMessageService.addMessage(`Vous vous êtes déconnecté avec succès`, 'success', 4000);
       });
     }
+  }
+
+  uploadFile<UploadInterface>(url: string, data: UploadInterface) {
+    return this.httpClient.post<UploadInterface>(url, data, this.httpOptions);
   }
 
 }

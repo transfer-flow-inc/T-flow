@@ -1,5 +1,11 @@
 import {Component, OnInit, Inject, ChangeDetectorRef} from '@angular/core';
-import { NgcCookieConsentService, NgcInitializationErrorEvent, NgcInitializingEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from "ngx-cookieconsent";
+import {
+  NgcCookieConsentService,
+  NgcInitializationErrorEvent,
+  NgcInitializingEvent,
+  NgcNoCookieLawEvent,
+  NgcStatusChangeEvent
+} from "ngx-cookieconsent";
 import {filter, map, Subscription} from 'rxjs';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
@@ -37,7 +43,8 @@ export class AppComponent implements OnInit {
     private flashMessageService: FlashMessageService,
     private cdr: ChangeDetectorRef,
     @Inject(DOCUMENT) private document: Document
-  ){}
+  ) {
+  }
 
 
   deleteFlashMessageWithoutService(flashMessage: FlashMessage) {
@@ -47,28 +54,26 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
     // For english users
-console.log('%cHold Up!', 'color:red; font-size: 8rem; font-weight: bold;')
-console.log("%cIf someone told you to copy and paste something here, they're trying to hack you. Don't do it!", "color: white; font-size: 20px; font-weight: bold;")
-// For french users
-console.log('%cAttention!', 'color:red; font-size: 8rem; font-weight: bold;')
-console.log("%cSi quelqu'un vous a dit de copier et coller quelque chose ici, il essaie de vous pirater. Ne le faites pas!", "color: white; font-size: 20px; font-weight: bold;")
+    console.log('%cHold Up!', 'color:red; font-size: 6rem; font-weight: bold;')
+    console.log("%cIf someone told you to copy and paste something here, they're trying to hack you. Don't do it!", "color: white; font-size: 20px; font-weight: bold;")
+    // For french users
+    console.log('%cAttention!', 'color:red; font-size: 6rem; font-weight: bold;')
+    console.log("%cSi quelqu'un vous a dit de copier et coller quelque chose ici, il essaie de vous pirater. Ne le faites pas!", "color: white; font-size: 20px; font-weight: bold;")
 
     if (this.myCookieService.get('token')) {
       this.httpClientService.isAuthenticated.next(true);
     }
 
 
-
     this.flashMessageService.getMessage().subscribe((flashMessage) => {
       this.flashMessage = flashMessage;
       if (this.flashMessage) {
         setTimeout(() => {
-          this.flashMessageService.deleteFlashMessage(flashMessage) ; // Remove the message after the specified duration
+          this.flashMessageService.deleteFlashMessage(flashMessage); // Remove the message after the specified duration
           this.cdr.detectChanges(); // Trigger change detection to update the view
         }, flashMessage.duration);
-      }});
-
-
+      }
+    });
 
 
     this.document.body.classList.add('dark');
@@ -108,7 +113,7 @@ console.log("%cSi quelqu'un vous a dit de copier et coller quelque chose ici, il
 
       });
 
-      this.noCookieLawSubscription = this.cookieService.noCookieLaw$.subscribe(
+    this.noCookieLawSubscription = this.cookieService.noCookieLaw$.subscribe(
       (event: NgcNoCookieLawEvent) => {
 
       });

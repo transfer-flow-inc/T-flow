@@ -6,6 +6,8 @@ import {NavbarComponent} from "./navbar/navbar.component";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {OAuthModule} from "angular-oauth2-oidc";
+import {SettingsNavbarComponent} from "./settings-navbar/settings-navbar.component";
+import {SettingsAllTransferComponent} from "./settings-all-transfer/settings-all-transfer.component";
 
 
 describe('AppComponent', () => {
@@ -21,7 +23,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        NavbarComponent
+        NavbarComponent,
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
