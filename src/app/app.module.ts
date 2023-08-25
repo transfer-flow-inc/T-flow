@@ -24,6 +24,7 @@ import {FlashMessageService} from "../services/flash-message/flash-message.servi
 import {OAuthModule} from "angular-oauth2-oidc";
 import { SettingsAllTransferComponent } from './settings-all-transfer/settings-all-transfer.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { DownloadComponent } from './download/download.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -73,6 +74,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         LogoutComponent,
         SettingsAllTransferComponent,
         SubscriptionsComponent,
+        DownloadComponent,
     ],
     imports: [
         BrowserModule,

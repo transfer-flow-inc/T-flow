@@ -4,7 +4,10 @@ module.exports = {
   transformIgnorePatterns: ['/node_modules/(?!(uuid|.*ol|.*quick-lru|.*akita|.*\\.mjs$))'],
   moduleFileExtensions: ['js', 'json', 'ts'],
   transform: {
-    "^.+\\.(ts|tsx)$": `ts-jest`
+    "^.+\\.(ts|tsx)$": ['ts-jest', {
+      /* ts-jest config goes here in Jest */
+
+    }]
   },
   testPathIgnorePatterns: ['node_modules'],
   testMatch: ['(**/*.spec.ts)'],

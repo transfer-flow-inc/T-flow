@@ -60,8 +60,9 @@ export class HttpClientService {
     return this.httpClient.post<FolderInterface>(url, folder, this.httpOptions);
   }
 
-  uploadFile<UploadInterface>(url: string, data: UploadInterface) {
-    return this.httpClient.post<UploadInterface>(url, data, this.httpOptions);
+  downloadFile(url: string) {
+    return this.httpClient.get(url);
   }
+
 
 }

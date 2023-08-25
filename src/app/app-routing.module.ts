@@ -12,6 +12,7 @@ import {SettingsSubscriptionComponent} from "./settings-subscription/settings-su
 import {LogoutComponent} from "./logout/logout.component";
 import {SettingsAllTransferComponent} from "./settings-all-transfer/settings-all-transfer.component";
 import {SubscriptionsComponent} from "./subscriptions/subscriptions.component";
+import {DownloadComponent} from "./download/download.component";
 
 
 const routes: Routes = [
@@ -24,6 +25,8 @@ const routes: Routes = [
   { 'path' : "transfert", component : TransferComponent,canActivate : [AutorizeGuardService], data: { title: 'Transfert'}},
   { 'path' : "tout-les-abonnements", component: SubscriptionsComponent, data: { title: 'Tout les abonnements'}},
   { 'path' : "reglages", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Réglages'}},
+  { 'path' : "telechargement/:folderUrl", component: DownloadComponent, data: { title: 'Téléchargement'}},
+  { 'path' : "telechargement/:folderUrl/:accessKey", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},
   { 'path' : "reglages/mes-transferts", component: SettingsAllTransferComponent, canActivate : [AutorizeGuardService], data: { title: 'Mes Transferts'}},
   { 'path' : "reglages/mon-abonnement", component: SettingsSubscriptionComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon abonnement'}},
