@@ -1,6 +1,6 @@
 module.exports = {
   verbose: false,
-  maxWorkers: 3,
+  maxWorkers: 6,
   transformIgnorePatterns: ['/node_modules/(?!(uuid|.*ol|.*quick-lru|.*akita|.*\\.mjs$))'],
   moduleFileExtensions: ['js', 'json', 'ts'],
   transform: {

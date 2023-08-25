@@ -39,7 +39,7 @@ label {
   justify-content: center;
   gap: 2rem;
   height: 40rem;
-  width: 90vw;
+  max-width: 90vw;
   margin: auto;
 }
 .card-left {
@@ -230,6 +230,9 @@ label {
 }
 .tag-email fa-icon:hover {
     cursor: pointer;
+}
+.submit-button{
+  display: none;
 }
 .list-span {
     display: flex;

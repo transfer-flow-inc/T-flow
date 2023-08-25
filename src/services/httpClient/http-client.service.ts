@@ -5,6 +5,8 @@ import {BehaviorSubject} from "rxjs";
 import {CookiesService} from "../cookies/cookies.service";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../flash-message/flash-message.service";
+import {FolderInterface} from "../../interfaces/Files/folder-interface";
+import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +29,6 @@ export class HttpClientService {
     httpOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.token,
-        'Content-Type': 'multipart/form-data',
       })
     };
 
@@ -53,6 +54,10 @@ export class HttpClientService {
         this.flashMessageService.addMessage(`Vous vous êtes déconnecté avec succès`, 'success', 4000);
       });
     }
+  }
+
+  createFolder(url: string, folder : CreateFolderInterface) {
+    return this.httpClient.post<FolderInterface>(url, folder, this.httpOptions);
   }
 
   uploadFile<UploadInterface>(url: string, data: UploadInterface) {

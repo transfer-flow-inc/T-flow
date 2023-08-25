@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FileLikeObject, FileUploader} from "ng2-file-upload";
+import {FileItem, FileUploader} from "ng2-file-upload";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faTrashAlt, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environements/evironement-dev";
 import {CookiesService} from "../../services/cookies/cookies.service";
+import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 
 @Component({
   selector: 'app-transfer',
@@ -33,41 +34,40 @@ export class TransferComponent implements OnInit {
   supressEmailIcon: IconDefinition = faXmark;
   isEmailError: boolean = false;
   isEmailAlreadyExist: boolean = false;
-  message: string = 'Pour l\'instant je le gère pas';
-  files: FileLikeObject[] = [];
+  message: string = '';
+  files: FileItem[] = [];
   loaderProgress: number = 0;
-  uploader:FileUploader;
+  uploader: FileUploader;
   showOrUpload: string = '';
   showTimeout: boolean = false;
+  isCanBeSend: boolean = false;
 
-  constructor (
-    private httpClient : HttpClientService,
+  constructor(
+    private httpClient: HttpClientService,
     private cookiesService: CookiesService,
+    private flashService: FlashMessageService
   ) {
     this.uploader = new FileUploader({
-      url: environment.apiURL + 'folder/upload',
+      url: environment.apiURL + 'file/',
       authToken: 'Bearer ' + this.cookiesService.get('token'),
-      additionalParameter: {
-        emails: this.emails,
-        message: this.message,
-      },
-      isHTML5: true,
+
     });
 
     this.uploader.onProgressAll = (progress: any) => {
+
 
       this.loaderProgress = progress;
       if (this.loaderProgress === 100) {
         this.loaderProgress = 0;
         this.showTimeout = true;
         setTimeout(() => {
-        this.showOrUpload = '';
-        this.showTimeout = false;
-          },1500)
+          this.showOrUpload = '';
+          this.showTimeout = false;
+        }, 1500)
       } else {
         // add a delay to show the loader
 
-          this.showOrUpload = 'hide';
+        this.showOrUpload = 'hide';
 
 
       }
@@ -76,19 +76,41 @@ export class TransferComponent implements OnInit {
   }
 
 
-
-
   ngOnInit(): void {
+
+
 
   }
 
+
   uploadFile() {
-    this.uploader.uploadAll();
-    this.uploader.onCompleteAll = () => {
-      this.uploader.clearQueue();
-      this.emails = [];
-      this.sizeAllFile = 0;
-      this.message = '';
+    if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
+      this.httpClient.createFolder(environment.apiURL + 'folder/',
+        {
+          folderName: "Dossier-" + Math.floor(Math.random() * 1001),
+          recipientsEmails: this.emails,
+          message: this.message,
+        })
+        .subscribe({
+          next: (folder) => {
+            this.uploader.setOptions({
+              url: environment.apiURL + 'file/' + folder.id,
+            });
+            this.uploader.uploadAll();
+            this.uploader.onCompleteAll = () => {
+              this.uploader.clearQueue();
+              this.emails = [];
+              this.sizeAllFile = 0;
+              this.message = '';
+            }
+          }, error: (err) => {
+
+          }
+        })
+
+
+    } else {
+      this.flashService.addMessage('Veuillez ajouter au moins un fichier et un email', 'error',4000);
     }
   }
 
