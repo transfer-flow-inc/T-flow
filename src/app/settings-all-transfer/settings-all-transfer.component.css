@@ -12,3 +12,22 @@ app-settings-navbar {
   display: flex;
   align-items: center;
 }
+.container-transfer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+  background-color: red;
+  height: 70%;
+  width: 70%;
+  margin: auto;
+  border-radius: 1rem;
+  overflow-x: auto;
+}
+.transfer-element {
+  width: 80%;
+  height: 2rem;
+  background-color: green;
+  border-radius: 1rem;
+}

@@ -1,8 +1,13 @@
-interface FolderInterface {
+import {FileInterface} from "./file-interfaces";
+
+export interface FolderInterface {
   id: string;
   folderName: string;
   folderSize: number;
   fileCount: number;
-  isPrivate: boolean;
-  isShared: boolean;
+  folderViews: number;
+  uploaded_at: Date;
+  expires_at: Date;
+  recipientsEmails: string[];
+  files: FileInterface[];
 }
