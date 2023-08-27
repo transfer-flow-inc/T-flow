@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3'
 
 services:
   frontend:
@@ -11,3 +11,13 @@ services:
     ports:
       - "8081:80"
     restart: always
+    networks:
+      - traefik_proxy
+    labels:
+          - traefik.http.services.frontend.loadbalancer.server.port=8081
+          - traefik.http.routers.frontend.rule=Host(`transfer-flow.studio`)
+          - traefik.http.routers.frontend.tls.certresolver=myresolver
+networks:
+    traefik_proxy:
+      name: traefik_proxy
+      external: true
