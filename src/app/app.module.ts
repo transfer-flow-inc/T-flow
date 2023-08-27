@@ -26,39 +26,8 @@ import { SettingsAllTransferComponent } from './settings-all-transfer/settings-a
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { DownloadComponent } from './download/download.component';
 import { FlashMessageComponent } from './flash-message/flash-message.component';
-import {environment} from "../environments/environment";
-
-
-const cookieConfig: NgcCookieConsentConfig = {
-    cookie: {
-        domain:   environment.domainUrl // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
-    },
-    palette: {
-        popup: {
-            text: 'var(--background)',
-            background: 'var(--color)',
-            border: '10px solid var(--color)'
-        },
-        highlight: {
-            background: 'var(--background)',
-            text: 'var(--color)',
-        },
-        button: {
-            background: 'green',
-        }
-    },
-    theme: 'classic',
-    type: 'info',
-    content: {
-        message: 'Ce site internet utilise des cookies pour vous garantir la meilleure expérience sur notre site.',
-        dismiss: 'J\'ai compris',
-        link: 'En savoir plus',
-        target: '_blank',
-        href: 'https://www.cnil.fr/fr/definition/cookie',
-        policy: 'Politique de confidentialité'
-    },
-    position: 'bottom-left',
-};
+import { CookiesConsentComponent } from './cookies-consent/cookies-consent.component';
+import { cookieConfig } from './cookies-consent/cookies-consent.component';
 
 @NgModule({
     declarations: [
@@ -78,6 +47,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         SubscriptionsComponent,
         DownloadComponent,
         FlashMessageComponent,
+        CookiesConsentComponent,
     ],
     imports: [
         BrowserModule,
@@ -95,4 +65,5 @@ const cookieConfig: NgcCookieConsentConfig = {
     bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }
