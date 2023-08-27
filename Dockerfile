@@ -1,5 +1,4 @@
 # Stage 1: Compile and Build angular codebase
-
 # Use official node image as the base image
 FROM node:16-alpine as build
 
@@ -17,15 +16,19 @@ ARG APP_ENV
 RUN if [ "$APP_ENV" = "dev" ] ; then npm run build ; else npm run build:prod ; fi
 
 # Stage 2: Serve app with nginx server
-
 # Use official nginx image as the base image
 FROM nginx:latest
 
-# Copy the nginx conf for redirect when user try to access directly an url
+# Copy the nginx conf for redirect when users try to access directly a URL
 COPY nginx/default.conf /etc/nginx/nginx.conf
 
 # Copy the build output to replace the default nginx contents.
 COPY --from=build /usr/local/app/dist/ /usr/share/nginx/html
 
-# Expose port 80
+
+# Expose ports 80 and 443 for HTTP and HTTPS respectively
 EXPOSE 80
+EXPOSE 443
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
