@@ -30,3 +30,6 @@ jobs:
           docker push ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }}
           docker tag ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }} ${{ env.REGISTRY }}/${{ github.repository }}:latest
           docker push ${{ env.REGISTRY }}/${{ github.repository }}:latest
+      - name: Trigger Portainer Webhook
+        run: |
+          curl --insecure -X POST ${{ secrets.PORTAINER_URL }}
