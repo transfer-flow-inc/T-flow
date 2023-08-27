@@ -5,11 +5,12 @@ import {TokenInterface} from "../../../interfaces/Token/token-interface";
 import {CookiesService} from "../../cookies/cookies.service";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../../flash-message/flash-message.service";
+import {environment} from "../../../environments/environment";
 
 const oAuthConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
   strictDiscoveryDocumentValidation: false,
-  redirectUri: 'http://localhost:4200/se-connecter',
+  redirectUri: environment.domainUrl + '/se-connecter',
   clientId: '979451349689-s05pddc23jr0m0769u04ir93vj5t9mp0.apps.googleusercontent.com',
   scope: 'openid profile email'
 }
