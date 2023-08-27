@@ -17,13 +17,14 @@ export class NavbarComponent implements OnInit {
   navbarToggleValue: string = 'hide';
   popupToggleValue: string = 'hidden';
   private isMenuOpen: boolean = false;
-  private isPopupOpen: boolean = false;
+  isPopupOpen: boolean = false;
   imgTheme: string = 'assets/images/logo_with_text_dark.png';
   helpIcon: IconDefinition = faGear;
   popup: string = 'hidden';
   closeIcon: IconDefinition = faXmark;
   isDarkTheme: boolean = true;
   isAuthenticated: boolean = false;
+  iconShow: string = 'show';
 
   constructor(@Inject(DOCUMENT) private document: Document,
               private httpClientService: HttpClientService,
@@ -38,10 +39,12 @@ export class NavbarComponent implements OnInit {
     if (!this.isMenuOpen) {
       setTimeout(() => {
         this.navbarToggleValue = 'hide';
+        this.iconShow = 'hidden';
       }, 200);
       this.navbarToggleValue = 'reverse';
     } else {
       this.navbarToggleValue = 'showNav';
+      this.iconShow = 'hidden';
     }
   }
 

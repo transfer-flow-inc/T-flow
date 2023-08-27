@@ -9,5 +9,5 @@ services:
         APP_ENV: dev
     container_name: frontend-dev
     ports:
-      - "8080:80"
+      - "8081:80"
     restart: always

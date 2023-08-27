@@ -1,0 +1,40 @@
+.download-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4rem auto;
+  background-color: var(--color);
+  border-radius: 1rem;
+  width: 50rem;
+  height: 30rem;
+  padding: 1.5rem 0;
+}
+.download-title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--background);
+}
+.download-button {
+  width: fit-content;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: 0.2rem solid var(--background);
+  border-radius: 0.5rem;
+  color: var(--background);
+  background-color: transparent;
+}
+.download-button:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--color);
+}
+.download-folder {
+  width: 80%;
+  min-height: 30%;
+  max-height: 80%;
+  background-color: orange;
+  border-radius: 1rem ;
+}

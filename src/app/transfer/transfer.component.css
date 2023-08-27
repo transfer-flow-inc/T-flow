@@ -31,10 +31,6 @@ label {
   cursor: move;
 }
 .card-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -48,7 +44,7 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   border-radius: 1rem;
   padding: 1rem ;
   backdrop-filter: blur(0.2rem);
@@ -238,8 +234,6 @@ label {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
-    width: 95%;
-    margin: auto;
     max-height: 5rem;
     overflow-y: auto;
 }
@@ -258,6 +252,7 @@ label {
     background-color: var(--background);
     color: var(--color);
 }
+
 @media screen and (max-width: 970px) {
   .card-container {
     margin: auto;
@@ -265,15 +260,15 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 2rem;
   }
   .list-file {
     width: 80%;
   }
   .card-left, .card-middle, .card-right {
-    width: 95vw;
-    height: 25rem !important;
+    width: 80vw;
+    height: 28rem !important;
     min-height: inherit;
   }
   #file-input {
@@ -281,5 +276,27 @@ label {
   }
 }
 @media screen and (max-width: 426px){
-
+    .card-left, .card-middle, .card-right {
+    min-width: auto;
+    height: 25rem !important;
+    width: 93vw;
+    }
+  .form-sender {
+    width: 100%;
+  }
+  .input-textarea, .input-text {
+    width: 100%;
+  }
+  .list-email {
+    width: 100%;
+  }
+  p {
+    text-align: center;
+  }
+  .card-right {
+    padding: 1rem;
+  }
+  .list-file {
+    width: 100%;
+  }
 }

@@ -24,10 +24,15 @@ export class DownloadComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.route.params.subscribe(params => {
       this.folderUrl = params['folderUrl'];
       this.accessKey = params['accessKey'];
     });
+
+  }
+
+  downloadFile() {
     if (this.folderUrl && this.accessKey) {
 
       this.httpClient.downloadFile(environment.apiURL + 'folder/download/' + this.folderUrl + '?accessKey=' + this.accessKey)
@@ -55,7 +60,6 @@ export class DownloadComponent implements OnInit {
         this.flashMessageService.addMessage(`Le lien de téléchargement est invalide`, 'error', 4000);
       });
     }
-
   }
 
 }

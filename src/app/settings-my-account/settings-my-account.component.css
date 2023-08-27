@@ -14,7 +14,7 @@ app-settings-navbar {
 }
 .section-settings {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   margin: auto;
@@ -136,10 +136,11 @@ app-settings-navbar {
   }
 
 }
-@media screen and (max-width: 450px){
+@media screen and (max-width: 450px) {
   .container-settings {
     width: 100%;
   }
+
   .user-text {
     font-size: 1rem;
   }
