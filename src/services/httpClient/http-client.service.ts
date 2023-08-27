@@ -64,5 +64,9 @@ export class HttpClientService {
     return this.httpClient.get(url);
   }
 
+  getAFolderByUrl(url: string) {
+    return this.httpClient.get<FolderInterface>(url, this.httpOptions);
+  }
+
 
 }
