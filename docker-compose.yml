@@ -8,8 +8,6 @@ services:
       args:
         APP_ENV: dev
     container_name: frontend-dev
-    ports:
-      - "8081:80"
     restart: always
     networks:
       - traefik_proxy
