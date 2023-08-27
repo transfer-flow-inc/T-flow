@@ -3,13 +3,13 @@ import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
-import {environment} from "../../environements/evironement-dev";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {Router} from "@angular/router";
 import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
 import {OAuthEvent, OAuthService} from "angular-oauth2-oidc";
+import {environment} from "../../environments/environment";
 
 
 @Component({

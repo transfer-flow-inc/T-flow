@@ -25,11 +25,13 @@ import {OAuthModule} from "angular-oauth2-oidc";
 import { SettingsAllTransferComponent } from './settings-all-transfer/settings-all-transfer.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { DownloadComponent } from './download/download.component';
+import { FlashMessageComponent } from './flash-message/flash-message.component';
+import {environment} from "../environments/environment";
 
 
 const cookieConfig: NgcCookieConsentConfig = {
     cookie: {
-        domain: 'localhost' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+        domain:   environment.domainUrl // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
     },
     palette: {
         popup: {
@@ -75,6 +77,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         SettingsAllTransferComponent,
         SubscriptionsComponent,
         DownloadComponent,
+        FlashMessageComponent,
     ],
     imports: [
         BrowserModule,

@@ -72,8 +72,10 @@ export class SettingsMyAccountComponent implements OnInit {
 
     if (this.jwtService.getUserAvatar()) {
       this.user.avatar = <string>this.jwtService.getUserAvatar();
+      if (this.jwtService.getUserAuthenticationMethod() == "spring_database") {
+        this.user.avatar = "assets/images/" + this.user.avatar;
+      }
     } else {
-      this.user.avatar = "assets/images/logo_dark.png";
     }
 
 

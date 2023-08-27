@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {environment} from "../../environements/evironement-dev";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-download',

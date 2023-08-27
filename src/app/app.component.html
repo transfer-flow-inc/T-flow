@@ -1,7 +1,3 @@
 <app-navbar></app-navbar>
-<div (click)="deleteFlashMessageWithoutService(flashMessage)" class="flash" [ngClass]="flashMessage.type" *ngIf="flashMessage.message">
-  <p>
-    {{flashMessage.message}}
-  </p>
-</div>
+<app-flash-message></app-flash-message>
 <router-outlet></router-outlet>
