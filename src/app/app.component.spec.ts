@@ -1,18 +1,14 @@
 import {TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
-import {NgcCookieConsentService} from "ngx-cookieconsent";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {OAuthModule} from "angular-oauth2-oidc";
-import {SettingsNavbarComponent} from "./settings-navbar/settings-navbar.component";
-import {SettingsAllTransferComponent} from "./settings-all-transfer/settings-all-transfer.component";
 
 
 describe('AppComponent', () => {
 
-  const CookiesServiceStub = {}
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,13 +21,7 @@ describe('AppComponent', () => {
         AppComponent,
         NavbarComponent,
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [
-        {
-          provide: NgcCookieConsentService,
-          useValue: {CookiesServiceStub}
-        },
-      ]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   });
 

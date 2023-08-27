@@ -39,5 +39,6 @@ font-family: 'Montserrat', sans-serif;
   user-select: none; /* Standard */
 }
 .cc-dismiss:hover {
-  background-color: red !important;
+  background-color: orange !important;
+  color: white !important;
 }
