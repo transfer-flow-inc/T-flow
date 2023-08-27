@@ -36,7 +36,7 @@ describe('DownloadComponent', () => {
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
         { provide: HttpClientService, useValue: mockHttpClientService },
         { provide: Router, useValue: mockRouter },
-        { provide: FlashMessageService, useValue: mockFlashMessageService }, // Provide a mock for FlashMessageService
+        { provide: FlashMessageService, useValue: mockFlashMessageService },
       ],
     });
 
@@ -48,5 +48,5 @@ describe('DownloadComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // Rest of your test cases...
+
 });

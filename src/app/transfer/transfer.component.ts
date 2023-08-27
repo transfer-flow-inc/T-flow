@@ -93,6 +93,7 @@ export class TransferComponent implements OnInit {
         })
         .subscribe({
           next: (folder) => {
+            console.log(folder)
             this.uploader.setOptions({
               url: environment.apiURL + 'file/' + folder.id,
             });

@@ -29,6 +29,7 @@
        [uploader]="uploader"
        class="drop card-middle"
         *ngIf="emails.length > 0"
+       [@fileCard]
   >
     <input type="file" id="file-input" (onFileSelected)="calculateSizeAllFile()" class="upload" ng2FileSelect
            [uploader]="uploader" (change)="checkFile()"
