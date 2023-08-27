@@ -4,9 +4,9 @@ import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faTrashAlt, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {environment} from "../../environements/evironement-dev";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-transfer',

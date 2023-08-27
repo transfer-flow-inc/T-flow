@@ -3,13 +3,13 @@ import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
-import {environment} from "../../environements/evironement-dev";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {OAuthEvent, OAuthService} from "angular-oauth2-oidc";
 import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-register',

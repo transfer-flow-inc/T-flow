@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {
   NgcCookieConsentService,
   NgcInitializationErrorEvent,
@@ -10,8 +10,6 @@ import {filter, map, Subscription} from 'rxjs';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {DOCUMENT} from "@angular/common";
-import {FlashMessage} from "../interfaces/Flash-message/flash-message-interface";
-import {FlashMessageService} from "../services/flash-message/flash-message.service";
 import {CookiesService} from "../services/cookies/cookies.service";
 import {HttpClientService} from "../services/httpClient/http-client.service";
 
@@ -31,7 +29,7 @@ export class AppComponent implements OnInit {
   private statusChangeSubscription!: Subscription;
   private revokeChoiceSubscription!: Subscription;
   private noCookieLawSubscription!: Subscription;
-  flashMessage: FlashMessage = {message: "", type: "warning", duration: 0};
+
 
   constructor(
     private cookieService: NgcCookieConsentService,
@@ -40,18 +38,15 @@ export class AppComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private route: ActivatedRoute,
-    private flashMessageService: FlashMessageService,
-    private cdr: ChangeDetectorRef,
     @Inject(DOCUMENT) private document: Document
   ) {
   }
 
 
-  deleteFlashMessageWithoutService(flashMessage: FlashMessage) {
-    this.flashMessageService.deleteFlashMessage(flashMessage);
-  }
+
 
   ngOnInit() {
+
 
     // For english users
     console.log('%cHold Up!', 'color:red; font-size: 6rem; font-weight: bold;')
@@ -65,15 +60,7 @@ export class AppComponent implements OnInit {
     }
 
 
-    this.flashMessageService.getMessage().subscribe((flashMessage) => {
-      this.flashMessage = flashMessage;
-      if (this.flashMessage) {
-        setTimeout(() => {
-          this.flashMessageService.deleteFlashMessage(flashMessage); // Remove the message after the specified duration
-          this.cdr.detectChanges(); // Trigger change detection to update the view
-        }, flashMessage.duration);
-      }
-    });
+
 
 
     this.document.body.classList.add('dark');
