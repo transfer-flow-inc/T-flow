@@ -22,7 +22,10 @@ export class SettingsAllTransferComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (this.JwtService.getToken()) {
       this.userId = this.JwtService.getUserId();
+    }
+
 
 
 
