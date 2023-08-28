@@ -13,6 +13,8 @@ import {LogoutComponent} from "./logout/logout.component";
 import {SettingsAllTransferComponent} from "./settings-all-transfer/settings-all-transfer.component";
 import {SubscriptionsComponent} from "./subscriptions/subscriptions.component";
 import {DownloadComponent} from "./download/download.component";
+import {SettingsAdminPanelComponent} from "./settings-admin-panel/settings-admin-panel.component";
+import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
 
 
 const routes: Routes = [
@@ -30,6 +32,7 @@ const routes: Routes = [
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},
   { 'path' : "reglages/mes-transferts", component: SettingsAllTransferComponent, canActivate : [AutorizeGuardService], data: { title: 'Mes Transferts'}},
   { 'path' : "reglages/mon-abonnement", component: SettingsSubscriptionComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon abonnement'}},
+  { 'path' : "reglages/admin/dashboard", component : SettingsAdminPanelComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService] ,data: { title: 'Dashboard'}},
   { 'path' : "**" , component: NotFoundComponent, data: { title: 'Cette page n\'existe pas'}},
 ];
 

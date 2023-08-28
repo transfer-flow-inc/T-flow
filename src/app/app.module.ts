@@ -28,6 +28,7 @@ import { DownloadComponent } from './download/download.component';
 import { FlashMessageComponent } from './flash-message/flash-message.component';
 import { CookiesConsentComponent } from './cookies-consent/cookies-consent.component';
 import { cookieConfig } from './cookies-consent/cookies-consent.component';
+import { SettingsAdminPanelComponent } from './settings-admin-panel/settings-admin-panel.component';
 
 @NgModule({
     declarations: [
@@ -48,6 +49,7 @@ import { cookieConfig } from './cookies-consent/cookies-consent.component';
         DownloadComponent,
         FlashMessageComponent,
         CookiesConsentComponent,
+        SettingsAdminPanelComponent,
     ],
     imports: [
         BrowserModule,

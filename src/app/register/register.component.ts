@@ -78,6 +78,9 @@ export class RegisterComponent implements OnInit{
 
 
   ngOnInit() {
+    if (this.cookiesService.get('token') != "") {
+      this.router.navigate(['/accueil']).then();
+    }
     this.oAuthService.events.subscribe((event: OAuthEvent) => {
       if (event.type === 'token_received') {
         const userClaims = this.oAuthService.getIdentityClaims();

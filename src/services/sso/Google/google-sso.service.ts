@@ -10,7 +10,7 @@ import {environment} from "../../../environments/environment";
 const oAuthConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
   strictDiscoveryDocumentValidation: false,
-  redirectUri: 'https://' + environment.domainUrl + '/se-connecter',
+  redirectUri: environment.protocol + environment.domainUrl + environment.port + '/se-connecter',
   clientId: '979451349689-s05pddc23jr0m0769u04ir93vj5t9mp0.apps.googleusercontent.com',
   scope: 'openid profile email'
 }
