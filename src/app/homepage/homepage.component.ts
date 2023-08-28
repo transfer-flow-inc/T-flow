@@ -19,7 +19,6 @@ export class HomepageComponent implements OnInit{
 
   ngOnInit(): void {
     this.isLogged = !!this.cookiesService.get('token');
-
   }
 
 

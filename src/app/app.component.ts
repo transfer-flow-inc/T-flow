@@ -5,7 +5,8 @@ import {Title} from "@angular/platform-browser";
 import {DOCUMENT} from "@angular/common";
 import {CookiesService} from "../services/cookies/cookies.service";
 import {HttpClientService} from "../services/httpClient/http-client.service";
-import {environment} from "../environments/environment";
+import {JwtTokenService} from "../services/jwt-token/jwt-token.service";
+import {GoogleSsoService} from "../services/sso/Google/google-sso.service";
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,8 @@ export class AppComponent implements OnInit {
   constructor(
     private myCookieService: CookiesService,
     private httpClientService: HttpClientService,
+    private jwtService: JwtTokenService,
+    private googleService : GoogleSsoService,
     private router: Router,
     private titleService: Title,
     private route: ActivatedRoute,
@@ -26,6 +29,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    if (this.myCookieService.get('token')) {
+      this.jwtService.setToken(this.myCookieService.get('token'));
+      if(this.jwtService.isTokenExpired()){
+        this.myCookieService.delete('token');
+        this.httpClientService.logout();
+        this.googleService.signOut();
+        this.httpClientService.isAuthenticated.next(false);
+      }
+    }
 
 
     // For english users

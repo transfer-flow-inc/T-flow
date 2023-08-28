@@ -2,7 +2,6 @@
   position: absolute;
   top: 20%;
   right: 2%;
-  border-radius: 1rem;
   width: 25rem;
   height: auto;
   max-height: 13rem;
@@ -17,9 +16,8 @@
   display: none;
 }
 .flash-timer {
-  height: 1rem;
-  width: 100%;
-  background-color: green;
+  height: 0.3rem;
+  background-color: white;
   transition: 0.5s linear;
 }
 .flash:hover {

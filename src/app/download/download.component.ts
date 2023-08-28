@@ -4,8 +4,6 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
-import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
-import {of} from "rxjs";
 
 @Component({
   selector: 'app-download',
@@ -35,6 +33,7 @@ export class DownloadComponent implements OnInit {
     recipientsEmails: [],
     files: [],
     shared: true,
+    accessKey: '',
   }
   folderSize: string = '';
 
