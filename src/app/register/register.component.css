@@ -161,7 +161,10 @@ hr {
 }
 .text-condition {
   color: var(--background);
-  display: flex; gap: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 12fr;
+  align-items: center;
+  gap: 0.5rem;
   margin: 0.5rem;
 }
 .input-checkbox {
@@ -221,7 +224,7 @@ color: var(--background);
   .section-login {
     display: flex;
     flex-direction:column;
-    width: 90vw;
+    width: 95vw;
   }
   .section-center {
     rotate: 90deg;

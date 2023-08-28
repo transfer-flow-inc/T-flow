@@ -14,20 +14,33 @@ app-settings-navbar {
 }
 .container-transfer {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   padding: 1rem;
-  gap: 2rem;
-  background-color: red;
+  gap: 3rem;
+  background-color: var(--background);
   height: 70%;
   width: 70%;
   margin: auto;
   border-radius: 1rem;
   overflow-x: auto;
 }
-.transfer-element {
-  width: 80%;
-  height: 2rem;
-  background-color: green;
+.transfer{
+  width:20rem;
   border-radius: 1rem;
+}
+.transfer-component {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color);
+}
+@media screen and (max-width: 1020px) {
+  app-settings-navbar {
+    justify-content: center;
+  }
+  .container-settings {
+    flex-direction: column;
+    height: auto;
+  }
 }

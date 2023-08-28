@@ -23,6 +23,11 @@ export class JwtTokenService {
     return this.getDecodeToken() ? this.getDecodeToken()['firstName'] : null;
   }
 
+  getUserId(): string | null {
+    this.getDecodeToken();
+    return this.getDecodeToken() ? this.getDecodeToken()['userID'] : null;
+  }
+
   getUserLastName(): string | null {
     this.getDecodeToken();
     return this.getDecodeToken() ? this.getDecodeToken()['lastName'] : null;

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {CookiesService} from "../cookies/cookies.service";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../flash-message/flash-message.service";
@@ -60,12 +60,16 @@ export class HttpClientService {
     return this.httpClient.post<FolderInterface>(url, folder, this.httpOptions);
   }
 
-  downloadFile(url: string) {
-    return this.httpClient.get(url);
+  downloadFolder(url: string): Observable<Blob> {
+    return this.httpClient.get(url, {responseType: 'blob'});
   }
 
   getAFolderByUrl(url: string) {
     return this.httpClient.get<FolderInterface>(url, this.httpOptions);
+  }
+
+  getAllFolderByUserId(url: string) {
+    return this.httpClient.get<FolderInterface[]>(url, this.httpOptions);
   }
 
 

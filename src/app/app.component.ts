@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(environment.domainUrl)
 
     // For english users
     console.log('%cHold Up!', 'color:red; font-size: 6rem; font-weight: bold;')
