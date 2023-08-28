@@ -30,6 +30,7 @@ import { CookiesConsentComponent } from './cookies-consent/cookies-consent.compo
 import { cookieConfig } from './cookies-consent/cookies-consent.component';
 import { SettingsAdminPanelComponent } from './settings-admin-panel/settings-admin-panel.component';
 import { FooterComponent } from './footer/footer.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import { FooterComponent } from './footer/footer.component';
         CookiesConsentComponent,
         SettingsAdminPanelComponent,
         FooterComponent,
+        PrivacyPolicyComponent,
     ],
     imports: [
         BrowserModule,

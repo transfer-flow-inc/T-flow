@@ -1,7 +1,5 @@
 .footer {
-    position: sticky;
     flex-wrap: wrap;
-    bottom: 0;
     width: 100%;
     min-height: 5rem;
     display: flex;
