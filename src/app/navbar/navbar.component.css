@@ -89,12 +89,12 @@ body.dark.nav-link::before {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 100rem;
-  background-color: var(--color);
+  background-color: var(--background);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  color: var(--background);
+  color: var(--color);
   z-index: 1;
 }
 

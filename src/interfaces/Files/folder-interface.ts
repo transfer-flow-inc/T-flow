@@ -11,4 +11,5 @@ export interface FolderInterface {
   recipientsEmails: string[];
   files: FileInterface[];
   shared: boolean;
+  accessKey: string;
 }

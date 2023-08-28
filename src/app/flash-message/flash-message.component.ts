@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {FlashMessage} from "../../interfaces/Flash-message/flash-message-interface";
 
@@ -11,7 +11,8 @@ export class FlashMessageComponent implements OnInit {
 
   flashMessage: FlashMessage = {message: "", type: "warning", duration: 0};
   flashMessageDuration: number = 0;
-  flashMessageInterval: any;
+  flashMessageWidth: number = 100;
+  startTime: number = 0;
 
   constructor(
     private flashMessageService: FlashMessageService,
@@ -25,26 +26,36 @@ export class FlashMessageComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.flashMessageService.getMessage().subscribe((flashMessage) => {
       this.flashMessage = flashMessage;
-      this.flashMessageDuration = 100; // Set the initial width to 100%
-      const duration = flashMessage.duration; // Store the duration
-      const decrementRate = 100 / (duration / 100); // Calculate the decrement rate
-
-      this.flashMessageInterval = setInterval(() => {
-        this.flashMessageDuration -= decrementRate; // Decrease the width by the decrement rate
-
-
-        if (this.flashMessageDuration <= 0) {
-          clearInterval(this.flashMessageInterval);
-          this.cdr.detectChanges();
-          this.deleteFlashMessageWithoutService(this.flashMessage);
-        }
-      }, duration / 10); // Set the interval based on the duration
-
-
+      this.flashMessageDuration = flashMessage.duration;
+      this.cdr.detectChanges();
+      this.startAnimation();
     });
+
+
+  }
+
+  startAnimation() {
+
+    this.startTime = performance.now();
+    this.flashMessageWidth = 100;
+
+    const animate = (timestamp: number) => {
+      const elapsed = timestamp - this.startTime;
+      const progress = Math.max(0, Math.min(1, elapsed / this.flashMessageDuration));
+      this.flashMessageWidth = 85 - (progress * 100);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        this.flashMessageService.deleteFlashMessage(this.flashMessage);
+      }
+    };
+
+    requestAnimationFrame(animate);
+
+
   }
 
 
