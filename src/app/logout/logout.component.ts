@@ -20,17 +20,14 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     if (this.cookiesService.get('token')) {
-      if (this.jwtService.getUserAuthMethod() === "spring_database") {
         this.httpService.logout();
-      } else {
         this.googleSsoService.signOut();
         this.cookiesService.delete('token');
       }
     }
 
-  }
+
 
 
 }

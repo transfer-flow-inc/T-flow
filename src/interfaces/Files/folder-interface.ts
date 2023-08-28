@@ -10,4 +10,5 @@ export interface FolderInterface {
   expires_at: Date;
   recipientsEmails: string[];
   files: FileInterface[];
+  shared: boolean;
 }

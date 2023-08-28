@@ -1,5 +1,4 @@
 .flash {
-  padding: 2rem;
   position: absolute;
   top: 20%;
   right: 2%;
@@ -10,6 +9,18 @@
   overflow-y: auto;
   overflow-x: hidden;
   font-size: 1.2rem;
+}
+.flash-message {
+  padding: 2rem;
+}
+.hidden {
+  display: none;
+}
+.flash-timer {
+  height: 1rem;
+  width: 100%;
+  background-color: green;
+  transition: 0.5s linear;
 }
 .flash:hover {
   cursor: pointer;

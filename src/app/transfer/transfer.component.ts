@@ -40,7 +40,6 @@ export class TransferComponent implements OnInit {
   uploader: FileUploader;
   showOrUpload: string = '';
   showTimeout: boolean = false;
-  isCanBeSend: boolean = false;
 
   constructor(
     private httpClient: HttpClientService,
@@ -93,7 +92,6 @@ export class TransferComponent implements OnInit {
         })
         .subscribe({
           next: (folder) => {
-            console.log(folder)
             this.uploader.setOptions({
               url: environment.apiURL + 'file/' + folder.id,
             });

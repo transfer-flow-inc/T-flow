@@ -37,4 +37,8 @@
   max-height: 80%;
   background-color: orange;
   border-radius: 1rem ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

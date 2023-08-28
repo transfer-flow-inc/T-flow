@@ -3,6 +3,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {environment} from "../../environments/environment";
+import {FolderInterface} from "../../interfaces/Files/folder-interface";
+import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-download',
@@ -21,6 +24,19 @@ export class DownloadComponent implements OnInit {
 
   folderUrl: string = '';
   accessKey: string = '';
+  folder : FolderInterface = {
+    id: '',
+    folderName: '',
+    folderSize: 0,
+    fileCount: 0,
+    folderViews: 0,
+    uploaded_at: new Date(),
+    expires_at: new Date(),
+    recipientsEmails: [],
+    files: [],
+    shared: true,
+  }
+  folderSize: string = '';
 
 
   ngOnInit() {
@@ -30,15 +46,27 @@ export class DownloadComponent implements OnInit {
       this.accessKey = params['accessKey'];
     });
 
-    this.httpClient.getAFolderByUrl(environment.apiURL + 'folder/' + this.folderUrl).subscribe({
+
+    this.httpClient.getAFolderByUrl(environment.apiURL + 'folder/url/' + this.folderUrl).subscribe({
 
       next: (folder) => {
 
-        console.log(folder);
+        this.folder = folder;
+        if (this.folder.folderSize > 0 && this.folder.folderSize < 1000) {
+          this.folderSize = this.folder.folderSize + ' octets';
+        } else if (this.folder.folderSize >= 1000 && this.folder.folderSize < 1000000) {
+          this.folderSize = (this.folder.folderSize / 1024).toFixed(2) + ' Ko';
+        } else if (this.folder.folderSize >= 1000000 && this.folder.folderSize < 1000000000) {
+          this.folderSize = (this.folder.folderSize / 1024 / 1024).toFixed(2) + ' Mo';
+        } else if (this.folder.folderSize >= 1000000000 && this.folder.folderSize < 1000000000000) {
+          this.folderSize = (this.folder.folderSize / 1024 / 1024 / 1024).toFixed(2) + ' Go';
+        }
 
       }, error: (err) => {
 
-        console.log(err);
+        this.router.navigate(['/accueil']).then(() => {
+          this.flashMessageService.addMessage(`Le lien de téléchargement est invalide`, 'error', 4000);
+        });
 
       }
 
@@ -48,33 +76,22 @@ export class DownloadComponent implements OnInit {
 
   downloadFile() {
 
-    if (this.folderUrl && this.accessKey) {
+      this.httpClient.downloadFolder(environment.apiURL + 'folder/download/' + this.folderUrl + '?accessKey=' + this.accessKey)
+        .subscribe( (data: Blob) => {
 
-      this.httpClient.downloadFile(environment.apiURL + 'folder/download/' + this.folderUrl + '?accessKey=' + this.accessKey)
-        .subscribe({
-
-          next: (folder) => {
-
-            console.log(folder);
-
-          },
-          error: (err) => {
-
-            console.log(err);
-
+            const blob = new Blob([data], {type: 'application/zip'});
+            const url = window.URL.createObjectURL(blob);
+            window.fetch(url).then(res => res.blob()).then(blob => {
+              const link = document.createElement('a');
+              link.href = window.URL.createObjectURL(blob);
+              link.download = this.folder.folderName + '.zip';
+              link.click();
+            })
             this.router.navigate(['/accueil']).then(() => {
-              this.flashMessageService.addMessage(`Le lien de téléchargement est invalide`, 'error', 4000);
+              this.flashMessageService.addMessage(`Le téléchargement a commencé`, 'success', 4000);
             });
 
-          }
-
-        })
-
-    } else {
-      this.router.navigate(['/accueil']).then(() => {
-        this.flashMessageService.addMessage(`Le lien de téléchargement est invalide`, 'error', 4000);
-      });
-    }
+        });
 
   }
 

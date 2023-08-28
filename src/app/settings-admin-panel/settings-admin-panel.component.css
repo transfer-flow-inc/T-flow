@@ -12,3 +12,12 @@ app-settings-navbar {
   display: flex;
   align-items: center;
 }
+@media screen and (max-width: 1020px) {
+  app-settings-navbar {
+    justify-content: center;
+  }
+  .container-settings {
+    flex-direction: column;
+    height: auto;
+  }
+}
