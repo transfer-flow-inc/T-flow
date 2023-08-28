@@ -15,12 +15,14 @@ import {SubscriptionsComponent} from "./subscriptions/subscriptions.component";
 import {DownloadComponent} from "./download/download.component";
 import {SettingsAdminPanelComponent} from "./settings-admin-panel/settings-admin-panel.component";
 import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
+import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
 
 
 const routes: Routes = [
   { 'path' : "" , redirectTo: "accueil", pathMatch: "full"},
   { 'path' : "accueil" , component: HomepageComponent, data: { title: 'Accueil'}},
-  { 'path' : "cgu" , component: CguComponent, data: { title: 'CGU'}},
+  { 'path' : "conditions-generales-utilisation" , component: CguComponent, data: { title: 'CGU'}},
+  { 'path' : "politique-de-confidentialite" , component: PrivacyPolicyComponent, data: { title: 'Politique de confidentialité'}},
   { 'path' : "se-connecter", component: LoginComponent, data: { title: 'Se connecter'}},
   { 'path' : "s'inscrire", component: RegisterComponent, data: { title: 'S\'inscrire'}},
   { 'path' : "se-deconnecter", component: LogoutComponent, data: { title: 'Se déconnecter'}},
