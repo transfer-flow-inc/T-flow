@@ -15,6 +15,7 @@ export class HttpClientService {
 
   isAuthenticated = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticated.asObservable();
+  logger: string | null = "nothing";
 
   constructor(
     private httpClient: HttpClient,
@@ -57,6 +58,7 @@ export class HttpClientService {
   }
 
   createFolder(url: string, folder : CreateFolderInterface) {
+    this.logger = this.httpOptions.headers.get('Authorization');
     return this.httpClient.post<FolderInterface>(url, folder, this.httpOptions);
   }
 
