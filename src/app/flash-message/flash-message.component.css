@@ -8,6 +8,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   font-size: 1.2rem;
+  z-index: 10000;
 }
 .flash-message {
   padding: 2rem;

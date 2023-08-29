@@ -34,6 +34,7 @@ export class DownloadComponent implements OnInit {
     files: [],
     shared: true,
     accessKey: '',
+    url: '',
   }
   folderSize: string = '';
 
