@@ -58,7 +58,7 @@ export class HttpClientService {
   }
 
   createFolder(url: string, folder : CreateFolderInterface) {
-    this.logger = this.httpOptions.headers.get('Authorization');
+    this.httpOptions.headers.get('Authorization');
     return this.httpClient.post<FolderInterface>(url, folder, this.httpOptions);
   }
 
