@@ -74,5 +74,9 @@ export class HttpClientService {
     return this.httpClient.get<FolderInterface[]>(url, this.httpOptions);
   }
 
+  validateEmail(url: string) {
+    return this.httpClient.get(url);
+  }
+
 
 }

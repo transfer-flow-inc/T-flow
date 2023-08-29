@@ -40,6 +40,7 @@ export class TransferComponent implements OnInit {
   uploader: FileUploader;
   showOrUpload: string = '';
   showTimeout: boolean = false;
+  token: string = '';
 
   constructor(
     private httpClient: HttpClientService,
@@ -48,7 +49,6 @@ export class TransferComponent implements OnInit {
   ) {
     this.uploader = new FileUploader({
       url: environment.apiURL + 'file/',
-      authToken: 'Bearer ' + this.cookiesService.get('token'),
 
     });
 
@@ -77,7 +77,7 @@ export class TransferComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.token = this.cookiesService.get('token');
 
   }
 
@@ -94,6 +94,11 @@ export class TransferComponent implements OnInit {
           next: (folder) => {
             this.uploader.setOptions({
               url: environment.apiURL + 'file/' + folder.id,
+              headers: [
+                {name: 'Authorization', value: 'Bearer ' + this.token}
+              ],
+              authTokenHeader: this.token,
+              authToken: this.token,
             });
             this.uploader.uploadAll();
             this.uploader.onCompleteAll = () => {
@@ -109,7 +114,7 @@ export class TransferComponent implements OnInit {
 
 
     } else {
-      this.flashService.addMessage('Veuillez ajouter au moins un fichier et un email', 'error',4000);
+      this.flashService.addMessage('Veuillez ajouter au moins un fichier et un email', 'error', 4000);
     }
   }
 
