@@ -65,4 +65,10 @@ app-settings-navbar {
     flex-direction: column;
     height: auto;
   }
+  .container-transfer {
+    margin: 2rem auto;
+    width: 90%;
+    max-height: 20rem;
+    scroll-behavior: smooth;
+  }
 }

@@ -1,20 +1,23 @@
-import {Component, Inject} from '@angular/core';
-import {LocalStorageService} from "../../services/local-storage/local-storage.service";
-import {DOCUMENT} from "@angular/common";
+import { Component, OnInit} from '@angular/core';
+import {NavbarComponent} from "../navbar/navbar.component";
+
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent{
+export class FooterComponent implements OnInit{
 
-  logoTheme: string = 'assets/images/logo_light.png';
+  imgTheme: string = "assets/images/logo_dark.png"
 
   constructor(
-    private localStorageService: LocalStorageService,
   ) {
   }
 
+
+  ngOnInit() {
+
+  }
 
 }

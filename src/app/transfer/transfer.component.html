@@ -1,7 +1,6 @@
-<div class="pousseur"></div>
 <section class="card-container" [ngClass]="showOrUpload">
 
-  <div class="card-left">
+  <div class="card card-left">
     <p class="title-file unselectable">Envoyer</p>
 
     <form class="form-sender" (submit)="uploadFile()" (keydown.enter)="$event.preventDefault()">
@@ -28,7 +27,7 @@
 
   <div ng2FileDrop
        [uploader]="uploader"
-       class="drop card-middle"
+       class="drop card card-middle"
         *ngIf="emails.length > 0"
        [@fileCard]
   >
@@ -44,7 +43,7 @@
     </label>
   </div>
 
-  <div class="card-right" [@fileCard] *ngIf="uploader.queue.length > 0">
+  <div class="card card-right" [@fileCard] *ngIf="uploader.queue.length > 0">
     <h2 class="title-file">Vos Fichiers:</h2>
     <p class="noFile" *ngIf="uploader.queue.length === 0">Aucun fichier sélectionné</p>
     <p *ngIf="uploader.queue.length > 0">poids total de vos fichiers
