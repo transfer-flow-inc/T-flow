@@ -1,7 +1,9 @@
-<section class="download-container unselectable" *ngIf="folder">
+<section class="download-container unselectable" *ngIf="folder.url != ''">
+
   <p class="download-title">Télécharger ce dossier</p>
 
   <div class="download-folder">
+
     <p class="download-folder-name">Nom du dossier : {{ folder.folderName }}</p>
     <p class="download-folder-date">Date de création : {{ folder.uploaded_at | date: 'dd/MM/yyyy' }}</p>
     <p class="download-folder-count">Nombres de fichiers : {{ folder.fileCount }}</p>
@@ -9,4 +11,12 @@
   </div>
 
   <a class="download-button" (click)="downloadFile()">Télécharger</a>
+</section>
+
+<section class="download-container unselectable" *ngIf="loading">
+
+  <div class="download-loader">
+    <img class="img-loader" [src]="loadingImg">
+  </div>
+
 </section>

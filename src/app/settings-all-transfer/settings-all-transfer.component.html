@@ -4,7 +4,11 @@
 
   <section class="container-transfer">
 
-    <div class="transfer" *ngFor="let transfer of allFolder">
+    <div *ngIf="loading || allFolder === []">
+      <img class="img-loader" [src]="loadingImg">
+    </div>
+
+  <div class="transfer" *ngFor="let transfer of allFolder">
       <div class="transfer-component">
         <p class="">Nom :{{ transfer.folderName }}</p>
         <p>Crée le : {{ transfer.uploaded_at | date : "dd/MM/yyyy" }}</p>

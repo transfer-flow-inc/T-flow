@@ -13,6 +13,8 @@ export class SettingsAllTransferComponent implements OnInit {
 
   userId: string | null = "";
   allFolder : FolderInterface[] = [];
+  loading: boolean = true;
+  loadingImg: string = "assets/images/logo_light.png";
 
   constructor(
     private httpClientService: HttpClientService,
@@ -26,15 +28,14 @@ export class SettingsAllTransferComponent implements OnInit {
       this.userId = this.JwtService.getUserId();
     }
 
+      if (this.userId) {
+        this.httpClientService.getAllFolderByUserId( environment.apiURL + "user/folders/"+ this.userId).subscribe((user) => {
+          this.loading = false;
+          this.allFolder = user;
+        });
+      }
 
 
-
-    if (this.userId) {
-      this.httpClientService.getAllFolderByUserId( environment.apiURL + "user/folders/"+ this.userId).subscribe((user) => {
-        this.allFolder = user;
-      });
-
-    }
 
   }
 

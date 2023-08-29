@@ -37,6 +37,8 @@ export class DownloadComponent implements OnInit {
     url: '',
   }
   folderSize: string = '';
+  loading: boolean = true;
+  loadingImg: string = "assets/images/logo_dark.png";
 
 
   ngOnInit() {
@@ -46,11 +48,11 @@ export class DownloadComponent implements OnInit {
       this.accessKey = params['accessKey'];
     });
 
-
-    this.httpClient.getAFolderByUrl(environment.apiURL + 'folder/url/' + this.folderUrl).subscribe({
+    setTimeout(() => {
+         this.httpClient.getAFolderByUrl(environment.apiURL + 'folder/url/' + this.folderUrl).subscribe({
 
       next: (folder) => {
-
+        this.loading = false;
         this.folder = folder;
         if (this.folder.folderSize > 0 && this.folder.folderSize < 1000) {
           this.folderSize = this.folder.folderSize + ' octets';
@@ -71,6 +73,10 @@ export class DownloadComponent implements OnInit {
       }
 
     });
+    },500);
+
+
+
 
   }
 
