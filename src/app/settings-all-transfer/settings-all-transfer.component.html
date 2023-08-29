@@ -4,8 +4,12 @@
 
   <section class="container-transfer">
 
-    <div *ngIf="loading || allFolder === []">
+    <div *ngIf="loading">
       <img class="img-loader" [src]="loadingImg">
+    </div>
+
+    <div *ngIf="!isDataFound">
+      <p class="no-data">{{ !errorMessage ? "Aucun dossier trouvé" : "Une erreur est survenue, veuillez rafraichir la page" }}</p>
     </div>
 
   <div class="transfer" *ngFor="let transfer of allFolder">

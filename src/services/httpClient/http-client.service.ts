@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {BehaviorSubject, Observable} from "rxjs";
@@ -11,7 +11,7 @@ import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interf
 @Injectable({
   providedIn: 'root'
 })
-export class HttpClientService {
+export class HttpClientService implements OnInit{
 
   isAuthenticated = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticated.asObservable();
@@ -25,13 +25,24 @@ export class HttpClientService {
   ) {
   }
 
+
     token = this.cookiesService.get('token');
+
 
     httpOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.token,
       })
     };
+
+    ngOnInit(): void {
+      this.token = this.cookiesService.get('token');
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + this.token,
+        })
+      }
+    }
 
 
   login(url: string, email: string, password: string) {
@@ -47,6 +58,7 @@ export class HttpClientService {
   }
 
   logout() {
+      window.sessionStorage.clear();
       this.cookiesService.delete('token');
       this.isAuthenticated.next(false);
       this.router.navigate(['/accueil']).then(() => {
@@ -68,6 +80,14 @@ export class HttpClientService {
   }
 
   getAllFolderByUserId(url: string) {
+    if (!this.cookiesService.get("token")) {
+      this.token = this.cookiesService.get('token');
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + this.token,
+        })
+      };
+    }
     return this.httpClient.get<FolderInterface[]>(url, this.httpOptions);
   }
 

@@ -53,9 +53,16 @@ export class LoginComponent implements OnInit{
             this.cookiesService.set("token", this.token.token, 30);
             this.httpService.isAuthenticated.next(true);
             this.jwtService.setToken(this.token.token);
-            this.router.navigate(['/accueil']).then(() => {
-              this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
-            });
+            if (this.cookiesService.get('token') != "") {
+              this.router.navigate(['/accueil']).then(() => {
+                this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
+              });
+            } else {
+              this.cookiesService.get('token');
+              this.router.navigate(['/accueil']).then(() => {
+                this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
+              });
+            }
           }
 
         },

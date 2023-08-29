@@ -3,6 +3,7 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {environment} from "../../environments/environment.development";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
+import {CookiesService} from "../../services/cookies/cookies.service";
 
 @Component({
   selector: 'app-settings-all-transfer',
@@ -15,10 +16,14 @@ export class SettingsAllTransferComponent implements OnInit {
   allFolder : FolderInterface[] = [];
   loading: boolean = true;
   loadingImg: string = "assets/images/logo_light.png";
+  isDataFound: boolean = true;
+  isFolderEmpty: boolean = true;
+  errorMessage: boolean = false;
 
   constructor(
     private httpClientService: HttpClientService,
     private JwtService: JwtTokenService,
+    private cookieService: CookiesService,
   ) {
   }
 
@@ -28,12 +33,28 @@ export class SettingsAllTransferComponent implements OnInit {
       this.userId = this.JwtService.getUserId();
     }
 
-      if (this.userId) {
-        this.httpClientService.getAllFolderByUserId( environment.apiURL + "user/folders/"+ this.userId).subscribe((user) => {
-          this.loading = false;
-          this.allFolder = user;
+      if (this.userId && this.cookieService.get('token')) {
+        this.httpClientService.getAllFolderByUserId( environment.apiURL + "user/folders/"+ this.userId).subscribe( {
+
+          next: (data) => {
+            this.loading = false;
+            this.allFolder = data;
+            this.isFolderEmpty = false
+          },
+          error: (err) => {
+            this.errorMessage = true;
+          }
+
         });
+
       }
+
+        setTimeout(() => {
+        this.loading = false;
+        if (!this.loading && this.isFolderEmpty) {
+          this.isDataFound = false;
+        }
+        }, 1000);
 
 
 
