@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
+import {BehaviorSubject} from "rxjs";
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
@@ -10,9 +10,10 @@ import {CookiesService} from "../../services/cookies/cookies.service";
 })
 export class LogoutComponent implements OnInit {
 
+  isAuthenticated = new BehaviorSubject<boolean>(false);
+  isAuthenticated$ = this.isAuthenticated.asObservable();
   constructor(
     private httpService: HttpClientService,
-    private jwtService: JwtTokenService,
     private googleSsoService: GoogleSsoService,
     private cookiesService: CookiesService
   ) {
@@ -21,10 +22,13 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.cookiesService.get('token')) {
+        this.cookiesService.delete('token');
         this.httpService.logout();
         this.googleSsoService.signOut();
-        this.cookiesService.delete('token');
-      }
+        this.isAuthenticated.next(false);
+      } else {
+        this.isAuthenticated.next(false);
+    }
     }
 
 

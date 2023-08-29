@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment.development";
+import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 
 @Component({
   selector: 'app-validate-email',
@@ -11,12 +12,12 @@ import {environment} from "../../environments/environment.development";
 export class ValidateEmailComponent implements OnInit {
 
   token: string = '';
-  response: Object = {};
-  error: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private httpClient: HttpClientService,
+    private router: Router,
+    private flashMessageService: FlashMessageService,
   ) { }
 
   ngOnInit(): void {
@@ -25,10 +26,12 @@ export class ValidateEmailComponent implements OnInit {
     });
     this.httpClient.validateEmail(environment.apiURL + 'verify?token=' + this.token ).subscribe({
       next: (data) => {
-        this.response = data;
+        console.log(data)
       },
       error: (err) => {
-        this.error = err.status;
+        this.router.navigate(['/accueil']).then(() => {
+          this.flashMessageService.addMessage(`Le lien de validation est invalide`, 'error', 4000);
+        });
       }
     })
   }

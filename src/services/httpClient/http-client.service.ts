@@ -47,14 +47,11 @@ export class HttpClientService {
   }
 
   logout() {
-    let token = this.cookiesService.get('token');
-    if (token) {
       this.cookiesService.delete('token');
       this.isAuthenticated.next(false);
       this.router.navigate(['/accueil']).then(() => {
         this.flashMessageService.addMessage(`Vous vous êtes déconnecté avec succès`, 'success', 4000);
       });
-    }
   }
 
   createFolder(url: string, folder : CreateFolderInterface) {

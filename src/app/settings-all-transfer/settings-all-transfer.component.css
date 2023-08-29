@@ -7,6 +7,15 @@
   border-radius: 1rem;
   color: var(--background);
 }
+.img-loader{
+  width: 40%;
+  height: 40%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spinner 3s linear infinite;
+}
 app-settings-navbar {
   height: 100%;
   display: flex;
@@ -70,5 +79,13 @@ app-settings-navbar {
     width: 90%;
     max-height: 20rem;
     scroll-behavior: smooth;
+  }
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
