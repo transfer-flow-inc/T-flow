@@ -39,6 +39,10 @@ app-settings-navbar {
   width : 30rem;
   border-radius: 1rem;
 }
+.no-data {
+  font-size: 2rem;
+  color: var(--color);
+}
 .transfer-component {
   display: flex;
   flex-direction: column;

@@ -30,14 +30,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.myCookieService.get('token')) {
+    if (this.myCookieService.get('token') && !this.httpClientService.isAuthenticated.value) {
       this.jwtService.setToken(this.myCookieService.get('token'));
+      this.httpClientService.isAuthenticated.next(true);
       if(this.jwtService.isTokenExpired()){
         this.myCookieService.delete('token');
         this.httpClientService.logout();
         this.googleService.signOut();
         this.httpClientService.isAuthenticated.next(false);
       }
+    } else {
+      this.httpClientService.isAuthenticated.next(false);
+      this.myCookieService.delete('token');
     }
 
 

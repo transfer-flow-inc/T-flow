@@ -21,15 +21,12 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.cookiesService.get('token')) {
-        this.cookiesService.delete('token');
-        this.httpService.logout();
-        this.googleSsoService.signOut();
-        this.isAuthenticated.next(false);
-      } else {
-        this.isAuthenticated.next(false);
-    }
-    }
+      window.sessionStorage.clear();
+      this.cookiesService.delete('token');
+      this.httpService.logout();
+
+
+  }
 
 
 
