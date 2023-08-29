@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {NgcCookieConsentConfig, NgcCookieConsentModule} from 'ngx-cookieconsent';
+import {NgcCookieConsentModule} from 'ngx-cookieconsent';
 import {NavbarComponent} from './navbar/navbar.component';
 import {NgOptimizedImage} from "@angular/common";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
@@ -67,7 +67,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
         HttpClientModule,
         OAuthModule.forRoot(),
     ],
-    providers: [FlashMessageService],
+    providers: [FlashMessageService, NavbarComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

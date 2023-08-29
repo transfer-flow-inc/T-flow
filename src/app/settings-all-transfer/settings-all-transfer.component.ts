@@ -42,7 +42,6 @@ export class SettingsAllTransferComponent implements OnInit {
     let currentDate = new Date();
     let folderDate = new Date(folder.expires_at);
     return folderDate < currentDate;
-
   }
 
 

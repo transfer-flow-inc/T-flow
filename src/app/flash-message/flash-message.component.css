@@ -12,6 +12,7 @@
 }
 .flash-message {
   padding: 2rem;
+  color: var(--background);
 }
 .hidden {
   display: none;
