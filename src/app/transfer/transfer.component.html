@@ -1,3 +1,4 @@
+<div class="pousseur"></div>
 <section class="card-container" [ngClass]="showOrUpload">
 
   <div class="card-left">
@@ -20,7 +21,7 @@
         <p class="error-email" *ngIf="isEmailAlreadyExist">Cette adresse email est déjà enregistrée</p>
       </div>
       <textarea [(ngModel)]="message" name="message" class="input-textarea" [rows]="3" [cols]="3" placeholder="Votre message:"></textarea>
-      <button *ngIf="emails.length > 0 && uploader.queue.length > 0" class="btn-send" type="submit">Envoyer</button>
+      <button *ngIf="uploader.queue.length > 0 && emails.length > 0" class="btn-send" type="submit">Envoyer</button>
     </form>
 
   </div>

@@ -43,10 +43,10 @@ export class FlashMessageComponent implements OnInit {
 
     const animate = (timestamp: number) => {
       const elapsed = timestamp - this.startTime;
-      const progress = Math.max(0, Math.min(1, elapsed / this.flashMessageDuration));
-      this.flashMessageWidth = 85 - (progress * 100);
+      const progress = Math.max(0, Math.min(1.15, elapsed / this.flashMessageDuration));
+      this.flashMessageWidth = 100 - (progress * 100);
 
-      if (progress < 1) {
+      if (progress < 1.15  ) {
         requestAnimationFrame(animate);
       } else {
         this.flashMessageService.deleteFlashMessage(this.flashMessage);
