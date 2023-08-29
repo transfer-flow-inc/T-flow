@@ -39,7 +39,11 @@ export class SettingsAllTransferComponent implements OnInit {
           next: (data) => {
             this.loading = false;
             this.allFolder = data;
-            this.isFolderEmpty = false
+            this.isFolderEmpty = false;
+            if (this.allFolder.length == 0) {
+              this.isFolderEmpty = true;
+              this.isDataFound = false;
+            }
           },
           error: (err) => {
             this.errorMessage = true;
@@ -49,12 +53,7 @@ export class SettingsAllTransferComponent implements OnInit {
 
       }
 
-        setTimeout(() => {
-        this.loading = false;
-        if (!this.loading && this.isFolderEmpty) {
-          this.isDataFound = false;
-        }
-        }, 1000);
+
 
 
 

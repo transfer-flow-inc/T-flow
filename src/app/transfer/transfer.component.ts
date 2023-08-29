@@ -41,6 +41,7 @@ export class TransferComponent implements OnInit {
   showOrUpload: string = '';
   showTimeout: boolean = false;
   token: string = '';
+  folderName: string = '';
 
   constructor(
     private httpClient: HttpClientService,
@@ -84,9 +85,12 @@ export class TransferComponent implements OnInit {
 
   uploadFile() {
     if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
+      if (this.folderName === '') {
+        this.folderName = "Dossier-" + Math.floor(Math.random() * 1001);
+      }
       this.httpClient.createFolder(environment.apiURL + 'folder/',
         {
-          folderName: "Dossier-" + Math.floor(Math.random() * 1001),
+          folderName: this.folderName,
           recipientsEmails: this.emails,
           message: this.message,
         })
@@ -106,6 +110,7 @@ export class TransferComponent implements OnInit {
               this.emails = [];
               this.sizeAllFile = 0;
               this.message = '';
+              this.folderName = '';
             }
           }, error: (err) => {
 
