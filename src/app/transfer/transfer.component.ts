@@ -40,7 +40,6 @@ export class TransferComponent implements OnInit {
   uploader: FileUploader;
   showOrUpload: string = '';
   showTimeout: boolean = false;
-  logger: string | null = "nothing";
 
   constructor(
     private httpClient: HttpClientService,
@@ -84,7 +83,6 @@ export class TransferComponent implements OnInit {
 
 
   uploadFile() {
-   this.logger = this.httpClient.httpOptions.headers.get('Authorization');
     if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
       this.httpClient.createFolder(environment.apiURL + 'folder/',
         {
