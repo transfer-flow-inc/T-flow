@@ -31,6 +31,7 @@ import { cookieConfig } from './cookies-consent/cookies-consent.component';
 import { SettingsAdminPanelComponent } from './settings-admin-panel/settings-admin-panel.component';
 import { FooterComponent } from './footer/footer.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { ValidateEmailComponent } from './validate-email/validate-email.component';
 
 @NgModule({
     declarations: [
@@ -54,6 +55,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
         SettingsAdminPanelComponent,
         FooterComponent,
         PrivacyPolicyComponent,
+        ValidateEmailComponent,
     ],
     imports: [
         BrowserModule,

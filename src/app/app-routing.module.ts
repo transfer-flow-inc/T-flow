@@ -16,6 +16,7 @@ import {DownloadComponent} from "./download/download.component";
 import {SettingsAdminPanelComponent} from "./settings-admin-panel/settings-admin-panel.component";
 import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
 import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
+import {ValidateEmailComponent} from "./validate-email/validate-email.component";
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { 'path' : "transfert", component : TransferComponent,canActivate : [AutorizeGuardService], data: { title: 'Transfert'}},
   { 'path' : "tout-les-abonnements", component: SubscriptionsComponent, data: { title: 'Tout les abonnements'}},
   { 'path' : "reglages", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Réglages'}},
+  { 'path' : "valider-mon-compte/:token", component: ValidateEmailComponent, data: { title: 'Valider mon compte'}},
   { 'path' : "telechargement/:folderUrl", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "telechargement/:folderUrl/:accessKey", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},
