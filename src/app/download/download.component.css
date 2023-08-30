@@ -46,6 +46,10 @@
   background-color: var(--background);
   color: var(--color);
 }
+.download-logo {
+  width: 10rem;
+  height: 10rem;
+}
 .download-folder {
   width: 80%;
   min-height: 30%;
