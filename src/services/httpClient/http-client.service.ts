@@ -91,8 +91,8 @@ export class HttpClientService implements OnInit{
     return this.httpClient.get<FolderInterface[]>(url, this.httpOptions);
   }
 
-  validateEmail(url: string) {
-    return this.httpClient.get(url);
+  validateEmail(url: string, token: TokenInterface) {
+    return this.httpClient.post(url, token);
   }
 
 
