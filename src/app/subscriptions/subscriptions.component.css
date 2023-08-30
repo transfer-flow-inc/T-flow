@@ -4,11 +4,10 @@
   align-items: center;
   justify-content: center;
 }
-
 .card {
   padding: 1rem;
   width: 25rem;
-  height: 40rem;
+  height: 32rem;
   margin: 1rem;
   border-radius: 1rem;
   background-color: var(--color);
@@ -17,7 +16,7 @@
   transition: 0.5s;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: space-around;
 }
 .title {
   font-size: 1.5rem;
@@ -37,14 +36,13 @@ list-style: none;
 .list-element {
   display: flex;
   align-items: center;
-  margin: 0.5rem;
-  font-size: 1.2rem;
+  margin: 1rem;
+  font-size: 1rem;
 }
-.list-element:before {
-  content: "-";
-  font-size: 2rem;
-  margin-right: 0.5rem;
+span {
+  margin: auto 1rem;
 }
+
 .description {
   margin: 1rem;
   text-align: center;
@@ -55,14 +53,11 @@ list-style: none;
   border: 0.15rem solid var(--background);
   border-radius: 1rem;
   background-color: transparent;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  margin: auto auto 0.5rem auto;
   font-weight: 500;
   color: var(--background);
   text-decoration: none;
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
 }
 .subscription-button:hover {
   background-color: var(--background);
