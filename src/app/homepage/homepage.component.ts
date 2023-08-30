@@ -11,15 +11,17 @@ import {FlashMessageService} from "../../services/flash-message/flash-message.se
 export class HomepageComponent implements OnInit{
 
   isLogged: boolean = false;
+  homepageTitle: string = "Accueil"
 
   constructor(
     private cookiesService: CookiesService,
-    private flashMessageService: FlashMessageService
   ) {}
 
   ngOnInit(): void {
     this.isLogged = !!this.cookiesService.get('token');
   }
+
+
 
 
 }

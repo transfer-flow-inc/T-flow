@@ -22,6 +22,7 @@ app-settings-navbar {
   color: var(--background);
 }
 .img-user {
+  background-color: white;
   width: 10rem;
   height: 10rem;
   border-radius: 50%;

@@ -96,6 +96,9 @@ export class TransferComponent implements OnInit {
         })
         .subscribe({
           next: (folder) => {
+            if (this.token === '') {
+              this.token = this.cookiesService.get('token');
+            }
             this.uploader.setOptions({
               url: environment.apiURL + 'file/' + folder.id,
               headers: [

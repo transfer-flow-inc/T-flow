@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnChanges, OnInit} from '@angular/core';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {environment} from "../../environments/environment.development";
@@ -10,7 +10,7 @@ import {CookiesService} from "../../services/cookies/cookies.service";
   templateUrl: './settings-all-transfer.component.html',
   styleUrls: ['./settings-all-transfer.component.css']
 })
-export class SettingsAllTransferComponent implements OnInit {
+export class SettingsAllTransferComponent implements OnInit{
 
   userId: string | null = "";
   allFolder : FolderInterface[] = [];
@@ -29,33 +29,44 @@ export class SettingsAllTransferComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.JwtService.getToken()) {
-      this.userId = this.JwtService.getUserId();
-    }
 
-      if (this.userId && this.cookieService.get('token')) {
-        this.httpClientService.getAllFolderByUserId( environment.apiURL + "user/folders/"+ this.userId).subscribe( {
-
-          next: (data) => {
-            this.loading = false;
-            this.allFolder = data;
-            this.isFolderEmpty = false;
-            if (this.allFolder.length == 0) {
-              this.isFolderEmpty = true;
-              this.isDataFound = false;
-            }
-          },
-          error: (err) => {
-            this.errorMessage = true;
-          }
-
-        });
-
+      if (this.JwtService.getToken()) {
+        this.userId = this.JwtService.getUserId();
       }
 
+      this.loadAllFolders();
 
+  }
 
+  loadAllFolders() {
+      if (this.cookieService.get('token')) {
+        if (this.userId) {
+          this.httpClientService.getAllFolderByUserId(environment.apiURL + "user/folders/" + this.userId).subscribe({
 
+            next: (data) => {
+              this.loading = false;
+              this.allFolder = data;
+              this.isFolderEmpty = false;
+              this.isDataFound = true;
+              if (this.allFolder[0].id === null) {
+                this.isFolderEmpty = true;
+                this.isDataFound = false;
+              }
+            },
+            error: (err) => {
+              console.log(err)
+              this.errorMessage = true;
+            }
+
+          });
+
+        }
+      } else {
+        this.loading = true;
+        while (this.cookieService.get('token') === undefined) {
+            this.loadAllFolders();
+        }
+      }
 
   }
 
