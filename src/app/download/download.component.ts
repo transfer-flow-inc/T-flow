@@ -51,8 +51,7 @@ export class DownloadComponent implements OnInit {
       this.accessKey = params['accessKey'];
     });
 
-    setTimeout(() => {
-         this.httpClient.getAFolderByUrl(environment.apiURL + 'folder/url/' + this.folderUrl).subscribe({
+     this.httpClient.getAFolderByUrl(environment.apiURL + 'folder/url/' + this.folderUrl).subscribe({
 
       next: (folder) => {
         this.loading = false;
@@ -68,15 +67,11 @@ export class DownloadComponent implements OnInit {
         }
 
       }, error: (err) => {
-
-        this.router.navigate(['/accueil']).then(() => {
-          this.flashMessageService.addMessage(`Le lien de téléchargement est invalide`, 'error', 4000);
-        });
+         console.log(err);
 
       }
 
     });
-    },500);
 
 
 

@@ -15,7 +15,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
 }
-body, html, app-root {
+body, html, app-root, app-homepage {
   min-height: 100vh;
   width: 100%;
   display: inline-block;

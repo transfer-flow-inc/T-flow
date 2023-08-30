@@ -11,7 +11,7 @@
     <div *ngIf="!isDataFound">
       <p class="no-data">{{ !errorMessage ? "Aucun dossier trouvé" : "Une erreur est survenue, veuillez rafraichir la page" }}</p>
     </div>
-
+    <section *ngIf="!isFolderEmpty">
   <div class="transfer" *ngFor="let transfer of allFolder">
       <div class="transfer-component">
         <p class="">Nom : {{ transfer.folderName }}</p>
@@ -25,7 +25,7 @@
         <a class="transfer-link transfer-button" *ngIf="!checkIfFolderIsExpired(transfer)" [href]="'telechargement/' +transfer.url + '/' + transfer.accessKey">Accéder à la page de téléchargement</a>
       </div>
     </div>
-
+    </section>
   </section>
 
 </section>

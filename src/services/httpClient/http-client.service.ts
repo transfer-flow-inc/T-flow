@@ -11,11 +11,12 @@ import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interf
 @Injectable({
   providedIn: 'root'
 })
-export class HttpClientService implements OnInit{
+export class HttpClientService{
 
   isAuthenticated = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticated.asObservable();
   logger: string | null = "nothing";
+  token: string | null = "";
 
   constructor(
     private httpClient: HttpClient,
@@ -23,26 +24,19 @@ export class HttpClientService implements OnInit{
     private router: Router,
     private flashMessageService: FlashMessageService,
   ) {
+
+    this.token = this.cookiesService.get('token');
+
   }
 
 
-    token = this.cookiesService.get('token');
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token,
+    });
+  }
 
 
-    httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + this.token,
-      })
-    };
-
-    ngOnInit(): void {
-      this.token = this.cookiesService.get('token');
-      this.httpOptions = {
-        headers: new HttpHeaders({
-          'Authorization': 'Bearer ' + this.token,
-        })
-      }
-    }
 
 
   login(url: string, email: string, password: string) {
@@ -66,9 +60,11 @@ export class HttpClientService implements OnInit{
       });
   }
 
-  createFolder(url: string, folder : CreateFolderInterface) {
-    this.httpOptions.headers.get('Authorization');
-    return this.httpClient.post<FolderInterface>(url, folder, this.httpOptions);
+  createFolder(url: string, folder : CreateFolderInterface){
+    const httpOptions = {
+      headers: this.getHeaders()
+    };
+    return this.httpClient.post<FolderInterface>(url, folder, httpOptions);
   }
 
   downloadFolder(url: string): Observable<Blob> {
@@ -76,19 +72,14 @@ export class HttpClientService implements OnInit{
   }
 
   getAFolderByUrl(url: string) {
-    return this.httpClient.get<FolderInterface>(url, this.httpOptions);
+    return this.httpClient.get<FolderInterface>(url);
   }
 
   getAllFolderByUserId(url: string) {
-    if (!this.cookiesService.get("token")) {
-      this.token = this.cookiesService.get('token');
-      this.httpOptions = {
-        headers: new HttpHeaders({
-          'Authorization': 'Bearer ' + this.token,
-        })
-      };
-    }
-    return this.httpClient.get<FolderInterface[]>(url, this.httpOptions);
+    const httpOptions = {
+      headers: this.getHeaders()
+    };
+    return this.httpClient.get<FolderInterface[]>(url, httpOptions);
   }
 
   validateEmail(url: string, token: TokenInterface) {

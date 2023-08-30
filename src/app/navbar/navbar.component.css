@@ -5,6 +5,7 @@ body.dark.nav-link::before {
 .navbar {
   padding: 1rem 0;
   width: 100%;
+  z-index: 100000;
 }
 
 .nav-list {
