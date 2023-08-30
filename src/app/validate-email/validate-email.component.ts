@@ -29,9 +29,7 @@ export class ValidateEmailComponent implements OnInit {
         console.log(data)
       },
       error: (err) => {
-        this.router.navigate(['/accueil']).then(() => {
-          this.flashMessageService.addMessage(`Le lien de validation est invalide`, 'error', 4000);
-        });
+        console.log(err)
       }
     })
   }

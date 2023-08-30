@@ -16,8 +16,16 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 body, html, app-root {
+  min-height: 100vh;
+  width: 100%;
+  display: inline-block;
+}
+@media screen and (max-width: 1020px) {
+  body, html, app-root {
+  min-height: 100%;
   height: 100%;
-  display: block;
+  display: initial;
+  }
 }
 .light {
     transition: 0.7s linear;
