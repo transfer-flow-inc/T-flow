@@ -17,6 +17,7 @@ export class ValidateEmailComponent implements OnInit {
     token: ''
   }
   isVerified: boolean = false;
+  isConnected: boolean = this.httpClient.isAuthenticated.value;
 
   constructor(
     private route: ActivatedRoute,

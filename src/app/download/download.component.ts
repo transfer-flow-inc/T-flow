@@ -4,6 +4,7 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
+import {LocalStorageService} from "../../services/local-storage/local-storage.service";
 
 @Component({
   selector: 'app-download',
@@ -17,6 +18,7 @@ export class DownloadComponent implements OnInit {
     private httpClient: HttpClientService,
     private router: Router,
     private flashMessageService: FlashMessageService,
+    private localStorageService: LocalStorageService
   ) {
   }
 
@@ -42,6 +44,7 @@ export class DownloadComponent implements OnInit {
 
 
   ngOnInit() {
+
 
     this.route.params.subscribe(params => {
       this.folderUrl = params['folderUrl'];

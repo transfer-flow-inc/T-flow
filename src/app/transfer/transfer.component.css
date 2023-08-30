@@ -34,7 +34,6 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   height: 70%;
   margin: auto;
   max-width: 90vw;
@@ -293,7 +292,7 @@ label {
 @media screen and (max-width: 426px){
     .card-left, .card-middle, .card-right {
     min-width: auto;
-    height: 25rem !important;
+    height: 30rem !important;
     width: 93vw;
     }
   .form-sender {
