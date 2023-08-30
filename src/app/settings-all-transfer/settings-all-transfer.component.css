@@ -7,10 +7,15 @@
   border-radius: 1rem;
   color: var(--background);
 }
+.container-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .img-loader{
-  width: 40%;
-  height: 40%;
-  margin: auto;
+  width: 10rem;
+  height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,6 +27,7 @@ app-settings-navbar {
   align-items: center;
 }
 .container-transfer {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -78,8 +84,10 @@ app-settings-navbar {
   .container-settings {
     flex-direction: column;
     height: auto;
+
   }
   .container-transfer {
+     min-height: 15rem;
     margin: 2rem auto;
     width: 90%;
     max-height: 20rem;

@@ -70,7 +70,7 @@ import { ValidateEmailComponent } from './validate-email/validate-email.componen
         OAuthModule.forRoot(),
     ],
     providers: [FlashMessageService, NavbarComponent],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent, FooterComponent]
 })
 export class AppModule {
 
