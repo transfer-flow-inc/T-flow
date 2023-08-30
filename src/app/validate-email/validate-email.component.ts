@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment.development";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {Token} from "@angular/compiler";
+import {TokenInterface} from "../../interfaces/Token/token-interface";
 
 @Component({
   selector: 'app-validate-email',
@@ -11,7 +13,10 @@ import {FlashMessageService} from "../../services/flash-message/flash-message.se
 })
 export class ValidateEmailComponent implements OnInit {
 
-  token: string = '';
+  token: TokenInterface = {
+    token: ''
+  }
+  isVerified: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,14 +27,16 @@ export class ValidateEmailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.token = params['token'];
+      this.token.token = params['token'];
     });
-    this.httpClient.validateEmail(environment.apiURL + 'verify?token=' + this.token ).subscribe({
+    this.httpClient.validateEmail(environment.apiURL + 'verify' , this.token ).subscribe({
       next: (data) => {
-        console.log(data)
+        this.isVerified = true;
       },
       error: (err) => {
-        console.log(err)
+        this.router.navigate(['/accueil']).then(() => {
+          this.flashMessageService.addMessage('Votre lien de validation est invalide', 'error', 4000);
+        });
       }
     })
   }
