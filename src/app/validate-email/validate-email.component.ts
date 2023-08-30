@@ -17,7 +17,7 @@ export class ValidateEmailComponent implements OnInit {
     token: ''
   }
   isVerified: boolean = false;
-  isConnected: boolean = this.httpClient.isAuthenticated.value;
+  isConnected: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +27,9 @@ export class ValidateEmailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.httpClient.isAuthenticated.value) {
+      this.isConnected = true;
+    }
     this.route.params.subscribe(params => {
       this.token.token = params['token'];
     });
