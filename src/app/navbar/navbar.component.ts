@@ -3,6 +3,9 @@ import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {DOCUMENT} from "@angular/common";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {FooterComponent} from "../footer/footer.component";
+import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
+import {LocalStorageService} from "../../services/local-storage/local-storage.service";
 
 @Component({
   selector: 'app-navbar',
@@ -24,8 +27,11 @@ export class NavbarComponent implements OnInit {
   isAuthenticated: boolean = false;
   iconShow: string = 'show';
 
-  constructor(@Inject(DOCUMENT) private document: Document,
+  constructor(
               private httpClientService: HttpClientService,
+              private themeService: ThemeServiceService,
+              private footer: FooterComponent,
+              private localStorage : LocalStorageService
   ) {
   }
 
@@ -64,18 +70,12 @@ export class NavbarComponent implements OnInit {
 
   toggleTheme(): void {
 
-    this.document.body.classList.toggle('dark');
-    this.document.body.classList.toggle('light');
+    this.themeService.currentTheme$.subscribe((theme) => {
+      this.imgTheme = theme === 'light' ? 'assets/images/logo_with_text_light.png' : 'assets/images/logo_with_text_dark.png';
+    })
+    this.footer.ngOnInit()
 
-    if (document.body.classList.contains('dark')) {
-      localStorage.setItem('theme', 'dark');
-      this.imgTheme = 'assets/images/logo_with_text_dark.png';
-    } else {
-      localStorage.setItem('theme', 'light');
-      this.imgTheme = 'assets/images/logo_with_text_light.png';
-    }
-
-
+    this.themeService.toggleTheme();
   }
 
   ngOnInit() {

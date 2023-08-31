@@ -54,7 +54,6 @@ export class SettingsAllTransferComponent implements OnInit{
               }
             },
             error: (err) => {
-              console.log(err)
               this.errorMessage = true;
             }
 

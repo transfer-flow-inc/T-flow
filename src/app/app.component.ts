@@ -7,6 +7,8 @@ import {CookiesService} from "../services/cookies/cookies.service";
 import {HttpClientService} from "../services/httpClient/http-client.service";
 import {JwtTokenService} from "../services/jwt-token/jwt-token.service";
 import {GoogleSsoService} from "../services/sso/Google/google-sso.service";
+import {ThemeServiceService} from "../services/theme-service/theme-service.service";
+import {LocalStorageService} from "../services/local-storage/local-storage.service";
 
 @Component({
   selector: 'app-root',
@@ -26,6 +28,8 @@ export class AppComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private route: ActivatedRoute,
+    private themeService: ThemeServiceService,
+    private localStorage: LocalStorageService,
     @Inject(DOCUMENT) private document: Document
   ) {
   }
@@ -60,15 +64,17 @@ export class AppComponent implements OnInit {
 
     this.document.body.classList.add('dark');
 
+    if (this.localStorage.get('theme')) {
+      if (this.localStorage.get('theme') === 'light') {
+        this.document.body.classList.remove('dark');
+        this.document.body.classList.add('light');
+      } else {
+        this.document.body.classList.remove('light');
+        this.document.body.classList.add('dark');
+      }
 
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
-    } else if (theme === 'light') {
-      document.body.classList.add('light');
-      document.body.classList.remove('dark');
     }
+
 
     this.router.events
       .pipe(
