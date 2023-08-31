@@ -80,6 +80,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.httpClientService.isAuthenticated$.subscribe((loggedIn) => {
       this.isAuthenticated = loggedIn;
     });

@@ -9,6 +9,7 @@ import {JwtTokenService} from "../services/jwt-token/jwt-token.service";
 import {GoogleSsoService} from "../services/sso/Google/google-sso.service";
 import {ThemeServiceService} from "../services/theme-service/theme-service.service";
 import {LocalStorageService} from "../services/local-storage/local-storage.service";
+import {FooterComponent} from "./footer/footer.component";
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute,
     private themeService: ThemeServiceService,
     private localStorage: LocalStorageService,
+    private footerComponent: FooterComponent,
     @Inject(DOCUMENT) private document: Document
   ) {
   }
@@ -50,6 +52,7 @@ export class AppComponent implements OnInit {
       this.myCookieService.delete('token');
     }
 
+    this.footerComponent.ngOnInit();
 
     // For english users
     console.log('%cHold Up!', 'color:red; font-size: 6rem; font-weight: bold;')

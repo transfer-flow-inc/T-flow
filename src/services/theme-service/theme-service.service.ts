@@ -7,7 +7,7 @@ import {DOCUMENT} from "@angular/common";
 })
 export class ThemeServiceService {
 
-  private currentThemeSubject = new BehaviorSubject<string>('light');
+  private currentThemeSubject = new BehaviorSubject<string>(localStorage.getItem('theme') || 'dark');
   public currentTheme$ = this.currentThemeSubject.asObservable();
 
   constructor(
@@ -19,10 +19,8 @@ export class ThemeServiceService {
     this.document.body.classList.toggle('light');
 
     if (this.document.body.classList.contains('dark')) {
-      console.log('dark')
       localStorage.setItem('theme', 'dark');
     } else {
-      console.log('light')
       localStorage.setItem('theme', 'light');
     }
 
