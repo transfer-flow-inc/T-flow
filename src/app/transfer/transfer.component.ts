@@ -84,45 +84,51 @@ export class TransferComponent implements OnInit {
 
 
   uploadFile() {
-    if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
-      if (this.folderName === '') {
-        this.folderName = "Dossier-" + Math.floor(Math.random() * 1001);
+    if(this.cookiesService.get('token')) {
+      if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
+        if (this.folderName === '') {
+          this.folderName = "Dossier-" + Math.floor(Math.random() * 1001);
+        }
+        this.httpClient.createFolder(environment.apiURL + 'folder/',
+          {
+            folderName: this.folderName,
+            recipientsEmails: this.emails,
+            message: this.message,
+          })
+          .subscribe({
+            next: (folder) => {
+              if (this.token === '') {
+                this.token = this.cookiesService.get('token');
+              }
+              this.uploader.setOptions({
+                url: environment.apiURL + 'file/' + folder.id,
+                headers: [
+                  {name: 'Authorization', value: 'Bearer ' + this.token}
+                ],
+                authTokenHeader: this.token,
+                authToken: this.token,
+              });
+              this.uploader.uploadAll();
+              this.uploader.onCompleteAll = () => {
+                this.uploader.clearQueue();
+                this.emails = [];
+                this.sizeAllFile = 0;
+                this.message = '';
+                this.folderName = '';
+              }
+            }, error: (err) => {
+
+            }
+          })
+
+
+      } else {
+        this.flashService.addMessage('Veuillez ajouter au moins un fichier et un email', 'error', 4000);
       }
-      this.httpClient.createFolder(environment.apiURL + 'folder/',
-        {
-          folderName: this.folderName,
-          recipientsEmails: this.emails,
-          message: this.message,
-        })
-        .subscribe({
-          next: (folder) => {
-            if (this.token === '') {
-              this.token = this.cookiesService.get('token');
-            }
-            this.uploader.setOptions({
-              url: environment.apiURL + 'file/' + folder.id,
-              headers: [
-                {name: 'Authorization', value: 'Bearer ' + this.token}
-              ],
-              authTokenHeader: this.token,
-              authToken: this.token,
-            });
-            this.uploader.uploadAll();
-            this.uploader.onCompleteAll = () => {
-              this.uploader.clearQueue();
-              this.emails = [];
-              this.sizeAllFile = 0;
-              this.message = '';
-              this.folderName = '';
-            }
-          }, error: (err) => {
-
-          }
-        })
-
-
     } else {
-      this.flashService.addMessage('Veuillez ajouter au moins un fichier et un email', 'error', 4000);
+      while (this.token === undefined) {
+        this.uploadFile();
+      }
     }
   }
 
