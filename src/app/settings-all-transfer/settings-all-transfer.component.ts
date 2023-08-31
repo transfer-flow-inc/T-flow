@@ -39,7 +39,7 @@ export class SettingsAllTransferComponent implements OnInit{
   }
 
   loadAllFolders() {
-      if (this.cookieService.get('token')) {
+
         if (this.userId) {
           this.httpClientService.getAllFolderByUserId(environment.apiURL + "user/folders/" + this.userId).subscribe({
 
@@ -59,14 +59,8 @@ export class SettingsAllTransferComponent implements OnInit{
             }
 
           });
+        }
 
-        }
-      } else {
-        this.loading = true;
-        while (this.cookieService.get('token') === undefined) {
-            this.loadAllFolders();
-        }
-      }
 
   }
 

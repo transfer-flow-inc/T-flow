@@ -21,6 +21,7 @@ describe('AppComponent', () => {
         AppComponent,
         NavbarComponent,
       ],
+      providers: [NavbarComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   });

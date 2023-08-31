@@ -163,8 +163,7 @@ hr {
 }
 .text-condition {
   color: var(--background);
-  display: grid;
-  grid-template-columns: 1fr 12fr;
+  display: flex;
   align-items: center;
   gap: 0.5rem;
   margin: 0.5rem;

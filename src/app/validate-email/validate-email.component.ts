@@ -27,7 +27,7 @@ export class ValidateEmailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.httpClient.isAuthenticated.value) {
+   /* if (this.httpClient.isAuthenticated.value) {
       this.isConnected = true;
     }
     this.route.params.subscribe(params => {
@@ -42,7 +42,7 @@ export class ValidateEmailComponent implements OnInit {
           this.flashMessageService.addMessage('Votre lien de validation est invalide', 'error', 4000);
         });
       }
-    })
+    })*/
   }
 
 

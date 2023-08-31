@@ -69,7 +69,8 @@
 
       <p class="credential-error">{{error}}</p>
 
-      <p class="text-condition"><input class="input-checkbox " type="checkbox" [checked]="isChecked" (click)="changeIsChecked()"> J'ai lu et j'accepte les conditions d'utilisation*</p>
+
+      <p class="text-condition"><input class="input-checkbox " type="checkbox" [checked]="isChecked" (click)="changeIsChecked()"> J'ai lu et j'accepte </p> <a routerLink="/conditions-generales-utilisation">les conditions d'utilisation*</a>
 
       <button [disabled]="loginForm.invalid || !isChecked"
               [class.invalid]="loginForm.invalid || (loginForm.dirty && loginForm.touched) && !isChecked"

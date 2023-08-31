@@ -1,7 +1,9 @@
-<section class="container" *ngIf="isVerified">
+<section class="container-all">
+<section class="container">
 <p>Vous avez confirmé votre mail</p>
 
 <a *ngIf="!isConnected" class="button" routerLink="/se-connecter">Se connecter</a>
 <a *ngIf="isConnected" class="button" routerLink="/accueil">Accueil</a>
 
+</section>
 </section>
