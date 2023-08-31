@@ -42,6 +42,7 @@ export class TransferComponent implements OnInit {
   showTimeout: boolean = false;
   token: string = '';
   folderName: string = '';
+  folderSize: number = 0;
 
   constructor(
     private httpClient: HttpClientService,
@@ -73,6 +74,8 @@ export class TransferComponent implements OnInit {
       }
 
     }
+
+
   }
 
 
@@ -84,53 +87,48 @@ export class TransferComponent implements OnInit {
 
 
   uploadFile() {
-    if(this.cookiesService.get('token')) {
-      if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
-        if (this.folderName === '') {
-          this.folderName = "Dossier-" + Math.floor(Math.random() * 1001);
-        }
-        this.httpClient.createFolder(environment.apiURL + 'folder/',
-          {
-            folderName: this.folderName,
-            recipientsEmails: this.emails,
-            message: this.message,
-          })
-          .subscribe({
-            next: (folder) => {
-              if (this.token === '') {
-                this.token = this.cookiesService.get('token');
-              }
-              this.uploader.setOptions({
-                url: environment.apiURL + 'file/' + folder.id,
-                headers: [
-                  {name: 'Authorization', value: 'Bearer ' + this.token}
-                ],
-                authTokenHeader: this.token,
-                authToken: this.token,
-              });
-              this.uploader.uploadAll();
-              this.uploader.onCompleteAll = () => {
-                this.uploader.clearQueue();
-                this.emails = [];
-                this.sizeAllFile = 0;
-                this.message = '';
-                this.folderName = '';
-              }
-            }, error: (err) => {
+    if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
+      if (this.folderName === '') {
+        this.folderName = "Dossier-" + Math.floor(Math.random() * 1001);
+      }
+      this.httpClient.createFolder(environment.apiURL + 'folder/',
+        {
+          folderName: this.folderName,
+          recipientsEmails: this.emails,
+          message: this.message,
+          fileCount: this.uploader.queue.length,
+          folderSize: this.calculateSizeAllFileForRequest()
+        })
+        .subscribe({
+          next: (folder) => {
+            this.uploader.setOptions({
+              url: environment.apiURL + 'file/' + folder.id,
+              headers: [
+                {name: 'Authorization', value: 'Bearer ' + this.token}
+              ],
+              authTokenHeader: this.token,
+              authToken: this.token,
+            });
 
+            this.uploader.uploadAll();
+
+            this.uploader.onCompleteAll = () => {
+              this.uploader.clearQueue();
+              this.emails = [];
+              this.sizeAllFile = 0;
+              this.message = '';
+              this.folderName = '';
             }
-          })
+          },
+          error: (err) => {
 
-
-      } else {
-        this.flashService.addMessage('Veuillez ajouter au moins un fichier et un email', 'error', 4000);
-      }
+          }
+        })
     } else {
-      while (this.token === undefined) {
-        this.uploadFile();
-      }
+      this.flashService.addMessage('Veuillez ajouter au moins un fichier et un email', 'error', 4000);
     }
   }
+
 
   checkFile() {
     for (let i = 0; i < this.uploader.queue.length; i++) {
@@ -168,7 +166,13 @@ export class TransferComponent implements OnInit {
       this.typeSizeFormat = 'Go';
     }
 
+  }
 
+  calculateSizeAllFileForRequest() {
+    for (let i = 0; i < this.uploader.queue.length; i++) {
+      this.folderSize += this.uploader.queue[i].file.size;
+    }
+    return this.folderSize;
   }
 
   checkIfEmailIsValid(event: any) {
