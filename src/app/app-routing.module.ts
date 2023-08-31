@@ -17,8 +17,8 @@ import {SettingsAdminPanelComponent} from "./settings-admin-panel/settings-admin
 import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
 import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
 import {ValidateEmailComponent} from "./validate-email/validate-email.component";
-import {ContactUsComponent} from "./contact-us/contact-us.component";
 import {AboutComponent} from "./about/about.component";
+import {ContactUsComponent} from "./contact-us/contact-us.component";
 
 
 const routes: Routes = [
