@@ -33,6 +33,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
 import {HttpInterceptorService} from "../services/http-interceptor/http-interceptor.service";
+import { AboutComponent } from './about/about.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
     declarations: [
@@ -57,6 +59,8 @@ import {HttpInterceptorService} from "../services/http-interceptor/http-intercep
         FooterComponent,
         PrivacyPolicyComponent,
         ValidateEmailComponent,
+        AboutComponent,
+        ContactUsComponent,
     ],
     imports: [
         BrowserModule,
