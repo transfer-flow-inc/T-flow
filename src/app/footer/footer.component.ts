@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {NavbarComponent} from "../navbar/navbar.component";
+import {BehaviorSubject} from "rxjs";
 
 
 @Component({
@@ -7,17 +8,23 @@ import {NavbarComponent} from "../navbar/navbar.component";
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit{
+export class FooterComponent implements OnInit {
 
   imgTheme: string = "assets/images/logo_dark.png"
+  theme: BehaviorSubject<string> = this.navbarComponent.theme;
+
 
   constructor(
+    private navbarComponent: NavbarComponent
   ) {
   }
 
+  ngOnInit(): void {
+    this.getTheme();
+  }
 
-  ngOnInit() {
-
+  getTheme() {
+    console.log(this.theme.value)
   }
 
 }

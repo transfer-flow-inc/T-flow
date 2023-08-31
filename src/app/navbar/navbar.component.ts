@@ -2,9 +2,9 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {DOCUMENT} from "@angular/common";
-import {CookiesService} from "../../services/cookies/cookies.service";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
+import {BehaviorSubject} from "rxjs";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-navbar',
@@ -25,6 +25,8 @@ export class NavbarComponent implements OnInit {
   isDarkTheme: boolean = true;
   isAuthenticated: boolean = false;
   iconShow: string = 'show';
+  theme = new BehaviorSubject<string>('dark');
+  theme$ = this.theme.asObservable();
 
   constructor(@Inject(DOCUMENT) private document: Document,
               private httpClientService: HttpClientService,
@@ -66,14 +68,17 @@ export class NavbarComponent implements OnInit {
 
   toggleTheme(): void {
 
+
     this.document.body.classList.toggle('dark');
     this.document.body.classList.toggle('light');
 
     if (document.body.classList.contains('dark')) {
       localStorage.setItem('theme', 'dark');
+      this.theme.next('dark');
       this.imgTheme = 'assets/images/logo_with_text_dark.png';
     } else {
       localStorage.setItem('theme', 'light');
+      this.theme.next('light');
       this.imgTheme = 'assets/images/logo_with_text_light.png';
     }
 
