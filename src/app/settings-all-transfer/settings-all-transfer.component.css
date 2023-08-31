@@ -84,7 +84,6 @@ app-settings-navbar {
   .container-settings {
     flex-direction: column;
     height: auto;
-
   }
   .container-transfer {
      min-height: 15rem;
@@ -92,6 +91,14 @@ app-settings-navbar {
     width: 90%;
     max-height: 20rem;
     scroll-behavior: smooth;
+  }
+  .transfer {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .container-settings {
+    width: 100%;
   }
 }
 @keyframes spinner {

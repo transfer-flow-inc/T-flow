@@ -7,6 +7,8 @@ import {Router} from "@angular/router";
 import {FlashMessageService} from "../flash-message/flash-message.service";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interface";
+import {GoogleSsoService} from "../sso/Google/google-sso.service";
+import {OAuthService} from "angular-oauth2-oidc";
 
 @Injectable({
   providedIn: 'root'
@@ -16,25 +18,18 @@ export class HttpClientService{
   isAuthenticated = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticated.asObservable();
   logger: string | null = "nothing";
-  token: string | null = "";
 
   constructor(
     private httpClient: HttpClient,
     private cookiesService: CookiesService,
     private router: Router,
     private flashMessageService: FlashMessageService,
+    private oAuthService: OAuthService
   ) {
 
-    this.token = this.cookiesService.get('token');
 
   }
 
-
-  private getHeaders(): HttpHeaders {
-    return new HttpHeaders({
-      'Authorization': 'Bearer ' + this.token,
-    });
-  }
 
 
 
@@ -55,16 +50,14 @@ export class HttpClientService{
       window.sessionStorage.clear();
       this.cookiesService.delete('token');
       this.isAuthenticated.next(false);
+      this.oAuthService.logOut();
       this.router.navigate(['/accueil']).then(() => {
         this.flashMessageService.addMessage(`Vous vous êtes déconnecté avec succès`, 'success', 4000);
       });
   }
 
   createFolder(url: string, folder : CreateFolderInterface){
-    const httpOptions = {
-      headers: this.getHeaders()
-    };
-    return this.httpClient.post<FolderInterface>(url, folder, httpOptions);
+    return this.httpClient.post<FolderInterface>(url, folder);
   }
 
   downloadFolder(url: string): Observable<Blob> {
@@ -76,10 +69,7 @@ export class HttpClientService{
   }
 
   getAllFolderByUserId(url: string) {
-    const httpOptions = {
-      headers: this.getHeaders()
-    };
-    return this.httpClient.get<FolderInterface[]>(url, httpOptions);
+    return this.httpClient.get<FolderInterface[]>(url);
   }
 
   validateEmail(url: string, token: TokenInterface) {

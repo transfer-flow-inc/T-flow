@@ -15,7 +15,7 @@ import {FormsModule} from "@angular/forms";
 import {RegisterComponent} from './register/register.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { SettingsNavbarComponent } from './settings-navbar/settings-navbar.component';
 import { SettingsMyAccountComponent } from './settings-my-account/settings-my-account.component';
 import { SettingsSubscriptionComponent } from './settings-subscription/settings-subscription.component';
@@ -32,6 +32,7 @@ import { SettingsAdminPanelComponent } from './settings-admin-panel/settings-adm
 import { FooterComponent } from './footer/footer.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
+import {HttpInterceptorService} from "../services/http-interceptor/http-interceptor.service";
 
 @NgModule({
     declarations: [
@@ -69,7 +70,8 @@ import { ValidateEmailComponent } from './validate-email/validate-email.componen
         HttpClientModule,
         OAuthModule.forRoot(),
     ],
-    providers: [FlashMessageService, NavbarComponent, FooterComponent],
+    providers: [FlashMessageService, NavbarComponent, FooterComponent,
+      { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },],
     bootstrap: [AppComponent, FooterComponent]
 })
 export class AppModule {

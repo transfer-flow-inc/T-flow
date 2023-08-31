@@ -5,6 +5,7 @@ import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing
 import {FileUploadModule} from "ng2-file-upload";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {FormsModule} from "@angular/forms";
+import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 
 describe('TransferComponent', () => {
   let component: TransferComponent;
@@ -13,7 +14,8 @@ describe('TransferComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ TransferComponent ],
-      imports: [ FontAwesomeTestingModule, FileUploadModule, HttpClientTestingModule, FormsModule ]
+      imports: [ FontAwesomeTestingModule, FileUploadModule, HttpClientTestingModule, FormsModule ],
+      providers: [OAuthService, UrlHelperService, OAuthLogger, DateTimeProvider]
     })
     .compileComponents();
 
