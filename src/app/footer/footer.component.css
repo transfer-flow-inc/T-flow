@@ -16,7 +16,6 @@
   padding: 0.5rem;
   background-color: var(--color);
   border-radius: 0.5rem;
-  transition: 0.5s ease-in-out;
   width: calc(100% / 3);
 }
 .card-img {

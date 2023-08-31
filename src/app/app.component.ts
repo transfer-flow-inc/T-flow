@@ -1,5 +1,5 @@
 import {Component, OnInit, Inject} from '@angular/core';
-import {filter, map} from 'rxjs';
+import {BehaviorSubject, filter, map} from 'rxjs';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {DOCUMENT} from "@angular/common";
@@ -7,6 +7,7 @@ import {CookiesService} from "../services/cookies/cookies.service";
 import {HttpClientService} from "../services/httpClient/http-client.service";
 import {JwtTokenService} from "../services/jwt-token/jwt-token.service";
 import {GoogleSsoService} from "../services/sso/Google/google-sso.service";
+import {NavbarComponent} from "./navbar/navbar.component";
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,8 @@ import {GoogleSsoService} from "../services/sso/Google/google-sso.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+
 
 
   constructor(
@@ -24,6 +27,7 @@ export class AppComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private route: ActivatedRoute,
+    private navbarComponent: NavbarComponent,
     @Inject(DOCUMENT) private document: Document
   ) {
   }
@@ -61,9 +65,11 @@ export class AppComponent implements OnInit {
 
     const theme = localStorage.getItem('theme');
     if (theme === 'dark') {
+      this.navbarComponent.theme.next('dark');
       document.body.classList.add('dark');
       document.body.classList.remove('light');
     } else if (theme === 'light') {
+      this.navbarComponent.theme.next('light');
       document.body.classList.add('light');
       document.body.classList.remove('dark');
     }

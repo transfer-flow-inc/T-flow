@@ -54,6 +54,7 @@ h1 {
   margin: 0.6rem;
   border: 0;
   border-bottom: 0.1rem solid #212121;
+  -webkit-appearance: none;
 }
 .form-input:focus {
   outline: none;
