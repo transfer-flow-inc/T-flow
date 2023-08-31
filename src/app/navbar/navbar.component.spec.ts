@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar.component';
 import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {OAuthModule} from "angular-oauth2-oidc";
+import {FooterComponent} from "../footer/footer.component";
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -12,7 +13,8 @@ describe('NavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ NavbarComponent ],
-      imports: [ FontAwesomeTestingModule, HttpClientTestingModule, OAuthModule.forRoot() ]
+      imports: [ FontAwesomeTestingModule, HttpClientTestingModule, OAuthModule.forRoot() ],
+      providers: [ FooterComponent ]
     })
     .compileComponents();
 

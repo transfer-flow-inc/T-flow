@@ -5,6 +5,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {OAuthModule} from "angular-oauth2-oidc";
+import {FooterComponent} from "./footer/footer.component";
 
 
 describe('AppComponent', () => {
@@ -21,7 +22,7 @@ describe('AppComponent', () => {
         AppComponent,
         NavbarComponent,
       ],
-      providers: [NavbarComponent],
+      providers: [NavbarComponent, FooterComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   });
