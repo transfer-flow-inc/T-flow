@@ -17,7 +17,7 @@ import {environment} from "../../environments/environment";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
   faEye: IconDefinition = faEye;
   faEyeSlash: IconDefinition = faEyeSlash;
@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit{
     this.oAuthService.events.subscribe((event: OAuthEvent) => {
       if (event.type === 'token_received') {
         const userClaims = this.oAuthService.getIdentityClaims();
-        this.httpService.loginWithGoogle(environment.apiURL + "auth/google", userClaims).subscribe( {
+        this.httpService.loginWithGoogle(environment.apiURL + "auth/google", userClaims).subscribe({
           next: (token) => {
             this.httpService.isAuthenticated.next(true);
             this.cookiesService.set("token", token.token, 30);

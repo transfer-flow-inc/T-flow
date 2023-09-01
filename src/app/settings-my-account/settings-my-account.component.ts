@@ -47,7 +47,6 @@ export class SettingsMyAccountComponent implements OnInit {
     this.jwtService.setToken(token);
 
 
-
     this.user.firstName = <string>this.jwtService.getUserFirstName();
 
     if (<string>this.jwtService.getUserLastName() == "" || <string>this.jwtService.getUserLastName() == " ") {

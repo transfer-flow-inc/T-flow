@@ -14,15 +14,18 @@
   left: 50%;
   transform: translate(-50%, 50%);
 }
+
 .container-all {
   height: 100%;
   position: relative;
 }
+
 .container-button {
   display: flex;
   justify-content: center;
   gap: 2rem;
 }
+
 .button {
   width: fit-content;
   text-decoration: none;
@@ -35,15 +38,18 @@
   color: var(--background);
   background-color: transparent;
 }
+
 .button:hover {
   cursor: pointer;
   background-color: var(--background);
   color: var(--color);
 }
+
 p {
   font-size: 1.2rem;
   font-weight: 800;
 }
+
 @media screen and (max-width: 1020px) {
   .container {
     width: 100%;
@@ -52,6 +58,7 @@ p {
     left: unset;
     transform: unset;
   }
+
   .container-all {
     height: 100%;
     position: relative;

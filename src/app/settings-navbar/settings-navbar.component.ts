@@ -7,7 +7,7 @@ import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
   templateUrl: './settings-navbar.component.html',
   styleUrls: ['./settings-navbar.component.css']
 })
-export class SettingsNavbarComponent implements OnInit{
+export class SettingsNavbarComponent implements OnInit {
 
   isAdmin: boolean = false;
 

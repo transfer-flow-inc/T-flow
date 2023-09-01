@@ -12,6 +12,7 @@
 .settings-disconnect {
   color: red !important;
 }
+
 .settings-link {
   display: inline-block;
   position: relative;
@@ -19,10 +20,11 @@
   font-size: 1rem;
   margin: 1rem;
   padding: 0.5rem 0;
-  font-weight:500;
+  font-weight: 500;
   color: var(--color);
   background-color: transparent !important;
 }
+
 .settings-link::before {
   content: "";
   position: absolute;
@@ -35,23 +37,29 @@
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
+
 .settings-link:hover::before {
   transform: scaleX(1);
 }
+
 .active::before {
   transform: scale(1);
 }
+
 .settings-disconnect::before {
   background-color: red;
 }
+
 .settings-disconnect:hover::before {
   background-color: red;
 }
+
 .settings-link {
   color: var(--background);
   font-weight: 600;
   text-decoration: none;
 }
+
 .vertical-line {
   position: absolute;
   margin: auto;
@@ -62,6 +70,7 @@
   width: 0.2rem;
   background-color: #212121;
 }
+
 @media screen and (max-width: 1020px) {
   .vertical-line {
     rotate: 90deg;

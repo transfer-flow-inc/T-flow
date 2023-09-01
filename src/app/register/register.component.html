@@ -1,39 +1,37 @@
-
 <section class="section-login">
 
 
   <section class="section-left">
-<h1 class="unselectable">S'inscrire</h1>
+    <h1 class="unselectable">S'inscrire</h1>
     <form class="form-left" method="POST" #loginForm="ngForm" (submit)="register()">
 
-         <input  class="form-input"
-              [(ngModel)]="lastNameValue"
-              [class.invalid]="loginLastName.invalid && (loginLastName.dirty || loginLastName.touched)"
-              [class.valid]="loginLastName.valid"
-              #loginLastName="ngModel"
-              type="text"
-              name="lastName"
-              placeholder="Nom"
-              title="Veuillez entrer un nom valide"
-              aria-label="Nom"
-              required
-              minlength="3"
+      <input class="form-input"
+             [(ngModel)]="lastNameValue"
+             [class.invalid]="loginLastName.invalid && (loginLastName.dirty || loginLastName.touched)"
+             [class.valid]="loginLastName.valid"
+             #loginLastName="ngModel"
+             type="text"
+             name="lastName"
+             placeholder="Nom"
+             title="Veuillez entrer un nom valide"
+             aria-label="Nom"
+             required
+             minlength="3"
       >
 
-      <input  class="form-input"
-              [(ngModel)]="firstNameValue"
-              [class.invalid]="loginFirstName.invalid && (loginFirstName.dirty || loginFirstName.touched)"
-              [class.valid]="loginFirstName.valid"
-              #loginFirstName="ngModel"
-              type="text"
-              name="firstName"
-              placeholder="Prénom"
-              title="Veuillez entrer un prénom valide"
-              aria-label="Prénom"
-              required
-              minlength="3"
+      <input class="form-input"
+             [(ngModel)]="firstNameValue"
+             [class.invalid]="loginFirstName.invalid && (loginFirstName.dirty || loginFirstName.touched)"
+             [class.valid]="loginFirstName.valid"
+             #loginFirstName="ngModel"
+             type="text"
+             name="firstName"
+             placeholder="Prénom"
+             title="Veuillez entrer un prénom valide"
+             aria-label="Prénom"
+             required
+             minlength="3"
       >
-
 
 
       <input class="form-input"
@@ -49,7 +47,7 @@
              email
       >
 
-<section class="password-container">
+      <section class="password-container">
 
         <input [type]="showPassword ? 'text' : 'password'"
                [(ngModel)]="passwordValue"
@@ -64,33 +62,39 @@
                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}"
                required
         >
-        <a (click)="showPassword = !showPassword"><fa-icon class="eyes" [icon]="showPassword ? faEyeSlash : faEye" ></fa-icon></a>
-        </section>
+        <a (click)="showPassword = !showPassword">
+          <fa-icon class="eyes" [icon]="showPassword ? faEyeSlash : faEye"></fa-icon>
+        </a>
+      </section>
 
       <p class="credential-error">{{error}}</p>
 
 
-      <p class="text-condition"><input class="input-checkbox " type="checkbox" [checked]="isChecked" (click)="changeIsChecked()"> J'ai lu et j'accepte </p> <a routerLink="/conditions-generales-utilisation">les conditions d'utilisation*</a>
+      <p class="text-condition"><input class="input-checkbox " type="checkbox" [checked]="isChecked"
+                                       (click)="changeIsChecked()"> J'ai lu et j'accepte </p> <a
+      routerLink="/conditions-generales-utilisation">les conditions d'utilisation*</a>
 
       <button [disabled]="loginForm.invalid || !isChecked"
               [class.invalid]="loginForm.invalid || (loginForm.dirty && loginForm.touched) && !isChecked"
               [class.valid]="loginForm.valid && isChecked"
               class="form-button unselectable"
               type="submit"
-      >S'inscrire</button>
-      <p class="no-account unselectable">Vous avez déjà un compte ? <a routerLink="/se-connecter" class="no-account">cliquez ici</a></p>
+      >S'inscrire
+      </button>
+      <p class="no-account unselectable">Vous avez déjà un compte ? <a routerLink="/se-connecter" class="no-account">cliquez
+        ici</a></p>
 
     </form>
 
   </section>
 
-<section class="section-center">
-  <hr class="vertical-line">
+  <section class="section-center">
+    <hr class="vertical-line">
 
-  <p class="or unselectable">OU</p>
+    <p class="or unselectable">OU</p>
 
-  <hr class="vertical-line">
-</section>
+    <hr class="vertical-line">
+  </section>
 
   <section class="section-right">
 

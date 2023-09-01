@@ -1,19 +1,23 @@
 .drop {
-  border: 2px dashed var(--color  );
+  border: 2px dashed var(--color);
   color: var(--color);
 }
+
 .upload {
   height: 100%;
   display: none;
 }
+
 label {
   height: 100%;
 }
+
 .error-email {
   color: red;
   font-size: 0.8rem;
   font-weight: 600;
 }
+
 .upload-div {
   height: inherit;
   border-radius: 1rem;
@@ -24,12 +28,15 @@ label {
   color: var(--color);
   font-weight: 600;
 }
+
 .upload-div:hover {
   cursor: pointer;
 }
+
 .upload-div:active {
   cursor: move;
 }
+
 .card-container {
   display: flex;
   align-items: center;
@@ -40,9 +47,11 @@ label {
   max-width: 90vw;
   gap: 2rem;
 }
+
 .card {
   height: 30rem;
 }
+
 .card-left {
   position: relative;
   min-width: 25rem;
@@ -51,19 +60,21 @@ label {
   align-items: center;
   justify-content: space-evenly;
   border-radius: 1rem;
-  padding: 1rem ;
+  padding: 1rem;
   backdrop-filter: blur(0.2rem);
   background-color: var(--color);
   color: var(--background);
 }
+
 .card-middle {
-  min-width:25rem;
+  min-width: 25rem;
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
 }
+
 .card-right {
-  min-width:25rem;
+  min-width: 25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,21 +83,24 @@ label {
   background-color: var(--color);
   color: var(--background);
 }
+
 .list-file {
   list-style: none;
   width: 20rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
   background-color: var(--background);
-  overflow-x: hidden  ;
+  overflow-x: hidden;
   overflow-y: auto;
-  max-height:20rem;
+  max-height: 20rem;
   margin: 0.5rem;
   min-height: 2rem;
 }
+
 .hide {
   display: none;
 }
+
 .list-element {
   display: flex;
   align-items: center;
@@ -99,24 +113,30 @@ label {
   color: var(--background);
   margin: 0.5rem;
 }
+
 .title-file {
   font-weight: 600;
   font-size: 2rem;
 }
+
 .text-file {
   word-break: break-all;
-  padding-right: 1rem ;
+  padding-right: 1rem;
 }
+
 .iconBin {
   font-size: 1.2rem;
 }
+
 .iconBin:hover {
   cursor: pointer;
   color: orange;
 }
+
 .noFile {
   text-align: center;
 }
+
 .input-text {
   width: 20rem;
   height: 3rem;
@@ -125,13 +145,16 @@ label {
   margin-top: 0.5rem;
   border: var(--background) 0.2rem solid;
 }
+
 .input-text:focus {
   outline: none;
 }
+
 .input-text::placeholder {
   color: var(--dark-blue);
   font-weight: 600;
 }
+
 .form-sender {
   display: flex;
   flex-direction: column;
@@ -139,6 +162,7 @@ label {
   justify-content: center;
 
 }
+
 .input-textarea {
   width: 20rem;
   height: 10rem;
@@ -148,25 +172,29 @@ label {
   resize: none;
   border: var(--background) 0.2rem solid;
 }
+
 .input-textarea::placeholder {
   color: var(--dark-blue);
   font-weight: 600;
   font-size: 1rem;
 }
+
 .input-textarea:focus {
   outline: none;
 }
+
 .btn-send {
   height: 3rem;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
-  margin:0.5rem ;
+  margin: 0.5rem;
   background-color: var(--color);
   color: var(--background);
   border: 0.2rem solid var(--background);
   font-weight: 600;
   width: 100%;
 }
+
 .btn-send:hover {
   cursor: pointer;
   background-color: var(--background);
@@ -179,9 +207,11 @@ label {
   flex-direction: column;
   width: min-content;
 }
+
 .input-error {
-    border: 0.2rem solid red;
+  border: 0.2rem solid red;
 }
+
 .loader {
   position: absolute;
   top: 50%;
@@ -190,73 +220,85 @@ label {
   font-size: 3rem;
   font-weight: 900;
 }
-.loader-progress{
+
+.loader-progress {
   text-align: center;
 }
+
 .loader-container {
   width: 50rem;
   background-color: white;
 }
+
 .loader-view {
   width: 0;
   padding: 1rem 0 0 0;
   background-color: orange;
-  border-radius:0 1rem 1rem 0;
+  border-radius: 0 1rem 1rem 0;
   transition: 0.1s linear;
 }
+
 .show-timeout {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .success-message {
   color: green;
   font-size: 1.5rem;
   font-weight: 600;
 }
+
 .thanks-message {
   color: var(--color);
   font-size: 1.5rem;
   font-weight: 600;
 }
+
 .tag-email {
-    background-color: var(--background);
-    color: var(--color);
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    width: fit-content;
+  background-color: var(--background);
+  color: var(--color);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: fit-content;
 }
+
 .tag-email fa-icon {
-    padding-left: 0.5rem ;
+  padding-left: 0.5rem;
 }
+
 .tag-email fa-icon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
-.submit-button{
+
+.submit-button {
   display: none;
 }
+
 .list-span {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    max-height: 5rem;
-    overflow-y: auto;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  max-height: 5rem;
+  overflow-y: auto;
 }
 
 .deleteFile {
-    padding: 1rem;
-    border-radius: 1rem;
-    background-color: var(--color);
-    color: var(--background);
-    font-weight: 600;
-    border: 0.2rem solid var(--background);
-    margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color);
+  color: var(--background);
+  font-weight: 600;
+  border: 0.2rem solid var(--background);
+  margin: 0.5rem;
 }
+
 .deleteFile:hover {
-    cursor: pointer;
-    background-color: var(--background);
-    color: var(--color);
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--color);
 }
 
 @media screen and (max-width: 970px) {
@@ -269,44 +311,55 @@ label {
     flex-direction: column;
     gap: 2rem;
   }
+
   .list-file {
     width: 80%;
   }
+
   .card-left, .card-middle, .card-right {
     width: 80vw;
     height: 28rem !important;
     min-height: inherit;
   }
+
   #file-input {
     height: 25rem;
   }
+
   .container {
     width: 100%;
     height: 100%;
     margin: 9.99rem auto;
   }
 }
-@media screen and (max-width: 426px){
-    .card-left, .card-middle, .card-right {
+
+@media screen and (max-width: 426px) {
+  .card-left, .card-middle, .card-right {
     min-width: auto;
     height: 30rem !important;
     width: 93vw;
-    }
+  }
+
   .form-sender {
     width: 100%;
   }
+
   .input-textarea, .input-text {
     width: 100%;
   }
+
   .list-email {
     width: 100%;
   }
+
   p {
     text-align: center;
   }
+
   .card-right {
     padding: 1rem;
   }
+
   .list-file {
     width: 100%;
   }

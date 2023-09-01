@@ -7,13 +7,15 @@
   border-radius: 1rem;
   color: var(--background);
 }
+
 .container-loader {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.img-loader{
+
+.img-loader {
   width: 10rem;
   height: 10rem;
   display: flex;
@@ -21,11 +23,13 @@
   align-items: center;
   animation: spinner 3s linear infinite;
 }
+
 app-settings-navbar {
   height: 100%;
   display: flex;
   align-items: center;
 }
+
 .container-transfer {
   position: relative;
   display: flex;
@@ -41,14 +45,17 @@ app-settings-navbar {
   border-radius: 1rem;
   overflow-x: auto;
 }
-.transfer{
-  width : 30rem;
+
+.transfer {
+  width: 30rem;
   border-radius: 1rem;
 }
+
 .no-data {
   font-size: 2rem;
   color: var(--color);
 }
+
 .transfer-component {
   margin: 1rem 1rem 1rem 0.5rem;
   display: flex;
@@ -58,9 +65,11 @@ app-settings-navbar {
   border-radius: 1rem;
   background-color: var(--color);
 }
+
 .transfer-link {
   text-decoration: none;
 }
+
 .transfer-button {
   width: fit-content;
   margin: auto;
@@ -72,35 +81,42 @@ app-settings-navbar {
   color: var(--background);
   background-color: transparent;
 }
+
 .transfer-button:hover {
   cursor: pointer;
   background-color: var(--background);
   color: var(--color);
 }
+
 @media screen and (max-width: 1020px) {
   app-settings-navbar {
     justify-content: center;
   }
+
   .container-settings {
     flex-direction: column;
     height: auto;
   }
+
   .container-transfer {
-     min-height: 15rem;
+    min-height: 15rem;
     margin: 2rem auto;
     width: 90%;
     max-height: 20rem;
     scroll-behavior: smooth;
   }
+
   .transfer {
     width: 100%;
   }
 }
+
 @media screen and (max-width: 450px) {
   .container-settings {
     width: 100%;
   }
 }
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);

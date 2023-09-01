@@ -11,9 +11,9 @@
 
   <ul class="nav-list" [ngClass]="navbarToggleValue">
 
-<div class="block">
+    <div class="block">
 
-       <li class="nav-element">
+      <li class="nav-element">
         <a class="nav-link" (click)="openMenu()" routerLink="/accueil" routerLinkActive="active">
           Home
         </a>
@@ -31,26 +31,28 @@
     <div class="block logo">
 
       <li class="nav-element">
-      <a class="" (click)="openMenu()" routerLink="/accueil">
-        <img class="nav-logo" [src]="imgTheme" alt="logo T-flow">
-      </a>
-    </li>
+        <a class="" (click)="openMenu()" routerLink="/accueil">
+          <img class="nav-logo" [src]="imgTheme" alt="logo T-flow">
+        </a>
+      </li>
 
     </div>
 
     <div class="block">
 
-    <li class="nav-element">
+      <li class="nav-element">
 
-      <a class="nav-link" (click)="openMenu()" routerLink="/se-connecter" routerLinkActive="active" *ngIf="!isAuthenticated">
-        Se connecter
-      </a>
+        <a class="nav-link" (click)="openMenu()" routerLink="/se-connecter" routerLinkActive="active"
+           *ngIf="!isAuthenticated">
+          Se connecter
+        </a>
 
-      <a class="nav-link" (click)="openMenu()" routerLink="/reglages/mon-compte" routerLinkActive="active" *ngIf="isAuthenticated">
-        Réglages
-      </a>
+        <a class="nav-link" (click)="openMenu()" routerLink="/reglages/mon-compte" routerLinkActive="active"
+           *ngIf="isAuthenticated">
+          Réglages
+        </a>
 
-    </li>
+      </li>
 
     </div>
 

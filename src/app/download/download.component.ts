@@ -4,7 +4,6 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
-import {LocalStorageService} from "../../services/local-storage/local-storage.service";
 
 @Component({
   selector: 'app-download',
@@ -18,13 +17,12 @@ export class DownloadComponent implements OnInit {
     private httpClient: HttpClientService,
     private router: Router,
     private flashMessageService: FlashMessageService,
-    private localStorageService: LocalStorageService
   ) {
   }
 
   folderUrl: string = '';
   accessKey: string = '';
-  folder : FolderInterface = {
+  folder: FolderInterface = {
     id: '',
     folderName: '',
     folderSize: 0,
@@ -51,7 +49,7 @@ export class DownloadComponent implements OnInit {
       this.accessKey = params['accessKey'];
     });
 
-     this.httpClient.getAFolderByUrl(environment.apiURL + 'folder/url/' + this.folderUrl).subscribe({
+    this.httpClient.getAFolderByUrl(environment.apiURL + 'folder/url/' + this.folderUrl).subscribe({
 
       next: (folder) => {
         this.loading = false;
@@ -67,35 +65,33 @@ export class DownloadComponent implements OnInit {
         }
 
       }, error: (err) => {
-         console.log(err);
+        console.log(err);
 
       }
 
     });
 
 
-
-
   }
 
   downloadFile() {
 
-      this.httpClient.downloadFolder(environment.apiURL + 'folder/download/' + this.folderUrl + '?accessKey=' + this.accessKey)
-        .subscribe( (data: Blob) => {
+    this.httpClient.downloadFolder(environment.apiURL + 'folder/download/' + this.folderUrl + '?accessKey=' + this.accessKey)
+      .subscribe((data: Blob) => {
 
-            const blob = new Blob([data], {type: 'application/zip'});
-            const url = window.URL.createObjectURL(blob);
-            window.fetch(url).then(res => res.blob()).then(blob => {
-              const link = document.createElement('a');
-              link.href = window.URL.createObjectURL(blob);
-              link.download = this.folder.folderName + '.zip';
-              link.click();
-            })
-            this.router.navigate(['/accueil']).then(() => {
-              this.flashMessageService.addMessage(`Le téléchargement a commencé`, 'success', 4000);
-            });
-
+        const blob = new Blob([data], {type: 'application/zip'});
+        const url = window.URL.createObjectURL(blob);
+        window.fetch(url).then(res => res.blob()).then(blob => {
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = this.folder.folderName + '.zip';
+          link.click();
+        })
+        this.router.navigate(['/accueil']).then(() => {
+          this.flashMessageService.addMessage(`Le téléchargement a commencé`, 'success', 4000);
         });
+
+      });
 
   }
 

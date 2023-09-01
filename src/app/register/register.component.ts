@@ -7,7 +7,6 @@ import {Router} from "@angular/router";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {OAuthEvent, OAuthService} from "angular-oauth2-oidc";
 import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
-import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {environment} from "../../environments/environment";
 
@@ -16,7 +15,7 @@ import {environment} from "../../environments/environment";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
 
   faEye: IconDefinition = faEye;
   faEyeSlash: IconDefinition = faEyeSlash;
@@ -37,7 +36,6 @@ export class RegisterComponent implements OnInit{
     private googleSsoService: GoogleSsoService,
     private httpService: HttpClientService,
     private cookiesService: CookiesService,
-    private jwtService: JwtTokenService
   ) {
   }
 

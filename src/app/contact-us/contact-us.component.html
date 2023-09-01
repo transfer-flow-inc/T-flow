@@ -1,12 +1,19 @@
 <section class="container">
 
-  <h1 class="contact-title">Nous contacter</h1>
+  <div class="container-text">
 
-  <p class="contact-text">Nous sommes là pour simplifier vos transferts de fichiers, que ce soit pour des documents importants,
-    des médias volumineux, ou tout autre contenu numérique. Notre équipe dévouée est prête à vous guider à travers chaque étape du processus.
-    N'hésitez pas à nous contacter pour toute question, préoccupation ou demande spéciale liée au transfert de fichiers.
-    Votre tranquillité d'esprit est notre priorité.
-  </p>
+    <h1 class="contact-title">Nous contacter</h1>
+
+    <p class="contact-text">Nous sommes là pour simplifier vos transferts de fichiers, que ce soit pour des documents
+      importants,
+      des médias volumineux, ou tout autre contenu numérique. Notre équipe dévouée est prête à vous guider à travers
+      chaque étape du processus.
+      N'hésitez pas à nous contacter pour toute question, préoccupation ou demande spéciale liée au transfert de
+      fichiers.
+      Votre tranquillité d'esprit est notre priorité.
+    </p>
+
+  </div>
 
   <form class="contact-form"
         #loginForm="ngForm"
@@ -39,15 +46,15 @@
     >
 
     <textarea
-        class="contact-textarea"
-        rows="5"
-        placeholder="Votre message :"
-        [(ngModel)]="messageValue"
-        [class.invalid]="message.invalid && (message.dirty || message.touched)"
-        [class.valid]="message.valid"
-        #message="ngModel"
-        name="message"
-        required
+      class="contact-textarea"
+      rows="5"
+      placeholder="Votre message :"
+      [(ngModel)]="messageValue"
+      [class.invalid]="message.invalid && (message.dirty || message.touched)"
+      [class.valid]="message.valid"
+      #message="ngModel"
+      name="message"
+      required
     >
     </textarea>
     <p [class.invalid]="message.invalid && (message.dirty || message.touched)"
