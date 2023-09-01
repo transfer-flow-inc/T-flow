@@ -1,7 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
-import {DOCUMENT} from "@angular/common";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {FooterComponent} from "../footer/footer.component";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
@@ -28,10 +27,9 @@ export class NavbarComponent implements OnInit {
   iconShow: string = 'show';
 
   constructor(
-              private httpClientService: HttpClientService,
-              private themeService: ThemeServiceService,
-              private footer: FooterComponent,
-              private localStorage : LocalStorageService
+    private httpClientService: HttpClientService,
+    private themeService: ThemeServiceService,
+    private footer: FooterComponent,
   ) {
   }
 

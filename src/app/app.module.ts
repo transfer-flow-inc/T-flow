@@ -16,67 +16,66 @@ import {RegisterComponent} from './register/register.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { SettingsNavbarComponent } from './settings-navbar/settings-navbar.component';
-import { SettingsMyAccountComponent } from './settings-my-account/settings-my-account.component';
-import { SettingsSubscriptionComponent } from './settings-subscription/settings-subscription.component';
-import { LogoutComponent } from './logout/logout.component';
+import {SettingsNavbarComponent} from './settings-navbar/settings-navbar.component';
+import {SettingsMyAccountComponent} from './settings-my-account/settings-my-account.component';
+import {SettingsSubscriptionComponent} from './settings-subscription/settings-subscription.component';
+import {LogoutComponent} from './logout/logout.component';
 import {FlashMessageService} from "../services/flash-message/flash-message.service";
 import {OAuthModule} from "angular-oauth2-oidc";
-import { SettingsAllTransferComponent } from './settings-all-transfer/settings-all-transfer.component';
-import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
-import { DownloadComponent } from './download/download.component';
-import { FlashMessageComponent } from './flash-message/flash-message.component';
-import { CookiesConsentComponent } from './cookies-consent/cookies-consent.component';
-import { cookieConfig } from './cookies-consent/cookies-consent.component';
-import { SettingsAdminPanelComponent } from './settings-admin-panel/settings-admin-panel.component';
-import { FooterComponent } from './footer/footer.component';
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import { ValidateEmailComponent } from './validate-email/validate-email.component';
+import {SettingsAllTransferComponent} from './settings-all-transfer/settings-all-transfer.component';
+import {SubscriptionsComponent} from './subscriptions/subscriptions.component';
+import {DownloadComponent} from './download/download.component';
+import {FlashMessageComponent} from './flash-message/flash-message.component';
+import {cookieConfig, CookiesConsentComponent} from './cookies-consent/cookies-consent.component';
+import {SettingsAdminPanelComponent} from './settings-admin-panel/settings-admin-panel.component';
+import {FooterComponent} from './footer/footer.component';
+import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component';
+import {ValidateEmailComponent} from './validate-email/validate-email.component';
 import {HttpInterceptorService} from "../services/http-interceptor/http-interceptor.service";
-import { AboutComponent } from './about/about.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
+import {AboutComponent} from './about/about.component';
+import {ContactUsComponent} from './contact-us/contact-us.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NavbarComponent,
-        HomepageComponent,
-        CguComponent,
-        NotFoundComponent,
-        TransferComponent,
-        LoginComponent,
-        RegisterComponent,
-        SettingsNavbarComponent,
-        SettingsMyAccountComponent,
-        SettingsSubscriptionComponent,
-        LogoutComponent,
-        SettingsAllTransferComponent,
-        SubscriptionsComponent,
-        DownloadComponent,
-        FlashMessageComponent,
-        CookiesConsentComponent,
-        SettingsAdminPanelComponent,
-        FooterComponent,
-        PrivacyPolicyComponent,
-        ValidateEmailComponent,
-        AboutComponent,
-        ContactUsComponent,
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        NgcCookieConsentModule.forRoot(cookieConfig),
-        NgOptimizedImage,
-        FontAwesomeModule,
-        FormsModule,
-        FileUploadModule,
-        HttpClientModule,
-        OAuthModule.forRoot(),
-    ],
-    providers: [FlashMessageService, NavbarComponent, FooterComponent,
-      { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },],
-    bootstrap: [AppComponent, FooterComponent]
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomepageComponent,
+    CguComponent,
+    NotFoundComponent,
+    TransferComponent,
+    LoginComponent,
+    RegisterComponent,
+    SettingsNavbarComponent,
+    SettingsMyAccountComponent,
+    SettingsSubscriptionComponent,
+    LogoutComponent,
+    SettingsAllTransferComponent,
+    SubscriptionsComponent,
+    DownloadComponent,
+    FlashMessageComponent,
+    CookiesConsentComponent,
+    SettingsAdminPanelComponent,
+    FooterComponent,
+    PrivacyPolicyComponent,
+    ValidateEmailComponent,
+    AboutComponent,
+    ContactUsComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    NgcCookieConsentModule.forRoot(cookieConfig),
+    NgOptimizedImage,
+    FontAwesomeModule,
+    FormsModule,
+    FileUploadModule,
+    HttpClientModule,
+    OAuthModule.forRoot(),
+  ],
+  providers: [FlashMessageService, NavbarComponent, FooterComponent,
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},],
+  bootstrap: [AppComponent, FooterComponent]
 })
 export class AppModule {
 

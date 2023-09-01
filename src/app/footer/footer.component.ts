@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 import {LocalStorageService} from "../../services/local-storage/local-storage.service";
 
@@ -10,12 +10,13 @@ import {LocalStorageService} from "../../services/local-storage/local-storage.se
 })
 export class FooterComponent implements OnInit {
 
-  imgTheme : string = '';
+  imgTheme: string = '';
 
   constructor(
-    private themeService : ThemeServiceService,
-    private localStorage : LocalStorageService,
-  ) {}
+    private themeService: ThemeServiceService,
+    private localStorage: LocalStorageService,
+  ) {
+  }
 
   ngOnInit(): void {
 
@@ -33,9 +34,6 @@ export class FooterComponent implements OnInit {
 
 
   }
-
-
-
 
 
 }

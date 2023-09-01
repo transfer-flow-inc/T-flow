@@ -1,5 +1,5 @@
-import {Injectable, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {BehaviorSubject, Observable} from "rxjs";
 import {CookiesService} from "../cookies/cookies.service";
@@ -7,13 +7,12 @@ import {Router} from "@angular/router";
 import {FlashMessageService} from "../flash-message/flash-message.service";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interface";
-import {GoogleSsoService} from "../sso/Google/google-sso.service";
 import {OAuthService} from "angular-oauth2-oidc";
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpClientService{
+export class HttpClientService {
 
   isAuthenticated = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticated.asObservable();
@@ -31,9 +30,6 @@ export class HttpClientService{
   }
 
 
-
-
-
   login(url: string, email: string, password: string) {
     return this.httpClient.post<TokenInterface>(url, {email, password});
   }
@@ -47,16 +43,16 @@ export class HttpClientService{
   }
 
   logout() {
-      window.sessionStorage.clear();
-      this.cookiesService.delete('token');
-      this.isAuthenticated.next(false);
-      this.oAuthService.logOut();
-      this.router.navigate(['/accueil']).then(() => {
-        this.flashMessageService.addMessage(`Vous vous êtes déconnecté avec succès`, 'success', 4000);
-      });
+    window.sessionStorage.clear();
+    this.cookiesService.delete('token');
+    this.isAuthenticated.next(false);
+    this.oAuthService.logOut();
+    this.router.navigate(['/accueil']).then(() => {
+      this.flashMessageService.addMessage(`Vous vous êtes déconnecté avec succès`, 'success', 4000);
+    });
   }
 
-  createFolder(url: string, folder : CreateFolderInterface){
+  createFolder(url: string, folder: CreateFolderInterface) {
     return this.httpClient.post<FolderInterface>(url, folder);
   }
 

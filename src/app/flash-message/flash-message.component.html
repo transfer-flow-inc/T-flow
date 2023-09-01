@@ -1,7 +1,8 @@
-<div (click)="deleteFlashMessageWithoutService(flashMessage)" class="flash" [ngClass]="flashMessage.type" *ngIf="flashMessage">
+<div (click)="deleteFlashMessageWithoutService(flashMessage)" class="flash" [ngClass]="flashMessage.type"
+     *ngIf="flashMessage">
   <p class="flash-message" *ngIf="flashMessage.message">
     {{flashMessage.message}}
   </p>
 
-    <div *ngIf="flashMessage.message" class="flash-timer" [style.width.%]="flashMessageWidth"></div>
+  <div *ngIf="flashMessage.message" class="flash-timer" [style.width.%]="flashMessageWidth"></div>
 </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {filter, map} from 'rxjs';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
@@ -6,8 +6,6 @@ import {DOCUMENT} from "@angular/common";
 import {CookiesService} from "../services/cookies/cookies.service";
 import {HttpClientService} from "../services/httpClient/http-client.service";
 import {JwtTokenService} from "../services/jwt-token/jwt-token.service";
-import {GoogleSsoService} from "../services/sso/Google/google-sso.service";
-import {ThemeServiceService} from "../services/theme-service/theme-service.service";
 import {LocalStorageService} from "../services/local-storage/local-storage.service";
 import {FooterComponent} from "./footer/footer.component";
 
@@ -19,8 +17,6 @@ import {FooterComponent} from "./footer/footer.component";
 export class AppComponent implements OnInit {
 
 
-
-
   constructor(
     private myCookieService: CookiesService,
     private httpClientService: HttpClientService,
@@ -29,7 +25,6 @@ export class AppComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private route: ActivatedRoute,
-    private themeService: ThemeServiceService,
     private localStorage: LocalStorageService,
     private footerComponent: FooterComponent,
     @Inject(DOCUMENT) private document: Document
@@ -41,11 +36,12 @@ export class AppComponent implements OnInit {
     if (this.myCookieService.get('token') && !this.httpClientService.isAuthenticated.value) {
       this.jwtService.setToken(this.myCookieService.get('token'));
       this.httpClientService.isAuthenticated.next(true);
-      if(this.jwtService.isTokenExpired()){
-      window.sessionStorage.clear();
-      this.cookiesService.delete('token');
-      this.httpClientService.isAuthenticated.next(false);
-      this.router.navigate(['/accueil']).then(() => {});
+      if (this.jwtService.isTokenExpired()) {
+        window.sessionStorage.clear();
+        this.cookiesService.delete('token');
+        this.httpClientService.isAuthenticated.next(false);
+        this.router.navigate(['/accueil']).then(() => {
+        });
       }
     } else {
       this.httpClientService.isAuthenticated.next(false);

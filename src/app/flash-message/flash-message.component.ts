@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {FlashMessage} from "../../interfaces/Flash-message/flash-message-interface";
 
@@ -46,7 +46,7 @@ export class FlashMessageComponent implements OnInit {
       const progress = Math.max(0, Math.min(1.15, elapsed / this.flashMessageDuration));
       this.flashMessageWidth = 100 - (progress * 100);
 
-      if (progress < 1.15  ) {
+      if (progress < 1.15) {
         requestAnimationFrame(animate);
       } else {
         this.flashMessageService.deleteFlashMessage(this.flashMessage);

@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {
-  NgcCookieConsentConfig,
-  NgcCookieConsentService,
-} from "ngx-cookieconsent";
+import {NgcCookieConsentConfig, NgcCookieConsentService,} from "ngx-cookieconsent";
 import {environment} from "../../environments/environment";
 
 export const cookieConfig: NgcCookieConsentConfig = {

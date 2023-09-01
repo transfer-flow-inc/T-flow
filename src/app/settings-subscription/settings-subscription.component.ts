@@ -9,7 +9,7 @@ import {UserInterface} from "../../interfaces/User/user-interface";
   templateUrl: './settings-subscription.component.html',
   styleUrls: ['./settings-subscription.component.css']
 })
-export class SettingsSubscriptionComponent implements OnInit{
+export class SettingsSubscriptionComponent implements OnInit {
 
   user: UserInterface = {
     id: 0,
@@ -29,7 +29,9 @@ export class SettingsSubscriptionComponent implements OnInit{
     private jwtService: JwtTokenService,
     private cookiesService: CookiesService,
     private router: Router
-  ) {}
+  ) {
+  }
+
   ngOnInit(): void {
 
     let token = this.cookiesService.get('token');
@@ -41,7 +43,7 @@ export class SettingsSubscriptionComponent implements OnInit{
     this.jwtService.setToken(token);
 
     if (this.jwtService.getUserPlan() === "FREE") {
-    this.user.plan = "Vous n'avez pas d'abonnement actif";
+      this.user.plan = "Vous n'avez pas d'abonnement actif";
     } else if (this.jwtService.getUserPlan() === "PREMIUM") {
       this.user.plan = "Premium";
     } else if (this.jwtService.getUserPlan() === "ULTIMATE") {
@@ -49,7 +51,6 @@ export class SettingsSubscriptionComponent implements OnInit{
     }
 
   }
-
 
 
 }

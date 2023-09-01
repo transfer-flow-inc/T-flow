@@ -51,11 +51,9 @@ export class TransferComponent implements OnInit {
   ) {
     this.uploader = new FileUploader({
       url: environment.apiURL + 'file/',
-
     });
 
     this.uploader.onProgressAll = (progress: any) => {
-
 
       this.loaderProgress = progress;
       if (this.loaderProgress === 100) {
@@ -66,7 +64,6 @@ export class TransferComponent implements OnInit {
           this.showTimeout = false;
         }, 1500)
       } else {
-        // add a delay to show the loader
 
         this.showOrUpload = 'hide';
 

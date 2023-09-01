@@ -34,12 +34,14 @@ body.dark.nav-link::before {
   position: relative;
   background-color: transparent !important;
 }
+
 .block {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
+
 .nav-link:hover {
   color: orange;
 }
@@ -61,6 +63,7 @@ body.dark.nav-link::before {
 .nav-logo {
   height: 4rem;
 }
+
 .block {
   width: calc(100% / 3);
 }
@@ -106,6 +109,7 @@ body.dark.nav-link::before {
 .icon:hover {
   cursor: pointer;
 }
+
 .popup-help {
   border-radius: 1rem;
   font-size: 1rem;
@@ -322,7 +326,7 @@ label.tgl-btn {
     border-bottom: var(--color) solid 0.1rem;
     width: 100%;
     margin: 0;
-    position:absolute;
+    position: absolute;
     z-index: 1;
     padding: 2rem;
   }

@@ -9,6 +9,7 @@
   border-radius: 1rem;
   background-color: var(--color);
 }
+
 .section-left {
   height: 100%;
   width: 50%;
@@ -17,6 +18,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .section-right {
   height: 100%;
   width: 50%;
@@ -25,30 +27,35 @@
   align-items: center;
   justify-content: center;
 }
+
 .credential-error {
   color: red;
   font-weight: 600;
 }
+
 .form-left {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .form-input {
-    font-size: 1rem;
-    width: 19rem;
-    height: 3.5rem;
-    padding: 1rem 1.5rem;
-    margin: 0.6rem;
-    border: 0;
-    border-bottom: 0.1rem solid #212121;
-    -webkit-appearance: none;
-    border-radius: 0;
+  font-size: 1rem;
+  width: 19rem;
+  height: 3.5rem;
+  padding: 1rem 1.5rem;
+  margin: 0.6rem;
+  border: 0;
+  border-bottom: 0.1rem solid #212121;
+  -webkit-appearance: none;
+  border-radius: 0;
 }
+
 .form-input:focus {
   outline: none;
 }
+
 .form-button {
   width: 70%;
   margin-top: 1rem;
@@ -59,15 +66,18 @@
   color: var(--background);
   background-color: transparent;
 }
+
 .form-button:hover {
   background-color: var(--background);
   color: var(--color);
 }
+
 .no-account {
-  font-size: 1rem ;
+  font-size: 1rem;
   margin-top: 1rem;
   color: var(--background);
 }
+
 .condition {
   display: flex;
   align-items: center;
@@ -76,24 +86,30 @@
   margin: 1.3rem 0;
   color: var(--background);
 }
+
 .link-cgu {
   color: var(--background);
 }
+
 .invalid {
   border-bottom: 0.2rem solid red;
 }
+
 .valid {
   border-bottom: 0.2rem solid green;
 }
+
 .valid.form-button {
   border-bottom: 0.2rem solid var(--background);
   cursor: pointer;
 }
+
 .invalid.form-button {
   background-color: grey;
   border-bottom: 0.2rem solid var(--background);
   cursor: not-allowed;
 }
+
 .sso-login {
   color: var(--background);
   display: flex;
@@ -109,20 +125,25 @@
   border: 0.2rem solid var(--background);
   border-radius: 0.5rem;
 }
+
 .sso-login:hover {
   background-color: var(--background);
   color: var(--color);
 }
+
 .sso-login img.sso-apple {
   filter: var(--filter-login);
 }
+
 .sso-login:hover img.sso-apple {
   filter: var(--filter-login-reverse);
 }
+
 .password-container {
   position: relative;
   width: fit-content;
 }
+
 .eyes {
   color: #212121;
   position: absolute;
@@ -131,36 +152,44 @@
   cursor: pointer;
   font-size: 1.5rem;
 }
+
 .sso-img {
   height: 2rem;
   width: 2rem;
   object-fit: contain;
 }
+
 .sso-text {
   margin: auto;
 }
+
 .text-center {
   text-align: center;
 }
+
 hr {
   all: initial;
 }
+
 .vertical-line {
   margin: auto !important;
   height: 10rem !important;
   width: 0 !important;
   border: 0.01rem solid var(--background) !important;
 }
+
 .section-center {
   display: flex;
   flex-direction: column;
 }
+
 .or {
   font-size: 1.3rem;
   font-weight: 800;
   margin: 1rem;
   color: var(--background);
 }
+
 .text-condition {
   color: var(--background);
   display: flex;
@@ -168,6 +197,7 @@ hr {
   gap: 0.5rem;
   margin: 0.5rem;
 }
+
 .input-checkbox {
   -webkit-appearance: none;
   appearance: none;
@@ -183,100 +213,122 @@ hr {
   display: grid;
   place-content: center;
 }
+
 h1 {
-text-align: center;
-margin: 1rem;
-color: var(--background);
+  text-align: center;
+  margin: 1rem;
+  color: var(--background);
 }
+
 .input-checkbox::before {
-    content: "";
-    width: 0.65em;
-    height: 0.65em;
-    transform: scale(0);
-    box-shadow: inset 1em 1em red;
-    transition: 120ms transform ease-in-out;
-    transform-origin: bottom left;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  box-shadow: inset 1em 1em red;
+  transition: 120ms transform ease-in-out;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
+
 .input-checkbox:checked::before {
-    transform: scale(1);
-    box-shadow: inset 1em 1em green;
+  transform: scale(1);
+  box-shadow: inset 1em 1em green;
 }
+
 .remplir {
   width: fit-content;
 }
+
 .input-checkbox:checked {
-    border-color: green !important;
+  border-color: green !important;
 }
+
 .title {
   margin: 0 auto;
   color: var(--color);
   text-align: center;
 }
-  .sso-login:hover {
-    cursor: pointer;
-  }
-@media screen and (max-width: 1023px){
+
+.sso-login:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
 
   * {
     width: auto;
     height: auto;
   }
+
   .section-login {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     width: 95vw;
   }
+
   .section-center {
     rotate: 90deg;
     margin: -10rem;
   }
+
   .form-input {
     width: 20rem;
   }
+
   .form-button {
     width: fit-content;
   }
+
   .sso-login {
     width: 20rem;
   }
+
   .no-account {
     text-align: center;
   }
+
   .section-login {
     height: fit-content;
   }
+
   .or {
     rotate: -90deg;
     text-align: center;
   }
+
   .section-right {
     width: 100%;
   }
+
   .section-left {
     width: 100%;
   }
+
   .form-left {
     width: 100%;
   }
 
 }
 
-@media screen and (max-width: 426px){
+@media screen and (max-width: 426px) {
   .form-input {
     width: 15rem;
   }
+
   .sso-login {
     min-width: 15rem !important;
     width: 15rem;
     font-size: 0.8rem;
   }
-  .section-center{
+
+  .section-center {
     all: unset;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .or {
     rotate: initial;
     display: block;
@@ -285,6 +337,7 @@ color: var(--background);
     z-index: 1;
     padding: 2rem;
   }
+
   .vertical-line {
     border: 0.1rem solid #212121;
     margin: auto;
@@ -292,6 +345,7 @@ color: var(--background);
     rotate: 90deg;
     z-index: 0;
   }
+
   .title {
     font-size: 1rem;
   }

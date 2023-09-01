@@ -20,7 +20,8 @@
         <p class="error-email" *ngIf="isEmailAlreadyExist">Cette adresse email est déjà enregistrée</p>
       </div>
       <input class="input-text" [(ngModel)]="folderName" name="folderName" placeholder="Nom du dossier :">
-      <textarea [(ngModel)]="message" name="message" class="input-textarea" [rows]="3" [cols]="3" placeholder="Votre message :"></textarea>
+      <textarea [(ngModel)]="message" name="message" class="input-textarea" [rows]="3" [cols]="3"
+                placeholder="Votre message :"></textarea>
       <button *ngIf="uploader.queue.length > 0 && emails.length > 0" class="btn-send" type="submit">Envoyer</button>
     </form>
 
@@ -29,7 +30,7 @@
   <div ng2FileDrop
        [uploader]="uploader"
        class="drop card card-middle"
-        *ngIf="emails.length > 0"
+       *ngIf="emails.length > 0"
        [@fileCard]
   >
     <input type="file" id="file-input" (onFileSelected)="calculateSizeAllFile()" class="upload" ng2FileSelect
@@ -65,9 +66,7 @@
   </div>
 
 
-
 </section>
-
 
 
 <div class="loader" *ngIf="loaderProgress > 0">

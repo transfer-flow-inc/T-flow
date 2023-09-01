@@ -1,19 +1,20 @@
 <section class="container-settings unselectable">
 
-<app-settings-navbar></app-settings-navbar>
+  <app-settings-navbar></app-settings-navbar>
 
 
   <section class="section-settings">
 
     <section class="container-plan">
 
-    <p *ngIf="user.plan != 'Vous n\'avez pas d\'abonnement actif'">Votre abonnement actuel est : {{user.plan}}</p>
+      <p *ngIf="user.plan != 'Vous n\'avez pas d\'abonnement actif'">Votre abonnement actuel est : {{user.plan}}</p>
 
-    <p *ngIf="user.plan == 'Vous n\'avez pas d\'abonnement actif'">Vous n'avez pas d'abonnement actif</p>
+      <p *ngIf="user.plan == 'Vous n\'avez pas d\'abonnement actif'">Vous n'avez pas d'abonnement actif</p>
 
-    <a routerLink="/tout-les-abonnements" class="user-button" *ngIf="user.plan != 'Ultimate'">Voir les abonnements disponibles</a>
+      <a routerLink="/tout-les-abonnements" class="user-button" *ngIf="user.plan != 'Ultimate'">Voir les abonnements
+        disponibles</a>
+
+    </section>
+
 
   </section>
-
-
-</section>

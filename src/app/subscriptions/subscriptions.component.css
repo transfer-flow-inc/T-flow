@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .card {
   padding: 1rem;
   width: 25rem;
@@ -18,27 +19,32 @@
   flex-direction: column;
   justify-content: space-around;
 }
+
 .title {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 1rem;
   text-align: center;
 }
+
 .price {
   text-align: center;
   font-weight: 800;
   font-size: 1.5rem;
 }
+
 .list-option {
-list-style: none;
+  list-style: none;
 
 }
+
 .list-element {
   display: flex;
   align-items: center;
   margin: 1rem;
   font-size: 1rem;
 }
+
 span {
   margin: auto 1rem;
 }
@@ -47,6 +53,7 @@ span {
   margin: 1rem;
   text-align: center;
 }
+
 .subscription-button {
   width: max-content;
   padding: 1rem 2rem;
@@ -59,27 +66,34 @@ span {
   color: var(--background);
   text-decoration: none;
 }
+
 .subscription-button:hover {
   background-color: var(--background);
   color: var(--color);
 }
-@media screen and (max-width: 426px ){
+
+@media screen and (max-width: 426px ) {
   .card {
     width: 20rem;
     height: fit-content;
   }
+
   .title {
     font-size: 1.2rem;
   }
+
   .price {
     font-size: 1.2rem;
   }
+
   .list-element {
     font-size: 1rem;
   }
+
   .description {
     font-size: 1rem;
   }
+
   .subscription-button {
     margin-top: 2rem;
     position: relative;

@@ -1,12 +1,12 @@
-
 <section class="section-login">
 
 
   <section class="section-left">
 
 
- <h1 class="unselectable">Se connecter</h1>
-    <p class="need-validation" *ngIf="needValidation">Votre compte est en attente de validation veuillez verifier vos mails</p>
+    <h1 class="unselectable">Se connecter</h1>
+    <p class="need-validation" *ngIf="needValidation">Votre compte est en attente de validation veuillez verifier vos
+      mails</p>
 
     <form class="form-left" method="POST" #loginForm="ngForm" (submit)="login()">
 
@@ -24,7 +24,7 @@
              email
       >
 
-<section class="password-container">
+      <section class="password-container">
 
         <input [type]="showPassword ? 'text' : 'password'"
                [(ngModel)]="passwordValue"
@@ -39,8 +39,10 @@
                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}"
                required
         >
-        <a (click)="showPassword = !showPassword"><fa-icon class="eyes" [icon]="showPassword ? faEyeSlash : faEye" ></fa-icon></a>
-        </section>
+        <a (click)="showPassword = !showPassword">
+          <fa-icon class="eyes" [icon]="showPassword ? faEyeSlash : faEye"></fa-icon>
+        </a>
+      </section>
 
 
       <p class="credential-error">{{error}}</p>
@@ -52,20 +54,22 @@
 
               class="form-button unselectable"
               type="submit"
-      >Se connecter</button>
-      <p class="no-account unselectable">Vous n'avez pas de compte ? <a routerLink="/s'inscrire" class="no-account">cliquez ici</a></p>
+      >Se connecter
+      </button>
+      <p class="no-account unselectable">Vous n'avez pas de compte ? <a routerLink="/s'inscrire" class="no-account">cliquez
+        ici</a></p>
 
     </form>
 
   </section>
 
-<section class="section-center">
-  <hr class="vertical-line">
+  <section class="section-center">
+    <hr class="vertical-line">
 
-  <p class="or unselectable">OU</p>
+    <p class="or unselectable">OU</p>
 
-  <hr class="vertical-line">
-</section>
+    <hr class="vertical-line">
+  </section>
 
   <section class="section-right">
 
