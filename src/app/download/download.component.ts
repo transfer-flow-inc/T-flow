@@ -65,7 +65,10 @@ export class DownloadComponent implements OnInit {
         }
 
       }, error: (err) => {
-        console.log(err);
+
+          this.router.navigate(['/accueil']).then(() => {
+            this.flashMessageService.addMessage(`Le dossier est introuvable`, 'error', 4000);
+          });
 
       }
 
