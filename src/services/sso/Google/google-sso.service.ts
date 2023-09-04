@@ -32,13 +32,12 @@ export class GoogleSsoService {
   ) {
     this.oAuthService.configure(oAuthConfig);
     this.oAuthService.loadDiscoveryDocumentAndTryLogin().then();
+
   }
 
   signInWithGoogle() {
 
     this.oAuthService.initImplicitFlow();
-
-
 
   }
 

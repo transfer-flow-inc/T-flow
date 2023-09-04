@@ -1,7 +1,14 @@
-<section class="container">
+<section class="container unselectable">
   <div class="homepage">
     <h1 class="home-title unselectable">{{ homepageTitle }}</h1>
+    <div class="description">
+
+
     <p *ngIf="!isLogged">Vous devez d'abord vous connecter pour transférer des fichiers.</p>
+    <p *ngIf="isLogged" class="slogan"><i>{{ textToShow }}</i></p>
+    <a routerLink="/a-propos" class="button">Nous découvrir</a>
+
+    </div>
   </div>
 </section>
 

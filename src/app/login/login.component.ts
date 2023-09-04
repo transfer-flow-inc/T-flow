@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
               private flashMessageService: FlashMessageService,
               private router: Router,
               private googleSsoService: GoogleSsoService,
-              private oAuthService: OAuthService
+              private oAuthService: OAuthService,
   ) {
   }
 

@@ -24,21 +24,25 @@
 }
 .about-dev {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .about-card {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
   padding: 1rem;
   width: 17rem;
+  height: 25rem;
   border-radius: 1rem;
   border: 0.2rem solid var(--color);
   font-weight: 600;
-  margin: auto;
+  margin: 0.5rem auto;
 }
+
 .card-img {
   width: 10rem;
   height: 10rem;
@@ -51,11 +55,10 @@
   color: #888888;
   margin-bottom: 1rem;
 }
-.about-language {
-  font-weight: unset;
-  text-align: center;
-  color: orange;
-  margin-bottom: 1rem;
+
+.operator {
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 .about-button {
@@ -70,13 +73,39 @@
   background-color: transparent;
   text-decoration: none;
 }
+.tag {
+  padding: 0.3rem 0.5rem;
+  background-color: orange;
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.7rem;
+}
+.list-tag {
+  display: flex;
+  gap: 0.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
 .about-button:hover {
   cursor: pointer;
   background-color: var(--color);
   color: var(--background);
 }
+.about-organization-description {
+  width: 80%;
+  text-align: center;
+  font-weight: 500;
+}
 @media screen and (max-width: 1020px){
   .about-container {
     width: 90vw;
+  }
+  .about-dev {
+    display: flex;
+    flex-direction: column;
+  }
+  .about-organization {
+    width: 17rem;
   }
 }
