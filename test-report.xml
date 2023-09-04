@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\local-storage\local-storage.service.spec.ts">
+    <testCase name="LocalStorageService should be created" duration="21"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\jwt-token\jwt-token.service.spec.ts">
+    <testCase name="JwtTokenService should be created" duration="28"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\http-interceptor\http-interceptor.service.spec.ts">
+    <testCase name="HttpInterceptorService should be created" duration="40"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\theme-service\theme-service.service.spec.ts">
+    <testCase name="ThemeServiceService should be created" duration="33"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\httpClient\http-client.service.spec.ts">
+    <testCase name="HttpClientService should be created" duration="30"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\sso\Google\google-sso.service.spec.ts">
+    <testCase name="GoogleSsoService should be created" duration="39"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\flash-message\flash-message.service.spec.ts">
+    <testCase name="FlashMessageService should be created" duration="36"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\cookies\cookies.service.spec.ts">
+    <testCase name="CookiesService should be created" duration="31"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\autorize-guard\autorize-guard.service.spec.ts">
+    <testCase name="AutorizeGuardService should be created" duration="28"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\admin-autorize-guard\admin-autorize-guard.service.spec.ts">
+    <testCase name="AdminAutorizeGuardService should be created" duration="35"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\validate-email\validate-email.component.spec.ts">
+    <testCase name="ValidateEmailComponent should create" duration="66"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\transfer\transfer.component.spec.ts">
+    <testCase name="TransferComponent should create" duration="162"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\subscriptions\subscriptions.component.spec.ts">
+    <testCase name="SubscriptionsComponent should create" duration="116"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-navbar\settings-navbar.component.spec.ts">
+    <testCase name="SettingsNavbarComponent should create" duration="115"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-all-transfer\settings-all-transfer.component.spec.ts">
+    <testCase name="SettingsAllTransferComponent should create" duration="124"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-subscription\settings-subscription.component.spec.ts">
+    <testCase name="SettingsSubscriptionComponent should create" duration="392"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-my-account\settings-my-account.component.spec.ts">
+    <testCase name="SettingsMyAccountComponent should create" duration="449"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-admin-panel\settings-admin-panel.component.spec.ts">
+    <testCase name="SettingsAdminPanelComponent should create" duration="92"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\register\register.component.spec.ts">
+    <testCase name="RegisterComponent should create" duration="213"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\homepage\homepage.component.spec.ts">
+    <testCase name="HomepageComponent should create" duration="64"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\not-found\not-found.component.spec.ts">
+    <testCase name="NotFoundComponent should create" duration="72"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\navbar\navbar.component.spec.ts">
+    <testCase name="NavbarComponent should create" duration="162"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\logout\logout.component.spec.ts">
+    <testCase name="LogoutComponent should create" duration="290"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\footer\footer.component.spec.ts">
+    <testCase name="FooterComponent should create" duration="63"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\download\download.component.spec.ts">
+    <testCase name="DownloadComponent should create" duration="100"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\login\login.component.spec.ts">
+    <testCase name="LoginComponent should create" duration="187"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\flash-message\flash-message.component.spec.ts">
+    <testCase name="FlashMessageComponent should create" duration="77"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\cookies-consent\cookies-consent.component.spec.ts">
+    <testCase name="CookiesConsentComponent should create" duration="38"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\app.component.spec.ts">
+    <testCase name="AppComponent should create the app" duration="108"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\privacy-policy\privacy-policy.component.spec.ts">
+    <testCase name="PrivacyPolicyComponent should create" duration="124"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\cgu\cgu.component.spec.ts">
+    <testCase name="CguComponent should create" duration="67"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\contact-us\contact-us.component.spec.ts">
+    <testCase name="ContactUsComponent should create" duration="87"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\about\about.component.spec.ts">
+    <testCase name="AboutComponent should create" duration="66"/>
+  </file>
+</testExecutions>
