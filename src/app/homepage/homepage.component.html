@@ -4,7 +4,7 @@
     <div class="description">
 
 
-    <p *ngIf="!isLogged">Vous devez d'abord vous connecter pour transférer des fichiers.</p>
+    <p class="connection" *ngIf="!isLogged">Vous devez d'abord vous connecter pour transférer des fichiers.</p>
     <p *ngIf="isLogged" class="slogan"><i>{{ textToShow }}</i></p>
     <a routerLink="/a-propos" class="button">Nous découvrir</a>
 
