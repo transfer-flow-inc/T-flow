@@ -20,9 +20,7 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.localStorage.get('theme') === undefined) {
-      console.log('theme is undefined');
-    }
+
 
     this.themeService.currentTheme$.subscribe((theme) => {
       if (theme === 'dark') {

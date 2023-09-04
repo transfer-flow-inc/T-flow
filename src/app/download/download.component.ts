@@ -4,6 +4,8 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
+import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
+import {LocalStorageService} from "../../services/local-storage/local-storage.service";
 
 @Component({
   selector: 'app-download',
@@ -17,6 +19,8 @@ export class DownloadComponent implements OnInit {
     private httpClient: HttpClientService,
     private router: Router,
     private flashMessageService: FlashMessageService,
+    private themeService: ThemeServiceService,
+    private localStorage: LocalStorageService,
   ) {
   }
 
@@ -38,10 +42,21 @@ export class DownloadComponent implements OnInit {
   }
   folderSize: string = '';
   loading: boolean = true;
-  loadingImg: string = "assets/images/logo_dark.png";
+  loadingImg: string = "";
+  imgTheme: string = '';
 
 
   ngOnInit() {
+
+    this.themeService.currentTheme$.subscribe((theme) => {
+      if (theme === 'dark') {
+        this.imgTheme = 'assets/images/logo_dark.png';
+        this.loadingImg = 'assets/images/logo_dark.png';
+      } else {
+        this.imgTheme = 'assets/images/logo_light.png';
+        this.loadingImg = 'assets/images/logo_light.png';
+      }
+    });
 
 
     this.route.params.subscribe(params => {
@@ -66,9 +81,11 @@ export class DownloadComponent implements OnInit {
 
       }, error: (err) => {
 
-          this.router.navigate(['/accueil']).then(() => {
-            this.flashMessageService.addMessage(`Le dossier est introuvable`, 'error', 4000);
-          });
+
+        this.router.navigate(['/accueil']).then(() => {
+          this.flashMessageService.addMessage(`Lien de téléchargement est invalide`, 'error', 4000);
+        });
+
 
       }
 
