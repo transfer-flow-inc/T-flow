@@ -37,6 +37,7 @@
   border-radius: 1rem;
   border: 0.2rem solid var(--color);
   font-weight: 600;
+  margin: auto;
 }
 .card-img {
   width: 10rem;
@@ -73,4 +74,9 @@
   cursor: pointer;
   background-color: var(--color);
   color: var(--background);
+}
+@media screen and (max-width: 1020px){
+  .about-container {
+    width: 90vw;
+  }
 }
