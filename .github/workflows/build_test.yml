@@ -20,18 +20,11 @@ jobs:
     - name: Run tests
       run: npm run test
 
-    - name: Build
-      run: npm run build:prod
-
-  code-quality:
-    name: Build
-    runs-on: ubuntu-latest
-    permissions: read-all
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: sonarsource/sonarqube-scan-action@master
-        env:
+    - name: Run Code coverage test & send it to Sonar
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+    - name: Build
+      run: npm run build:prod
