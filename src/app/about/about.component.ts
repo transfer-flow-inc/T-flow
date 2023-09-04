@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {faGithub, IconDefinition} from "@fortawesome/free-brands-svg-icons";
+import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
+import {faGithub} from "@fortawesome/free-brands-svg-icons";
 
 @Component({
   selector: 'app-about',

@@ -10,6 +10,10 @@
   background-color: var(--color);
 }
 
+.link {
+  color: var(--background);
+}
+
 .section-left {
   height: 100%;
   width: 50%;
