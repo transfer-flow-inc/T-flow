@@ -66,7 +66,7 @@ export class SettingsAllTransferComponent implements OnInit {
 
   checkIfFolderIsExpired(folder: FolderInterface) {
     let currentDate = new Date();
-    let folderDate = new Date(folder.expires_at);
+    let folderDate = new Date(folder.expiresAt);
     return folderDate < currentDate;
   }
 

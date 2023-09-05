@@ -22,7 +22,6 @@ export class HttpInterceptorService implements HttpInterceptor {
           "Bearer " + token)
       });
 
-      console.log("token")
       return next.handle(cloned);
     }
 
