@@ -8,6 +8,8 @@ import {FlashMessageService} from "../flash-message/flash-message.service";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interface";
 import {OAuthService} from "angular-oauth2-oidc";
+import {UserInterface} from "../../interfaces/User/user-interface";
+import {UpdateUserInterface} from "../../interfaces/User/update/update-user-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +68,14 @@ export class HttpClientService {
 
   getAllFolderByUserId(url: string) {
     return this.httpClient.get<FolderInterface[]>(url);
+  }
+
+  deleteFolder(url: string) {
+    return this.httpClient.delete(url);
+  }
+
+  updateUser<UpdateUserInterface>(url: string, user: UpdateUserInterface) {
+    return this.httpClient.patch<TokenInterface>(url, {user});
   }
 
   validateEmail(url: string, token: TokenInterface) {

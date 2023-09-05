@@ -5,7 +5,7 @@
 
   <div class="section-settings" *ngIf="!isUpdateUser">
 
-    <img class="img-user" [src]="user.avatar">
+    <img class="img-user" [src]="user.avatar" alt="Image de profil">
     <p *ngIf="asLastname">Nom : {{this.user.lastName}}</p>
     <p>Prénom : {{this.user.firstName}}</p>
     <p>Email : {{this.user.email}}</p>
@@ -17,40 +17,86 @@
 
   </div>
 
-  <form class="update-container" *ngIf="isUpdateUser">
+  <form class="update-container" #updateUser='ngForm' (submit)="submitUpdateUser()" *ngIf="isUpdateUser">
 
     <p>Veuillez modifier uniquement les champs que vous souhaitez</p>
 
     <div class="update-name-container">
 
-    <input class="update-input" type="text" placeholder="Nom" [value]="user.lastName">
+    <input class="update-input"
+           type="text"
+           placeholder="Nom"
+           [(ngModel)]="lastNameValue"
+           [value]="user.lastName"
+           name="lastName"
+           #lastName="ngModel"
+    >
 
-    <input class="update-input" type="text" placeholder="Prénom" [value]="user.firstName">
+    <input class="update-input"
+           type="text"
+           placeholder="Prénom"
+           [(ngModel)]="firstNameValue"
+           [value]="user.firstName"
+           name="firstName"
+           #firstName="ngModel"
+    >
 
     </div>
 
-    <input class="update-input" type="text" placeholder="Email" [value]="user.email">
+    <input class="update-input"
+           type="email"
+           placeholder="Email"
+           [(ngModel)]="emailValue"
+           [value]="user.email"
+           name="email"
+           #email="ngModel"
+           email
+    >
 
     <section class="password-container">
 
-        <input class="update-input" [type]="showOldPassword ? 'text' : 'password'" placeholder="Ancien mot de passe">
-        <a (click)="showOldPassword = !showOldPassword">
+        <input class="update-input"
+               [type]="showOldPassword ? 'text' : 'password'"
+               placeholder="Ancien mot de passe"
+               [(ngModel)]="oldPasswordValue"
+               name="oldPassword"
+               #oldPassword="ngModel"
+        >
+
+
+      <a (click)="showOldPassword = !showOldPassword">
           <fa-icon class="eyes" [icon]="showOldPassword ? faEyeSlash : faEye"></fa-icon>
         </a>
     </section>
 
     <section class="password-container">
 
-        <input class="update-input" [type]="showNewPassword ? 'text' : 'password'" placeholder="Nouveau mot de passe">
-        <a (click)="showNewPassword = !showNewPassword">
+        <input class="update-input"
+               [type]="showNewPassword ? 'text' : 'password'"
+               placeholder="Nouveau mot de passe"
+               [(ngModel)]="newPasswordValue"
+               name="newPassword"
+               #newPassword="ngModel"
+        >
+
+
+      <a (click)="showNewPassword = !showNewPassword">
           <fa-icon class="eyes" [icon]="showNewPassword ? faEyeSlash : faEye"></fa-icon>
         </a>
     </section>
 
     <section class="password-container">
 
-        <input class="update-input" [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirmer nouveau mot de passe">
-        <a (click)="showConfirmPassword = !showConfirmPassword">
+        <input class="update-input"
+               [type]="showConfirmPassword ? 'text' : 'password'"
+               placeholder="Confirmer nouveau mot de passe"
+               [(ngModel)]="confirmPasswordValue"
+               name="confirmPassword"
+               #confirmPassword="ngModel"
+        >
+
+
+      <a (click)="showConfirmPassword = !showConfirmPassword">
           <fa-icon class="eyes" [icon]="showConfirmPassword ? faEyeSlash : faEye"></fa-icon>
         </a>
     </section>

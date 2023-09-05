@@ -49,6 +49,18 @@ app-settings-navbar {
 .transfer {
   width: 30rem;
   border-radius: 1rem;
+  position: relative;
+}
+
+.binIcon {
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  font-size: 2rem;
+}
+.binIcon:hover {
+  cursor: pointer;
+  color: orange;
 }
 
 .no-data {

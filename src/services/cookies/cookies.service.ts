@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class CookiesService {
 
-  constructor() { }
 
   set(name: string, value: string, days: number) {
     let date = new Date();
@@ -19,12 +18,12 @@ export class CookiesService {
     let cookieName = name + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
     let cookies = decodedCookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      let cookie = cookies[i];
-      while(cookie.charAt(0) == ' ') {
+    for (const element of cookies) {
+      let cookie = element;
+      while(cookie.startsWith(' ')) {
         cookie = cookie.substring(1);
       }
-      if (cookie.indexOf(cookieName) == 0) {
+      if (cookie.startsWith(cookieName)) {
         return cookie.substring(cookieName.length, cookie.length);
       }
     }

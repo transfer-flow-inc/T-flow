@@ -8,7 +8,7 @@
       <div class="list-email">
         <div class="list-span">
           <span class="tag-email" *ngFor="let email of emails">{{ email }}
-            <fa-icon [icon]="supressEmailIcon" (click)="deleteEmail(email)"></fa-icon> </span>
+            <fa-icon [icon]="suppressEmailIcon" (click)="deleteEmail(email)"></fa-icon> </span>
         </div>
         <input [ngClass]="emailInput" class="input-text"
                (keydown.enter)="checkIfEmailIsValid($event)"

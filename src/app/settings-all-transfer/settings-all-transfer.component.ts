@@ -3,6 +3,8 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {environment} from "../../environments/environment.development";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
+import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
+import {faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-settings-all-transfer',
@@ -18,6 +20,7 @@ export class SettingsAllTransferComponent implements OnInit {
   isDataFound: boolean = true;
   isFolderEmpty: boolean = true;
   errorMessage: boolean = false;
+  binIcon: IconDefinition = faTrashAlt;
 
   constructor(
     private httpClientService: HttpClientService,
@@ -51,7 +54,7 @@ export class SettingsAllTransferComponent implements OnInit {
             this.isDataFound = false;
           }
         },
-        error: (err) => {
+        error: () => {
           this.errorMessage = true;
         }
 
@@ -65,6 +68,22 @@ export class SettingsAllTransferComponent implements OnInit {
     let currentDate = new Date();
     let folderDate = new Date(folder.expires_at);
     return folderDate < currentDate;
+  }
+
+  deleteFolder(folder: FolderInterface) {
+
+    this.httpClientService.deleteFolder(environment.apiURL + "folder/" + folder.id).subscribe({
+      next: () => {
+        this.allFolder.splice(this.allFolder.indexOf(folder), 1);
+        if (this.allFolder.length === 0) {
+          this.isFolderEmpty = true;
+          this.isDataFound = false;
+        }
+      },
+      error: () => {
+        this.errorMessage = true;
+      }
+    });
   }
 
 

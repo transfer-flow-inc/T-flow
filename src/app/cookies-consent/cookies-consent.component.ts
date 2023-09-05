@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {NgcCookieConsentConfig, NgcCookieConsentService,} from "ngx-cookieconsent";
+import {Component} from '@angular/core';
+import {NgcCookieConsentConfig, NgcCookieConsentService} from "ngx-cookieconsent";
 import {environment} from "../../environments/environment";
 
 export const cookieConfig: NgcCookieConsentConfig = {
@@ -39,15 +39,13 @@ export const cookieConfig: NgcCookieConsentConfig = {
   templateUrl: './cookies-consent.component.html',
   styleUrls: ['./cookies-consent.component.css']
 })
-export class CookiesConsentComponent implements OnInit {
+export class CookiesConsentComponent {
 
   constructor(
     private cookieService: NgcCookieConsentService
   ) {
   }
 
-  ngOnInit(): void {
 
-  }
 
 }

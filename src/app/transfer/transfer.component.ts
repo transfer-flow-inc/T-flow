@@ -31,7 +31,7 @@ export class TransferComponent implements OnInit {
   typeSizeFormat: string = 'Ko';
   emailInput: string = '';
   emails: string[] = [];
-  supressEmailIcon: IconDefinition = faXmark;
+  suppressEmailIcon: IconDefinition = faXmark;
   isEmailError: boolean = false;
   isEmailAlreadyExist: boolean = false;
   message: string = '';
@@ -117,7 +117,7 @@ export class TransferComponent implements OnInit {
               this.folderName = '';
             }
           },
-          error: (err) => {
+          error: () => {
 
           }
         })
@@ -149,8 +149,8 @@ export class TransferComponent implements OnInit {
 
   calculateSizeAllFile() {
     this.sizeAllFile = 0;
-    for (let i = 0; i < this.uploader.queue.length; i++) {
-      this.sizeAllFile += this.uploader.queue[i].file.size;
+    for (const element of this.uploader.queue) {
+      this.sizeAllFile += element.file.size;
     }
     if (this.sizeAllFile / 1024 / 1024 < 1) {
       this.sizeAllFile = this.sizeAllFile / 1024;
@@ -166,8 +166,8 @@ export class TransferComponent implements OnInit {
   }
 
   calculateSizeAllFileForRequest() {
-    for (let i = 0; i < this.uploader.queue.length; i++) {
-      this.folderSize += this.uploader.queue[i].file.size;
+    for (const element of this.uploader.queue) {
+      this.folderSize += element.file.size;
     }
     return this.folderSize;
   }
@@ -178,7 +178,7 @@ export class TransferComponent implements OnInit {
       return;
     }
     let emailRegex: RegExp = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
-    if (email.match(emailRegex)) {
+    if (RegExp(emailRegex).exec(email)) {
       if (this.emails.indexOf(email) !== -1) {
         this.emailInput = 'input-error';
         this.isEmailAlreadyExist = true;

@@ -4,7 +4,6 @@ import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {FooterComponent} from "../footer/footer.component";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
-import {LocalStorageService} from "../../services/local-storage/local-storage.service";
 
 @Component({
   selector: 'app-navbar',

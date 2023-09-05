@@ -5,7 +5,7 @@
   <section class="container-transfer">
 
     <div class="container-loader" *ngIf="loading">
-      <img class="img-loader" [src]="loadingImg">
+      <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement" fill>
     </div>
 
     <div *ngIf="!isDataFound">
@@ -26,11 +26,14 @@
             : {{ transfer.folderSize / 1024 / 1024 | number : ".2" }}Mo</p>
           <p *ngIf="transfer.folderSize /1024/1024 >= 1000">{{transfer.folderSize / 1024 / 1024 / 1024 | number : ".2"}}
             Go</p>
+          <fa-icon (click)="deleteFolder(transfer)" class="binIcon" [icon]="binIcon"></fa-icon>
           <a class="transfer-link transfer-button" *ngIf="!checkIfFolderIsExpired(transfer)"
              [href]="'telechargement/' +transfer.url + '/' + transfer.accessKey">Accéder à la page de téléchargement</a>
         </div>
       </div>
     </section>
   </section>
+
+
 
 </section>
