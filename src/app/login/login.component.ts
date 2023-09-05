@@ -70,9 +70,9 @@ export class LoginComponent implements OnInit {
 
           this.httpService.isAuthenticated.next(false);
           if (err.status == 403) {
-            return this.error = "Email ou mot de passe incorrect !";
+            return this.error == "Email ou mot de passe incorrect !";
           } else {
-            return this.error = "Une erreur est survenue !";
+            return this.error == "Une erreur est survenue !";
           }
 
         }

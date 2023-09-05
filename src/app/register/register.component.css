@@ -2,7 +2,7 @@
   padding: 1rem;
   width: 80vw;
   margin: auto;
-  height: 75vh;
+  height: fit-content;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -133,6 +133,7 @@
 .sso-login:hover {
   background-color: var(--background);
   color: var(--color);
+  cursor: pointer;
 }
 
 .sso-login img.sso-apple {
@@ -254,9 +255,7 @@ h1 {
   text-align: center;
 }
 
-.sso-login:hover {
-  cursor: pointer;
-}
+
 
 @media screen and (max-width: 1023px) {
 
@@ -292,9 +291,7 @@ h1 {
     text-align: center;
   }
 
-  .section-login {
-    height: fit-content;
-  }
+
 
   .or {
     rotate: -90deg;

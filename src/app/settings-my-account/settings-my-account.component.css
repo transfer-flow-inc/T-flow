@@ -40,6 +40,7 @@ app-settings-navbar {
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--background);
+  margin: 1rem;
 }
 
 .user-button:hover {
@@ -113,16 +114,7 @@ app-settings-navbar {
   color: var(--color);
 }
 
-.user-button {
-  padding: 1rem 2rem;
-  border: 0.15rem solid var(--background);
-  border-radius: 1rem;
-  background-color: transparent;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--background);
-  margin: 1rem;
-}
+
 
 .update:hover {
   background-color: green;

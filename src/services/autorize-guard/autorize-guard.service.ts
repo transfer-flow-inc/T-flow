@@ -11,7 +11,7 @@ export class AutorizeGuardService {
 
   constructor(
     private authStorageService: CookiesService,
-    private jwtService : JwtTokenService,
+    private jwtService: JwtTokenService,
     private router: Router
   ) {
   }
@@ -30,19 +30,17 @@ export class AutorizeGuardService {
       this.router.navigate(['/se-connecter']).then();
       this.authStorageService.delete("token");
       return false;
-    } else {
+    } else if (this.authStorageService.get("token")) {
 
-      if (this.authStorageService.get("token")) {
-        return true;
-      } else {
-        this.router.navigate(['/se-connecter']).then();
-        return false;
-      }
+
+      return true;
+    } else {
+      this.router.navigate(['/se-connecter']).then();
+      return false;
     }
 
+
   }
-
-
 
 
 }

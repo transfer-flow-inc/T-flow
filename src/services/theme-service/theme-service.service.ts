@@ -7,7 +7,7 @@ import {DOCUMENT} from "@angular/common";
 })
 export class ThemeServiceService {
 
-  private currentThemeSubject = new BehaviorSubject<string>(localStorage.getItem('theme') || 'dark');
+  private currentThemeSubject = new BehaviorSubject<string>(localStorage.getItem('theme') ?? 'dark');
   public currentTheme$ = this.currentThemeSubject.asObservable();
 
   constructor(

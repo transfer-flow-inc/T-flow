@@ -9,8 +9,6 @@ export class JwtTokenService {
   jwtToken: string = "";
   decodedToken: { [key: string]: string; } = {};
 
-  constructor() {
-  }
 
   setToken(token: string) {
     if (token) {

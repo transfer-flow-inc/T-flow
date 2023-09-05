@@ -20,9 +20,9 @@
   font-size: 1rem;
   margin: 1rem;
   padding: 0.5rem 0;
-  font-weight: 500;
-  color: var(--color);
   background-color: transparent !important;
+  color: var(--background);
+  font-weight: 600;
 }
 
 .settings-link::before {
@@ -54,11 +54,6 @@
   background-color: red;
 }
 
-.settings-link {
-  color: var(--background);
-  font-weight: 600;
-  text-decoration: none;
-}
 
 .vertical-line {
   position: absolute;
