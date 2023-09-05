@@ -1,13 +1,14 @@
 {
   "name": "transfer-flow",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:prod": "ng build --configuration production"
+    "build:prod": "ng build --configuration production",
+    "release": "release-it"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +43,7 @@
     "jest-jasmine2": "^29.6.1",
     "jest-preset-angular": "^13.1.1",
     "jest-sonar-reporter": "^2.0.0",
+    "release-it": "^16.1.5",
     "typescript": "~4.8.2"
   }
 }
