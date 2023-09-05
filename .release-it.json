@@ -6,7 +6,7 @@
     "@j-ulrich/release-it-regex-bumper": {
       "out": [
         {
-          "file": "./.sonarcloud.properties",
+          "file": "./sonar-project.properties",
           "search": "sonar.projectVersion=\\d+\\.\\d+\\.\\d+",
           "replace": "sonar.projectVersion={{version}}"
         }
