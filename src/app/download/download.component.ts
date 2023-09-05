@@ -20,7 +20,6 @@ export class DownloadComponent implements OnInit {
     private router: Router,
     private flashMessageService: FlashMessageService,
     private themeService: ThemeServiceService,
-    private localStorage: LocalStorageService,
   ) {
   }
 
