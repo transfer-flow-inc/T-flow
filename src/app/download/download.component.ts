@@ -5,8 +5,6 @@ import {FlashMessageService} from "../../services/flash-message/flash-message.se
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
-import {LocalStorageService} from "../../services/local-storage/local-storage.service";
-
 @Component({
   selector: 'app-download',
   templateUrl: './download.component.html',
@@ -31,8 +29,8 @@ export class DownloadComponent implements OnInit {
     folderSize: 0,
     fileCount: 0,
     folderViews: 0,
-    uploaded_at: new Date(),
-    expires_at: new Date(),
+    uploadedAt: new Date(),
+    expiresAt: new Date(),
     recipientsEmails: [],
     files: [],
     shared: true,

@@ -6,8 +6,8 @@ export interface FolderInterface {
   folderSize: number;
   fileCount: number;
   folderViews: number;
-  uploaded_at: Date;
-  expires_at: Date;
+  uploadedAt: Date;
+  expiresAt: Date;
   recipientsEmails: string[];
   files: FileInterface[];
   shared: boolean;

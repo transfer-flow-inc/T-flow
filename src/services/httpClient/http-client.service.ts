@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {BehaviorSubject, Observable} from "rxjs";
 import {CookiesService} from "../cookies/cookies.service";
@@ -8,8 +8,6 @@ import {FlashMessageService} from "../flash-message/flash-message.service";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interface";
 import {OAuthService} from "angular-oauth2-oidc";
-import {UserInterface} from "../../interfaces/User/user-interface";
-import {UpdateUserInterface} from "../../interfaces/User/update/update-user-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +27,13 @@ export class HttpClientService {
   ) {
 
 
+
+  }
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': 'Bearer ' + this.cookiesService.get('token')
+    })
   }
 
 
@@ -75,7 +80,8 @@ export class HttpClientService {
   }
 
   updateUser<UpdateUserInterface>(url: string, user: UpdateUserInterface) {
-    return this.httpClient.patch<TokenInterface>(url, {user});
+    console.log(this.httpOptions)
+    return this.httpClient.patch<TokenInterface>(url, {user}, this.httpOptions);
   }
 
   validateEmail(url: string, token: TokenInterface) {

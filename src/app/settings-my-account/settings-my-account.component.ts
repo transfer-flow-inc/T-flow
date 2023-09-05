@@ -99,6 +99,10 @@ export class SettingsMyAccountComponent implements OnInit {
       }
     }
 
+    this.lastNameValue = this.user.lastName;
+    this.firstNameValue = this.user.firstName;
+    this.emailValue = this.user.email;
+
 
   }
 

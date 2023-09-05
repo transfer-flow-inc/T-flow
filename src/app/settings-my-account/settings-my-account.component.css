@@ -33,7 +33,7 @@ app-settings-navbar {
 }
 
 .user-button {
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   border: 0.15rem solid var(--background);
   border-radius: 1rem;
   background-color: transparent;
@@ -99,7 +99,7 @@ app-settings-navbar {
 }
 
 .user-button-update {
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   border: 0.15rem solid var(--background);
   border-radius: 1rem;
   background-color: transparent;
@@ -115,13 +115,14 @@ app-settings-navbar {
 }
 
 
-
 .update:hover {
   background-color: green;
+  border: 0.15rem solid green;
   color: white;
 }
 .cancel:hover {
   background-color: red;
+  border: 0.15rem solid red;
   color: white;
 }
 

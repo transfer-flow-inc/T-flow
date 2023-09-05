@@ -16,9 +16,9 @@
       <div class="transfer" *ngFor="let transfer of allFolder">
         <div class="transfer-component">
           <p class="">Nom : {{ transfer.folderName }}</p>
-          <p>Crée le : {{ transfer.uploaded_at | date : "dd/MM/yyyy" }}</p>
+          <p>Crée le : {{ transfer.uploadedAt | date : "dd/MM/yyyy" }}</p>
           <p>{{ transfer.shared ? "Ce dossier est publique" : "Ce dossier est privé" }}</p>
-          <p>Expire le : {{ transfer.expires_at | date : "dd/MM/yyyy"}}</p>
+          <p>Expire le : {{ transfer.expiresAt | date : "dd/MM/yyyy"}}</p>
           <p>Nombre de fichier{{ transfer.fileCount > 1 ? 's' : '' }} : {{ transfer.fileCount }}</p>
           <p *ngIf="transfer.folderSize /1024/1024 < 1">Taille du dossier
             : {{ transfer.folderSize / 1024 | number : ".2" }}Ko</p>
