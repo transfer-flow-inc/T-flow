@@ -3,6 +3,7 @@ import {CookiesService} from "../../services/cookies/cookies.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {Router} from "@angular/router";
 import {UserInterface} from "../../interfaces/User/user-interface";
+import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-settings-my-account',
@@ -25,8 +26,12 @@ export class SettingsMyAccountComponent implements OnInit {
     authMethod: ""
   }
 
+  isUpdateUser: boolean = false;
   asLastname: boolean = true;
   accountStatus: string = "";
+  showOldPassword: boolean = false;
+  showNewPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
   constructor(
     private cookiesService: CookiesService,
@@ -80,5 +85,11 @@ export class SettingsMyAccountComponent implements OnInit {
 
   }
 
+  toggleUpdateUser() {
+    this.isUpdateUser = !this.isUpdateUser;
+  }
 
+
+  protected readonly faEyeSlash = faEyeSlash;
+  protected readonly faEye = faEye;
 }

@@ -93,8 +93,27 @@ app-settings-navbar {
   gap: 1rem;
   margin-bottom: 1rem;
 }
+.update-input:focus {
+  outline: none;
+}
 
 .user-button-update {
+  padding: 1rem 2rem;
+  border: 0.15rem solid var(--background);
+  border-radius: 1rem;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--background);
+  margin: 1rem auto;
+}
+
+.user-button-update:hover {
+  background-color: var(--background);
+  color: var(--color);
+}
+
+.user-button {
   padding: 1rem 2rem;
   border: 0.15rem solid var(--background);
   border-radius: 1rem;
@@ -105,13 +124,54 @@ app-settings-navbar {
   margin: 1rem;
 }
 
-.user-button-update:hover {
-  background-color: var(--background);
-  color: var(--color);
+.update:hover {
+  background-color: green;
+  color: white;
+}
+.cancel:hover {
+  background-color: red;
+  color: white;
 }
 
 .fade {
   color: #212121 !important;
+}
+
+.update-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: auto;
+}
+
+.password-container {
+  position: relative;
+  width: -moz-available;
+}
+
+.eyes {
+  color: #212121;
+  position: absolute;
+  right: 1rem;
+  top: 0.8rem;
+  font-size: 1.5rem;
+}
+
+.update-name-container .update-input {
+  padding: 1rem;
+}
+.update-name-container {
+  display: flex;
+  gap: 1rem;
+  margin: auto;
+  width: -moz-available;
+}
+
+.update-input {
+  padding: 1rem;
+  width: -moz-available;
 }
 
 @media screen and (max-width: 1020px) {
