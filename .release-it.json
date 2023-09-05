@@ -1,5 +1,17 @@
 {
   "github": {
     "release": true
+  },
+  "plugins": {
+    "@j-ulrich/release-it-regex-bumper": {
+      "out": [
+        {
+          "file": "./.sonarcloud.properties",
+          "search": "sonar.projectVersion=\\d+\\.\\d+\\.\\d+",
+          "replace": "sonar.projectVersion={{version}}"
+        }
+      ]
+    }
   }
 }
+
