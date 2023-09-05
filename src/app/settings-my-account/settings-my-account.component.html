@@ -3,7 +3,7 @@
   <app-settings-navbar></app-settings-navbar>
 
 
-  <div class="section-settings">
+  <div class="section-settings" *ngIf="!isUpdateUser">
 
     <img class="img-user" [src]="user.avatar">
     <p *ngIf="asLastname">Nom : {{this.user.lastName}}</p>
@@ -13,6 +13,54 @@
     <p>Abonnement : {{this.user.plan}}</p>
     <p>Etat du compte : {{ this.accountStatus}}</p>
 
+    <button class="user-button-update" (click)="toggleUpdateUser()">Modifier mon compte</button>
+
   </div>
+
+  <form class="update-container" *ngIf="isUpdateUser">
+
+    <p>Veuillez modifier uniquement les champs que vous souhaitez</p>
+
+    <div class="update-name-container">
+
+    <input class="update-input" type="text" placeholder="Nom" [value]="user.lastName">
+
+    <input class="update-input" type="text" placeholder="Prénom" [value]="user.firstName">
+
+    </div>
+
+    <input class="update-input" type="text" placeholder="Email" [value]="user.email">
+
+    <section class="password-container">
+
+        <input class="update-input" [type]="showOldPassword ? 'text' : 'password'" placeholder="Ancien mot de passe">
+        <a (click)="showOldPassword = !showOldPassword">
+          <fa-icon class="eyes" [icon]="showOldPassword ? faEyeSlash : faEye"></fa-icon>
+        </a>
+    </section>
+
+    <section class="password-container">
+
+        <input class="update-input" [type]="showNewPassword ? 'text' : 'password'" placeholder="Nouveau mot de passe">
+        <a (click)="showNewPassword = !showNewPassword">
+          <fa-icon class="eyes" [icon]="showNewPassword ? faEyeSlash : faEye"></fa-icon>
+        </a>
+    </section>
+
+    <section class="password-container">
+
+        <input class="update-input" [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirmer nouveau mot de passe">
+        <a (click)="showConfirmPassword = !showConfirmPassword">
+          <fa-icon class="eyes" [icon]="showConfirmPassword ? faEyeSlash : faEye"></fa-icon>
+        </a>
+    </section>
+
+
+    <div class="update-button-container">
+    <button class="user-button update" type="submit">Modifier</button>
+    <button class="user-button cancel" (click)="toggleUpdateUser()">Annuler</button>
+    </div>
+
+  </form>
 
 </section>
