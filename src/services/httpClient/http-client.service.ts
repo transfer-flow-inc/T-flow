@@ -80,8 +80,7 @@ export class HttpClientService {
   }
 
   updateUser<UpdateUserInterface>(url: string, user: UpdateUserInterface) {
-    console.log(this.httpOptions)
-    return this.httpClient.patch<TokenInterface>(url, {user}, this.httpOptions);
+    return this.httpClient.patch<TokenInterface>(url, user, this.httpOptions);
   }
 
   validateEmail(url: string, token: TokenInterface) {

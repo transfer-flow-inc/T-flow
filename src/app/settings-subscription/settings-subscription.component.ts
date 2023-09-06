@@ -16,7 +16,7 @@ export class SettingsSubscriptionComponent implements OnInit {
     firstName: "",
     lastName: "",
     username: "",
-    email: "",
+    userEmail: "",
     password: "",
     avatar: "",
     roles: [""],

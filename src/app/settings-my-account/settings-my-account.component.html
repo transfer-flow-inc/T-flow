@@ -8,10 +8,10 @@
     <img class="img-user" [src]="user.avatar" alt="Image de profil">
     <p *ngIf="asLastname">Nom : {{this.user.lastName}}</p>
     <p>Prénom : {{this.user.firstName}}</p>
-    <p>Email : {{this.user.email}}</p>
-    <p>Type de compte : {{this.user.authMethod}}</p>
+    <p>Email : {{this.user.userEmail}}</p>
+    <p>Type de compte : {{this.user.authMethod === "spring_database" ? "crée sur le site" : "crée avec google" }}</p>
     <p>Abonnement : {{this.user.plan}}</p>
-    <p>Etat du compte : {{ this.accountStatus}}</p>
+    <p>Etat du compte : {{ this.user.isAccountVerified ? "compte vérifié" : "compte non vérifié"}}</p>
 
     <button class="user-button-update" (click)="toggleUpdateUser()">Modifier mon compte</button>
 
@@ -58,6 +58,8 @@
                [(ngModel)]="oldPasswordValue"
                name="oldPassword"
                #oldPassword="ngModel"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}"
+               required
         >
 
 

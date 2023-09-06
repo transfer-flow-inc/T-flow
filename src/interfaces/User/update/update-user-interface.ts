@@ -3,6 +3,6 @@ export interface UpdateUserInterface {
     lastName: string;
     email: string;
     oldPassword: string;
-    newPassword: string;
+    password: string;
     confirmPassword: string;
 }

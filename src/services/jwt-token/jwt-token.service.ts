@@ -9,6 +9,7 @@ export class JwtTokenService {
 
   jwtToken: string = "";
   decodedToken: { [key: string]: string; } = {};
+  decodeTokenForUser : UserInterface | undefined;
 
 
   setToken(token: string) {
@@ -76,6 +77,10 @@ export class JwtTokenService {
     return jwt_decode(this.jwtToken);
   }
 
+  getDecodeTokenForUser(): UserInterface | undefined {
+    return jwt_decode(this.jwtToken);
+  }
+
 
   getExpiryTime(): number {
     this.getDecodeToken();
@@ -90,6 +95,10 @@ export class JwtTokenService {
     } else {
       return false;
     }
+  }
+
+  getAllUserInfos(): UserInterface | undefined {
+    return <UserInterface>this.getDecodeTokenForUser();
   }
 
 
