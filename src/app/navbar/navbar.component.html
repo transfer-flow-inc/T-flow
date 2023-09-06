@@ -18,7 +18,7 @@
 
       <li class="nav-element">
         <a class="nav-link" (click)="openMenu()" routerLink="/accueil" routerLinkActive="active">
-          Home
+          Accueil
         </a>
       </li>
 
@@ -42,6 +42,15 @@
     </div>
 
     <div class="block">
+
+      <li class="nav-element">
+
+        <a class="nav-link" (click)="openMenu()" routerLink="/admin/dashboard" routerLinkActive="active"
+           *ngIf="isAuthenticated && isAdministrator">
+          Dashboard
+        </a>
+
+      </li>
 
       <li class="nav-element">
 

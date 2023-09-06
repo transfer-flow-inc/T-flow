@@ -1,4 +1,17 @@
+name-template: 'T-Flow - v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION-tflow'
+categories:
+  - title: '🚀 Major/Breaking Changes'
+    labels:
+      - '(MAJOR)'
+  - title: '🐛 Minor Changes/Bug Fixes'
+    labels:
+      - '(MINOR)'
+  - title: '🧰 Maintenance Patches'
+    label: '(PATCH)'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 template: |
-  ## What’s Changed
+  ## Changes
 
   $CHANGES

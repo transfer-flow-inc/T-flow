@@ -1,0 +1,6 @@
+.dashboard-container {
+    margin: auto;
+    width: 80vw;
+    background-color: var(--color);
+    min-height: 80%;
+}

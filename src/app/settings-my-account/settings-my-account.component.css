@@ -30,6 +30,9 @@ app-settings-navbar {
   height: 10rem;
   border-radius: 50%;
   margin: auto auto 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-button {

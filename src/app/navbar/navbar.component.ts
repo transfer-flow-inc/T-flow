@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
   isDarkTheme: boolean = true;
   isAuthenticated: boolean = false;
   iconShow: string = 'show';
+  isAdministrator: boolean = true;
 
   constructor(
     private httpClientService: HttpClientService,
