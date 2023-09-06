@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import  jwt_decode from 'jwt-decode';
+import {UserInterface} from "../../interfaces/User/user-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class JwtTokenService {
 
   jwtToken: string = "";
   decodedToken: { [key: string]: string; } = {};
+  decodeTokenForUser : UserInterface | undefined;
 
 
   setToken(token: string) {
@@ -29,11 +31,6 @@ export class JwtTokenService {
   getUserLastName(): string | null {
     this.getDecodeToken();
     return this.getDecodeToken() ? this.getDecodeToken()['lastName'] : null;
-  }
-
-  getUserAuthMethod(): string | null {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['authMethod'] : null;
   }
 
   getUserAuthenticationMethod(): string | null {
@@ -76,7 +73,11 @@ export class JwtTokenService {
     }
   }
 
-  getDecodeToken(): { [key: string]: string } {
+  getDecodeToken(): { [key: string]: string} {
+    return jwt_decode(this.jwtToken);
+  }
+
+  getDecodeTokenForUser(): UserInterface | undefined {
     return jwt_decode(this.jwtToken);
   }
 
@@ -95,4 +96,11 @@ export class JwtTokenService {
       return false;
     }
   }
+
+  getAllUserInfos(): UserInterface | undefined {
+    return <UserInterface>this.getDecodeTokenForUser();
+  }
+
+
+
 }

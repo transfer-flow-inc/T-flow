@@ -7,6 +7,7 @@ import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment.development";
 import {UpdateUserInterface} from "../../interfaces/User/update/update-user-interface";
+import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 
 @Component({
   selector: 'app-settings-my-account',
@@ -20,7 +21,7 @@ export class SettingsMyAccountComponent implements OnInit {
     firstName: "",
     lastName: "",
     username: "",
-    email: "",
+    userEmail: "",
     password: "",
     avatar: "",
     roles: [""],
@@ -34,12 +35,12 @@ export class SettingsMyAccountComponent implements OnInit {
     firstName: "",
     email: "",
     oldPassword: "",
-    newPassword: "",
+    password: "",
     confirmPassword: ""
   }
+
   isUpdateUser: boolean = false;
   asLastname: boolean = true;
-  accountStatus: string = "";
   showOldPassword: boolean = false;
   showNewPassword: boolean = false;
   showConfirmPassword: boolean = false;
@@ -54,54 +55,23 @@ export class SettingsMyAccountComponent implements OnInit {
     private cookiesService: CookiesService,
     private jwtService: JwtTokenService,
     private router: Router,
-    private httpClient: HttpClientService
+    private httpClient: HttpClientService,
+    private flashMessageService: FlashMessageService
   ) {
   }
 
 
   ngOnInit(): void {
 
-    let token = this.cookiesService.get('token');
-    if (!token) {
-      this.router.navigate(['/se-connecter']).then();
-      return;
+    if (!this.cookiesService.get('token')) {
+        this.router.navigate(['/se-connecter']).then();
+        return;
     }
-
-    this.jwtService.setToken(token);
-
-
-    this.user.firstName = <string>this.jwtService.getUserFirstName();
-
-    if (<string>this.jwtService.getUserLastName() == "" || <string>this.jwtService.getUserLastName() == " ") {
-      this.asLastname = false;
-    } else {
-      this.user.lastName = <string>this.jwtService.getUserLastName();
-    }
-    this.user.email = <string>this.jwtService.getUserEmail();
-    if (this.jwtService.getUserAuthenticationMethod() == "spring_database") {
-      this.user.authMethod = "Compte crée sur le site";
-    } else if (this.jwtService.getUserAuthenticationMethod() == "google_sso") {
-      this.user.authMethod = "Compte crée avec Google";
-    }
-    if (this.jwtService.getUserPlan() == "FREE") {
-      this.user.plan = "Pas d'abonnement actif";
-    }
-    if (this.jwtService.getUserAccountStatus()) {
-      this.accountStatus = "Compte vérifié";
-    } else {
-      this.accountStatus = "Compte non vérifié";
-    }
-
-    if (this.jwtService.getUserAvatar()) {
-      this.user.avatar = <string>this.jwtService.getUserAvatar();
-      if (this.jwtService.getUserAuthenticationMethod() == "spring_database") {
-        this.user.avatar = "assets/images/" + this.user.avatar;
-      }
-    }
+    this.user = <UserInterface>this.jwtService.getAllUserInfos();
 
     this.lastNameValue = this.user.lastName;
     this.firstNameValue = this.user.firstName;
-    this.emailValue = this.user.email;
+    this.emailValue = this.user.userEmail;
 
 
   }
@@ -111,21 +81,28 @@ export class SettingsMyAccountComponent implements OnInit {
   }
 
   submitUpdateUser() {
-    this.isUpdateUser = false;
+
     this.userUpdate = {
       lastName: this.lastNameValue,
       firstName: this.firstNameValue,
       email: this.emailValue,
       oldPassword: this.oldPasswordValue,
-      newPassword: this.newPasswordValue,
+      password: this.newPasswordValue,
       confirmPassword: this.confirmPasswordValue
     }
-    this.httpClient.updateUser(environment.apiURL + "user/" + this.user.email + "?oldPassword=" + this.oldPasswordValue, { user : this.userUpdate }).subscribe({
+    this.httpClient.updateUser(environment.apiURL + "user/" + this.user.userEmail + "?oldPassword=" + this.oldPasswordValue, this.userUpdate ).subscribe({
       next: (response) => {
-        console.log(response);
+        this.cookiesService.delete('token');
+        this.cookiesService.set('token', response.token, 30);
+        this.router.navigate(['/accueil']).then(() => {
+            this.flashMessageService.addMessage('Votre compte a bien été mis à jour', 'success', 4000);
+            this.isUpdateUser = false;
+        });
       },
       error: (error) => {
-        console.log(error);
+        this.router.navigate(['/se-connecter']).then(() => {
+          this.flashMessageService.addMessage('Une erreur est survenue', 'error', 4000);
+        })
       }
 
       })
