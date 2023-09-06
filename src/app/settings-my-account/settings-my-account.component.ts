@@ -61,6 +61,8 @@ export class SettingsMyAccountComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+
     let token = this.cookiesService.get('token');
     if (!token) {
       this.router.navigate(['/se-connecter']).then();
