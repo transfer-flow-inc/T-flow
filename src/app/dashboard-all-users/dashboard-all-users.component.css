@@ -1,0 +1,46 @@
+.dashboard-container-all {
+    margin: auto;
+    width: 80vw;
+    background-color: var(--color);
+    min-height: 80vh;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.dashboard-container {
+    margin: auto;
+    background-color: var(--background);
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1020px) {
+    .dashboard-container-all {
+        width: 90vw;
+    }
+}
+@media screen and (max-width: 425px) {
+    .dashboard-container-all {
+        width: 95%;
+    }
+}

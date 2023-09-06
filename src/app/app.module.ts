@@ -27,13 +27,17 @@ import {SubscriptionsComponent} from './subscriptions/subscriptions.component';
 import {DownloadComponent} from './download/download.component';
 import {FlashMessageComponent} from './flash-message/flash-message.component';
 import {cookieConfig, CookiesConsentComponent} from './cookies-consent/cookies-consent.component';
-import {SettingsAdminPanelComponent} from './settings-admin-panel/settings-admin-panel.component';
 import {FooterComponent} from './footer/footer.component';
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component';
 import {ValidateEmailComponent} from './validate-email/validate-email.component';
 import {HttpInterceptorService} from "../services/http-interceptor/http-interceptor.service";
 import {AboutComponent} from './about/about.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
+import { DashboardNavbarComponent } from './dashboard-navbar/dashboard-navbar.component';
+import { DashboardAllUsersComponent } from './dashboard-all-users/dashboard-all-users.component';
+import { DashboardOneUserComponent } from './dashboard-one-user/dashboard-one-user.component';
+import { DashboardAllTransferComponent } from './dashboard-all-transfer/dashboard-all-transfer.component';
+import { DashboardOneTransferComponent } from './dashboard-one-transfer/dashboard-one-transfer.component';
 
 @NgModule({
   declarations: [
@@ -54,12 +58,16 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
     DownloadComponent,
     FlashMessageComponent,
     CookiesConsentComponent,
-    SettingsAdminPanelComponent,
     FooterComponent,
     PrivacyPolicyComponent,
     ValidateEmailComponent,
     AboutComponent,
     ContactUsComponent,
+    DashboardNavbarComponent,
+    DashboardAllUsersComponent,
+    DashboardOneUserComponent,
+    DashboardAllTransferComponent,
+    DashboardOneTransferComponent,
   ],
   imports: [
     BrowserModule,

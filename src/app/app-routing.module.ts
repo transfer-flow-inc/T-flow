@@ -13,12 +13,12 @@ import {LogoutComponent} from "./logout/logout.component";
 import {SettingsAllTransferComponent} from "./settings-all-transfer/settings-all-transfer.component";
 import {SubscriptionsComponent} from "./subscriptions/subscriptions.component";
 import {DownloadComponent} from "./download/download.component";
-import {SettingsAdminPanelComponent} from "./settings-admin-panel/settings-admin-panel.component";
-import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
 import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
 import {ValidateEmailComponent} from "./validate-email/validate-email.component";
 import {AboutComponent} from "./about/about.component";
 import {ContactUsComponent} from "./contact-us/contact-us.component";
+import {DashboardAllUsersComponent} from "./dashboard-all-users/dashboard-all-users.component";
+import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
 
 
 const routes: Routes = [
@@ -35,12 +35,12 @@ const routes: Routes = [
   { 'path' : "nous-contacter", component: ContactUsComponent, data: { title: 'Nous contacter'}},
   { 'path' : "a-propos", component: AboutComponent, data: { title: 'A propos'}},
   { 'path' : "valider-mon-compte/:token", component: ValidateEmailComponent, data: { title: 'Valider mon compte'}},
+  { 'path' : "admin/dashboard", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Dashboard'}},
   { 'path' : "telechargement/:folderUrl", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "telechargement/:folderUrl/:accessKey", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},
   { 'path' : "reglages/mes-transferts", component: SettingsAllTransferComponent, canActivate : [AutorizeGuardService], data: { title: 'Mes Transferts'}},
   { 'path' : "reglages/mon-abonnement", component: SettingsSubscriptionComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon abonnement'}},
-  { 'path' : "reglages/admin/dashboard", component : SettingsAdminPanelComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService] ,data: { title: 'Dashboard'}},
   { 'path' : "**" , component: NotFoundComponent, data: { title: 'Cette page n\'existe pas'}},
 ];
 

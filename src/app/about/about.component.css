@@ -49,6 +49,9 @@
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .about-pseudo {
   font-weight: unset;
