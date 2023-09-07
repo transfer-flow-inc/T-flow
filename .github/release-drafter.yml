@@ -1,5 +1,5 @@
 name-template: 'T-Flow - v$RESOLVED_VERSION'
-tag-template: 'v$RESOLVED_VERSION-tflow'
+tag-template: 'v$RESOLVED_VERSION'
 categories:
   - title: '🚀 Major/Breaking Changes'
     labels:
