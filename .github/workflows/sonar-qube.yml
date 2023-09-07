@@ -24,9 +24,6 @@ jobs:
     - name: Run tests and collect coverage
       run: npm test -- --coverage
 
-    - name: Analyze with SonarQube
-      run: sonar-scanner
-
     - name: Upload coverage results to SonarQube
       uses: sonarsource/sonarcloud-github-action@master
       env:
