@@ -27,4 +27,23 @@ describe('TransferComponent', () => {
   test('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should upload a file', () => {
+    spyOn(component, 'uploadFile');
+    component.uploadFile();
+    expect(component.uploadFile).toHaveBeenCalled();
+  });
+
+  it('should calculate all file size', () => {
+
+    spyOn(component, 'calculateSizeAllFile');
+    component.calculateSizeAllFile();
+    expect(component.calculateSizeAllFile).toHaveBeenCalled();
+
+  });
+
+  it('should use the constructor', () => {
+    expect(component).toBeTruthy();
+
+  });
 });
