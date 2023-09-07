@@ -15,6 +15,9 @@ module.exports = {
   testEnvironment: 'jsdom',
   coverageDirectory: './coverage',
   coverageReporters: ["clover", "json", "lcov", "text", "text-summary"],
+  collectCoverageFrom: [
+    "src/**/*.ts"  // Adjust the pattern to match your project structure
+  ],
   collectCoverage: true,
   testResultsProcessor: "jest-sonar-reporter",
   clearMocks: true
