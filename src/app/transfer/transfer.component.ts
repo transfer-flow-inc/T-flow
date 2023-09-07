@@ -127,12 +127,11 @@ export class TransferComponent implements OnInit {
   }
 
 
-  // in TransferComponent
 checkFile() {
   for (let i = 0; i < this.uploader.queue.length; i++) {
     for (let j = i + 1; j < this.uploader.queue.length; j++) {
-      const firstFileName = this.uploader.queue[i]?.file?.name || '';
-      const secondFileName = this.uploader.queue[j]?.file?.rawFile?.name || '';
+      const firstFileName = this.uploader.queue[i]?.file?.name ?? '';
+      const secondFileName = this.uploader.queue[j]?.file?.rawFile?.name ?? '';
       if (firstFileName === secondFileName) {
         this.uploader.queue.splice(j, 1);
         this.calculateSizeAllFile();
