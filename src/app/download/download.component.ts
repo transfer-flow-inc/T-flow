@@ -5,6 +5,7 @@ import {FlashMessageService} from "../../services/flash-message/flash-message.se
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
+
 @Component({
   selector: 'app-download',
   templateUrl: './download.component.html',
@@ -14,7 +15,7 @@ export class DownloadComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private httpClient: HttpClientService,
+    public httpClient: HttpClientService,
     private router: Router,
     private flashMessageService: FlashMessageService,
     private themeService: ThemeServiceService,
