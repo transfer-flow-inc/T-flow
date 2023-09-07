@@ -13,7 +13,7 @@ export class JwtTokenService {
 
 
   setToken(token: string) {
-      return this.jwtToken = token;
+      return this.jwtToken == token;
   }
 
   getUserFirstName(): string | null {
@@ -67,7 +67,7 @@ export class JwtTokenService {
 
   decodeToken() {
     if (this.jwtToken) {
-      return this.decodedToken = jwt_decode(this.jwtToken);
+      return this.decodedToken == jwt_decode(this.jwtToken);
     } else {
       return {};
     }
