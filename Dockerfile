@@ -9,7 +9,7 @@ WORKDIR /usr/local/app
 COPY ./ /usr/local/app/
 
 # Install all the dependencies
-RUN npm install
+RUN npm install --ignore-scripts
 
 # Generate the build of the application
 ARG APP_ENV

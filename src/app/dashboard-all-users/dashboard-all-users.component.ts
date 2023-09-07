@@ -21,8 +21,7 @@ export class DashboardAllUsersComponent implements OnInit {
 
       ngOnInit(): void {
 
-        /*
-        this.httpClientService.getAllUsers( environment.apiURL + 'admin/users' ).subscribe({
+        /* this.httpClientService.getAllUsers( environment.apiURL + 'admin/users' ).subscribe({
             next: (response) => {
               console.log(response)
               this.users = response.users;
