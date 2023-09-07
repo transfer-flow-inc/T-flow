@@ -9,7 +9,6 @@ module.exports = {
 
     }]
   },
-  testPathIgnorePatterns: ['node_modules'],
   testMatch: ['(**/*.spec.ts)'],
   testRunner: 'jest-jasmine2',
   testEnvironment: 'jsdom',
@@ -18,6 +17,18 @@ module.exports = {
   collectCoverageFrom: [
     "src/**/*.ts"  // Adjust the pattern to match your project structure
   ],
+  // exclude files from coverage
+  coveragePathIgnorePatterns: [
+    "/node_modules/",
+    "/src/main.ts",
+    "/src/polyfills.ts",
+    "/src/environments/environment.ts",
+    "/src/environments/environment.prod.ts",
+    "/src/app/app-routing.module.ts",
+    "/src/app/app.module.ts",
+    "/src/app/app.component.ts",
+    "/src/app/app.component.spec.ts",
+    ],
   collectCoverage: true,
   testResultsProcessor: "jest-sonar-reporter",
   clearMocks: true
