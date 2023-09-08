@@ -1,0 +1,6 @@
+projectKey=T-flow-local-
+serverUrl=https://sonar.transfer-flow.studio
+serverVersion=10.1.0.73491
+dashboardUrl=https://sonar.transfer-flow.studio/dashboard?id=T-flow-local-
+ceTaskId=AYpzsrATXot6655Pl1dE
+ceTaskUrl=https://sonar.transfer-flow.studio/api/ce/task?id=AYpzsrATXot6655Pl1dE
