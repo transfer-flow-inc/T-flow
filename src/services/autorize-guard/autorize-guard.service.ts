@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from "@angular/router";
-import { JwtTokenService } from "../jwt-token/jwt-token.service";
-import { CookiesService } from "../cookies/cookies.service";
+import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from "@angular/router";
+import {CookiesService} from "../cookies/cookies.service";
+import {JwtTokenService} from "../jwt-token/jwt-token.service";
+import {Injectable} from "@angular/core";
 
 @Injectable({
   providedIn: 'root'
@@ -17,24 +17,18 @@ export class AutorizeGuardService {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
-    try {
-      if (!this.jwtService.jwtToken && !this.authStorageService.get("token")) {
-        return this.redirectToLogin();
-      }
+    const tokenFromStorage = this.authStorageService.get("token");
+    this.jwtService.setToken(tokenFromStorage);
 
-      this.jwtService.setToken(this.authStorageService.get("token")!);
-
-      if (this.jwtService.isTokenExpired()) {
-        this.authStorageService.delete("token");
-        return this.redirectToLogin();
-      } else if (this.authStorageService.get("token")) {
-        return true;
-      } else {
-        return this.redirectToLogin();
-      }
-    } catch (error) {
+    if (this.shouldNavigateToLogin(tokenFromStorage)) {
       return this.redirectToLogin();
     }
+
+    return true;
+  }
+
+  private shouldNavigateToLogin(token: string | null): boolean {
+    return !token || this.jwtService.isTokenExpired();
   }
 
   private async redirectToLogin(): Promise<boolean> {
