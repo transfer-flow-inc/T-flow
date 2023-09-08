@@ -44,13 +44,36 @@ describe('FlashMessageService', () => {
     expect(flashMessage.duration).toEqual(0);
   });
 
-  it('should default to INFO if an invalid type is given', (done) => {
-  service.getMessage().pipe(take(1)).subscribe(flashMessage => {
-    expect(flashMessage.type).toEqual(MessageType.INFO);
-    done();
+
+  it('should add a message with a given MessageType', (done) => {
+    service.getMessage().pipe(take(1)).subscribe(flashMessage => {
+      expect(flashMessage.message).toEqual('Hello, world!');
+      expect(flashMessage.type).toEqual(MessageType.SUCCESS);
+      expect(flashMessage.duration).toEqual(4000);
+      done();
+    });
+    service.addMessage('Hello, world!', MessageType.SUCCESS);
   });
-  service.addMessage('Test Message', 'invalidType', 4000);
-});
+
+  it('should add a message with a given string type', (done) => {
+    service.getMessage().pipe(take(1)).subscribe(flashMessage => {
+      expect(flashMessage.message).toEqual('Hello, world!');
+      expect(flashMessage.type).toEqual(MessageType.ERROR);
+      expect(flashMessage.duration).toEqual(4000);
+      done();
+    });
+    service.addMessage('Hello, world!', 'error');
+  });
+
+  it('should default to INFO type for an unrecognized string type', (done) => {
+    service.getMessage().pipe(take(1)).subscribe(flashMessage => {
+      expect(flashMessage.message).toEqual('Hello, world!');
+      expect(flashMessage.type).toEqual(MessageType.INFO);
+      expect(flashMessage.duration).toEqual(4000);
+      done();
+    });
+    service.addMessage('Hello, world!', 'unrecognizedType');
+  });
 
 
 
