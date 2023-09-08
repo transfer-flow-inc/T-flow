@@ -1,35 +1,44 @@
-import {Inject, Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
-import {DOCUMENT} from "@angular/common";
+import { Inject, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeServiceService {
-
-  private currentThemeSubject = new BehaviorSubject<string>(localStorage.getItem('theme') ?? 'dark');
+    private currentThemeSubject: BehaviorSubject<string> = new BehaviorSubject<string>(this.loadThemeFromStorage());
   public currentTheme$ = this.currentThemeSubject.asObservable();
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-  ) {}
+  ) {
+    const initialTheme = this.loadThemeFromStorage();
+    this.currentThemeSubject = new BehaviorSubject<string>(initialTheme);
+    this.applyTheme(initialTheme);
+  }
 
-  toggleTheme() {
-    this.document.body.classList.toggle('dark');
-    this.document.body.classList.toggle('light');
+  private loadThemeFromStorage(): string {
+    return localStorage.getItem('theme') ?? 'dark';
+  }
 
-    if (this.document.body.classList.contains('dark')) {
-      localStorage.setItem('theme', 'dark');
-    } else {
-      localStorage.setItem('theme', 'light');
-    }
+  private saveThemeToStorage(theme: string): void {
+    localStorage.setItem('theme', theme);
+  }
 
+  private applyTheme(theme: string): void {
+    const {classList} = this.document.body;
+    classList.remove('dark', 'light');
+    classList.add(theme);
+  }
+
+  toggleTheme(): void {
     const newTheme = this.currentThemeSubject.value === 'light' ? 'dark' : 'light';
+    this.applyTheme(newTheme);
+    this.saveThemeToStorage(newTheme);
     this.currentThemeSubject.next(newTheme);
   }
 
-  getCurrentTheme() {
+  getCurrentTheme(): string {
     return this.currentThemeSubject.value;
   }
-
 }
