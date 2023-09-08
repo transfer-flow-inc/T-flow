@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   navIcon: IconDefinition = faBars;
   navbarToggleValue: string = 'hide';
   popupToggleValue: string = 'hidden';
-  private isMenuOpen: boolean = false;
+  isMenuOpen: boolean = false;
   isPopupOpen: boolean = false;
   imgTheme: string = 'assets/images/logo_with_text_dark.png';
   helpIcon: IconDefinition = faGear;
