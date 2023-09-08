@@ -17,7 +17,6 @@ export class HttpClientService {
 
   isAuthenticated = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticated.asObservable();
-  logger: string | null = "nothing";
 
   constructor(
     private httpClient: HttpClient,

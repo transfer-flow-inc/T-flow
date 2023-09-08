@@ -26,8 +26,6 @@ module.exports = {
     "/src/environments/environment.prod.ts",
     "/src/app/app-routing.module.ts",
     "/src/app/app.module.ts",
-    "/src/app/app.component.ts",
-    "/src/app/app.component.spec.ts",
     ],
   collectCoverage: true,
   testResultsProcessor: "jest-sonar-reporter",

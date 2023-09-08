@@ -11,12 +11,12 @@ export class AutorizeGuardService {
 
   constructor(
     private authStorageService: CookiesService,
-    private jwtService: JwtTokenService,
+    private jwtService : JwtTokenService,
     private router: Router
   ) {
   }
 
-  canActivate(next: ActivatedRouteSnapshot,
+canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     if (this.jwtService.jwtToken == "" && this.authStorageService.get("token") == "") {
@@ -41,6 +41,9 @@ export class AutorizeGuardService {
 
 
   }
+
+
+
 
 
 }

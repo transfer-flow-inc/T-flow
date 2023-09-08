@@ -9,11 +9,12 @@ export class JwtTokenService {
 
   jwtToken: string = "";
   decodedToken: { [key: string]: string; } = {};
-  decodeTokenForUser : UserInterface | undefined;
 
 
   setToken(token: string) {
-      return this.jwtToken == token;
+    if (token) {
+      this.jwtToken = token;
+    }
   }
 
   getUserFirstName(): string | null {
@@ -29,6 +30,11 @@ export class JwtTokenService {
   getUserLastName(): string | null {
     this.getDecodeToken();
     return this.getDecodeToken() ? this.getDecodeToken()['lastName'] : null;
+  }
+
+  getUserAuthMethod(): string | null {
+    this.getDecodeToken();
+    return this.getDecodeToken() ? this.getDecodeToken()['authMethod'] : null;
   }
 
   getUserAuthenticationMethod(): string | null {
@@ -67,17 +73,11 @@ export class JwtTokenService {
 
   decodeToken() {
     if (this.jwtToken) {
-      return this.decodedToken == jwt_decode(this.jwtToken);
-    } else {
-      return {};
+      this.decodedToken = jwt_decode(this.jwtToken);
     }
   }
 
-  getDecodeToken(): { [key: string]: string} {
-    return jwt_decode(this.jwtToken);
-  }
-
-  getDecodeTokenForUser(): UserInterface | undefined {
+  getDecodeToken(): { [key: string]: string } {
     return jwt_decode(this.jwtToken);
   }
 
@@ -97,10 +97,7 @@ export class JwtTokenService {
     }
   }
 
-  getAllUserInfos(): UserInterface | undefined {
-    return <UserInterface>this.getDecodeTokenForUser();
+  getAllUserInfos() {
+    return <UserInterface><unknown>this.getDecodeToken();
   }
-
-
-
 }

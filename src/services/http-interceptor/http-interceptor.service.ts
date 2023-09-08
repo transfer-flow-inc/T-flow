@@ -25,7 +25,6 @@ export class HttpInterceptorService implements HttpInterceptor {
       return next.handle(cloned);
     }
 
-    console.log("no token")
     return next.handle(req);
 
 

@@ -1,13 +1,13 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {filter, map} from 'rxjs';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {Title} from "@angular/platform-browser";
-import {DOCUMENT} from "@angular/common";
-import {CookiesService} from "../services/cookies/cookies.service";
-import {HttpClientService} from "../services/httpClient/http-client.service";
-import {JwtTokenService} from "../services/jwt-token/jwt-token.service";
-import {LocalStorageService} from "../services/local-storage/local-storage.service";
-import {FooterComponent} from "./footer/footer.component";
+import { Component, Inject, OnInit } from '@angular/core';
+import { filter, map } from 'rxjs/operators';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { CookiesService } from '../services/cookies/cookies.service';
+import { HttpClientService } from '../services/httpClient/http-client.service';
+import { JwtTokenService } from '../services/jwt-token/jwt-token.service';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import {NavbarComponent} from "./navbar/navbar.component";
 
 @Component({
   selector: 'app-root',
@@ -16,83 +16,69 @@ import {FooterComponent} from "./footer/footer.component";
 })
 export class AppComponent implements OnInit {
 
-
   constructor(
-    private myCookieService: CookiesService,
+    private cookiesService: CookiesService,
     private httpClientService: HttpClientService,
     private jwtService: JwtTokenService,
-    private cookiesService: CookiesService,
     private router: Router,
     private titleService: Title,
     private route: ActivatedRoute,
     private localStorage: LocalStorageService,
-    private footerComponent: FooterComponent,
+    private navbar: NavbarComponent,
     @Inject(DOCUMENT) private document: Document
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
-
-    if (this.myCookieService.get('token') && !this.httpClientService.isAuthenticated.value) {
-      this.jwtService.setToken(this.myCookieService.get('token'));
+    if (this.cookiesService.get('token')) {
       this.httpClientService.isAuthenticated.next(true);
+
+      this.jwtService.setToken(this.cookiesService.get('token'));
       if (this.jwtService.isTokenExpired()) {
-        window.sessionStorage.clear();
-        this.cookiesService.delete('token');
-        this.httpClientService.isAuthenticated.next(false);
-        this.router.navigate(['/accueil']).then(() => {
-        });
+        this.clearAuthData();
       }
+
     } else {
-      this.httpClientService.isAuthenticated.next(false);
-      this.myCookieService.delete('token');
+      this.clearAuthData();
     }
 
-    this.footerComponent.ngOnInit();
+    this.logConsoleWarnings();
 
-    // For english users
-    console.log('%cHold Up!', 'color:red; font-size: 6rem; font-weight: bold;')
-    console.log("%cIf someone told you to copy and paste something here, they're trying to hack you. Don't do it!", "color: white; font-size: 20px; font-weight: bold;")
-    // For french users
-    console.log('%cAttention!', 'color:red; font-size: 6rem; font-weight: bold;')
-    console.log("%cSi quelqu'un vous a dit de copier et coller quelque chose ici, il essaie de vous pirater. Ne le faites pas!", "color: white; font-size: 20px; font-weight: bold;")
+    this.handleTheme();
 
-    if (this.myCookieService.get('token')) {
-      this.httpClientService.isAuthenticated.next(true);
-    }
+    this.handleRouteTitles();
 
-    this.document.body.classList.add('dark');
+    this.navbar.ngOnInit();
+  }
 
-    if (this.localStorage.get('theme')) {
-      if (this.localStorage.get('theme') === 'light') {
-        this.document.body.classList.remove('dark');
-        this.document.body.classList.add('light');
-      } else {
-        this.document.body.classList.remove('light');
-        this.document.body.classList.add('dark');
-      }
-
-    }
-
-
-    this.router.events
-      .pipe(
-        filter((event: any) => event instanceof NavigationEnd),
-        map(() => {
-          const child = this.route.firstChild;
-          const title = child?.snapshot.data['title'];
-          if (title) {
-            return title;
-          }
-        })
-      )
-      .subscribe((title) => {
-        if (title) {
-          this.titleService.setTitle(`T-flow - ${title}`);
-        }
-      });
-
+  clearAuthData() {
+    this.httpClientService.isAuthenticated.next(false);
+    this.cookiesService.delete('token');
+    sessionStorage.clear();
+    this.router.navigate(['/accueil']).then();
   }
 
 
+  logConsoleWarnings() {
+    console.log('%cHold Up!', 'color:red; font-size: 6rem; font-weight: bold;');
+    console.log("%cIf someone told you to copy and paste something here, they're trying to hack you. Don't do it!", "color: white; font-size: 20px; font-weight: bold;");
+    console.log('%cAttention!', 'color:red; font-size: 6rem; font-weight: bold;');
+    console.log("%cSi quelqu'un vous a dit de copier et coller quelque chose ici, il essaie de vous pirater. Ne le faites pas!", "color: white; font-size: 20px; font-weight: bold;");
+  }
+
+  handleTheme() {
+    const theme = this.localStorage.get('theme') ?? 'dark';
+    this.document.body.classList.remove('dark', 'light');
+    this.document.body.classList.add(theme);
+  }
+
+  handleRouteTitles() {
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      map(() => this.route.firstChild?.snapshot.data['title'])
+    ).subscribe((title) => {
+      if (title) {
+        this.titleService.setTitle(`T-flow - ${title}`);
+      }
+    });
+  }
 }

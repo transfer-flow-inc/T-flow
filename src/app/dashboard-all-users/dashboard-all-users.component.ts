@@ -11,7 +11,7 @@ import {AllUsersInterface} from "../../interfaces/User/all-users-interface";
 export class DashboardAllUsersComponent implements OnInit {
 
     users: AllUsersInterface = {
-        users: []
+       content: []
     };
 
       constructor(
@@ -21,16 +21,18 @@ export class DashboardAllUsersComponent implements OnInit {
 
       ngOnInit(): void {
 
-        /* this.httpClientService.getAllUsers( environment.apiURL + 'admin/users' ).subscribe({
+        /*
+        this.httpClientService.getAllUsers( environment.apiURL + 'admin/users' ).subscribe({
             next: (response) => {
               console.log(response)
-              this.users = response.users;
+              this.users.content = response.content;
             },
             error: (error) => {
               console.log(error);
             }
         });
-        */
+
+          */
 
       }
 
