@@ -22,7 +22,6 @@ import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-
 
 
 const routes: Routes = [
-  { 'path' : "" , redirectTo: "accueil", pathMatch: "full"},
   { 'path' : "accueil" , component: HomepageComponent, data: { title: 'Accueil'}},
   { 'path' : "conditions-generales-utilisation" , component: CguComponent, data: { title: 'CGU'}},
   { 'path' : "politique-de-confidentialite" , component: PrivacyPolicyComponent, data: { title: 'Politique de confidentialité'}},
@@ -41,6 +40,7 @@ const routes: Routes = [
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},
   { 'path' : "reglages/mes-transferts", component: SettingsAllTransferComponent, canActivate : [AutorizeGuardService], data: { title: 'Mes Transferts'}},
   { 'path' : "reglages/mon-abonnement", component: SettingsSubscriptionComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon abonnement'}},
+  { 'path' : "" , redirectTo: "accueil", pathMatch: "full"},
   { 'path' : "**" , component: NotFoundComponent, data: { title: 'Cette page n\'existe pas'}},
 ];
 

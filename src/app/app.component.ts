@@ -37,8 +37,6 @@ export class AppComponent implements OnInit {
         this.clearAuthData();
       }
 
-    } else {
-      this.clearAuthData();
     }
 
     this.logConsoleWarnings();
