@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {JwtTokenService} from "../jwt-token/jwt-token.service";
-import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from "@angular/router";
-import {Observable} from "rxjs";
-import {CookiesService} from "../cookies/cookies.service";
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from "@angular/router";
+import { Observable } from "rxjs";
+import { JwtTokenService } from "../jwt-token/jwt-token.service";
+import { CookiesService } from "../cookies/cookies.service";
 
 @Injectable({
   providedIn: 'root'
@@ -20,21 +20,26 @@ export class AdminAutorizeGuardService {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
 
-    if (this.jwtService.jwtToken === '') {
-      this.router.navigate(['/se-connecter']).then();
-      return false;
+    if (!this.jwtService.jwtToken) {
+      return this.navigateTo('/se-connecter', false);
     }
 
     this.jwtService.setToken(this.authStorageService.get('token')!);
 
-    if (this.jwtService.getUserRole() === 'ADMIN') {
-      return true;
-    } else if (this.jwtService.getUserRole() === 'USER') {
-      this.router.navigate(['/accueil']).then();
-      return false;
-    } else {
-      this.router.navigate(['/se-connecter']).then();
-      return false;
+    const userRole = this.jwtService.getUserRole();
+
+    switch (userRole) {
+      case 'ADMIN':
+        return true;
+      case 'USER':
+        return this.navigateTo('/accueil', false);
+      default:
+        return this.navigateTo('/se-connecter', false);
     }
+  }
+
+  private navigateTo(route: string, result: boolean): boolean {
+    this.router.navigate([route]).then();
+    return result;
   }
 }

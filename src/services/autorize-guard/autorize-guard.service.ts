@@ -1,49 +1,44 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from "@angular/router";
-import {Observable} from "rxjs";
-import {JwtTokenService} from "../jwt-token/jwt-token.service";
-import {CookiesService} from "../cookies/cookies.service";
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from "@angular/router";
+import { JwtTokenService } from "../jwt-token/jwt-token.service";
+import { CookiesService } from "../cookies/cookies.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutorizeGuardService {
-
   constructor(
     private authStorageService: CookiesService,
-    private jwtService : JwtTokenService,
+    private jwtService: JwtTokenService,
     private router: Router
-  ) {
+  ) { }
+
+  async canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Promise<boolean> {
+    try {
+      if (!this.jwtService.jwtToken && !this.authStorageService.get("token")) {
+        return this.redirectToLogin();
+      }
+
+      this.jwtService.setToken(this.authStorageService.get("token")!);
+
+      if (this.jwtService.isTokenExpired()) {
+        this.authStorageService.delete("token");
+        return this.redirectToLogin();
+      } else if (this.authStorageService.get("token")) {
+        return true;
+      } else {
+        return this.redirectToLogin();
+      }
+    } catch (error) {
+      return this.redirectToLogin();
+    }
   }
 
-canActivate(next: ActivatedRouteSnapshot,
-              state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
-    if (this.jwtService.jwtToken == "" && this.authStorageService.get("token") == "") {
-      this.router.navigate(['/se-connecter']).then();
-      return false;
-    }
-    this.jwtService.setToken(this.authStorageService.get("token")!);
-
-
-    if (this.jwtService.isTokenExpired()) {
-      this.router.navigate(['/se-connecter']).then();
-      this.authStorageService.delete("token");
-      return false;
-    } else if (this.authStorageService.get("token")) {
-
-
-      return true;
-    } else {
-      this.router.navigate(['/se-connecter']).then();
-      return false;
-    }
-
-
+  private async redirectToLogin(): Promise<boolean> {
+    await this.router.navigate(['/se-connecter']);
+    return false;
   }
-
-
-
-
-
 }
