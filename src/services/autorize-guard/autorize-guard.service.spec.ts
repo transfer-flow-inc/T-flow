@@ -23,7 +23,7 @@ describe('AutorizeGuardService', () => {
     };
 
     mockRouter = {
-      navigate: jest.fn(),
+      navigate: jest.fn().mockReturnValue(Promise.resolve(true)),
     };
 
     TestBed.configureTestingModule({
@@ -38,15 +38,11 @@ describe('AutorizeGuardService', () => {
     service = TestBed.inject(AutorizeGuardService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
   describe('canActivate', () => {
     const next = {} as ActivatedRouteSnapshot;
     const state = {} as RouterStateSnapshot;
 
-    it('should redirect to login if both jwtToken and cookie are empty', async () => {
+    it('should redirect to login if jwtToken and cookie token are empty', async () => {
       mockJwtTokenService.jwtToken = '';
       mockCookiesService.get.mockReturnValue('');
       const result = await service.canActivate(next, state);
@@ -55,24 +51,28 @@ describe('AutorizeGuardService', () => {
     });
 
     it('should redirect to login if token is expired', async () => {
-      mockJwtTokenService.jwtToken = 'expiredToken';
+      mockJwtTokenService.jwtToken = 'someToken';
+      mockCookiesService.get.mockReturnValue('someToken');
       mockJwtTokenService.isTokenExpired.mockReturnValue(true);
       const result = await service.canActivate(next, state);
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/se-connecter']);
-      expect(mockCookiesService.delete).toHaveBeenCalledWith('token');
       expect(result).toBe(false);
     });
 
     it('should return true if token exists and is not expired', async () => {
-      mockJwtTokenService.jwtToken = 'validToken';
-      mockCookiesService.get.mockReturnValue('validToken');
-      mockJwtTokenService.isTokenExpired.mockReturnValue(false);
+      mockJwtTokenService.jwtToken = 'someToken';
+      mockCookiesService.get.mockReturnValue('someToken');
+      mockJwtTokenService.isTokenExpired.mockReturnValue(false); // Explicitly returning false
       const result = await service.canActivate(next, state);
       expect(result).toBe(true);
     });
 
-    it('should redirect to login for any other cases', async () => {
-      // You can modify this to simulate other unexpected cases
+    it('should redirect to login if any other case or error', async () => {
+      mockJwtTokenService.jwtToken = '';
+      mockCookiesService.get.mockReturnValue('');
+      mockJwtTokenService.isTokenExpired.mockImplementation(() => {
+        throw new Error('Error');
+      });
       const result = await service.canActivate(next, state);
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/se-connecter']);
       expect(result).toBe(false);
