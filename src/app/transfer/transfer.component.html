@@ -22,7 +22,7 @@
       <input class="input-text" [(ngModel)]="folderName" name="folderName" placeholder="Nom du dossier :">
       <textarea [(ngModel)]="message" name="message" class="input-textarea" [rows]="3" [cols]="3"
                 placeholder="Votre message :"></textarea>
-      <button *ngIf="uploader.queue.length > 0 && emails.length > 0" class="btn-send" type="submit">Envoyer</button>
+      <button *ngIf="uploader.queue.length > 0 && emails.length > 0" [disabled]="isUploadable" class="btn-send" type="submit">Envoyer</button>
     </form>
 
   </div>

@@ -70,13 +70,14 @@ export class AppComponent implements OnInit {
   }
 
   handleRouteTitles() {
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      map(() => this.route.firstChild?.snapshot.data['title'])
-    ).subscribe((title) => {
-      if (title) {
-        this.titleService.setTitle(`T-flow - ${title}`);
-      }
-    });
-  }
+  this.router.events.pipe(
+    filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+    map(() => this.route.firstChild?.snapshot.data['title'])
+  ).subscribe((title) => {
+    if (title) {
+      this.titleService.setTitle(`T-flow - ${title}`);
+    }
+  });
+}
+
 }

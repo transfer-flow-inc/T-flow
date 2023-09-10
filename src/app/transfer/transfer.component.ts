@@ -43,6 +43,7 @@ export class TransferComponent implements OnInit {
   token: string = '';
   folderName: string = '';
   folderSize: number = 0;
+  isUploadable: boolean = false;
 
   constructor(
     private httpClient: HttpClientService,
@@ -85,6 +86,7 @@ export class TransferComponent implements OnInit {
 
   uploadFile() {
     if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
+      this.isUploadable = true;
       if (this.folderName === '') {
         this.folderName = "Dossier-" + Math.floor(Math.random() * 1001);
       }

@@ -18,20 +18,13 @@ export class FooterComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
-
-
-
-    this.themeService.currentTheme$.subscribe((theme) => {
-      if (theme === 'dark') {
-        this.imgTheme = 'assets/images/logo_dark.png';
-      } else {
-        this.imgTheme = 'assets/images/logo_light.png';
-      }
+  ngOnInit() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.imgTheme = 'dark' === theme ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
     });
-
-
   }
+
+
 
 
 }
