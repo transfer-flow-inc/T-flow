@@ -99,5 +99,8 @@ export class HttpClientService {
     return this.httpClient.delete(url);
   }
 
+  sendEmail(url: string, userEmail: string, subject: string, message: string) {
+    return this.httpClient.post(url, {userEmail, subject, message});
+  }
 
 }

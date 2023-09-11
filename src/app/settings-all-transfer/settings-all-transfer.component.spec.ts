@@ -4,7 +4,6 @@ import { SettingsAllTransferComponent } from './settings-all-transfer.component'
 import {SettingsNavbarComponent} from "../settings-navbar/settings-navbar.component";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
 describe('SettingsAllTransferComponent', () => {
   let component: SettingsAllTransferComponent;
@@ -26,4 +25,5 @@ describe('SettingsAllTransferComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

@@ -41,9 +41,18 @@
            type="text"
            placeholder="Sujet :"
            [(ngModel)]="subjectValue"
+            [class.invalid]="subject.invalid && (subject.dirty || subject.touched)"
+            [class.valid]="subject.valid"
            #subject="ngModel"
            name="subject"
+           required
     >
+    <p [class.invalid]="subject.invalid && (subject.dirty || subject.touched)"
+       [class.valid]="subject.valid"
+       *ngIf="subject.invalid && (subject.dirty || subject.touched)"
+    >
+      Le sujet ne peut être vide
+    </p>
 
     <textarea
       class="contact-textarea"
