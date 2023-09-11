@@ -1,12 +1,21 @@
 import {JwtTokenService} from "./jwt-token.service";
+import jwt_decode from 'jwt-decode';
+
+jest.mock('jwt-decode');
 
 describe('DownloadComponent', () => {
+  let service: JwtTokenService;
+
+  beforeEach(() => {
+    service = new JwtTokenService();
+  });
+
 
   it('should create', () => {
     expect(true).toBeTruthy();
   });
 
-  });
+
 
   // use the mock token service
   let component = new JwtTokenService();
@@ -90,3 +99,62 @@ describe('DownloadComponent', () => {
     spyOn(component, 'decodeToken').and.returnValue('sampleToken');
     expect(component.decodeToken()).toBe('sampleToken');
   })
+
+it('should return the correct expiration time', () => {
+    const mockDecodedToken = {
+      exp: '1632831325',
+    };
+
+    (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
+    service.setToken('some_token');
+
+    expect(service.getExpiryTime()).toBe(1632831325);
+  });
+
+  it('should correctly identify if the token is expired', () => {
+    const mockDecodedToken = {
+      exp: ((Date.now() / 1000) - 100).toString(), // some past time
+    };
+
+    (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
+    service.setToken('some_expired_token');
+
+    expect(service.isTokenExpired()).toBe(true);
+  });
+
+  it('should correctly identify if the token is not expired', () => {
+    const mockDecodedToken = {
+      exp: ((Date.now() / 1000) + 100).toString(), // some future time
+    };
+
+    (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
+    service.setToken('some_valid_token');
+
+    expect(service.isTokenExpired()).toBe(false);
+  });
+
+  it('should return all user info correctly', () => {
+    const mockDecodedToken = {
+      firstName: 'John',
+      lastName: 'Doe',
+      userID: '1234',
+      authMethod: 'password',
+      userRole: 'admin',
+      userEmail: 'john.doe@example.com',
+      plan: 'pro',
+      isAccountVerified: 'true',
+      avatar: 'some_avatar',
+      exp: '1632831325',
+    };
+
+    (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
+    service.setToken('some_token');
+
+    const userInfo = service.getAllUserInfos();
+    expect(userInfo).toEqual(mockDecodedToken);
+  });
+
+
+
+
+});
