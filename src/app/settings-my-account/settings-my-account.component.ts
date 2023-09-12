@@ -67,7 +67,7 @@ export class SettingsMyAccountComponent implements OnInit {
         this.router.navigate(['/se-connecter']).then();
         return;
     }
-    this.user = <UserInterface>this.jwtService.getAllUserInfos();
+    this.user = this.jwtService.getAllUserInfos();
 
     this.lastNameValue = this.user.lastName;
     this.firstNameValue = this.user.firstName;
