@@ -3,6 +3,7 @@ import { HttpClientService } from '../../services/httpClient/http-client.service
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { FlashMessageService } from '../../services/flash-message/flash-message.service';
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-contact-us',
@@ -24,30 +25,34 @@ export class ContactUsComponent {
     return this.emailValue !== '' && this.subjectValue !== '' && this.messageValue !== '';
   }
 
-  async sendEmail() {
+  async sendEmail(): Promise<void> {
     if (!this.isValidInput()) {
-      return;
+      this.flashMessageService.addMessage('Veuillez remplir tous les champs.', 'error', 4000);
     }
 
     const url = `${environment.apiURL}user/tickets`;
     try {
-      await this.httpClientService.sendEmail(url, this.emailValue, this.subjectValue, this.messageValue).toPromise();
+      await this.sendHttpRequest(url);
       this.resetFields();
-      console.log('Message sent')
-      await this.navigateToHomeWithMessage(`Votre message a bien été envoyé.`, 'success');
+      await this.navigateToHomeWithFlashMessage('Votre message a bien été envoyé.', 'success');
     } catch (error) {
-      console.log(error)
-      await this.navigateToHomeWithMessage(`Une erreur est survenue lors de l'envoi de votre message.`, 'error');
+      await this.navigateToHomeWithFlashMessage('Une erreur est survenue lors de l\'envoi de votre message.', 'error');
     }
   }
 
-  resetFields() {
+  private resetFields(): void {
     this.emailValue = '';
     this.subjectValue = '';
     this.messageValue = '';
   }
 
-  async navigateToHomeWithMessage(message: string, type: string) {
+  private async sendHttpRequest(url: string): Promise<void> {
+    await this.httpClientService
+      .sendEmail(url, this.emailValue, this.subjectValue, this.messageValue)
+      .toPromise();
+  }
+
+  private async navigateToHomeWithFlashMessage(message: string, type: string): Promise<void> {
     await this.router.navigate(['/accueil']);
     this.flashMessageService.addMessage(message, type, 4000);
   }
