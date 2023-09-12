@@ -1,13 +1,10 @@
 module.exports = {
   verbose: false,
-  maxWorkers: 6,
+  maxWorkers: 10,
   transformIgnorePatterns: ['/node_modules/(?!(uuid|.*ol|.*quick-lru|.*akita|.*\\.mjs$))'],
   moduleFileExtensions: ['js', 'json', 'ts'],
   transform: {
-    "^.+\\.(ts|tsx)$": ['ts-jest', {
-      /* ts-jest config goes here in Jest */
-
-    }]
+    '^.+\\.tsx?$': 'ts-jest'
   },
   testMatch: ['(**/*.spec.ts)'],
   testRunner: 'jest-jasmine2',
@@ -24,6 +21,7 @@ module.exports = {
     "/src/polyfills.ts",
     "/src/environments/environment.ts",
     "/src/environments/environment.prod.ts",
+    "/src/environments/environment-azure.ts",
     "/src/app/app-routing.module.ts",
     "/src/app/app.module.ts",
     ],
