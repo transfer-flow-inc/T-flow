@@ -55,7 +55,6 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/accueil']).then();
   }
 
-
   logConsoleWarnings() {
     console.log('%cHold Up!', 'color:red; font-size: 6rem; font-weight: bold;');
     console.log("%cIf someone told you to copy and paste something here, they're trying to hack you. Don't do it!", "color: white; font-size: 20px; font-weight: bold;");

@@ -3,17 +3,27 @@
 
     <section class="dashboard-container">
 
-      <!--
+
         <div *ngFor="let user of users.content">
 
             <div class="dashboard-card">
+                <img class="img-user" [src]="user.avatar" alt="photo de profil">
+              <div class="dashboard-card-text">
                 <p>{{ user.lastName }}</p>
                 <p>{{ user.firstName }}</p>
                 <p>{{ user.userEmail }}</p>
+                <p class="tag" [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? "Compte vérifié" : "Compte non vérifié" }}</p>
+                <p>Nombre de transfert : {{ user.userFolders.length }}</p>
+                <a routerLink="/idk" class="card-btn">Voir ce compte</a>
+              </div>
             </div>
 
         </div>
--->
+
+      <div *ngIf="users.content.length < 1">
+        <p>{{ errorMessage }}</p>
+      </div>
+
     </section>
 
 </section>

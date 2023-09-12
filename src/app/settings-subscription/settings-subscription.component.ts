@@ -22,7 +22,8 @@ export class SettingsSubscriptionComponent implements OnInit {
     roles: [""],
     isAccountVerified: false,
     plan: "",
-    authMethod: ""
+    authMethod: "",
+    userFolders: 0
   }
 
   constructor(

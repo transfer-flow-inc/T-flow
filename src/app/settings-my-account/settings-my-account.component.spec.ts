@@ -8,8 +8,8 @@ describe('SettingsMyAccountComponent', () => {
   let component: SettingsMyAccountComponent;
   let fixture: ComponentFixture<SettingsMyAccountComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach( () => {
+    TestBed.configureTestingModule({
       declarations: [SettingsMyAccountComponent, SettingsNavbarComponent],
       imports: [RouterTestingModule],
       providers: [HttpClient, HttpHandler, OAuthService, UrlHelperService, OAuthLogger, DateTimeProvider],
