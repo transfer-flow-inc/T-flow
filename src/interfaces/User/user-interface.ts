@@ -1,3 +1,4 @@
+
 export interface UserInterface {
     id: number;
     firstName: string;
@@ -10,4 +11,5 @@ export interface UserInterface {
     isAccountVerified: boolean;
     plan: string;
     authMethod: string;
+    userFolders: number;
 }

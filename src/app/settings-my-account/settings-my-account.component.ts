@@ -27,7 +27,8 @@ export class SettingsMyAccountComponent implements OnInit {
     roles: [""],
     isAccountVerified: false,
     plan: "",
-    authMethod: ""
+    authMethod: "",
+    userFolders: 0
   }
 
   userUpdate: UpdateUserInterface = {
