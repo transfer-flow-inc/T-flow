@@ -13,7 +13,7 @@
                 <p>{{ user.firstName }}</p>
                 <p>{{ user.userEmail }}</p>
                 <p class="tag" [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? "Compte vérifié" : "Compte non vérifié" }}</p>
-                <p>Nombre de transfert : {{ user.userFolders.length }}</p>
+                <p>Nombre de transfert : {{ user.userFolders }}</p>
                 <a routerLink="/idk" class="card-btn">Voir ce compte</a>
               </div>
             </div>
