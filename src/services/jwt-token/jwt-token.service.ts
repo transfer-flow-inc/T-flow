@@ -32,11 +32,6 @@ export class JwtTokenService {
     return this.getDecodeToken() ? this.getDecodeToken()['lastName'] : null;
   }
 
-  getUserAuthMethod(): string | null {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['authMethod'] : null;
-  }
-
   getUserAuthenticationMethod(): string | null {
     this.getDecodeToken();
     return this.getDecodeToken() ? this.getDecodeToken()['authMethod'] : null;

@@ -1,182 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\Windows\Bureau\t-flow\src\app\register\register.component.spec.ts">
-    <testCase name="RegisterComponent should create" duration="114"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\settings-subscription\settings-subscription.component.spec.ts">
-    <testCase name="SettingsSubscriptionComponent should create" duration="187"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\app.component.spec.ts">
-    <testCase name="AppComponent should handle the theme correctly" duration="78"/>
-    <testCase name="AppComponent should log console warnings" duration="14"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\logout\logout.component.spec.ts">
-    <testCase name="LogoutComponent should create" duration="175"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\login\login.component.spec.ts">
-    <testCase name="LoginComponent should create" duration="101"/>
+  <file path="D:\Windows\Bureau\t-flow\src\app\settings-all-transfer\settings-all-transfer.component.spec.ts">
+    <testCase name="SettingsAllTransferComponent should create the component" duration="50"/>
+    <testCase name="SettingsAllTransferComponent should initialize user ID from JwtTokenService" duration="7"/>
+    <testCase name="SettingsAllTransferComponent should load all folders when initialized" duration="5"/>
+    <testCase name="SettingsAllTransferComponent should set error message when API call fails" duration="5"/>
   </file>
   <file path="D:\Windows\Bureau\t-flow\src\app\navbar\navbar.component.spec.ts">
-    <testCase name="NavbarComponent should create the component" duration="58"/>
-    <testCase name="NavbarComponent should toggle isPopupOpen and update popupToggleValue" duration="13"/>
-    <testCase name="NavbarComponent should toggle isMenuOpen and update navbarToggleValue and iconShow" duration="10"/>
-    <testCase name="NavbarComponent should initialize isAuthenticated based on HttpClientService" duration="50"/>
-    <testCase name="NavbarComponent should initialize isAdministrator based on JwtTokenService and CookiesService" duration="11"/>
-    <testCase name="NavbarComponent should initialize isDarkTheme and imgTheme based on localStorage" duration="7"/>
+    <testCase name="NavbarComponent should create the component" duration="53"/>
+    <testCase name="NavbarComponent should toggle isPopupOpen and update popupToggleValue" duration="11"/>
+    <testCase name="NavbarComponent should toggle isMenuOpen and update navbarToggleValue and iconShow" duration="9"/>
+    <testCase name="NavbarComponent should initialize isAuthenticated based on HttpClientService" duration="40"/>
+    <testCase name="NavbarComponent should initialize isAdministrator based on JwtTokenService and CookiesService" duration="15"/>
+    <testCase name="NavbarComponent should initialize isDarkTheme and imgTheme based on localStorage" duration="10"/>
   </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\transfer\transfer.component.spec.ts">
-    <testCase name="TransferComponent should create the component" duration="69"/>
-    <testCase name="TransferComponent should initialize with a token from cookie service" duration="16"/>
-    <testCase name="TransferComponent should add valid email to the list and reset input state" duration="15"/>
-    <testCase name="TransferComponent should not add invalid email and set error state" duration="11"/>
-    <testCase name="TransferComponent should delete email from the list" duration="8"/>
-    <testCase name="TransferComponent should upload files when requirements met" duration="9"/>
-    <testCase name="TransferComponent should show an error message if file or email is missing for upload" duration="6"/>
-    <testCase name="TransferComponent should remove duplicate files when checkFile is called" duration="9"/>
+  <file path="D:\Windows\Bureau\t-flow\src\app\logout\logout.component.spec.ts">
+    <testCase name="LogoutComponent should create" duration="179"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\app.component.spec.ts">
+    <testCase name="AppComponent should handle the theme correctly" duration="84"/>
+    <testCase name="AppComponent should log console warnings" duration="12"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\settings-subscription\settings-subscription.component.spec.ts">
+    <testCase name="SettingsSubscriptionComponent should create" duration="185"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\register\register.component.spec.ts">
+    <testCase name="RegisterComponent should create" duration="126"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\login\login.component.spec.ts">
+    <testCase name="LoginComponent should create" duration="121"/>
   </file>
   <file path="D:\Windows\Bureau\t-flow\src\app\settings-my-account\settings-my-account.component.spec.ts">
-    <testCase name="SettingsMyAccountComponent should create" duration="248"/>
+    <testCase name="SettingsMyAccountComponent should create" duration="224"/>
   </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\footer\footer.component.spec.ts">
-    <testCase name="FooterComponent should create" duration="28"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-all-users\dashboard-all-users.component.spec.ts">
-    <testCase name="DashboardAllUsersComponent should create" duration="30"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\download\download.component.spec.ts">
-    <testCase name="DownloadComponent should create" duration="68"/>
-    <testCase name="DownloadComponent should initialize with dark theme" duration="11"/>
-    <testCase name="DownloadComponent should initialize with light theme" duration="21"/>
-    <testCase name="DownloadComponent should handle folder retrieval" duration="16"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\validate-email\validate-email.component.spec.ts">
-    <testCase name="ValidateEmailComponent should create" duration="28"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\contact-us\contact-us.component.spec.ts">
-    <testCase name="ContactUsComponent should create" duration="60"/>
-    <testCase name="ContactUsComponent should return false if any input field is empty" duration="10"/>
-    <testCase name="ContactUsComponent should return true if all input fields are non-empty" duration="10"/>
-    <testCase name="ContactUsComponent should send an email successfully and navigate to home with a success message" duration="14"/>
+  <file path="D:\Windows\Bureau\t-flow\src\app\homepage\homepage.component.spec.ts">
+    <testCase name="HomepageComponent should create" duration="36"/>
   </file>
   <file path="D:\Windows\Bureau\t-flow\src\app\about\about.component.spec.ts">
     <testCase name="AboutComponent should create" duration="87"/>
   </file>
-  <file path="D:\Windows\Bureau\t-flow\src\services\sso\Google\google-sso.service.spec.ts">
-    <testCase name="GoogleSsoService should be created" duration="12"/>
-    <testCase name="GoogleSsoService signInWithGoogle should initialize OAuth flow" duration="3"/>
-    <testCase name="GoogleSsoService isLoggedIn should check if user is logged in" duration="2"/>
-    <testCase name="GoogleSsoService signOut should sign out the user and navigate to accueil if token exists" duration="4"/>
-    <testCase name="GoogleSsoService signOut should do nothing if no token exists" duration="3"/>
+  <file path="D:\Windows\Bureau\t-flow\src\services\httpClient\http-client.service.spec.ts">
+    <testCase name="HttpClientService should be created" duration="16"/>
   </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\subscriptions\subscriptions.component.spec.ts">
-    <testCase name="SubscriptionsComponent should create" duration="51"/>
+  <file path="D:\Windows\Bureau\t-flow\src\app\footer\footer.component.spec.ts">
+    <testCase name="FooterComponent should create" duration="30"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\download\download.component.spec.ts">
+    <testCase name="DownloadComponent should create" duration="72"/>
+    <testCase name="DownloadComponent should initialize with dark theme" duration="16"/>
+    <testCase name="DownloadComponent should initialize with light theme" duration="17"/>
+    <testCase name="DownloadComponent should handle folder retrieval" duration="18"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-all-users\dashboard-all-users.component.spec.ts">
+    <testCase name="DashboardAllUsersComponent should create" duration="44"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\contact-us\contact-us.component.spec.ts">
+    <testCase name="ContactUsComponent should create" duration="74"/>
+    <testCase name="ContactUsComponent should return false if any input field is empty" duration="19"/>
+    <testCase name="ContactUsComponent should return true if all input fields are non-empty" duration="12"/>
+    <testCase name="ContactUsComponent should send an email successfully and navigate to home with a success message" duration="13"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\transfer\transfer.component.spec.ts">
+    <testCase name="TransferComponent should create the component" duration="75"/>
+    <testCase name="TransferComponent should initialize with a token from cookie service" duration="13"/>
+    <testCase name="TransferComponent should add valid email to the list and reset input state" duration="12"/>
+    <testCase name="TransferComponent should not add invalid email and set error state" duration="12"/>
+    <testCase name="TransferComponent should delete email from the list" duration="10"/>
+    <testCase name="TransferComponent should upload files when requirements met" duration="13"/>
+    <testCase name="TransferComponent should show an error message if file or email is missing for upload" duration="8"/>
+    <testCase name="TransferComponent should remove duplicate files when checkFile is called" duration="9"/>
   </file>
   <file path="D:\Windows\Bureau\t-flow\src\app\flash-message\flash-message.component.spec.ts">
-    <testCase name="FlashMessageComponent should create" duration="63"/>
-    <testCase name="FlashMessageComponent should subscribe to getMessage from FlashMessageService" duration="10"/>
-    <testCase name="FlashMessageComponent should start animation when flash message is received" duration="5"/>
-    <testCase name="FlashMessageComponent should delete flash message after duration" duration="1133"/>
+    <testCase name="FlashMessageComponent should create" duration="64"/>
+    <testCase name="FlashMessageComponent should subscribe to getMessage from FlashMessageService" duration="9"/>
+    <testCase name="FlashMessageComponent should start animation when flash message is received" duration="11"/>
+    <testCase name="FlashMessageComponent should delete flash message after duration" duration="1128"/>
     <testCase name="FlashMessageComponent should update flashMessage when new message is received" duration="7"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\services\httpClient\http-client.service.spec.ts">
-    <testCase name="HttpClientService should be created" duration="13"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\cookies-consent\cookies-consent.component.spec.ts">
-    <testCase name="CookiesConsentComponent should create" duration="24"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\services\autorize-guard\autorize-guard.service.spec.ts">
-    <testCase name="AutorizeGuardService canActivate should redirect to login if jwtToken and cookie token are empty" duration="12"/>
-    <testCase name="AutorizeGuardService canActivate should redirect to login if token is expired" duration="4"/>
-    <testCase name="AutorizeGuardService canActivate should return true if token exists and is not expired" duration="3"/>
-    <testCase name="AutorizeGuardService canActivate should redirect to login if any other case or error" duration="3"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-all-transfer\dashboard-all-transfer.component.spec.ts">
-    <testCase name="DashboardAllTransferComponent should create" duration="42"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\homepage\homepage.component.spec.ts">
-    <testCase name="HomepageComponent should create" duration="53"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\settings-navbar\settings-navbar.component.spec.ts">
-    <testCase name="SettingsNavbarComponent should create" duration="61"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\services\admin-autorize-guard\admin-autorize-guard.service.spec.ts">
-    <testCase name="AdminAutorizeGuardService should be created" duration="11"/>
-    <testCase name="AdminAutorizeGuardService canActivate should redirect to login if jwtToken is empty" duration="5"/>
-    <testCase name="AdminAutorizeGuardService canActivate should return true if role is ADMIN" duration="3"/>
-    <testCase name="AdminAutorizeGuardService canActivate should redirect to /accueil if role is USER" duration="1"/>
-    <testCase name="AdminAutorizeGuardService canActivate should redirect to login for any other roles" duration="2"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\cgu\cgu.component.spec.ts">
-    <testCase name="CguComponent should create" duration="61"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\settings-all-transfer\settings-all-transfer.component.spec.ts">
-    <testCase name="SettingsAllTransferComponent should create the component" duration="53"/>
-    <testCase name="SettingsAllTransferComponent should initialize user ID from JwtTokenService" duration="10"/>
-    <testCase name="SettingsAllTransferComponent should load all folders when initialized" duration="9"/>
-    <testCase name="SettingsAllTransferComponent should set error message when API call fails" duration="5"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\services\flash-message\flash-message.service.spec.ts">
-    <testCase name="FlashMessageService should be created" duration="15"/>
-    <testCase name="FlashMessageService should add message and emit it" duration="5"/>
-    <testCase name="FlashMessageService should handle string type correctly" duration="20"/>
-    <testCase name="FlashMessageService should delete flash message" duration="3"/>
-    <testCase name="FlashMessageService should add a message with a given MessageType" duration="4"/>
-    <testCase name="FlashMessageService should add a message with a given string type" duration="4"/>
-    <testCase name="FlashMessageService should default to INFO type for an unrecognized string type" duration="2"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-one-user\dashboard-one-user.component.spec.ts">
-    <testCase name="DashboardOneUserComponent should create" duration="38"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\services\cookies\cookies.service.spec.ts">
-    <testCase name="CookiesService should be created" duration="9"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\privacy-policy\privacy-policy.component.spec.ts">
-    <testCase name="PrivacyPolicyComponent should create" duration="49"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\services\http-interceptor\http-interceptor.service.spec.ts">
-    <testCase name="HttpInterceptorService should add Authorization header when token is present" duration="3"/>
-    <testCase name="HttpInterceptorService should not add Authorization header when token is not present" duration="1"/>
-    <testCase name="HttpInterceptorService should handle 401 error by deleting token and clearing session storage" duration="3"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-one-transfer\dashboard-one-transfer.component.spec.ts">
-    <testCase name="DashboardOneTransferComponent should create" duration="31"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-navbar\dashboard-navbar.component.spec.ts">
-    <testCase name="DashboardNavbarComponent should create" duration="34"/>
-  </file>
-  <file path="D:\Windows\Bureau\t-flow\src\app\not-found\not-found.component.spec.ts">
-    <testCase name="NotFoundComponent should create" duration="39"/>
   </file>
   <file path="D:\Windows\Bureau\t-flow\src\services\jwt-token\jwt-token.service.spec.ts">
     <testCase name="DownloadComponent should create" duration="2"/>
     <testCase name="DownloadComponent should return the user first name" duration="1"/>
     <testCase name="DownloadComponent should return the user last name" duration="1"/>
-    <testCase name="DownloadComponent should return the user id" duration="0"/>
-    <testCase name="DownloadComponent should return the user email" duration="1"/>
+    <testCase name="DownloadComponent should return the user id" duration="1"/>
+    <testCase name="DownloadComponent should return the user email" duration="0"/>
     <testCase name="DownloadComponent should return the user role" duration="0"/>
     <testCase name="DownloadComponent should return the user plan" duration="1"/>
     <testCase name="DownloadComponent should return the user avatar" duration="0"/>
-    <testCase name="DownloadComponent should return the user account status" duration="1"/>
-    <testCase name="DownloadComponent should return the user authentication method" duration="0"/>
-    <testCase name="DownloadComponent should return the token" duration="1"/>
+    <testCase name="DownloadComponent should return the user account status" duration="0"/>
+    <testCase name="DownloadComponent should return the user authentication method" duration="1"/>
+    <testCase name="DownloadComponent should return the token" duration="0"/>
     <testCase name="DownloadComponent should set the token" duration="0"/>
-    <testCase name="DownloadComponent should decode the token" duration="0"/>
-    <testCase name="DownloadComponent should get the decoded token" duration="1"/>
+    <testCase name="DownloadComponent should decode the token" duration="1"/>
+    <testCase name="DownloadComponent should get the decoded token" duration="0"/>
     <testCase name="DownloadComponent should check if the token is expired" duration="0"/>
     <testCase name="DownloadComponent should get all the user infos" duration="0"/>
     <testCase name="DownloadComponent should decode the token" duration="0"/>
     <testCase name="DownloadComponent should return the correct expiration time" duration="1"/>
-    <testCase name="DownloadComponent should correctly identify if the token is expired" duration="0"/>
+    <testCase name="DownloadComponent should correctly identify if the token is expired" duration="1"/>
     <testCase name="DownloadComponent should correctly identify if the token is not expired" duration="0"/>
     <testCase name="DownloadComponent should return all user info correctly" duration="1"/>
+    <testCase name="DownloadComponent should return null when authMethod does not exist in the decoded token" duration="1"/>
+    <testCase name="DownloadComponent should return null when getDecodeToken returns null" duration="0"/>
+    <testCase name="DownloadComponent should return the correct jwtToken value" duration="0"/>
+    <testCase name="DownloadComponent should decode jwtToken and populate decodedToken when jwtToken is set" duration="0"/>
+    <testCase name="DownloadComponent should return false when expiryTime is null" duration="0"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\settings-navbar\settings-navbar.component.spec.ts">
+    <testCase name="SettingsNavbarComponent should create" duration="49"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\subscriptions\subscriptions.component.spec.ts">
+    <testCase name="SubscriptionsComponent should create" duration="57"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\services\autorize-guard\autorize-guard.service.spec.ts">
+    <testCase name="AutorizeGuardService canActivate should redirect to login if jwtToken and cookie token are empty" duration="14"/>
+    <testCase name="AutorizeGuardService canActivate should redirect to login if token is expired" duration="4"/>
+    <testCase name="AutorizeGuardService canActivate should return true if token exists and is not expired" duration="3"/>
+    <testCase name="AutorizeGuardService canActivate should redirect to login if any other case or error" duration="2"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\services\sso\Google\google-sso.service.spec.ts">
+    <testCase name="GoogleSsoService should be created" duration="11"/>
+    <testCase name="GoogleSsoService signInWithGoogle should initialize OAuth flow" duration="3"/>
+    <testCase name="GoogleSsoService isLoggedIn should check if user is logged in" duration="1"/>
+    <testCase name="GoogleSsoService signOut should sign out the user and navigate to accueil if token exists" duration="3"/>
+    <testCase name="GoogleSsoService signOut should do nothing if no token exists" duration="5"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\cgu\cgu.component.spec.ts">
+    <testCase name="CguComponent should create" duration="48"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\validate-email\validate-email.component.spec.ts">
+    <testCase name="ValidateEmailComponent should create" duration="36"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\services\admin-autorize-guard\admin-autorize-guard.service.spec.ts">
+    <testCase name="AdminAutorizeGuardService should be created" duration="14"/>
+    <testCase name="AdminAutorizeGuardService canActivate should redirect to login if jwtToken is empty" duration="3"/>
+    <testCase name="AdminAutorizeGuardService canActivate should return true if role is ADMIN" duration="2"/>
+    <testCase name="AdminAutorizeGuardService canActivate should redirect to /accueil if role is USER" duration="2"/>
+    <testCase name="AdminAutorizeGuardService canActivate should redirect to login for any other roles" duration="2"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\privacy-policy\privacy-policy.component.spec.ts">
+    <testCase name="PrivacyPolicyComponent should create" duration="44"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-navbar\dashboard-navbar.component.spec.ts">
+    <testCase name="DashboardNavbarComponent should create" duration="38"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\services\flash-message\flash-message.service.spec.ts">
+    <testCase name="FlashMessageService should be created" duration="16"/>
+    <testCase name="FlashMessageService should add message and emit it" duration="5"/>
+    <testCase name="FlashMessageService should handle string type correctly" duration="2"/>
+    <testCase name="FlashMessageService should delete flash message" duration="2"/>
+    <testCase name="FlashMessageService should add a message with a given MessageType" duration="3"/>
+    <testCase name="FlashMessageService should add a message with a given string type" duration="3"/>
+    <testCase name="FlashMessageService should default to INFO type for an unrecognized string type" duration="2"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\not-found\not-found.component.spec.ts">
+    <testCase name="NotFoundComponent should create" duration="55"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-one-transfer\dashboard-one-transfer.component.spec.ts">
+    <testCase name="DashboardOneTransferComponent should create" duration="39"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\cookies-consent\cookies-consent.component.spec.ts">
+    <testCase name="CookiesConsentComponent should create" duration="20"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-all-transfer\dashboard-all-transfer.component.spec.ts">
+    <testCase name="DashboardAllTransferComponent should create" duration="31"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\app\dashboard-one-user\dashboard-one-user.component.spec.ts">
+    <testCase name="DashboardOneUserComponent should create" duration="39"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\services\http-interceptor\http-interceptor.service.spec.ts">
+    <testCase name="HttpInterceptorService should add Authorization header when token is present" duration="4"/>
+    <testCase name="HttpInterceptorService should not add Authorization header when token is not present" duration="0"/>
+    <testCase name="HttpInterceptorService should handle 401 error by deleting token and clearing session storage" duration="2"/>
+  </file>
+  <file path="D:\Windows\Bureau\t-flow\src\services\cookies\cookies.service.spec.ts">
+    <testCase name="CookiesService should be created" duration="9"/>
   </file>
   <file path="D:\Windows\Bureau\t-flow\src\services\theme-service\theme-service.service.spec.ts">
-    <testCase name="ThemeServiceService should be created" duration="8"/>
+    <testCase name="ThemeServiceService should be created" duration="12"/>
+    <testCase name="ThemeServiceService should save theme to local storage" duration="3"/>
+    <testCase name="ThemeServiceService should toggle theme" duration="2"/>
+    <testCase name="ThemeServiceService should get current theme" duration="1"/>
   </file>
   <file path="D:\Windows\Bureau\t-flow\src\services\local-storage\local-storage.service.spec.ts">
-    <testCase name="LocalStorageService should be created" duration="2"/>
+    <testCase name="LocalStorageService should be created" duration="1"/>
     <testCase name="LocalStorageService should set item in local storage" duration="1"/>
     <testCase name="LocalStorageService should get item from local storage" duration="0"/>
-    <testCase name="LocalStorageService should remove item from local storage" duration="1"/>
+    <testCase name="LocalStorageService should remove item from local storage" duration="0"/>
   </file>
 </testExecutions>

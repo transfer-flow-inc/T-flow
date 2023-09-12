@@ -155,6 +155,43 @@ it('should return the correct expiration time', () => {
   });
 
 
+it('should return null when authMethod does not exist in the decoded token', () => {
+  spyOn(component, 'getDecodeToken').and.returnValue({});
+  expect(component.getUserAuthenticationMethod()).toBeUndefined();
+});
+
+it('should return null when getDecodeToken returns null', () => {
+  spyOn(component, 'getDecodeToken').and.returnValue(null);
+  expect(component.getUserAuthenticationMethod()).toBeNull();
+});
+
+it('should return the correct jwtToken value', () => {
+  component.jwtToken = 'sampleJwtToken';
+
+  const token = component.getToken();
+
+  expect(token).toBe('sampleJwtToken');
+});
+
+it('should decode jwtToken and populate decodedToken when jwtToken is set', () => {
+  // Arrange: Mock jwt_decode and set jwtToken
+  const mockDecodedToken = { some: 'data' };
+  (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
+  component.jwtToken = 'someJwtToken';
+
+  // Act: Call decodeToken()
+  component.decodeToken();
+
+  // Assert: Check that decodedToken is populated correctly
+  expect(component.decodedToken).toEqual(mockDecodedToken);
+});
+
+  it('should return false when expiryTime is null', () => {
+
+    spyOn(component, 'getExpiryTime').and.returnValue(null);
+    expect(component.isTokenExpired()).toBe(false);
+
+  });
 
 
 });

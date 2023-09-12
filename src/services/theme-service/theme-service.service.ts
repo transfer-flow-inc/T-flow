@@ -21,11 +21,11 @@ export class ThemeServiceService {
     return localStorage.getItem('theme') ?? 'dark';
   }
 
-  private saveThemeToStorage(theme: string): void {
+  saveThemeToStorage(theme: string): void {
     localStorage.setItem('theme', theme);
   }
 
-  private applyTheme(theme: string): void {
+  applyTheme(theme: string): void {
     const {classList} = this.document.body;
     classList.remove('dark', 'light');
     classList.add(theme);
