@@ -17,7 +17,7 @@ RUN if [ "$APP_ENV" = "dev" ] ; then npm run build ; else npm run build:prod ; f
 
 # Stage 2: Serve app with nginx server
 # Use official nginx image as the base image
-FROM nginx:latest
+FROM nginx:1.21.1-alpine
 
 # Copy the nginx conf for redirect when users try to access directly a URL
 COPY nginx/default.conf /etc/nginx/nginx.conf

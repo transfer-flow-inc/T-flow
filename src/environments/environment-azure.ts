@@ -1,10 +1,9 @@
 export const environment = {
-
   production: true,
-  isAzure: false,
+  isAzure: true,
   title: 'Prod Environment Heading',
   apiURL: 'https://api.transfer-flow.studio/api/v1/',
-  domainUrl: 'transfer-flow.studio',
+  domainUrl: 'azure.transfer-flow.studio',
   protocol: 'https://',
   port: ''
-};
+}

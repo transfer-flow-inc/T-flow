@@ -1,4 +1,4 @@
-name: Test & Build
+name: Test and Build the project
 
 on: [pull_request]
 
