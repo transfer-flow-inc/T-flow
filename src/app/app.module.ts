@@ -38,6 +38,8 @@ import { DashboardAllUsersComponent } from './dashboard-all-users/dashboard-all-
 import { DashboardOneUserComponent } from './dashboard-one-user/dashboard-one-user.component';
 import { DashboardAllTransferComponent } from './dashboard-all-transfer/dashboard-all-transfer.component';
 import { DashboardOneTransferComponent } from './dashboard-one-transfer/dashboard-one-transfer.component';
+import { DashboardAllSupportComponent } from './dashboard-all-support/dashboard-all-support.component';
+import { DashboardOneSupportComponent } from './dashboard-one-support/dashboard-one-support.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { DashboardOneTransferComponent } from './dashboard-one-transfer/dashboar
     DashboardOneUserComponent,
     DashboardAllTransferComponent,
     DashboardOneTransferComponent,
+    DashboardAllSupportComponent,
+    DashboardOneSupportComponent,
   ],
   imports: [
     BrowserModule,
