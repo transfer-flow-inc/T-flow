@@ -20,22 +20,6 @@
         (ngSubmit)="sendEmail()"
   >
 
-    <input class="contact-input"
-           type="email"
-           placeholder="Votre email :"
-           [(ngModel)]="emailValue"
-           [class.invalid]="senderEmail.invalid && (senderEmail.dirty || senderEmail.touched)"
-           [class.valid]="senderEmail.valid"
-           #senderEmail="ngModel"
-           name="senderEmail"
-           email
-           required
-    >
-    <p [class.invalid]="senderEmail.invalid && (senderEmail.dirty || senderEmail.touched)"
-       [class.valid]="senderEmail.valid"
-       *ngIf="senderEmail.invalid && (senderEmail.dirty || senderEmail.touched)">
-      Email invalide
-    </p>
 
     <input class="contact-input"
            type="text"
@@ -74,7 +58,6 @@
     </p>
 
     <button [class.invalid]=" message.invalid && (message.dirty || message.touched) ||
-            senderEmail.invalid && (senderEmail.dirty || senderEmail.touched) ||
             subject.invalid && (subject.dirty || subject.touched)"
             [disabled]="loginForm.invalid"
             class="contact-button">

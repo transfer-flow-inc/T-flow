@@ -13,7 +13,7 @@
 
   <div class="card card-container-link">
     <a class="card-link" routerLinkActive="active" routerLink="a-propos">A propos</a>
-    <a class="card-link" routerLinkActive="active" routerLink="nous-contacter">Nous contacter</a>
+    <a *ngIf="isAuthenticated" class="card-link" routerLinkActive="active" routerLink="nous-contacter">Nous contacter</a>
   </div>
 
 

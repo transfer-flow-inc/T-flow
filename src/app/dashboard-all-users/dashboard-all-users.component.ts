@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {AllUsersInterface} from "../../interfaces/User/all-users-interface";
 import {environment} from "../../environments/environment";
+import {count} from "rxjs";
 
 @Component({
   selector: 'app-dashboard-all-users',
@@ -43,20 +44,16 @@ export class DashboardAllUsersComponent implements OnInit {
 
   constructor(
     private httpClientService: HttpClientService,
-  ) {}
+  ) {
+  }
 
-  ngOnInit()
-    :
-    void {
+  ngOnInit(): void {
 
     this.getAllUsers(this.page);
 
   }
 
-  getAllUsers(page
-                :
-                number
-  ) {
+  getAllUsers(page: number) {
     this.httpClientService.getAllUsers(environment.apiURL + 'admin/users?page=' + page + '&size=20').subscribe({
       next: (response) => {
         console.log(response)

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 import {LocalStorageService} from "../../services/local-storage/local-storage.service";
+import {HttpClientService} from "../../services/httpClient/http-client.service";
 
 
 @Component({
@@ -11,16 +12,20 @@ import {LocalStorageService} from "../../services/local-storage/local-storage.se
 export class FooterComponent implements OnInit {
 
   imgTheme: string = '';
+  isAuthenticated: boolean = false;
 
   constructor(
     private themeService: ThemeServiceService,
-    private localStorage: LocalStorageService,
+    private httpClientService : HttpClientService
   ) {
   }
 
   ngOnInit() {
     this.themeService.currentThemeSubject.subscribe((theme) => {
       this.imgTheme = 'dark' === theme ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
+    });
+    this.httpClientService.isAuthenticated.subscribe((isAuthenticated) => {
+      this.isAuthenticated = isAuthenticated;
     });
   }
 

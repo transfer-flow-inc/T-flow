@@ -4,7 +4,8 @@
   "compilerOptions": {
     "outDir": "./out-tsc/app",
     "types": [
-      "jest"
+      "jest",
+      "@angular/localize"
     ]
   },
   "files": [

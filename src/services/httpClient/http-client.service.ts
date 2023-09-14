@@ -9,6 +9,7 @@ import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interface";
 import {OAuthService} from "angular-oauth2-oidc";
 import {AllUsersInterface} from "../../interfaces/User/all-users-interface";
+import {AllSupportsInterface} from "../../interfaces/Support/all-supports-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -95,6 +96,10 @@ export class HttpClientService {
     return this.httpClient.get<AllUsersInterface>(url);
   }
 
+  getAllSupports(url: string) {
+    return this.httpClient.get<AllSupportsInterface>(url);
+  }
+
   deleteUserAsAdmin(url: string) {
     return this.httpClient.delete(url);
   }
@@ -102,5 +107,7 @@ export class HttpClientService {
   sendEmail(url: string, userEmail: string, subject: string, message: string) {
     return this.httpClient.post(url, {userEmail, subject, message});
   }
+
+
 
 }

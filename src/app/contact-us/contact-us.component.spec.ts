@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {of, throwError} from 'rxjs';
+import {of} from 'rxjs';
 
 import {ContactUsComponent} from './contact-us.component';
 import {HttpClientService} from '../../services/httpClient/http-client.service';
@@ -9,7 +9,6 @@ import {FlashMessageService} from '../../services/flash-message/flash-message.se
 import {Router} from '@angular/router';
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {take} from "rxjs/operators";
 
 describe('ContactUsComponent', () => {
   let component: ContactUsComponent;
@@ -74,5 +73,6 @@ describe('ContactUsComponent', () => {
       expect(flashMessageService.addMessage).toHaveBeenCalledWith('Votre message a bien été envoyé.', 'success', 4000);
       expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
     });
+
 
 });

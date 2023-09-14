@@ -4,6 +4,9 @@
   "newProjectRoot": "projects",
   "projects": {
     "transfer-flow": {
+      "i18n": {
+      "sourceLocale": "fr"
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -100,6 +103,7 @@
             ],
             "scripts": []
           }
+        }
         }
       }
     }

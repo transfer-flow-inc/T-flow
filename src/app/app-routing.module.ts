@@ -19,6 +19,8 @@ import {AboutComponent} from "./about/about.component";
 import {ContactUsComponent} from "./contact-us/contact-us.component";
 import {DashboardAllUsersComponent} from "./dashboard-all-users/dashboard-all-users.component";
 import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
+import {DashboardAllSupportComponent} from "./dashboard-all-support/dashboard-all-support.component";
+import {DashboardOneSupportComponent} from "./dashboard-one-support/dashboard-one-support.component";
 
 
 const routes: Routes = [
@@ -31,10 +33,13 @@ const routes: Routes = [
   { 'path' : "transfert", component : TransferComponent,canActivate : [AutorizeGuardService], data: { title: 'Transfert'}},
   { 'path' : "tout-les-abonnements", component: SubscriptionsComponent, data: { title: 'Tout les abonnements'}},
   { 'path' : "reglages", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Réglages'}},
-  { 'path' : "nous-contacter", component: ContactUsComponent, data: { title: 'Nous contacter'}},
+  { 'path' : "nous-contacter", component: ContactUsComponent,canActivate: [AutorizeGuardService], data: { title: 'Nous contacter'}},
   { 'path' : "a-propos", component: AboutComponent, data: { title: 'A propos'}},
   { 'path' : "valider-mon-compte/:token", component: ValidateEmailComponent, data: { title: 'Valider mon compte'}},
   { 'path' : "admin/dashboard", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Dashboard'}},
+  { 'path' : "admin/dashboard/tout-les-utilisateurs", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Dashboard'}},
+  { 'path' : "admin/dashboard/tout-les-support", component: DashboardAllSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les support'}},
+  { 'path' : "admin/dashboard/support/:id", component: DashboardOneSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Support'}},
   { 'path' : "telechargement/:folderUrl", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "telechargement/:folderUrl/:accessKey", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},

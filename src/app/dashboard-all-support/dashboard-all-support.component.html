@@ -1,1 +1,20 @@
-<p>dashboard-all-support works!</p>
+<section class="dashboard-container-all">
+  <app-dashboard-navbar></app-dashboard-navbar>
+  <section class="dashboard-container">
+    <div *ngFor="let support of supports.content">
+
+      <div class="dashboard-card unselectable">
+          <p>{{ support.email }}</p>
+          <p>Sujet : {{ support.subject }}</p>
+          <p class="tag">{{ formatDate(support.sentAt, "longDate", 'fr-FR') }}</p>
+          <a routerLink="/idk" class="card-btn">Voir ce support</a>
+      </div>
+
+    </div>
+
+    <div *ngIf=" supports.content.length < 1">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+  </section>
+</section>

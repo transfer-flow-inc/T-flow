@@ -3,22 +3,23 @@ import { HttpClientService } from '../../services/httpClient/http-client.service
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { FlashMessageService } from '../../services/flash-message/flash-message.service';
-import {Subject} from "rxjs";
+import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css']
 })
-export class ContactUsComponent {
-  emailValue = '';
+export class ContactUsComponent{
+  emailValue = this.jwtTokenService.getUserEmail();
   subjectValue = '';
   messageValue = '';
 
   constructor(
     private httpClientService: HttpClientService,
     private flashMessageService: FlashMessageService,
-    private router: Router
+    private router: Router,
+    private jwtTokenService: JwtTokenService
   ) {}
 
   isValidInput(): boolean {

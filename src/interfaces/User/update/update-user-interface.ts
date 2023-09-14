@@ -4,5 +4,4 @@ export interface UpdateUserInterface {
     email: string;
     oldPassword: string;
     password: string;
-    confirmPassword: string;
 }

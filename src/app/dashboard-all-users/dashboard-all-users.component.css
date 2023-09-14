@@ -35,6 +35,7 @@
   height: 4rem;
   border-radius: 50%;
   object-fit: cover;
+  background-color: white;
 }
 .dashboard-card-text{
   display: flex;

@@ -6,14 +6,14 @@
 
         <div *ngFor="let user of users.content">
 
-            <div class="dashboard-card">
+            <div class="dashboard-card unselectable">
                 <img class="img-user" [src]="user.avatar" alt="photo de profil">
               <div class="dashboard-card-text">
-                <p>{{ user.lastName }}</p>
-                <p>{{ user.firstName }}</p>
+                <p>{{ user.lastName | uppercase }}</p>
+                <p>{{ user.firstName | titlecase }}</p>
                 <p>{{ user.userEmail }}</p>
                 <p class="tag" [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? "Compte vérifié" : "Compte non vérifié" }}</p>
-                <p>Nombre de transfert : {{ user.userFolders }}</p>
+                <p>Nombre de transfert : {{ user.userFolders.length }}</p>
                 <a routerLink="/idk" class="card-btn">Voir ce compte</a>
               </div>
             </div>

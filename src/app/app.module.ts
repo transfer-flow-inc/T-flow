@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -86,7 +86,9 @@ import { DashboardOneSupportComponent } from './dashboard-one-support/dashboard-
     OAuthModule.forRoot(),
   ],
   providers: [FlashMessageService, NavbarComponent, FooterComponent,
-    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},],
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
+    { provide: LOCALE_ID, useValue: 'fr-FR'},
+  ],
   bootstrap: [AppComponent, FooterComponent]
 })
 export class AppModule {

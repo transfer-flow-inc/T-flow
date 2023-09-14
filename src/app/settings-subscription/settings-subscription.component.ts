@@ -23,7 +23,7 @@ export class SettingsSubscriptionComponent implements OnInit {
     isAccountVerified: false,
     plan: "",
     authMethod: "",
-    userFolders: 0
+    userFolders: []
   }
 
   constructor(

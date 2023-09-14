@@ -1,70 +1,69 @@
 import {Injectable} from '@angular/core';
 import  jwt_decode from 'jwt-decode';
 import {UserInterface} from "../../interfaces/User/user-interface";
+import {CookiesService} from "../cookies/cookies.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtTokenService {
 
-  jwtToken: string = "";
+  jwtToken: string = this.cookieService.get('token') === undefined ? "" : this.cookieService.get('token');
   decodedToken: { [key: string]: string; } = {};
+  constructor(
+    private cookieService: CookiesService,
+  ) {
+    this.jwtToken = this.cookieService.get('token');
+    this.decodeToken();
+  }
 
 
-  setToken(token: string) {
-    if (token) {
+
+
+  setToken(token : string) {
       this.jwtToken = token;
-    }
   }
 
-  getUserFirstName(): string | null {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['firstName'] : null;
+  getUserFirstName(): string {
+    return this.getDecodeToken(this.jwtToken)['firstName'];
   }
 
-  getUserId(): string | null {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['userID'] : null;
+  getUserId(): string {
+    return this.getDecodeToken(this.jwtToken)['userID'];
   }
 
-  getUserLastName(): string | null {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['lastName'] : null;
+  getUserLastName(): string {
+    return this.getDecodeToken(this.jwtToken)['lastName'];
   }
 
-  getUserAuthenticationMethod(): string | null {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['authMethod'] : null;
+  getUserAuthenticationMethod(): string {
+    return this.getDecodeToken(this.jwtToken)['authMethod'];
   }
 
-  getUserRole(): string | null {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['userRole'] : null;
+  getUserRole(): string {
+    return this.getDecodeToken(this.jwtToken)['userRole'];
   }
 
-  getUserEmail() {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['userEmail'] : null;
+  getUserEmail(): string {
+    return this.getDecodeToken(this.jwtToken)['userEmail'];
   }
 
-  getUserPlan() {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['plan'] : null;
+  getUserPlan(): string {
+    return this.getDecodeToken(this.jwtToken)['plan'];
   }
 
   getUserAccountStatus(): boolean {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? JSON.parse(this.getDecodeToken()['isAccountVerified']) : false;
+    return JSON.parse(this.getDecodeToken(this.jwtToken)['isAccountVerified']);
   }
 
-  getUserAvatar(): string | null {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? this.getDecodeToken()['avatar'] : null;
+  getUserAvatar(): string {
+    return this.getDecodeToken(this.jwtToken)['avatar'];
   }
 
   getToken() {
     return this.jwtToken;
   }
+
 
   decodeToken() {
     if (this.jwtToken) {
@@ -72,14 +71,22 @@ export class JwtTokenService {
     }
   }
 
-  getDecodeToken(): { [key: string]: string } {
-    return jwt_decode(this.jwtToken);
+getDecodeToken(token: string): any {
+  if (token) {
+    try {
+      return jwt_decode(token);
+    } catch  {
+      return '';
+    }
+  } else {
+    return '';
   }
+}
+
 
 
   getExpiryTime(): number {
-    this.getDecodeToken();
-    return this.getDecodeToken() ? parseInt(this.getDecodeToken()['exp']) : 0;
+    return parseInt(this.getDecodeToken(this.jwtToken)['exp']);
   }
 
 
@@ -93,6 +100,6 @@ export class JwtTokenService {
   }
 
   getAllUserInfos() {
-    return <UserInterface><unknown>this.getDecodeToken();
+    return <UserInterface><unknown>this.getDecodeToken(this.jwtToken);
   }
 }

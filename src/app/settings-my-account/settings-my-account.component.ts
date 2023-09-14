@@ -28,7 +28,7 @@ export class SettingsMyAccountComponent implements OnInit {
     isAccountVerified: false,
     plan: "",
     authMethod: "",
-    userFolders: 0
+    userFolders: []
   }
 
   userUpdate: UpdateUserInterface = {
@@ -37,7 +37,6 @@ export class SettingsMyAccountComponent implements OnInit {
     email: "",
     oldPassword: "",
     password: "",
-    confirmPassword: ""
   }
 
   isUpdateUser: boolean = false;
@@ -89,10 +88,10 @@ export class SettingsMyAccountComponent implements OnInit {
       email: this.emailValue,
       oldPassword: this.oldPasswordValue,
       password: this.newPasswordValue,
-      confirmPassword: this.confirmPasswordValue
     }
     this.httpClient.updateUser(environment.apiURL + "user/" + this.user.userEmail + "?oldPassword=" + this.oldPasswordValue, this.userUpdate ).subscribe({
       next: (response) => {
+        console.log(response)
         this.cookiesService.delete('token');
         this.cookiesService.set('token', response.token, 30);
         this.router.navigate(['/accueil']).then(() => {
@@ -101,6 +100,7 @@ export class SettingsMyAccountComponent implements OnInit {
         });
       },
       error: (error) => {
+        console.log(error)
         this.router.navigate(['/se-connecter']).then(() => {
           this.flashMessageService.addMessage('Une erreur est survenue', 'error', 4000);
         })

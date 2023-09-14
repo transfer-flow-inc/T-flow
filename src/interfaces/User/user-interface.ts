@@ -1,3 +1,4 @@
+import {FolderInterface} from "../Files/folder-interface";
 
 export interface UserInterface {
     id: number;
@@ -11,5 +12,5 @@ export interface UserInterface {
     isAccountVerified: boolean;
     plan: string;
     authMethod: string;
-    userFolders: number;
+    userFolders: FolderInterface[];
 }
