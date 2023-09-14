@@ -1,172 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-all-transfer\settings-all-transfer.component.spec.ts">
-    <testCase name="SettingsAllTransferComponent should create the component" duration="146"/>
-    <testCase name="SettingsAllTransferComponent should initialize user ID from JwtTokenService" duration="21"/>
-    <testCase name="SettingsAllTransferComponent should load all folders when initialized" duration="21"/>
+    <testCase name="SettingsAllTransferComponent should create the component" duration="121"/>
+    <testCase name="SettingsAllTransferComponent should initialize user ID from JwtTokenService" duration="16"/>
+    <testCase name="SettingsAllTransferComponent should load all folders when initialized" duration="13"/>
     <testCase name="SettingsAllTransferComponent should set error message when API call fails" duration="14"/>
   </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\footer\footer.component.spec.ts">
-    <testCase name="FooterComponent should create" duration="158"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\navbar\navbar.component.spec.ts">
-    <testCase name="NavbarComponent should create the component" duration="136"/>
-    <testCase name="NavbarComponent should toggle isPopupOpen and update popupToggleValue" duration="28"/>
-    <testCase name="NavbarComponent should toggle isMenuOpen and update navbarToggleValue and iconShow" duration="24"/>
-    <testCase name="NavbarComponent should initialize isAuthenticated based on HttpClientService" duration="126"/>
-    <testCase name="NavbarComponent should initialize isAdministrator based on JwtTokenService and CookiesService" duration="34"/>
-    <testCase name="NavbarComponent should initialize isDarkTheme and imgTheme based on localStorage" duration="29"/>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\logout\logout.component.spec.ts">
+    <testCase name="LogoutComponent should create" duration="394"/>
   </file>
   <file path="C:\Users\thiba\Desktop\t-flow\src\app\contact-us\contact-us.component.spec.ts">
-    <testCase name="ContactUsComponent should create" duration="180"/>
-    <testCase name="ContactUsComponent should return false if any input field is empty" duration="31"/>
-    <testCase name="ContactUsComponent should return true if all input fields are non-empty" duration="49"/>
-    <testCase name="ContactUsComponent should send an email successfully and navigate to home with a success message" duration="47"/>
+    <testCase name="ContactUsComponent should create" duration="150"/>
+    <testCase name="ContactUsComponent should return false if any input field is empty" duration="30"/>
+    <testCase name="ContactUsComponent should return true if all input fields are non-empty" duration="33"/>
+    <testCase name="ContactUsComponent should send an email successfully and navigate to home with a success message" duration="43"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\navbar\navbar.component.spec.ts">
+    <testCase name="NavbarComponent should create the component" duration="99"/>
+    <testCase name="NavbarComponent should toggle isPopupOpen and update popupToggleValue" duration="20"/>
+    <testCase name="NavbarComponent should toggle isMenuOpen and update navbarToggleValue and iconShow" duration="25"/>
+    <testCase name="NavbarComponent should initialize isAuthenticated based on HttpClientService" duration="103"/>
+    <testCase name="NavbarComponent should initialize isAdministrator based on JwtTokenService and CookiesService" duration="29"/>
+    <testCase name="NavbarComponent should initialize isDarkTheme and imgTheme based on localStorage" duration="28"/>
   </file>
   <file path="C:\Users\thiba\Desktop\t-flow\src\app\app.component.spec.ts">
-    <testCase name="AppComponent should handle the theme correctly" duration="235"/>
-    <testCase name="AppComponent should log console warnings" duration="30"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\logout\logout.component.spec.ts">
-    <testCase name="LogoutComponent should create" duration="460"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-my-account\settings-my-account.component.spec.ts">
-    <testCase name="SettingsMyAccountComponent should create" duration="561"/>
+    <testCase name="AppComponent should handle the theme correctly" duration="184"/>
+    <testCase name="AppComponent should log console warnings" duration="33"/>
   </file>
   <file path="C:\Users\thiba\Desktop\t-flow\src\app\login\login.component.spec.ts">
-    <testCase name="LoginComponent should create" duration="317"/>
+    <testCase name="LoginComponent should create" duration="288"/>
   </file>
   <file path="C:\Users\thiba\Desktop\t-flow\src\app\register\register.component.spec.ts">
-    <testCase name="RegisterComponent should create" duration="311"/>
+    <testCase name="RegisterComponent should create" duration="312"/>
   </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-navbar\settings-navbar.component.spec.ts">
-    <testCase name="SettingsNavbarComponent should create" duration="101"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\services\autorize-guard\autorize-guard.service.spec.ts">
-    <testCase name="AutorizeGuardService canActivate should redirect to login if jwtToken and cookie token are empty" duration="35"/>
-    <testCase name="AutorizeGuardService canActivate should redirect to login if token is expired" duration="10"/>
-    <testCase name="AutorizeGuardService canActivate should return true if token exists and is not expired" duration="27"/>
-    <testCase name="AutorizeGuardService canActivate should redirect to login if any other case or error" duration="5"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\services\admin-autorize-guard\admin-autorize-guard.service.spec.ts">
-    <testCase name="AdminAutorizeGuardService should be created" duration="28"/>
-    <testCase name="AdminAutorizeGuardService canActivate should redirect to login if jwtToken is empty" duration="9"/>
-    <testCase name="AdminAutorizeGuardService canActivate should return true if role is ADMIN" duration="4"/>
-    <testCase name="AdminAutorizeGuardService canActivate should redirect to /accueil if role is USER" duration="4"/>
-    <testCase name="AdminAutorizeGuardService canActivate should redirect to login for any other roles" duration="4"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-all-support\dashboard-all-support.component.spec.ts">
-    <testCase name="DashboardAllSupportComponent should create" duration="130"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\services\sso\Google\google-sso.service.spec.ts">
-    <testCase name="GoogleSsoService should be created" duration="32"/>
-    <testCase name="GoogleSsoService signInWithGoogle should initialize OAuth flow" duration="6"/>
-    <testCase name="GoogleSsoService isLoggedIn should check if user is logged in" duration="5"/>
-    <testCase name="GoogleSsoService signOut should sign out the user and navigate to accueil if token exists" duration="6"/>
-    <testCase name="GoogleSsoService signOut should do nothing if no token exists" duration="5"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\download\download.component.spec.ts">
-    <testCase name="DownloadComponent should create" duration="154"/>
-    <testCase name="DownloadComponent should initialize with dark theme" duration="32"/>
-    <testCase name="DownloadComponent should initialize with light theme" duration="23"/>
-    <testCase name="DownloadComponent should handle folder retrieval" duration="36"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-subscription\settings-subscription.component.spec.ts">
-    <testCase name="SettingsSubscriptionComponent should create" duration="506"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\transfer\transfer.component.spec.ts">
-    <testCase name="TransferComponent should create the component" duration="186"/>
-    <testCase name="TransferComponent should initialize with a token from cookie service" duration="27"/>
-    <testCase name="TransferComponent should add valid email to the list and reset input state" duration="20"/>
-    <testCase name="TransferComponent should not add invalid email and set error state" duration="20"/>
-    <testCase name="TransferComponent should delete email from the list" duration="40"/>
-    <testCase name="TransferComponent should upload files when requirements met" duration="18"/>
-    <testCase name="TransferComponent should show an error message if file or email is missing for upload" duration="17"/>
-    <testCase name="TransferComponent should remove duplicate files when checkFile is called" duration="16"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-navbar\dashboard-navbar.component.spec.ts">
-    <testCase name="DashboardNavbarComponent should create" duration="90"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\services\httpClient\http-client.service.spec.ts">
-    <testCase name="HttpClientService should be created" duration="43"/>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-my-account\settings-my-account.component.spec.ts">
+    <testCase name="SettingsMyAccountComponent should create" duration="538"/>
   </file>
   <file path="C:\Users\thiba\Desktop\t-flow\src\app\flash-message\flash-message.component.spec.ts">
-    <testCase name="FlashMessageComponent should create" duration="120"/>
-    <testCase name="FlashMessageComponent should subscribe to getMessage from FlashMessageService" duration="24"/>
-    <testCase name="FlashMessageComponent should start animation when flash message is received" duration="19"/>
-    <testCase name="FlashMessageComponent should delete flash message after duration" duration="1103"/>
-    <testCase name="FlashMessageComponent should update flashMessage when new message is received" duration="26"/>
+    <testCase name="FlashMessageComponent should create" duration="166"/>
+    <testCase name="FlashMessageComponent should subscribe to getMessage from FlashMessageService" duration="61"/>
+    <testCase name="FlashMessageComponent should start animation when flash message is received" duration="24"/>
+    <testCase name="FlashMessageComponent should delete flash message after duration" duration="1067"/>
+    <testCase name="FlashMessageComponent should update flashMessage when new message is received" duration="12"/>
   </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\services\jwt-token\jwt-token.service.spec.ts">
-    <testCase name="JwtTokenService should create" duration="50"/>
-    <testCase name="JwtTokenService should return the user first name" duration="7"/>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-navbar\settings-navbar.component.spec.ts">
+    <testCase name="SettingsNavbarComponent should create" duration="104"/>
   </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\privacy-policy\privacy-policy.component.spec.ts">
-    <testCase name="PrivacyPolicyComponent should create" duration="137"/>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\sso\Google\google-sso.service.spec.ts">
+    <testCase name="GoogleSsoService should be created" duration="64"/>
+    <testCase name="GoogleSsoService signInWithGoogle should initialize OAuth flow" duration="5"/>
+    <testCase name="GoogleSsoService isLoggedIn should check if user is logged in" duration="5"/>
+    <testCase name="GoogleSsoService signOut should sign out the user and navigate to accueil if token exists" duration="19"/>
+    <testCase name="GoogleSsoService signOut should do nothing if no token exists" duration="6"/>
   </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\services\flash-message\flash-message.service.spec.ts">
-    <testCase name="FlashMessageService should be created" duration="35"/>
-    <testCase name="FlashMessageService should add message and emit it" duration="8"/>
-    <testCase name="FlashMessageService should handle string type correctly" duration="5"/>
-    <testCase name="FlashMessageService should delete flash message" duration="4"/>
-    <testCase name="FlashMessageService should add a message with a given MessageType" duration="4"/>
-    <testCase name="FlashMessageService should add a message with a given string type" duration="6"/>
-    <testCase name="FlashMessageService should default to INFO type for an unrecognized string type" duration="4"/>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\footer\footer.component.spec.ts">
+    <testCase name="FooterComponent should create" duration="98"/>
   </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\subscriptions\subscriptions.component.spec.ts">
-    <testCase name="SubscriptionsComponent should create" duration="116"/>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\settings-subscription\settings-subscription.component.spec.ts">
+    <testCase name="SettingsSubscriptionComponent should create" duration="501"/>
   </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\about\about.component.spec.ts">
-    <testCase name="AboutComponent should create" duration="266"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-all-users\dashboard-all-users.component.spec.ts">
-    <testCase name="DashboardAllUsersComponent should create" duration="101"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\services\local-storage\local-storage.service.spec.ts">
-    <testCase name="LocalStorageService should be created" duration="4"/>
-    <testCase name="LocalStorageService should set item in local storage" duration="3"/>
-    <testCase name="LocalStorageService should get item from local storage" duration="1"/>
-    <testCase name="LocalStorageService should remove item from local storage" duration="2"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\cgu\cgu.component.spec.ts">
-    <testCase name="CguComponent should create" duration="117"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\services\theme-service\theme-service.service.spec.ts">
-    <testCase name="ThemeServiceService should be created" duration="34"/>
-    <testCase name="ThemeServiceService should save theme to local storage" duration="11"/>
-    <testCase name="ThemeServiceService should toggle theme" duration="7"/>
-    <testCase name="ThemeServiceService should get current theme" duration="14"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\homepage\homepage.component.spec.ts">
-    <testCase name="HomepageComponent should create" duration="147"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-one-user\dashboard-one-user.component.spec.ts">
-    <testCase name="DashboardOneUserComponent should create" duration="147"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\services\cookies\cookies.service.spec.ts">
-    <testCase name="CookiesService should be created" duration="43"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-all-transfer\dashboard-all-transfer.component.spec.ts">
-    <testCase name="DashboardAllTransferComponent should create" duration="134"/>
-  </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\not-found\not-found.component.spec.ts">
-    <testCase name="NotFoundComponent should create" duration="113"/>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-all-support\dashboard-all-support.component.spec.ts">
+    <testCase name="DashboardAllSupportComponent should create" duration="123"/>
   </file>
   <file path="C:\Users\thiba\Desktop\t-flow\src\app\validate-email\validate-email.component.spec.ts">
-    <testCase name="ValidateEmailComponent should create" duration="64"/>
+    <testCase name="ValidateEmailComponent should create" duration="126"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\download\download.component.spec.ts">
+    <testCase name="DownloadComponent should create" duration="197"/>
+    <testCase name="DownloadComponent should initialize with dark theme" duration="48"/>
+    <testCase name="DownloadComponent should initialize with light theme" duration="46"/>
+    <testCase name="DownloadComponent should handle folder retrieval" duration="34"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-one-user\dashboard-one-user.component.spec.ts">
+    <testCase name="DashboardOneUserComponent should create" duration="112"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\transfer\transfer.component.spec.ts">
+    <testCase name="TransferComponent should create the component" duration="213"/>
+    <testCase name="TransferComponent should initialize with a token from cookie service" duration="45"/>
+    <testCase name="TransferComponent should add valid email to the list and reset input state" duration="28"/>
+    <testCase name="TransferComponent should not add invalid email and set error state" duration="23"/>
+    <testCase name="TransferComponent should delete email from the list" duration="20"/>
+    <testCase name="TransferComponent should upload files when requirements met" duration="21"/>
+    <testCase name="TransferComponent should show an error message if file or email is missing for upload" duration="18"/>
+    <testCase name="TransferComponent should remove duplicate files when checkFile is called" duration="20"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-one-transfer\dashboard-one-transfer.component.spec.ts">
+    <testCase name="DashboardOneTransferComponent should create" duration="153"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\admin-autorize-guard\admin-autorize-guard.service.spec.ts">
+    <testCase name="AdminAutorizeGuardService should be created" duration="26"/>
+    <testCase name="AdminAutorizeGuardService canActivate should redirect to login if jwtToken is empty" duration="9"/>
+    <testCase name="AdminAutorizeGuardService canActivate should return true if role is ADMIN" duration="4"/>
+    <testCase name="AdminAutorizeGuardService canActivate should redirect to /accueil if role is USER" duration="5"/>
+    <testCase name="AdminAutorizeGuardService canActivate should redirect to login for any other roles" duration="16"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\autorize-guard\autorize-guard.service.spec.ts">
+    <testCase name="AutorizeGuardService canActivate should redirect to login if jwtToken and cookie token are empty" duration="62"/>
+    <testCase name="AutorizeGuardService canActivate should redirect to login if token is expired" duration="6"/>
+    <testCase name="AutorizeGuardService canActivate should return true if token exists and is not expired" duration="5"/>
+    <testCase name="AutorizeGuardService canActivate should redirect to login if any other case or error" duration="11"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\cgu\cgu.component.spec.ts">
+    <testCase name="CguComponent should create" duration="164"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\jwt-token\jwt-token.service.spec.ts">
+    <testCase name="JwtTokenService should create" duration="25"/>
+    <testCase name="JwtTokenService should return the user first name" duration="6"/>
+    <testCase name="JwtTokenService should return the user last name" duration="4"/>
+    <testCase name="JwtTokenService should return the user id" duration="6"/>
+    <testCase name="JwtTokenService should return the user email" duration="5"/>
+    <testCase name="JwtTokenService should return the user role" duration="3"/>
+    <testCase name="JwtTokenService should return the user plan" duration="3"/>
+    <testCase name="JwtTokenService should return the user avatar" duration="12"/>
+    <testCase name="JwtTokenService should return the user account status" duration="6"/>
+    <testCase name="JwtTokenService should return the user authentication method" duration="15"/>
+    <testCase name="JwtTokenService should return the token" duration="4"/>
+    <testCase name="JwtTokenService should set the token" duration="3"/>
+    <testCase name="JwtTokenService should decode the token" duration="3"/>
+    <testCase name="JwtTokenService should get the decoded token" duration="3"/>
+    <testCase name="JwtTokenService should check if the token is expired" duration="3"/>
+    <testCase name="JwtTokenService should get all the user infos" duration="19"/>
+    <testCase name="JwtTokenService should decode the token" duration="2"/>
+    <testCase name="JwtTokenService should return the correct expiration time" duration="4"/>
+    <testCase name="JwtTokenService should correctly identify if the token is expired" duration="4"/>
+    <testCase name="JwtTokenService should correctly identify if the token is not expired" duration="3"/>
+    <testCase name="JwtTokenService should return all user info correctly" duration="7"/>
+    <testCase name="JwtTokenService should return the correct jwtToken value" duration="3"/>
+    <testCase name="JwtTokenService should decode jwtToken and populate decodedToken when jwtToken is set" duration="2"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\privacy-policy\privacy-policy.component.spec.ts">
+    <testCase name="PrivacyPolicyComponent should create" duration="178"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\subscriptions\subscriptions.component.spec.ts">
+    <testCase name="SubscriptionsComponent should create" duration="165"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\httpClient\http-client.service.spec.ts">
+    <testCase name="HttpClientService should be created" duration="74"/>
+    <testCase name="HttpClientService should perform login and return a token" duration="21"/>
+    <testCase name="HttpClientService should perform Google login and return a token" duration="7"/>
+    <testCase name="HttpClientService should perform registration and return a token" duration="6"/>
+    <testCase name="HttpClientService should send a DELETE request to delete the folder" duration="7"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\about\about.component.spec.ts">
+    <testCase name="AboutComponent should create" duration="256"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-all-users\dashboard-all-users.component.spec.ts">
+    <testCase name="DashboardAllUsersComponent should create" duration="200"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-all-transfer\dashboard-all-transfer.component.spec.ts">
+    <testCase name="DashboardAllTransferComponent should create" duration="112"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\cookies-consent\cookies-consent.component.spec.ts">
+    <testCase name="CookiesConsentComponent should create" duration="55"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-navbar\dashboard-navbar.component.spec.ts">
+    <testCase name="DashboardNavbarComponent should create" duration="113"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\homepage\homepage.component.spec.ts">
+    <testCase name="HomepageComponent should create" duration="156"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\app\not-found\not-found.component.spec.ts">
+    <testCase name="NotFoundComponent should create" duration="104"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\cookies\cookies.service.spec.ts">
+    <testCase name="CookiesService should be created" duration="23"/>
   </file>
   <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-one-support\dashboard-one-support.component.spec.ts">
     <testCase name="DashboardOneSupportComponent should create" duration="60"/>
   </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\dashboard-one-transfer\dashboard-one-transfer.component.spec.ts">
-    <testCase name="DashboardOneTransferComponent should create" duration="55"/>
-  </file>
   <file path="C:\Users\thiba\Desktop\t-flow\src\services\http-interceptor\http-interceptor.service.spec.ts">
-    <testCase name="HttpInterceptorService should add Authorization header when token is present" duration="5"/>
-    <testCase name="HttpInterceptorService should not add Authorization header when token is not present" duration="1"/>
-    <testCase name="HttpInterceptorService should handle 401 error by deleting token and clearing session storage" duration="4"/>
+    <testCase name="HttpInterceptorService should add Authorization header when token is present" duration="8"/>
+    <testCase name="HttpInterceptorService should not add Authorization header when token is not present" duration="2"/>
+    <testCase name="HttpInterceptorService should handle 401 error by deleting token and clearing session storage" duration="6"/>
   </file>
-  <file path="C:\Users\thiba\Desktop\t-flow\src\app\cookies-consent\cookies-consent.component.spec.ts">
-    <testCase name="CookiesConsentComponent should create" duration="34"/>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\theme-service\theme-service.service.spec.ts">
+    <testCase name="ThemeServiceService should be created" duration="37"/>
+    <testCase name="ThemeServiceService should save theme to local storage" duration="23"/>
+    <testCase name="ThemeServiceService should toggle theme" duration="6"/>
+    <testCase name="ThemeServiceService should get current theme" duration="3"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\flash-message\flash-message.service.spec.ts">
+    <testCase name="FlashMessageService should be created" duration="19"/>
+    <testCase name="FlashMessageService should add message and emit it" duration="6"/>
+    <testCase name="FlashMessageService should handle string type correctly" duration="4"/>
+    <testCase name="FlashMessageService should delete flash message" duration="4"/>
+    <testCase name="FlashMessageService should add a message with a given MessageType" duration="3"/>
+    <testCase name="FlashMessageService should add a message with a given string type" duration="4"/>
+    <testCase name="FlashMessageService should default to INFO type for an unrecognized string type" duration="3"/>
+  </file>
+  <file path="C:\Users\thiba\Desktop\t-flow\src\services\local-storage\local-storage.service.spec.ts">
+    <testCase name="LocalStorageService should be created" duration="2"/>
+    <testCase name="LocalStorageService should set item in local storage" duration="2"/>
+    <testCase name="LocalStorageService should get item from local storage" duration="1"/>
+    <testCase name="LocalStorageService should remove item from local storage" duration="1"/>
   </file>
 </testExecutions>

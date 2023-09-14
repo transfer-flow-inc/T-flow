@@ -1,14 +1,15 @@
 import {JwtTokenService} from "./jwt-token.service";
 import {TestBed} from "@angular/core/testing";
+import jwt_decode from "jwt-decode";
 
 jest.mock('jwt-decode');
 
 describe('JwtTokenService', () => {
-  let service: JwtTokenService;
+  let component: JwtTokenService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(JwtTokenService);
+    component = TestBed.inject(JwtTokenService);
   });
 
   it('should create', () => {
@@ -17,11 +18,11 @@ describe('JwtTokenService', () => {
 
 
   it('should return the user first name', () => {
-    spyOn(service, 'getDecodeToken').and.returnValue({firstName: 'sampleFirstName'});
-    expect(service.getUserFirstName()).toBe('sampleFirstName');
+    spyOn(component, 'getDecodeToken').and.returnValue({firstName: 'sampleFirstName'});
+    expect(component.getUserFirstName()).toBe('sampleFirstName');
   });
 
-  /*
+
 
   it('should return the user last name', () => {
     spyOn(component, 'getDecodeToken').and.returnValue({lastName: 'sampleLastName'});
@@ -80,7 +81,7 @@ describe('JwtTokenService', () => {
 
   it('should get the decoded token', () => {
     spyOn(component, 'getDecodeToken').and.returnValue('sampleToken');
-    expect(component.getDecodeToken()).toBe('sampleToken');
+    expect(component.getDecodeToken('test')).toBe('sampleToken');
   });
 
   it('should check if the token is expired', () => {
@@ -104,9 +105,9 @@ it('should return the correct expiration time', () => {
     };
 
     (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
-    service.setToken('some_token');
+    component.setToken('some_token');
 
-    expect(service.getExpiryTime()).toBe(1632831325);
+    expect(component.getExpiryTime()).toBe(1632831325);
   });
 
   it('should correctly identify if the token is expired', () => {
@@ -115,9 +116,9 @@ it('should return the correct expiration time', () => {
     };
 
     (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
-    service.setToken('some_expired_token');
+    component.setToken('some_expired_token');
 
-    expect(service.isTokenExpired()).toBe(true);
+    expect(component.isTokenExpired()).toBe(true);
   });
 
   it('should correctly identify if the token is not expired', () => {
@@ -126,9 +127,9 @@ it('should return the correct expiration time', () => {
     };
 
     (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
-    service.setToken('some_valid_token');
+    component.setToken('some_valid_token');
 
-    expect(service.isTokenExpired()).toBe(false);
+    expect(component.isTokenExpired()).toBe(false);
   });
 
   it('should return all user info correctly', () => {
@@ -146,9 +147,9 @@ it('should return the correct expiration time', () => {
     };
 
     (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
-    service.setToken('some_token');
+    component.setToken('some_token');
 
-    const userInfo = service.getAllUserInfos();
+    const userInfo = component.getAllUserInfos();
     expect(userInfo).toEqual(mockDecodedToken);
   });
 
@@ -173,6 +174,5 @@ it('should decode jwtToken and populate decodedToken when jwtToken is set', () =
   expect(component.decodedToken).toEqual(mockDecodedToken);
 });
 
-*/
 
 });
