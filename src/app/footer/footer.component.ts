@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
-import {LocalStorageService} from "../../services/local-storage/local-storage.service";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 
 
