@@ -86,7 +86,12 @@ export class NavbarComponent implements OnInit {
 
   toggleTheme(): void {
 
-    this.themeService.getCurrentTheme() === 'light' ? this.imgTheme = 'assets/images/logo_with_text_dark.png' : this.imgTheme = 'assets/images/logo_with_text_light.png';
+    if (this.themeService.getCurrentTheme() === 'light') {
+      this.imgTheme = 'assets/images/logo_with_text_dark.png'
+    } else {
+      this.imgTheme = 'assets/images/logo_with_text_light.png';
+    }
+
     this.footer.ngOnInit();
     this.themeService.toggleTheme();
 

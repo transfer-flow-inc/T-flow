@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {AllUsersInterface} from "../../interfaces/User/all-users-interface";
 import {environment} from "../../environments/environment";
-import {count} from "rxjs";
 
 @Component({
   selector: 'app-dashboard-all-users',
