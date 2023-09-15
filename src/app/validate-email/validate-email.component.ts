@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {FlashMessageService} from "../../services/flash-message/flash-message.service";
-import {TokenInterface} from "../../interfaces/Token/token-interface";
-import {environment} from "../../environments/environment";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClientService } from '../../services/httpClient/http-client.service';
+import { FlashMessageService } from '../../services/flash-message/flash-message.service';
+import { TokenInterface } from '../../interfaces/Token/token-interface';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-validate-email',
@@ -12,9 +12,7 @@ import {environment} from "../../environments/environment";
 })
 export class ValidateEmailComponent implements OnInit {
 
-  token: TokenInterface = {
-    token: ''
-  }
+  token: TokenInterface = { token: '' };
   isConnected: boolean = false;
   isVerified: boolean = false;
 
@@ -22,28 +20,41 @@ export class ValidateEmailComponent implements OnInit {
     private route: ActivatedRoute,
     private httpClient: HttpClientService,
     private router: Router,
-    private flashMessageService: FlashMessageService,
-  ) {
-  }
+    private flashMessageService: FlashMessageService
+  ) {}
 
   ngOnInit(): void {
+    this.checkIfUserIsAuthenticated();
+    this.getVerificationTokenFromRoute();
+    this.verifyEmail();
+  }
+
+  private checkIfUserIsAuthenticated(): void {
     if (this.httpClient.isAuthenticated.value) {
       this.isConnected = true;
     }
+  }
+
+  private getVerificationTokenFromRoute(): void {
     this.route.params.subscribe(params => {
       this.token.token = params['token'];
     });
-    this.httpClient.validateEmail(environment.apiURL + 'verify', this.token).subscribe({
-      next: (data) => {
-        this.isVerified = true;
-      },
-      error: (err) => {
-        this.router.navigate(['/accueil']).then(() => {
-          this.flashMessageService.addMessage('Votre lien de validation est invalide', 'error', 4000);
-        });
-      }
-    })
   }
 
+  private verifyEmail(): void {
+    this.httpClient.validateEmail(environment.apiURL + 'verify', this.token).subscribe({
+      next: () => this.handleSuccessfulVerification(),
+      error: () => this.handleFailedVerification()
+    });
+  }
 
+  private handleSuccessfulVerification(): void {
+    this.isVerified = true;
+  }
+
+  private handleFailedVerification(): void {
+    this.router.navigate(['/accueil']).then(() => {
+      this.flashMessageService.addMessage('Votre lien de validation est invalide', 'error', 4000);
+    });
+  }
 }
