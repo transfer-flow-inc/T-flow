@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import  jwt_decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 import {UserInterface} from "../../interfaces/User/user-interface";
 import {CookiesService} from "../cookies/cookies.service";
 
@@ -8,7 +8,7 @@ import {CookiesService} from "../cookies/cookies.service";
 })
 export class JwtTokenService {
 
-  jwtToken: string = this.cookieService.get('token') === undefined ? "" : this.cookieService.get('token');
+  jwtToken: string = '';
   decodedToken: { [key: string]: string; } = {};
   constructor(
     private cookieService: CookiesService,

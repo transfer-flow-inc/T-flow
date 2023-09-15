@@ -41,44 +41,48 @@ export class LoginComponent implements OnInit {
 
 
   login() {
+    const loginUrl = `${environment.apiURL}auth/authenticate`;
 
-    this.httpService.login(environment.apiURL + "auth/authenticate", this.emailValue, this.passwordValue)
+    this.httpService.login(loginUrl, this.emailValue, this.passwordValue)
       .subscribe({
-
-        next: (data) => {
-
-          this.token = data;
-
-          if (this.token.token != null) {
-            this.cookiesService.set("token", this.token.token, 30);
-            this.httpService.isAuthenticated.next(true);
-            this.jwtService.setToken(this.token.token);
-            if (this.cookiesService.get('token') != "") {
-              this.router.navigate(['/accueil']).then(() => {
-                this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
-              });
-            } else {
-              this.cookiesService.get('token');
-              this.router.navigate(['/accueil']).then(() => {
-                this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
-              });
-            }
-          }
-
-        },
-        error: (err) => {
-
-          if (err.status == 403) {
-            this.error = "Email ou mot de passe incorrect !";
-          } else {
-            this.error = "Une erreur est survenue !";
-          }
-          return this.httpService.isAuthenticated.next(false);
-
-        }
-
+        next: (data) => this.handleLoginSuccess(data),
+        error: (err) => this.handleLoginError(err)
       });
+  }
 
+  handleLoginSuccess(data: any) {
+    this.token = data;
+
+    if (this.token) {
+      this.setAuthenticationState(true, this.token.token);
+      this.navigateToHomeWithMessage('Vous vous êtes connecté avec succès', 'success');
+    }
+  }
+
+  handleLoginError(err: any) {
+    if (err.status === 403) {
+      this.error = "Email ou mot de passe incorrect !";
+    } else {
+      this.error = "Une erreur est survenue !";
+    }
+
+    this.setAuthenticationState(false, '');
+  }
+
+  setAuthenticationState(isAuthenticated: boolean, token: string) {
+    if (isAuthenticated && token) {
+      this.cookiesService.set("token", token, 30);
+      this.httpService.isAuthenticated.next(true);
+      this.jwtService.setToken(token);
+    } else {
+      this.httpService.isAuthenticated.next(false);
+    }
+  }
+
+  navigateToHomeWithMessage(message: string, type: string) {
+    this.router.navigate(['/accueil']).then(() => {
+      this.flashMessageService.addMessage(message, type, 4000);
+    });
   }
 
   signInWithGoogle() {
