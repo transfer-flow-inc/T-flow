@@ -23,6 +23,7 @@ describe('TransferComponent', () => {
       addMessage: jest.fn()
     };
 
+
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, FormsModule],
       declarations: [TransferComponent],
@@ -103,7 +104,91 @@ describe('TransferComponent', () => {
   expect(uniqueFileNames.length).toEqual(component.uploader.queue.length);
 });
 
+  it('should return if email equal empty string', () => {
+    const event = { target: { value: '' } };
+    component.checkIfEmailIsValid(event);
+    expect(component.emails).not.toContain('');
+    expect(component.isEmailError).toBe(false);
+    expect(component.emailInput).toBe('');
+  });
+
+  it('should calculate the size of all file in Ko', () => {
+    component.uploader.queue = [
+      { file: { size: 1000 } } as any,
+      { file: { size: 2000 } } as any,
+      { file: { size: 3000 } } as any,
+    ];
+    component.calculateSizeAllFile();
+    expect(component.sizeAllFile).toBe(5.859375);
+    expect(component.typeSizeFormat).toBe('Ko');
+
+  });
+
+  it('should calculate size all file in Mo', () => {
+
+    component.uploader.queue = [
+      { file: { size: 1000000 } } as any,
+      { file: { size: 2000000 } } as any,
+      { file: { size: 3000000 } } as any,
+    ];
+    component.calculateSizeAllFile();
+    expect(component.sizeAllFile).toBe(5.7220458984375);
+    expect(component.typeSizeFormat).toBe('Mo');
+
+  });
+
+  it('should calculate size all file in Go', () => {
+
+    component.uploader.queue = [
+      { file: { size: 1000000000 } } as any,
+      { file: { size: 2000000000 } } as any,
+      { file: { size: 3000000000 } } as any,
+    ];
+    component.calculateSizeAllFile();
+    expect(component.sizeAllFile).toBe(5.587935447692871);
+    expect(component.typeSizeFormat).toBe('Go');
 
 
-  // ... add more tests based on other methods and functionalities
+  });
+
+  it('should delete a file', () => {
+
+    const item = { remove: jest.fn() };
+    component.deleteFile(item);
+    expect(item.remove).toHaveBeenCalled();
+
+  });
+
+  it('should delete all file', () => {
+
+    component.uploader.clearQueue = jest.fn();
+    component.deleteAllFile();
+    expect(component.uploader.clearQueue).toHaveBeenCalled();
+
+
+  });
+
+  it('should handle valid email', () => {
+    const event = { target: { value: 'test@example.com' } };
+    component.checkIfEmailIsValid(event);
+    expect(component.emails).toContain('test@example.com');
+    expect(component.isEmailError).toBe(false);
+    expect(event.target.value).toBe('');
+  });
+
+  it('should handle invalid email', () => {
+    const event = { target: { value: 'invalid-email' } };
+    component.checkIfEmailIsValid(event);
+    expect(component.emails).not.toContain('invalid-email');
+    expect(component.isEmailError).toBe(true);
+    expect(component.emailInput).toBe('input-error');
+  });
+
+  it('should handle email that already exists', () => {
+    component.emails = ['test@example.com'];
+    const event = { target: { value: 'test@example.com' } };
+    component.checkIfEmailIsValid(event);
+    expect(component.isEmailAlreadyExist).toBe(true);
+    expect(component.emailInput).toBe('input-error');
+  });
 });
