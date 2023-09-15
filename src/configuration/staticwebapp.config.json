@@ -1,0 +1,23 @@
+{
+  "routes": [
+    {
+      "route": "/accueil"
+    },
+    {
+      "route": "/admin",
+      "allowedRoles": ["administrator"]
+    },
+    {
+      "route": "/",
+      "rewrite": "/index.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html"
+    }
+  }
+}
