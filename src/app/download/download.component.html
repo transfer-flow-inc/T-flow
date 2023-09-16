@@ -8,11 +8,11 @@
 
     <p class="download-folder-name">Nom du dossier : {{ folder.folderName }}</p>
     <p class="download-folder-date">Date de création : {{ folder.uploadedAt | date: 'dd/MM/yyyy' }}</p>
-    <p class="download-folder-count">Nombres de fichier{{folder.fileCount > 1 ? 's' : ''}} : {{ folder.fileCount }}</p>
-    <p class="download-folder-size">Taille du dossier : {{ folderSize }}</p>
+    <p class="download-folder-count">Nombre{{folder.fileCount > 1 ? 's' : ''}} de fichier{{folder.fileCount > 1 ? 's' : ''}} : {{ folder.fileCount }}</p>
+    <p class="download-folder-size">Taille du dossier : {{ this.folderSize }}</p>
   </div>
 
-  <a class="download-button" (click)="downloadFile()">Télécharger</a>
+  <a class="download-button" (click)="downloadFolder()">Télécharger</a>
 </section>
 
 <section class="download-container unselectable" *ngIf="loading">
