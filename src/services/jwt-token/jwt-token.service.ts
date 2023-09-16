@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import jwt_decode from 'jwt-decode';
 import {UserInterface} from "../../interfaces/User/user-interface";
 import {CookiesService} from "../cookies/cookies.service";
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
