@@ -1,12 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { filter, map } from 'rxjs/operators';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/common';
-import { CookiesService } from '../services/cookies/cookies.service';
-import { HttpClientService } from '../services/httpClient/http-client.service';
-import { JwtTokenService } from '../services/jwt-token/jwt-token.service';
-import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import {Component, Inject, OnInit} from '@angular/core';
+import {filter, map} from 'rxjs/operators';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
+import {DOCUMENT} from '@angular/common';
+import {CookiesService} from '../services/cookies/cookies.service';
+import {HttpClientService} from '../services/httpClient/http-client.service';
+import {JwtTokenService} from '../services/jwt-token/jwt-token.service';
+import {LocalStorageService} from '../services/local-storage/local-storage.service';
 import {NavbarComponent} from "./navbar/navbar.component";
 
 @Component({
@@ -21,12 +21,13 @@ export class AppComponent implements OnInit {
     private httpClientService: HttpClientService,
     private jwtService: JwtTokenService,
     private router: Router,
-    private titleService: Title,
+    public titleService: Title,
     private route: ActivatedRoute,
     private localStorage: LocalStorageService,
-    private navbar: NavbarComponent,
+    public navbar: NavbarComponent,
     @Inject(DOCUMENT) private document: Document
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     if (this.cookiesService.get('token')) {
@@ -52,7 +53,7 @@ export class AppComponent implements OnInit {
     this.httpClientService.isAuthenticated.next(false);
     this.cookiesService.delete('token');
     sessionStorage.clear();
-    this.router.navigate(['/accueil']).then();
+    this.router.navigate(['/accueil']);
   }
 
   logConsoleWarnings() {
@@ -69,14 +70,14 @@ export class AppComponent implements OnInit {
   }
 
   handleRouteTitles() {
-  this.router.events.pipe(
-    filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-    map(() => this.route.firstChild?.snapshot.data['title'])
-  ).subscribe((title) => {
-    if (title) {
-      this.titleService.setTitle(`T-flow - ${title}`);
-    }
-  });
-}
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      map(() => this.route.firstChild?.snapshot.data['title'])
+    ).subscribe((title) => {
+      if (title) {
+        this.titleService.setTitle(`T-flow - ${title}`);
+      }
+    });
+  }
 
 }
