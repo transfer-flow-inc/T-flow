@@ -1,5 +1,5 @@
 .flash {
-  position: absolute;
+  position: fixed;
   top: 20%;
   right: 2%;
   width: 25rem;
@@ -15,7 +15,6 @@
 
 .flash-message {
   padding: 2rem;
-
 }
 
 .hidden {
