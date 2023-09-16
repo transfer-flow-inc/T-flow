@@ -46,71 +46,107 @@ export class DownloadComponent implements OnInit {
 
   ngOnInit() {
 
-    this.themeService.currentTheme$.subscribe((theme) => {
-      if (theme === 'dark') {
-        this.imgTheme = 'assets/images/logo_dark.png';
-        this.loadingImg = 'assets/images/logo_dark.png';
-      } else {
-        this.imgTheme = 'assets/images/logo_light.png';
-        this.loadingImg = 'assets/images/logo_light.png';
-      }
+    this.getCurrentTheme();
+
+    this.getRoutesParams();
+
+    this.getAFolderByUrl();
+
+
+  }
+
+  downloadFolder() {
+
+    this.httpClient.downloadFolder(environment.apiURL + 'folder/download/' + this.folderUrl + '?accessKey=' + this.accessKey)
+      .subscribe({
+        next: (data) => {
+
+          this.createABlobAndDownload(data);
+
+          this.navigateAndShowFlashMessage('Téléchargement du dossier en cours', 'success', 4000);
+
+        }, error: () => {
+
+          this.navigateAndShowFlashMessage('Le lien de téléchargement est invalide', 'error', 4000);
+
+        }
+      });
+
+  }
+
+
+
+  // Refactor this method to extract out the logic that uses window object.
+createABlobAndDownload(data: Blob) {
+  const blob = this.createBlob(data);
+  this.downloadBlob(blob);
+}
+createBlob(data: Blob): Blob {
+  return new Blob([data], {type: 'application/zip'});
+}
+
+downloadBlob(blob: Blob) {
+  const url = window.URL.createObjectURL(blob);
+  window.fetch(url).then(res => res.blob()).then(blob => {
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = this.folder.folderName + '.zip';
+    link.click();
+  });
+}
+
+
+  getCurrentTheme() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.loadingImg = theme === 'dark' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
+      this.imgTheme = theme === 'dark' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
     });
+  }
 
-
+  getRoutesParams() {
     this.route.params.subscribe(params => {
       this.folderUrl = params['folderUrl'];
       this.accessKey = params['accessKey'];
     });
+  }
 
+  getAFolderByUrl() {
     this.httpClient.getAFolderByUrl(environment.apiURL + 'folder/url/' + this.folderUrl).subscribe({
 
       next: (folder) => {
+
         this.loading = false;
         this.folder = folder;
-        if (this.folder.folderSize > 0 && this.folder.folderSize < 1000) {
-          this.folderSize = this.folder.folderSize + ' octets';
-        } else if (this.folder.folderSize >= 1000 && this.folder.folderSize < 1000000) {
-          this.folderSize = (this.folder.folderSize / 1024).toFixed(2) + ' Ko';
-        } else if (this.folder.folderSize >= 1000000 && this.folder.folderSize < 1000000000) {
-          this.folderSize = (this.folder.folderSize / 1024 / 1024).toFixed(2) + ' Mo';
-        } else if (this.folder.folderSize >= 1000000000 && this.folder.folderSize < 1000000000000) {
-          this.folderSize = (this.folder.folderSize / 1024 / 1024 / 1024).toFixed(2) + ' Go';
-        }
+        this.folderSize = this.formatFolderSize(this.folder.folderSize)
 
-      }, error: (err) => {
+      }, error: () => {
 
 
-        this.router.navigate(['/accueil']).then(() => {
-          this.flashMessageService.addMessage(`Lien de téléchargement est invalide`, 'error', 4000);
-        });
+        this.navigateAndShowFlashMessage('Le dossier n\'existe pas', 'error', 4000);
 
 
       }
 
     });
-
-
   }
 
-  downloadFile() {
-
-    this.httpClient.downloadFolder(environment.apiURL + 'folder/download/' + this.folderUrl + '?accessKey=' + this.accessKey)
-      .subscribe((data: Blob) => {
-
-        const blob = new Blob([data], {type: 'application/zip'});
-        const url = window.URL.createObjectURL(blob);
-        window.fetch(url).then(res => res.blob()).then(blob => {
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = this.folder.folderName + '.zip';
-          link.click();
-        })
-        this.router.navigate(['/accueil']).then(() => {
-          this.flashMessageService.addMessage(`Le téléchargement a commencé`, 'success', 4000);
-        });
-
-      });
-
+  formatFolderSize(size: number): string {
+    if (size < 1024) {
+      return `${size.toFixed(2)} octets`;
+    } else if (size >= 1024 && size < 1048576) {
+      return `${(size / 1024).toFixed(2)} Ko`;
+    } else if (size >= 1048576 && size < 1073741824) {
+      return `${(size / 1048576).toFixed(2)} Mo`;
+    } else {
+      return `${(size / 1073741824).toFixed(2)} Go`;
+    }
   }
+
+  navigateAndShowFlashMessage(message: string, type: string, time: number) {
+    this.router.navigate(['/accueil']).then(() => {
+      this.flashMessageService.addMessage(message, type, time);
+    });
+  }
+
 
 }
