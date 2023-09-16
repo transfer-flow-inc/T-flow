@@ -23,7 +23,7 @@ export class HttpClientService {
     private httpClient: HttpClient,
     private cookiesService: CookiesService,
     private router: Router,
-    private flashMessageService: FlashMessageService,
+    public flashMessageService: FlashMessageService,
     private oAuthService: OAuthService
   ) {
 

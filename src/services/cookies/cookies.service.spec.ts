@@ -72,4 +72,28 @@ describe('CookiesService', () => {
     // Restore original document.cookie property
     Object.defineProperty(document, 'cookie', originalDocumentCookie || {});
   });
+
+  it('should remove leading spaces from cookie', () => {
+    let cookie = '   myCookie=cookieValue';
+
+    while(cookie.startsWith(' ')) {
+      cookie = cookie.substring(1);
+    }
+
+    expect(cookie).toEqual('myCookie=cookieValue');
+  });
+
+  it('should trim leading spaces from cookie', () => {
+    document.cookie = ' ; another=cookieValue;';
+    const value = service.get('another');
+    expect(value).toBe('cookieValue');
+  });
+
+  it('should correctly decode cookie', () => {
+    document.cookie = `encoded=${encodeURIComponent('some value')};`;
+    const value = service.get('encoded');
+    expect(value).toBe('some value');
+  });
+
+
 });

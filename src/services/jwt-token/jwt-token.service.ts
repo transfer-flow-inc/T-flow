@@ -76,7 +76,7 @@ getDecodeToken(token: string): any {
     try {
       return jwt_decode(token);
     } catch  {
-      return '';
+
     }
   } else {
     return '';

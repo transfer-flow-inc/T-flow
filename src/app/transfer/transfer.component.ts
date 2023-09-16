@@ -83,12 +83,16 @@ export class TransferComponent implements OnInit {
 
   }
 
+  generateRandomFolderName(folderName: string) {
+      this.folderName = "Dossier-" + Math.floor(Math.random() * 1001);
+  }
+
 
   uploadFile() {
     if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
       this.isUploadable = true;
       if (this.folderName === '') {
-        this.folderName = "Dossier-" + Math.floor(Math.random() * 1001);
+        this.generateRandomFolderName(this.folderName);
       }
       this.httpClient.createFolder(environment.apiURL + 'folder/',
         {
@@ -110,14 +114,8 @@ export class TransferComponent implements OnInit {
             });
 
             this.uploader.uploadAll();
+            this.clearAllAfterCompleteAllUpload();
 
-            this.uploader.onCompleteAll = () => {
-              this.uploader.clearQueue();
-              this.emails = [];
-              this.sizeAllFile = 0;
-              this.message = '';
-              this.folderName = '';
-            }
           },
           error: () => {
 
@@ -126,6 +124,17 @@ export class TransferComponent implements OnInit {
     } else {
       this.flashService.addMessage('Veuillez ajouter au moins un fichier et un email', 'error', 4000);
     }
+  }
+
+  clearAllAfterCompleteAllUpload() {
+    this.uploader.onCompleteAll = () => {
+    this.uploader.clearQueue();
+    this.emails = [];
+    this.sizeAllFile = 0;
+    this.message = '';
+    this.folderName = '';
+      }
+
   }
 
 
