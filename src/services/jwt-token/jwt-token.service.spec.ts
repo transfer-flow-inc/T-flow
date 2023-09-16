@@ -16,6 +16,12 @@ describe('JwtTokenService', () => {
     expect(true).toBeTruthy();
   });
 
+  it('should return an empty string if the token in getDecodeToken is empty ', () => {
+
+    spyOn(component, 'getDecodeToken').and.returnValue('');
+
+  });
+
 
   it('should return the user first name', () => {
     spyOn(component, 'getDecodeToken').and.returnValue({firstName: 'sampleFirstName'});

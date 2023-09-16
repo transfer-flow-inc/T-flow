@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 
 import { HttpClientService } from './http-client.service';
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
@@ -6,13 +6,14 @@ import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "ang
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interface";
-import {FlashMessageService} from "../flash-message/flash-message.service";
-import {CookiesService} from "../cookies/cookies.service";
 import {Router} from "@angular/router";
+import {FlashMessageService} from "../flash-message/flash-message.service";
 
 describe('HttpClientService', () => {
   let service: HttpClientService;
   let httpMock: HttpTestingController;
+   let router: Router;
+  let flashMessageService: FlashMessageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -21,6 +22,8 @@ describe('HttpClientService', () => {
 
       ]
     });
+    router = TestBed.inject(Router);
+    flashMessageService = TestBed.inject(FlashMessageService);
     service = TestBed.inject(HttpClientService);
     httpMock = TestBed.inject(HttpTestingController);
   });
@@ -29,6 +32,19 @@ describe('HttpClientService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should navigate to /accueil and show success flash message', fakeAsync(() => {
+
+    const navigateSpy = spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
+    const flashMessageSpy = spyOn(flashMessageService, 'addMessage');
+
+    service.logout();
+
+    tick();
+
+    expect(navigateSpy).toHaveBeenCalledWith(['/accueil']);
+    expect(flashMessageSpy).toHaveBeenCalledWith('Vous vous êtes déconnecté avec succès', 'success', 4000);
+  }));
 
 
   it('should perform login and return a token', () => {

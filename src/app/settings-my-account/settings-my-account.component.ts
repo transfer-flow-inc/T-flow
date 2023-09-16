@@ -8,6 +8,8 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment.development";
 import {UpdateUserInterface} from "../../interfaces/User/update/update-user-interface";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {TokenResponse} from "angular-oauth2-oidc";
+import {TokenInterface} from "../../interfaces/Token/token-interface";
 
 @Component({
   selector: 'app-settings-my-account',
@@ -67,13 +69,17 @@ export class SettingsMyAccountComponent implements OnInit {
         this.router.navigate(['/se-connecter']).then();
         return;
     }
+    this.getAllUserInfos();
+
+
+  }
+
+  getAllUserInfos() {
     this.user = this.jwtService.getAllUserInfos();
 
     this.lastNameValue = this.user.lastName;
     this.firstNameValue = this.user.firstName;
     this.emailValue = this.user.userEmail;
-
-
   }
 
   toggleUpdateUser() {
@@ -81,33 +87,47 @@ export class SettingsMyAccountComponent implements OnInit {
   }
 
   submitUpdateUser() {
+  this.userUpdate = this.createUserUpdateObject();
 
-    this.userUpdate = {
-      lastName: this.lastNameValue,
-      firstName: this.firstNameValue,
-      email: this.emailValue,
-      oldPassword: this.oldPasswordValue,
-      password: this.newPasswordValue,
-    }
-    this.httpClient.updateUser(environment.apiURL + "user/" + this.user.userEmail + "?oldPassword=" + this.oldPasswordValue, this.userUpdate ).subscribe({
-      next: (response) => {
-        console.log(response)
-        this.cookiesService.delete('token');
-        this.cookiesService.set('token', response.token, 30);
-        this.router.navigate(['/accueil']).then(() => {
-            this.flashMessageService.addMessage('Votre compte a bien été mis à jour', 'success', 4000);
-            this.isUpdateUser = false;
-        });
-      },
-      error: (error) => {
-        console.log(error)
-        this.router.navigate(['/se-connecter']).then(() => {
-          this.flashMessageService.addMessage('Une erreur est survenue', 'error', 4000);
-        })
-      }
+  const updateUserUrl = this.buildUpdateUserUrl();
 
-      })
-  }
+  this.httpClient.updateUser(updateUserUrl, this.userUpdate)
+    .subscribe({
+      next: response => this.handleUpdateSuccess(response),
+      error: error => this.handleUpdateError(error)
+    });
+}
+
+createUserUpdateObject() {
+  return {
+    lastName: this.lastNameValue,
+    firstName: this.firstNameValue,
+    email: this.emailValue,
+    oldPassword: this.oldPasswordValue,
+    password: this.newPasswordValue
+  };
+}
+
+buildUpdateUserUrl() {
+  return `${environment.apiURL}user/${this.user.userEmail}?oldPassword=${this.oldPasswordValue}`;
+}
+
+handleUpdateSuccess(response: TokenInterface) {
+  console.log(response);
+  this.cookiesService.delete('token');
+  this.cookiesService.set('token', response.token, 30);
+  this.router.navigate(['/accueil']).then(() => {
+    this.flashMessageService.addMessage('Votre compte a bien été mis à jour', 'success', 4000);
+    this.isUpdateUser = false;
+  });
+}
+
+handleUpdateError(error : Error) {
+  this.router.navigate(['/accueil']).then(() => {
+    this.flashMessageService.addMessage('Une erreur est survenue', 'error', 4000);
+  });
+}
+
 
 
   protected readonly faEyeSlash = faEyeSlash;

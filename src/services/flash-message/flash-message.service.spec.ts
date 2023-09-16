@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
-import { FlashMessageService, MessageType } from './flash-message.service';
-import { take } from 'rxjs/operators';
+import {TestBed} from '@angular/core/testing';
+import {FlashMessageService, MessageType} from './flash-message.service';
+import {take} from 'rxjs/operators';
 
 describe('FlashMessageService', () => {
   let service: FlashMessageService;

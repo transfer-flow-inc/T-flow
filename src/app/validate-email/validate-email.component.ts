@@ -29,30 +29,30 @@ export class ValidateEmailComponent implements OnInit {
     this.verifyEmail();
   }
 
-  private checkIfUserIsAuthenticated(): void {
+  checkIfUserIsAuthenticated(): void {
     if (this.httpClient.isAuthenticated.value) {
       this.isConnected = true;
     }
   }
 
-  private getVerificationTokenFromRoute(): void {
+  getVerificationTokenFromRoute(): void {
     this.route.params.subscribe(params => {
       this.token.token = params['token'];
     });
   }
 
-  private verifyEmail(): void {
+  verifyEmail(): void {
     this.httpClient.validateEmail(environment.apiURL + 'verify', this.token).subscribe({
       next: () => this.handleSuccessfulVerification(),
       error: () => this.handleFailedVerification()
     });
   }
 
-  private handleSuccessfulVerification(): void {
+  handleSuccessfulVerification(): void {
     this.isVerified = true;
   }
 
-  private handleFailedVerification(): void {
+  handleFailedVerification(): void {
     this.router.navigate(['/accueil']).then(() => {
       this.flashMessageService.addMessage('Votre lien de validation est invalide', 'error', 4000);
     });
