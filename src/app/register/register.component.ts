@@ -10,13 +10,15 @@ import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {environment} from "../../environments/environment";
 
+const REGISTRATION_SUCCESS_MSG = "Veuillez vérifier votre boite mail à l'adresse : ";
+const LOGIN_SUCCESS_MSG = "Vous vous êtes connecté avec succès";
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   faEye: IconDefinition = faEye;
   faEyeSlash: IconDefinition = faEyeSlash;
   showPassword: boolean = false;
@@ -29,71 +31,79 @@ export class RegisterComponent implements OnInit {
   error: string = "";
 
   constructor(
-    private service: HttpClientService,
+    private httpClientService: HttpClientService,
     private router: Router,
     private flashMessageService: FlashMessageService,
     private oAuthService: OAuthService,
     private googleSsoService: GoogleSsoService,
-    private httpService: HttpClientService,
     private cookiesService: CookiesService,
-  ) {
+  ) {}
+
+  ngOnInit(): void {
+    this.checkExistingToken();
+    this.subscribeToOAuthEvents();
   }
 
-
-  register() {
-    if (this.isChecked) {
-      this.service.register<TokenInterface>(environment.apiURL + "auth/register", this.firstNameValue, this.lastNameValue, this.emailValue, this.passwordValue)
-        .subscribe({
-          next: () => {
-            this.flashMessageService.addMessage(`Veuillez vérifier votre boite mail à l'adresse : ${this.emailValue}, pour valider votre compte !`, 'warning', 4000);
-
-            this.router.navigate(['/accueil']).then(() => {
-            });
-
-
-          },
-          error: (err) => {
-
-            if (err.status == 403) {
-              return this.error == "Email ou mot de passe incorrect !";
-            } else {
-              return this.error == "Une erreur est survenue !";
-            }
-
-          }
-
-        });
-    } else {
-      alert("Veuillez accepter les conditions générales d'utilisation")
+  checkExistingToken(): void {
+    if (this.cookiesService.get('token') !== "") {
+      this.router.navigate(['/accueil']);
     }
-
-
   }
 
-  signInWithGoogle() {
-    this.googleSsoService.signInWithGoogle();
-  }
-
-
-  ngOnInit() {
-    if (this.cookiesService.get('token') != "") {
-      this.router.navigate(['/accueil']).then();
-    }
+  subscribeToOAuthEvents(): void {
     this.oAuthService.events.subscribe((event: OAuthEvent) => {
       if (event.type === 'token_received') {
         const userClaims = this.oAuthService.getIdentityClaims();
-        this.httpService.loginWithGoogle(environment.apiURL + "auth/google", userClaims).subscribe((token) => {
-          this.cookiesService.set("token", token.token, 30);
-          this.router.navigate(['/accueil']).then(() => {
-            this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
-          });
-        });
+        this.loginWithGoogle(userClaims);
       }
     });
   }
 
-  changeIsChecked() {
-    this.isChecked = !this.isChecked;
+  loginWithGoogle(userClaims: any): void {
+    this.httpClientService.loginWithGoogle(environment.apiURL + "auth/google", userClaims)
+      .subscribe((token) => {
+        this.cookiesService.set("token", token.token, 30);
+        this.router.navigate(['/accueil'])
+          .then(() => this.flashMessageService.addMessage(LOGIN_SUCCESS_MSG, 'success', 4000));
+      });
   }
 
+  register(): void {
+    if (this.isChecked) {
+      this.performRegistration();
+    }
+  }
+
+  performRegistration(): void {
+    this.httpClientService.register<TokenInterface>(
+      environment.apiURL + "auth/register",
+      this.firstNameValue,
+      this.lastNameValue,
+      this.emailValue,
+      this.passwordValue
+    )
+    .subscribe({
+      next: () => {
+        this.flashMessageService.addMessage(REGISTRATION_SUCCESS_MSG + this.emailValue, 'warning', 4000);
+        this.router.navigate(['/accueil']);
+      },
+      error: (err) => this.handleError(err)
+    });
+  }
+
+  handleError(err: any): void {
+    if (err.status === 403) {
+      this.error = "Email ou mot de passe incorrect !";
+    } else {
+      this.error = "Une erreur est survenue !";
+    }
+  }
+
+  signInWithGoogle(): void {
+    this.googleSsoService.signInWithGoogle();
+  }
+
+  changeIsChecked(): void {
+    this.isChecked = !this.isChecked;
+  }
 }
