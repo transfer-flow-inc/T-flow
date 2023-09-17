@@ -8,7 +8,6 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment.development";
 import {UpdateUserInterface} from "../../interfaces/User/update/update-user-interface";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
-import {TokenResponse} from "angular-oauth2-oidc";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 
 @Component({
