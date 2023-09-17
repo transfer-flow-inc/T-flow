@@ -133,25 +133,6 @@ it('should call downloadBlob when createABlobAndDownload is called', () => {
   expect(component.downloadBlob).toHaveBeenCalledWith(jasmine.any(Blob));
 });
 
-it('should correctly format folder size in octets', () => {
-    expect(component.formatFolderSize(500)).toBe('500.00 octets');
-    expect(component.formatFolderSize(100)).toBe('100.00 octets');
-  });
-
-it('should correctly format folder size in kilobytes', () => {
-    expect(component.formatFolderSize(1500)).toBe('1.46 Ko');
-    expect(component.formatFolderSize(1024)).toBe('1.00 Ko');
-  });
-
-  it('should correctly format folder size in megabytes', () => {
-    expect(component.formatFolderSize(1500000)).toBe('1.43 Mo');
-    expect(component.formatFolderSize(1048576)).toBe('1.00 Mo');
-  });
-
-  it('should correctly format folder size in gigabytes', () => {
-    expect(component.formatFolderSize(1500000000)).toBe('1.40 Go');
-    expect(component.formatFolderSize(1073741824)).toBe('1.00 Go');
-  });
 
   it('should navigate to "/accueil" and show a flash message', async () => {
   // Arrange

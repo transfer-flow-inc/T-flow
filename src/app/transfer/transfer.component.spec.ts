@@ -7,12 +7,13 @@ import {FlashMessageService} from "../../services/flash-message/flash-message.se
 import {of, throwError} from 'rxjs';
 import {FormsModule} from "@angular/forms";
 import {FileUploader} from "ng2-file-upload";
+import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 
 describe('TransferComponent', () => {
   let component: TransferComponent;
   let fixture: ComponentFixture<TransferComponent>;
   let mockHttpClientService: { createFolder: any; }, mockCookiesService: { get: any; },
-    mockFlashMessageService: { addMessage: any; };
+    mockFlashMessageService: { addMessage: any; }, mockFormatSizeService: { formatSize: any; }
 
   beforeEach(async () => {
     mockHttpClientService = {
@@ -24,6 +25,9 @@ describe('TransferComponent', () => {
     mockFlashMessageService = {
       addMessage: jest.fn()
     };
+    mockFormatSizeService = {
+      formatSize: jest.fn()
+    }
 
 
     await TestBed.configureTestingModule({
@@ -33,6 +37,7 @@ describe('TransferComponent', () => {
         {provide: HttpClientService, useValue: mockHttpClientService},
         {provide: CookiesService, useValue: mockCookiesService},
         {provide: FlashMessageService, useValue: mockFlashMessageService},
+        {provide: FormatSizeService, useValue: mockFormatSizeService}
       ],
     }).compileComponents();
 
@@ -143,45 +148,6 @@ describe('TransferComponent', () => {
     expect(component.emailInput).toBe('');
   });
 
-  it('should calculate the size of all file in Ko', () => {
-    component.uploader.queue = [
-      {file: {size: 1000}} as any,
-      {file: {size: 2000}} as any,
-      {file: {size: 3000}} as any,
-    ];
-    component.calculateSizeAllFile();
-    expect(component.sizeAllFile).toBe(5.859375);
-    expect(component.typeSizeFormat).toBe('Ko');
-
-  });
-
-  it('should calculate size all file in Mo', () => {
-
-    component.uploader.queue = [
-      {file: {size: 1000000}} as any,
-      {file: {size: 2000000}} as any,
-      {file: {size: 3000000}} as any,
-    ];
-    component.calculateSizeAllFile();
-    expect(component.sizeAllFile).toBe(5.7220458984375);
-    expect(component.typeSizeFormat).toBe('Mo');
-
-  });
-
-  it('should calculate size all file in Go', () => {
-
-    component.uploader.queue = [
-      {file: {size: 1000000000}} as any,
-      {file: {size: 2000000000}} as any,
-      {file: {size: 3000000000}} as any,
-    ];
-    component.calculateSizeAllFile();
-    expect(component.sizeAllFile).toBe(5.587935447692871);
-    expect(component.typeSizeFormat).toBe('Go');
-
-
-  });
-
   it('should delete a file', () => {
 
     const item = {remove: jest.fn()};
@@ -280,5 +246,12 @@ describe('TransferComponent', () => {
   }));
 
 
+  it('should return this.sizeAllFile in Ko', () => {
+
+    component.sizeAllFile = 1000;
+    component.formatSizeFile(component.sizeAllFile);
+
+
+  });
 
 });

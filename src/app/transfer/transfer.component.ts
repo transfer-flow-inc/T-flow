@@ -7,6 +7,7 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {environment} from "../../environments/environment";
+import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 
 @Component({
   selector: 'app-transfer',
@@ -48,7 +49,8 @@ export class TransferComponent implements OnInit {
   constructor(
     private httpClient: HttpClientService,
     private cookiesService: CookiesService,
-    private flashService: FlashMessageService
+    private flashService: FlashMessageService,
+    private formatSize: FormatSizeService
   ) {
     this.uploader = new FileUploader({
       url: environment.apiURL + 'file/',
@@ -166,24 +168,18 @@ checkFile() {
     for (const element of this.uploader.queue) {
       this.sizeAllFile += element.file.size;
     }
-    if (this.sizeAllFile / 1024 / 1024 < 1) {
-      this.sizeAllFile = this.sizeAllFile / 1024;
-      this.typeSizeFormat = 'Ko';
-    } else if (this.sizeAllFile / 1024 / 1024 < 1000 && this.sizeAllFile / 1024 / 1024 > 1) {
-      this.sizeAllFile = this.sizeAllFile / 1024 / 1024;
-      this.typeSizeFormat = 'Mo';
-    } else if (this.sizeAllFile > 1000) {
-      this.sizeAllFile = this.sizeAllFile / 1024 / 1024 / 1024;
-      this.typeSizeFormat = 'Go';
-    }
-
+    return this.sizeAllFile;
   }
 
-  calculateSizeAllFileForRequest() {
+  calculateSizeAllFileForRequest(): number {
     for (const element of this.uploader.queue) {
       this.folderSize += element.file.size;
     }
     return this.folderSize;
+  }
+
+  formatSizeFile(size: number): string {
+    return this.formatSize.formatSize(size);
   }
 
   checkIfEmailIsValid(event: any) {

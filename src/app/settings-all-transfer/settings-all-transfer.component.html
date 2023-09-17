@@ -16,16 +16,11 @@
       <div class="transfer" *ngFor="let transfer of allFolder">
         <div class="transfer-component">
           <p class="">Nom : {{ transfer.folderName }}</p>
-          <!--<p>Crée le : {{ formatDate(transfer.uploadedAt, "longDate", 'fr-FR')}}</p>-->
+          <p>Crée le : {{ formatDate(transfer.uploadedAt, "longDate", 'fr-FR')}}</p>
           <p>{{ transfer.shared ? "Ce dossier est publique" : "Ce dossier est privé" }}</p>
           <p>Expire le : {{ transfer.expiresAt}}</p>
           <p>Nombre de fichier{{ transfer.fileCount > 1 ? 's' : '' }} : {{ transfer.fileCount }}</p>
-          <p *ngIf="transfer.folderSize /1024/1024 < 1">Taille du dossier
-            : {{ transfer.folderSize / 1024 | number : ".2" }}Ko</p>
-          <p *ngIf="transfer.folderSize /1024/1024 < 1000 &&  transfer.folderSize/1024/1024 > 1">Taille du dossier
-            : {{ transfer.folderSize / 1024 / 1024 | number : ".2" }}Mo</p>
-          <p *ngIf="transfer.folderSize /1024/1024 >= 1000">{{transfer.folderSize / 1024 / 1024 / 1024 | number : ".2"}}
-            Go</p>
+          <p>Taille du dossier : {{ formatSize(transfer.folderSize) }}</p>
           <fa-icon (click)="deleteFolder(transfer)" class="binIcon" [icon]="binIcon"></fa-icon>
           <a class="transfer-link transfer-button" *ngIf="!checkIfFolderIsExpired(transfer)"
              [href]="'telechargement/' +transfer.url + '/' + transfer.accessKey">Accéder à la page de téléchargement</a>
