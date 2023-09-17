@@ -7,7 +7,7 @@
         <div *ngFor="let user of users.content">
 
             <div class="dashboard-card unselectable">
-                <img class="img-user" [src]="user.avatar" alt="photo de profil">
+                <img class="img-user" [src]="user.avatar" alt="photo">
               <div class="dashboard-card-text">
                 <p>{{ user.lastName | uppercase }}</p>
                 <p>{{ user.firstName | titlecase }}</p>

@@ -36,6 +36,9 @@
   border-radius: 50%;
   object-fit: cover;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .dashboard-card-text{
   display: flex;
