@@ -18,7 +18,7 @@
           <p class="">Nom : {{ transfer.folderName }}</p>
           <p>Crée le : {{ formatDate(transfer.uploadedAt, "longDate", 'fr-FR')}}</p>
           <p>{{ transfer.shared ? "Ce dossier est publique" : "Ce dossier est privé" }}</p>
-          <p>Expire le : {{ transfer.expiresAt}}</p>
+          <p>Expire le : {{ formatDate(transfer.expiresAt, "longDate", 'fr-FR')}}</p>
           <p>Nombre de fichier{{ transfer.fileCount > 1 ? 's' : '' }} : {{ transfer.fileCount }}</p>
           <p>Taille du dossier : {{ formatSize(transfer.folderSize) }}</p>
           <fa-icon (click)="deleteFolder(transfer)" class="binIcon" [icon]="binIcon"></fa-icon>

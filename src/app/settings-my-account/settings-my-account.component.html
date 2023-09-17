@@ -13,7 +13,7 @@
     <p>Abonnement : {{this.user.plan}}</p>
     <p>Etat du compte : {{ this.user.isAccountVerified ? "compte vérifié" : "compte non vérifié"}}</p>
 
-    <button class="user-button-update" (click)="toggleUpdateUser()">Modifier mon compte</button>
+    <button *ngIf="this.user.authMethod === 'spring_database'" class="user-button-update" (click)="toggleUpdateUser()">Modifier mon compte</button>
 
   </div>
 
