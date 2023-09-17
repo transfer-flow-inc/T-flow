@@ -112,7 +112,6 @@ buildUpdateUserUrl() {
 }
 
 handleUpdateSuccess(response: TokenInterface) {
-  console.log(response);
   this.cookiesService.delete('token');
   this.cookiesService.set('token', response.token, 30);
   this.router.navigate(['/accueil']).then(() => {
