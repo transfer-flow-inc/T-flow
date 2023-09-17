@@ -1,7 +1,7 @@
 import {FileInterface} from "./file-interfaces";
 
 export interface FolderInterface {
-  id: string;
+  id: string | null;
   folderName: string;
   folderSize: number;
   fileCount: number;
