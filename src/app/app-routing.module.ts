@@ -21,6 +21,7 @@ import {DashboardAllUsersComponent} from "./dashboard-all-users/dashboard-all-us
 import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
 import {DashboardAllSupportComponent} from "./dashboard-all-support/dashboard-all-support.component";
 import {DashboardOneSupportComponent} from "./dashboard-one-support/dashboard-one-support.component";
+import {DashboardAllProvidersComponent} from "./dashboard-all-providers/dashboard-all-providers.component";
 
 
 const routes: Routes = [
@@ -36,8 +37,8 @@ const routes: Routes = [
   { 'path' : "nous-contacter", component: ContactUsComponent,canActivate: [AutorizeGuardService], data: { title: 'Nous contacter'}},
   { 'path' : "a-propos", component: AboutComponent, data: { title: 'A propos'}},
   { 'path' : "valider-mon-compte/:token", component: ValidateEmailComponent, data: { title: 'Valider mon compte'}},
-  { 'path' : "admin/dashboard", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Dashboard'}},
-  { 'path' : "admin/dashboard/tout-les-utilisateurs", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Dashboard'}},
+  { 'path' : "admin/dashboard/tout-les-gestionnaires", component : DashboardAllProvidersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les fournisseurs'}},
+  { 'path' : "admin/dashboard/tout-les-utilisateurs", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les utilisateurs'}},
   { 'path' : "admin/dashboard/tout-les-support", component: DashboardAllSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les support'}},
   { 'path' : "admin/dashboard/support/:id", component: DashboardOneSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Support'}},
   { 'path' : "telechargement/:folderUrl", component: DownloadComponent, data: { title: 'Téléchargement'}},

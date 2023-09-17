@@ -40,6 +40,7 @@ import { DashboardAllTransferComponent } from './dashboard-all-transfer/dashboar
 import { DashboardOneTransferComponent } from './dashboard-one-transfer/dashboard-one-transfer.component';
 import { DashboardAllSupportComponent } from './dashboard-all-support/dashboard-all-support.component';
 import { DashboardOneSupportComponent } from './dashboard-one-support/dashboard-one-support.component';
+import { DashboardAllProvidersComponent } from './dashboard-all-providers/dashboard-all-providers.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { DashboardOneSupportComponent } from './dashboard-one-support/dashboard-
     DashboardOneTransferComponent,
     DashboardAllSupportComponent,
     DashboardOneSupportComponent,
+    DashboardAllProvidersComponent,
   ],
     imports: [
         BrowserModule,
