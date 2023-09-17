@@ -5,6 +5,7 @@ import {FlashMessageService} from "../../services/flash-message/flash-message.se
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
+import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 
 @Component({
   selector: 'app-download',
@@ -19,6 +20,7 @@ export class DownloadComponent implements OnInit {
     private router: Router,
     private flashMessageService: FlashMessageService,
     private themeService: ThemeServiceService,
+    private formatSizeService: FormatSizeService
   ) {
   }
 
@@ -117,7 +119,7 @@ downloadBlob(blob: Blob) {
 
         this.loading = false;
         this.folder = folder;
-        this.folderSize = this.formatFolderSize(this.folder.folderSize)
+        this.folderSize = this.formatSizeService.formatSize(this.folder.folderSize);
 
       }, error: () => {
 
@@ -130,17 +132,7 @@ downloadBlob(blob: Blob) {
     });
   }
 
-  formatFolderSize(size: number): string {
-    if (size < 1024) {
-      return `${size.toFixed(2)} octets`;
-    } else if (size >= 1024 && size < 1048576) {
-      return `${(size / 1024).toFixed(2)} Ko`;
-    } else if (size >= 1048576 && size < 1073741824) {
-      return `${(size / 1048576).toFixed(2)} Mo`;
-    } else {
-      return `${(size / 1073741824).toFixed(2)} Go`;
-    }
-  }
+
 
   navigateAndShowFlashMessage(message: string, type: string, time: number) {
     this.router.navigate(['/accueil']).then(() => {

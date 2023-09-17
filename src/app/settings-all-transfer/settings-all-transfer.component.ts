@@ -8,6 +8,7 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import {formatDate} from "@angular/common";
+import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 
 @Component({
   selector: 'app-settings-all-transfer',
@@ -23,10 +24,12 @@ export class SettingsAllTransferComponent implements OnInit {
   isFolderEmpty: boolean = true;
   errorMessage: boolean = false;
   binIcon: IconDefinition = faTrashAlt;
+  folderSize: string = "0";
 
   constructor(
     private httpClientService: HttpClientService,
     private JwtService: JwtTokenService,
+    private formatSizeService: FormatSizeService
   ) { }
 
   ngOnInit(): void {
@@ -75,6 +78,10 @@ export class SettingsAllTransferComponent implements OnInit {
     const currentDate = new Date();
     const folderDate = new Date(folder.expiresAt);
     return folderDate < currentDate;
+  }
+
+  formatSize(size: number): string {
+    return this.formatSizeService.formatSize(size);
   }
 
   deleteFolder(folder: FolderInterface): void {

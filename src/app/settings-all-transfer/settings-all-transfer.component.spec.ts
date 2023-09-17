@@ -216,4 +216,12 @@ describe('SettingsAllTransferComponent', () => {
     expect(setErrorMessageSpy).toHaveBeenCalled();
   });
 
+  it('should return size in Ko', () => {
+
+    const size = 1024;
+    const result = component.formatSize(size);
+    expect(result).toBe('1.00 Ko');
+
+  });
+
 });
