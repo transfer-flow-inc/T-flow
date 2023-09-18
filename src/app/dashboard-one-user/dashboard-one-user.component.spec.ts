@@ -7,6 +7,7 @@ import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "ang
 import {ActivatedRoute} from "@angular/router";
 import {Observable, of} from "rxjs";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
 
 describe('DashboardOneUserComponent', () => {
   let component: DashboardOneUserComponent;
@@ -22,7 +23,7 @@ describe('DashboardOneUserComponent', () => {
       providers: [HttpClient, OAuthService, UrlHelperService, OAuthLogger, DateTimeProvider,
         { provide: ActivatedRoute, useValue: activatedRoute }
       ],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, FontAwesomeTestingModule]
     })
     .compileComponents();
 

@@ -21,10 +21,10 @@ import {DashboardAllUsersComponent} from "./dashboard-all-users/dashboard-all-us
 import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
 import {DashboardAllSupportComponent} from "./dashboard-all-support/dashboard-all-support.component";
 import {DashboardOneSupportComponent} from "./dashboard-one-support/dashboard-one-support.component";
-import {DashboardAllProvidersComponent} from "./dashboard-all-providers/dashboard-all-providers.component";
 import {DashboardOneUserComponent} from "./dashboard-one-user/dashboard-one-user.component";
 import {DashboardAllTransferComponent} from "./dashboard-all-transfer/dashboard-all-transfer.component";
 import {DashboardOneTransferComponent} from "./dashboard-one-transfer/dashboard-one-transfer.component";
+import {DashboardAllProvidersComponent} from "./dashboard-all-providers/dashboard-all-providers.component";
 
 
 const routes: Routes = [
@@ -41,12 +41,12 @@ const routes: Routes = [
   { 'path' : "a-propos", component: AboutComponent, data: { title: 'A propos'}},
   { 'path' : "valider-mon-compte/:token", component: ValidateEmailComponent, data: { title: 'Valider mon compte'}},
   { 'path' : "admin/dashboard", redirectTo: "admin/dashboard/gestionnaires", pathMatch: "full"},
-  { 'path' : "admin/dashboard/gestionnaires", component : DashboardAllProvidersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les fournisseurs'}},
-  { 'path' : "admin/dashboard/utilisateurs", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les utilisateurs'}},
+  { 'path' : "admin/dashboard/gestionnaires", component : DashboardAllProvidersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Fournisseurs'}},
+  { 'path' : "admin/dashboard/utilisateurs", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Utilisateurs'}},
   { 'path' : "admin/dashboard/utilisateurs/detail/:id", component: DashboardOneUserComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Utilisateur'}},
   { 'path' : "admin/dashboard/utilisateurs/transferts/:id", component: DashboardAllTransferComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Transferts'}},
   { 'path' : "admin/dashboard/utilisateurs/transferts/detail/:id", component: DashboardOneTransferComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Transfert'}},
-  { 'path' : "admin/dashboard/supports", component: DashboardAllSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les support'}},
+  { 'path' : "admin/dashboard/supports", component: DashboardAllSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Supports'}},
   { 'path' : "admin/dashboard/supports/detail/:id", component: DashboardOneSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Support'}},
   { 'path' : "telechargement/:folderUrl", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "telechargement/:folderUrl/:accessKey", component: DownloadComponent, data: { title: 'Téléchargement'}},

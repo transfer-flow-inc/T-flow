@@ -112,6 +112,20 @@
   animation: spinner 3s linear infinite;
 }
 
+
+.return {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: absolute;
+  font-weight: 600;
+  margin: 1rem;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+}
+
 .container-loader {
   margin: auto;
 }
@@ -123,4 +137,13 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+@media screen and (max-width: 1020px) {
+
+
+  .return {
+    position: unset;
+  }
+
 }

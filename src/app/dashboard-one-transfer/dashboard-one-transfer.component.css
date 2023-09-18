@@ -1,0 +1,62 @@
+.dashboard-container-all {
+  position: relative;
+  margin: auto;
+  width: 80vw;
+  background-color: var(--color);
+  min-height: 80vh;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.dashboard-container {
+  position: relative;
+  margin: auto;
+  background-color: var(--background);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.card-btn {
+  width: fit-content;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 0.1rem solid var(--color);
+  border-radius: 0.5rem;
+  color: var(--color);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.card-btn:hover {
+  cursor: pointer;
+  background-color: var(--color);
+  color: var(--background);
+}
+.return {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: absolute;
+  font-weight: 600;
+  margin: 1rem;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+}
+
+
+@media screen and (max-width: 1020px) {
+
+
+  .return {
+    position: unset;
+  }
+
+}
