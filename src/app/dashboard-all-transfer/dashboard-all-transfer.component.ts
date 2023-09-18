@@ -8,7 +8,6 @@ import {FormatSizeService} from "../../services/format-size-file/format-size.ser
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faArrowLeft, faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
 import {formatDate} from "@angular/common";
-import {UserInterface} from "../../interfaces/User/user-interface";
 import {UserApiInterface} from "../../interfaces/User/user-api-interface";
 
 @Component({
@@ -96,11 +95,14 @@ export class DashboardAllTransferComponent implements OnInit{
     this.httpClientService.getAllTransfersByUserID(environment.apiURL + 'admin/user/' + this.userID + '/folders?page=0&size=20').subscribe( {
       next: (response: FolderPagesInterface) => {
         this.loading = false;
+        this.errorMessage = false;
         this.folders = response;
         if (this.folders.content[0]?.id === undefined) {
           this.isDataFound = false;
         }
       }, error: () => {
+        this.loading = false;
+        this.isDataFound = false;
         this.errorMessage = true;
       }
     });

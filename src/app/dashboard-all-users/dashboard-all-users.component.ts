@@ -65,6 +65,7 @@ export class DashboardAllUsersComponent implements OnInit {
         }
       },
       error: () => {
+        this.loading = false;
         this.errorMessage = true;
       }
     });
