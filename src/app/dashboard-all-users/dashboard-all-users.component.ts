@@ -10,6 +10,9 @@ import {environment} from "../../environments/environment";
 })
 export class DashboardAllUsersComponent implements OnInit {
 
+  loading: boolean = true;
+  loadingImg: string = "assets/images/logo_light.png";
+  isDataFound: boolean = true;
   users: AllUsersInterface = {
     content: [],
     pageable: {
@@ -39,7 +42,7 @@ export class DashboardAllUsersComponent implements OnInit {
     empty: false,
   }
   page: number = 0;
-  errorMessage: string = '';
+  errorMessage: boolean = false;
 
   constructor(
     private httpClientService: HttpClientService,
@@ -55,11 +58,14 @@ export class DashboardAllUsersComponent implements OnInit {
   getAllUsers(page: number) {
     this.httpClientService.getAllUsers(environment.apiURL + 'admin/users?page=' + page + '&size=20').subscribe({
       next: (response) => {
-        console.log(response)
+        this.loading = false;
         this.users.content = response.content;
+        if (this.users.content[0]?.id === null) {
+          this.isDataFound = false;
+        }
       },
-      error: (error) => {
-        this.errorMessage = "Error: " + error.message;
+      error: () => {
+        this.errorMessage = true;
       }
     });
   }

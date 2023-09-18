@@ -56,3 +56,21 @@
   font-weight: 600 ;
   background-color: orange;
 }
+
+.img-loader {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spinner 3s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

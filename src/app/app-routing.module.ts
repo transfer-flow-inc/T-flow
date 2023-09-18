@@ -22,6 +22,8 @@ import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-
 import {DashboardAllSupportComponent} from "./dashboard-all-support/dashboard-all-support.component";
 import {DashboardOneSupportComponent} from "./dashboard-one-support/dashboard-one-support.component";
 import {DashboardAllProvidersComponent} from "./dashboard-all-providers/dashboard-all-providers.component";
+import {DashboardOneUserComponent} from "./dashboard-one-user/dashboard-one-user.component";
+import {DashboardAllTransferComponent} from "./dashboard-all-transfer/dashboard-all-transfer.component";
 
 
 const routes: Routes = [
@@ -41,6 +43,8 @@ const routes: Routes = [
   { 'path' : "admin/dashboard/tout-les-utilisateurs", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les utilisateurs'}},
   { 'path' : "admin/dashboard/tout-les-support", component: DashboardAllSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les support'}},
   { 'path' : "admin/dashboard/support/:id", component: DashboardOneSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Support'}},
+  { 'path' : "admin/dashboard/transferts/:id", component: DashboardAllTransferComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Transferts'}},
+  { 'path' : "admin/dashboard/user/:id", component: DashboardOneUserComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Utilisateur'}},
   { 'path' : "telechargement/:folderUrl", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "telechargement/:folderUrl/:accessKey", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},

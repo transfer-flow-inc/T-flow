@@ -10,6 +10,8 @@ import {CreateFolderInterface} from "../../interfaces/Files/create-folder-interf
 import {OAuthService} from "angular-oauth2-oidc";
 import {AllUsersInterface} from "../../interfaces/User/all-users-interface";
 import {AllSupportsInterface} from "../../interfaces/Support/all-supports-interface";
+import {UserInterface} from "../../interfaces/User/user-interface";
+import {UserApiInterface} from "../../interfaces/User/user-api-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -106,6 +108,10 @@ export class HttpClientService {
 
   sendEmail(url: string, userEmail: string, subject: string, message: string) {
     return this.httpClient.post(url, {userEmail, subject, message});
+  }
+
+  getOneUserByID(url: string) {
+    return this.httpClient.get<UserApiInterface>(url);
   }
 
 
