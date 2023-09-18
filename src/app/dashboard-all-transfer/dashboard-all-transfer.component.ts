@@ -99,6 +99,7 @@ export class DashboardAllTransferComponent implements OnInit{
         this.folders = response;
         if (this.folders.content[0]?.id === undefined) {
           this.isDataFound = false;
+          this.errorMessage = false;
         }
       }, error: () => {
         this.loading = false;

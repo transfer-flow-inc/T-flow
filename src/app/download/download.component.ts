@@ -40,6 +40,7 @@ export class DownloadComponent implements OnInit {
     shared: true,
     accessKey: '',
     url: '',
+    folderOwnerID: ''
   }
   folderSize: string = '';
   loading: boolean = true;

@@ -165,8 +165,8 @@ it('should validate an email with a token', () => {
 
 it('should get all folders by user ID', () => {
   const mockFolders: FolderInterface[] = [
-    { id : '1', url: 'test', uploadedAt : new Date(), expiresAt : new Date(), recipientsEmails : ['test'], files : [], shared : false, accessKey : 'test', folderName : 'test', folderSize : 1, fileCount : 1, folderViews : 1},
-    { id : '2', url: 'oui', uploadedAt : new Date(), expiresAt : new Date(), recipientsEmails : ['test'], files : [], shared : false, accessKey : 'test', folderName : 'test', folderSize : 1, fileCount : 1, folderViews : 1}
+    { id : '1', url: 'test', uploadedAt : new Date(), expiresAt : new Date(), folderOwnerID : 'test', recipientsEmails : ['test'], files : [], shared : false, accessKey : 'test', folderName : 'test', folderSize : 1, fileCount : 1, folderViews : 1},
+    { id : '2', url: 'oui', uploadedAt : new Date(), expiresAt : new Date(),folderOwnerID : 'test', recipientsEmails : ['test'], files : [], shared : false, accessKey : 'test', folderName : 'test', folderSize : 1, fileCount : 1, folderViews : 1}
   ]; // Mock FolderInterface array that you expect from the backend
 
   const url = 'http://example.com/folders/user/1'; // Replace this with your actual API URL
@@ -199,7 +199,7 @@ it('should download a folder as a Blob', () => {
 });
 
 it('should create a folder and return it', () => {
-  const mockFolder: FolderInterface = { id: '1', folderName: 'New Folder', url : 'test', uploadedAt : new Date(), expiresAt : new Date(), folderSize: 2, folderViews : 3, accessKey : 'test', recipientsEmails : ['test'], files : [], shared : false, fileCount : 3 }; // Mock FolderInterface that you expect from the backend
+  const mockFolder: FolderInterface = { id: '1', folderOwnerID: 'test', folderName: 'New Folder', url : 'test', uploadedAt : new Date(), expiresAt : new Date(), folderSize: 2, folderViews : 3, accessKey : 'test', recipientsEmails : ['test'], files : [], shared : false, fileCount : 3 }; // Mock FolderInterface that you expect from the backend
   const createFolderPayload: CreateFolderInterface = { folderSize : 3, folderName : "name", message : "test", fileCount: 3, recipientsEmails : ['test^', 'esfsef'] }; // Mock CreateFolderInterface that you send to the backend
 
   const url = 'http://example.com/create/folder'; // Replace this with your actual API URL

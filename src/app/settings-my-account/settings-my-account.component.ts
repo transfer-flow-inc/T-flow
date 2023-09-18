@@ -77,6 +77,9 @@ export class SettingsMyAccountComponent implements OnInit {
     this.user = this.jwtService.getAllUserInfos();
 
     this.lastNameValue = this.user.lastName;
+    if (this.user.lastName == ' ') {
+      this.asLastname = false;
+    }
     this.firstNameValue = this.user.firstName;
     this.emailValue = this.user.userEmail;
   }

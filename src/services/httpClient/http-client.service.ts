@@ -118,6 +118,10 @@ export class HttpClientService {
     return this.httpClient.get<FolderPagesInterface>(url);
   }
 
+  deleteAUserByID(url: string) {
+    return this.httpClient.delete(url);
+  }
+
 
 
 }
