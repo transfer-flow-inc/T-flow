@@ -19,8 +19,7 @@
             <div class="dashboard-card unselectable">
                 <img class="img-user" [src]="user.avatar" alt="photo">
               <div class="dashboard-card-text">
-                <p>{{ user.lastName | uppercase }}</p>
-                <p>{{ user.firstName | titlecase }}</p>
+                <p class="card-name">{{ user.lastName | uppercase }} {{ user.firstName | titlecase }}</p>
                 <p>{{ user.userEmail }}</p>
                 <p class="tag" [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? "Compte vérifié" : "Compte non vérifié" }}</p>
                 <p>Nombre de transfert : {{ user.userFolders.length }}</p>

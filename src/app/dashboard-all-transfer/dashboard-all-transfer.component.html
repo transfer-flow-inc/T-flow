@@ -1,3 +1,19 @@
-<section class="dashboard-container">
+<section class="dashboard-container-all">
 <app-dashboard-navbar></app-dashboard-navbar>
+
+  <section class="dashboard-container">
+
+    <div class="card" *ngFor="let folder of folders.content">
+
+      <p class="card-name">{{ folder.folderName }}</p>
+      <p>Nombre{{ folder.fileCount > 1 ? 's' : '' }} de fichier{{ folder.fileCount > 1 ? 's' : '' }} : {{ folder.fileCount }}</p>
+      <p>Taille du dossier : {{ formatSize(folder.folderSize) }}</p>
+      <p><fa-icon [icon]="isFolderShared(folder.shared)"></fa-icon> {{ folder.shared ? 'Dossier partagé' : 'Dossier non partagé' }}</p>
+      <p>Crée le : {{ formatDate(folder.uploadedAt, 'longDate', 'fr-FR') }}</p>
+      <p>Expire le : {{ formatDate(folder.expiresAt, 'longDate', 'fr-FR') }}</p>
+      <p class="tag" [ngClass]="isFolderExpired(folder.expiresAt) ? 'unvalid' : 'valid' ">{{ isFolderExpired(folder.expiresAt) ? 'Expirée' : 'Valide' }}</p>
+      <a href="admin/dashboard/{{ folder.fold }}" >Voir en détail</a>
+    </div>
+
+  </section>
 </section>

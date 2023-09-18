@@ -1,6 +1,6 @@
 import {FolderInterface} from "./folder-interface";
 
-interface FolderPagesInterface {
+export interface FolderPagesInterface {
   content: FolderInterface[];
   pageable: {
     sort: {
