@@ -6,8 +6,10 @@ import {environment} from "../../environments/environment";
 import {FolderPagesInterface} from "../../interfaces/Files/folder-pages-interface";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
-import {faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
 import {formatDate} from "@angular/common";
+import {UserInterface} from "../../interfaces/User/user-interface";
+import {UserApiInterface} from "../../interfaces/User/user-api-interface";
 
 @Component({
   selector: 'app-dashboard-all-transfer',
@@ -50,7 +52,22 @@ export class DashboardAllTransferComponent implements OnInit{
     numberOfElements: 0,
     empty: false
   };
+  user: UserApiInterface = {
+    id: 0,
+    mail: '',
+    firstName: '',
+    lastName: '',
+    password: '',
+    roles: [''],
+    username: '',
+    avatar: '',
+    isAccountVerified: false,
+    plan: '',
+    authMethod: '',
+    userFolders: [],
+  }
   lockIcon: IconDefinition = faLockOpen;
+  returnIcon: IconDefinition = faArrowLeft;
 
   constructor(
     private router: Router,
@@ -64,6 +81,7 @@ export class DashboardAllTransferComponent implements OnInit{
   ngOnInit() {
     this.getQueryParams();
 
+    this.getUserByID();
     this.getAllTransfersByUserID();
   }
 
@@ -88,6 +106,16 @@ export class DashboardAllTransferComponent implements OnInit{
     });
   }
 
+  getUserByID() {
+    this.httpClientService.getOneUserByID(environment.apiURL + 'admin/user/' + this.userID).subscribe( {
+      next: (response: UserApiInterface) => {
+        this.user = response;
+      }, error: () => {
+
+      }
+    })
+  }
+
   formatSize(size: number) {
     return this.formatSizeService.formatSize(size);
   }
@@ -101,4 +129,5 @@ export class DashboardAllTransferComponent implements OnInit{
   }
 
   protected readonly formatDate = formatDate;
+  protected readonly faArrowLeft = faArrowLeft;
 }

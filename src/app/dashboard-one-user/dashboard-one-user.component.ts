@@ -4,6 +4,8 @@ import {FlashMessageService} from "../../services/flash-message/flash-message.se
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment";
 import {UserApiInterface} from "../../interfaces/User/user-api-interface";
+import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-dashboard-one-user',
@@ -15,6 +17,7 @@ export class DashboardOneUserComponent implements OnInit {
   userID: string = '';
   loading: boolean = true;
   loadingImg: string = "assets/images/logo_light.png";
+  returnIcon: IconDefinition = faArrowLeft
   user: UserApiInterface = {
     id: 0,
     firstName: '',

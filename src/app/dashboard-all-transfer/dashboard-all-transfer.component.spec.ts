@@ -8,6 +8,7 @@ import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "ang
 import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
 import {ActivatedRoute} from "@angular/router";
 import {Observable, of} from "rxjs";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('DashboardAllTransferComponent', () => {
   let component: DashboardAllTransferComponent;
@@ -20,7 +21,7 @@ describe('DashboardAllTransferComponent', () => {
     };
     await TestBed.configureTestingModule({
       declarations: [ DashboardAllTransferComponent, DashboardNavbarComponent ],
-       imports: [HttpClientTestingModule, FontAwesomeTestingModule],
+       imports: [HttpClientTestingModule, FontAwesomeTestingModule, RouterTestingModule],
       providers: [HttpClient, HttpHandler, OAuthService, UrlHelperService, OAuthLogger, DateTimeProvider,
         {provide: ActivatedRoute, useValue:  mockActivatedRoute }
       ],
