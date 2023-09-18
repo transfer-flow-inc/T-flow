@@ -30,6 +30,9 @@
   color: var(--background);
   background-color: var(--color);
 }
+.card-name {
+  margin: 0 1rem;
+}
 .img-user {
   margin: auto;
   width: 4rem;
@@ -81,8 +84,6 @@
 .unvalid {
   background-color: red;
 }
-
-
 
 .img-loader {
   width: 10rem;

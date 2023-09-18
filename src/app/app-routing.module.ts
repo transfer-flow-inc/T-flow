@@ -24,6 +24,7 @@ import {DashboardOneSupportComponent} from "./dashboard-one-support/dashboard-on
 import {DashboardAllProvidersComponent} from "./dashboard-all-providers/dashboard-all-providers.component";
 import {DashboardOneUserComponent} from "./dashboard-one-user/dashboard-one-user.component";
 import {DashboardAllTransferComponent} from "./dashboard-all-transfer/dashboard-all-transfer.component";
+import {DashboardOneTransferComponent} from "./dashboard-one-transfer/dashboard-one-transfer.component";
 
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
   { 'path' : "admin/dashboard/tout-les-utilisateurs", component : DashboardAllUsersComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les utilisateurs'}},
   { 'path' : "admin/dashboard/tout-les-support", component: DashboardAllSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Tout les support'}},
   { 'path' : "admin/dashboard/support/:id", component: DashboardOneSupportComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Support'}},
-  { 'path' : "admin/dashboard/transferts/:id", component: DashboardAllTransferComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Transferts'}},
+  { 'path' : "admin/dashboard/user/:id/tout-les-transferts", component: DashboardAllTransferComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Transferts'}},
+  { 'path' : "admin/dashboard/user/:id/transfert/:idTransfert", component: DashboardOneTransferComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Transfert'}},
   { 'path' : "admin/dashboard/user/:id", component: DashboardOneUserComponent, canActivate : [AutorizeGuardService, AdminAutorizeGuardService], data: { title: 'Utilisateur'}},
   { 'path' : "telechargement/:folderUrl", component: DownloadComponent, data: { title: 'Téléchargement'}},
   { 'path' : "telechargement/:folderUrl/:accessKey", component: DownloadComponent, data: { title: 'Téléchargement'}},
