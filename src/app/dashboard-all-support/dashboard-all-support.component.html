@@ -1,8 +1,8 @@
 <section class="dashboard-container-all">
   <app-dashboard-navbar></app-dashboard-navbar>
-  <section class="dashboard-container">
+  <section class="dashboard-container unselectable">
 
-    <div class="container-loader" *ngIf="loading">
+    <div class="container-loader " *ngIf="loading">
       <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">
     </div>
 
@@ -15,13 +15,16 @@
     <div *ngFor="let support of supports.content">
 
       <div class="dashboard-card unselectable">
-          <p>{{ support.email }}</p>
+
           <p>Sujet : {{ support.subject }}</p>
+          <p>Envoyé de : {{ support.user.mail }}</p>
+          <p class="message">Message : {{ support.message }}</p>
           <p class="tag">{{ formatDate(support.sentAt, "longDate", 'fr-FR') }}</p>
           <a routerLink="/idk" class="card-btn">Voir ce support</a>
       </div>
 
     </div>
+
 
 
   </section>

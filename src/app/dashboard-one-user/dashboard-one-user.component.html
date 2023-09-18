@@ -4,7 +4,7 @@
 
 
 
-  <section class="dashboard-container">
+  <section class="dashboard-container  unselectable">
     <div class="container-loader" *ngIf="loading">
       <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement" fill>
     </div>
@@ -24,8 +24,8 @@
     </div>
 
     <div class="container-card" *ngIf="!loading">
-      <a class="card-btn" href="admin/dashboard/user/{{ userID }}/tout-les-transferts">Voir les transferts</a>
-      <a class="card-btn delete" href="">Supprimer ce compte</a>
+      <a class="card-btn" routerLink="/admin/dashboard/utilisateurs/transferts/{{ user.id }}">Voir les transferts</a>
+      <a class="card-btn delete" routerLink="">Supprimer ce compte</a>
     </div>
 
   </section>
