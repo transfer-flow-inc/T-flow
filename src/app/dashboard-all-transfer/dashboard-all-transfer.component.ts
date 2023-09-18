@@ -17,6 +17,10 @@ import {formatDate} from "@angular/common";
 export class DashboardAllTransferComponent implements OnInit{
 
   userID: string = '';
+  loading: boolean = true;
+  loadingImg: string = "assets/images/logo_light.png";
+  isDataFound: boolean = true;
+  errorMessage: boolean = false;
   folders : FolderPagesInterface = {
     content: [],
     pageable: {
@@ -69,18 +73,17 @@ export class DashboardAllTransferComponent implements OnInit{
     });
   }
 
-  handleError() {
-    this.router.navigate(['/admin/dashboard/user/' + this.userID]).then(() => {
-      this.flashMessageService.addMessage("Une erreur est survenue", 'error', 4000);
-    });
-  }
 
   getAllTransfersByUserID() {
     this.httpClientService.getAllTransfersByUserID(environment.apiURL + 'admin/user/' + this.userID + '/folders?page=0&size=20').subscribe( {
       next: (response: FolderPagesInterface) => {
+        this.loading = false;
         this.folders = response;
+        if (this.folders.content[0]?.id === undefined) {
+          this.isDataFound = false;
+        }
       }, error: () => {
-        this.handleError();
+        this.errorMessage = true;
       }
     });
   }
@@ -90,7 +93,7 @@ export class DashboardAllTransferComponent implements OnInit{
   }
 
   isFolderShared(shared :boolean) {
-    return shared ? this.lockIcon = faLockOpen : this.lockIcon = faUnlock;
+    return shared ?  this.lockIcon = faLockOpen : this.lockIcon = faUnlock;
   }
 
   isFolderExpired(expired: Date) {

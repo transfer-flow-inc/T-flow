@@ -1,7 +1,7 @@
 <section class="dashboard-container-all">
 <app-dashboard-navbar></app-dashboard-navbar>
 
-    <section class="dashboard-container">
+    <section class="dashboard-container  unselectable">
 
 
       <div class="container-loader" *ngIf="loading">
@@ -23,7 +23,7 @@
                 <p>{{ user.userEmail }}</p>
                 <p class="tag" [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? "Compte vérifié" : "Compte non vérifié" }}</p>
                 <p>Nombre de transfert : {{ user.userFolders.length }}</p>
-                <a routerLink="/admin/dashboard/user/{{user.id}}" class="card-btn">Voir ce compte</a>
+                <a routerLink="/admin/dashboard/utilisateurs/detail/{{user.id}}" class="card-btn">Voir ce compte</a>
               </div>
             </div>
 

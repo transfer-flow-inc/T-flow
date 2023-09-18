@@ -8,6 +8,8 @@
     padding: 2rem;
 }
 
+
+
 .dashboard-container {
     margin: auto;
     background-color: var(--background);
@@ -47,4 +49,39 @@
 }
 .unvalid {
   background-color: red;
+}
+.card-btn {
+  width: fit-content;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 0.1rem solid var(--background);
+  border-radius: 0.5rem;
+  color: var(--background);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.card-btn:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--color);
+}
+.img-loader {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spinner 3s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

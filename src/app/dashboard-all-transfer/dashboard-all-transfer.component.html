@@ -1,7 +1,16 @@
 <section class="dashboard-container-all">
 <app-dashboard-navbar></app-dashboard-navbar>
 
-  <section class="dashboard-container">
+  <section class="dashboard-container  unselectable">
+
+   <div class="container-loader" *ngIf="loading">
+      <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">
+      </div>
+
+      <div *ngIf="!isDataFound">
+      <p
+        class="no-data">{{ !errorMessage ? "Aucun transfert trouvé" : "Une erreur est survenue, veuillez rafraichir la page" }}</p>
+      </div>
 
     <div class="card" *ngFor="let folder of folders.content">
 
@@ -12,7 +21,7 @@
       <p>Crée le : {{ formatDate(folder.uploadedAt, 'longDate', 'fr-FR') }}</p>
       <p>Expire le : {{ formatDate(folder.expiresAt, 'longDate', 'fr-FR') }}</p>
       <p class="tag" [ngClass]="isFolderExpired(folder.expiresAt) ? 'unvalid' : 'valid' ">{{ isFolderExpired(folder.expiresAt) ? 'Expirée' : 'Valide' }}</p>
-      <a href="admin/dashboard/{{ folder.fold }}" >Voir en détail</a>
+      <a class="card-btn" routerLink="/admin/dashboard/" >Voir en détail</a>
     </div>
 
   </section>
