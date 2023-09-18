@@ -4,6 +4,16 @@
     <section class="dashboard-container">
 
 
+      <div class="container-loader" *ngIf="loading">
+      <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">
+      </div>
+
+      <div *ngIf="!isDataFound">
+      <p
+        class="no-data">{{ !errorMessage ? "Aucun utilisateurs trouvé" : "Une erreur est survenue, veuillez rafraichir la page" }}</p>
+      </div>
+
+
         <div *ngFor="let user of users.content">
 
             <div class="dashboard-card unselectable">
@@ -14,15 +24,13 @@
                 <p>{{ user.userEmail }}</p>
                 <p class="tag" [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? "Compte vérifié" : "Compte non vérifié" }}</p>
                 <p>Nombre de transfert : {{ user.userFolders.length }}</p>
-                <a routerLink="/idk" class="card-btn">Voir ce compte</a>
+                <a routerLink="/admin/dashboard/user/{{user.id}}" class="card-btn">Voir ce compte</a>
               </div>
             </div>
 
         </div>
 
-      <div *ngIf="users.content.length < 1">
-        <p>{{ errorMessage }}</p>
-      </div>
+
 
     </section>
 

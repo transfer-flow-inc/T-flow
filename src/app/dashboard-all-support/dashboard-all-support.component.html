@@ -1,6 +1,17 @@
 <section class="dashboard-container-all">
   <app-dashboard-navbar></app-dashboard-navbar>
   <section class="dashboard-container">
+
+    <div class="container-loader" *ngIf="loading">
+      <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">
+    </div>
+
+    <div *ngIf="!isDataFound">
+      <p
+        class="no-data">{{ !errorMessage ? "Aucun utilisateurs trouvé" : "Une erreur est survenue, veuillez rafraichir la page" }}</p>
+      </div>
+
+
     <div *ngFor="let support of supports.content">
 
       <div class="dashboard-card unselectable">
@@ -12,9 +23,6 @@
 
     </div>
 
-    <div *ngIf=" supports.content.length < 1">
-      <p>{{ errorMessage }}</p>
-    </div>
 
   </section>
 </section>

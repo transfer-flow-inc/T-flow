@@ -41,7 +41,10 @@ export class DashboardAllSupportComponent implements OnInit {
     empty: false,
   }
   page: number = 0;
-  errorMessage: string = '';
+  errorMessage: boolean = false
+  loading: boolean = true;
+  loadingImg: string = "assets/images/logo_light.png";
+  isDataFound: boolean = true;
 
 
   constructor(
@@ -60,7 +63,10 @@ export class DashboardAllSupportComponent implements OnInit {
     this.httpClientService.getAllSupports(environment.apiURL + 'admin/tickets?page=' + this.page + '&size=20').subscribe(
       (response) => {
         this.supports.content = response.content;
-        console.log(response);
+        this.loading = false;
+        if (this.supports.content[0]?.subject === null) {
+          this.isDataFound = false;
+        }
       },
       (error) => {
         console.log(error);

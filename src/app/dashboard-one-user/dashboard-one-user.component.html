@@ -1,1 +1,33 @@
+<section class="dashboard-container-all">
 <app-dashboard-navbar></app-dashboard-navbar>
+
+
+
+
+  <section class="dashboard-container">
+    <div class="container-loader" *ngIf="loading">
+      <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement" fill>
+    </div>
+
+
+
+    <div class="container-card" *ngIf="!loading" >
+
+      <img class="card-img" [src]="user.avatar" alt="photo">
+
+      <div class="card">
+      <p class="card-name">{{ user.lastName }} {{ user.firstName }}</p>
+      <p class="card-email">{{ user.mail }}</p>
+      <p class="tag" [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? 'Compte vérifié' : 'Compte non vérifier' }}</p>
+      <p>Nombre{{ user.userFolders.length > 1 ? 's' : '' }} de transfert{{ user.userFolders.length > 1 ? 's' : '' }} : {{ user.userFolders.length }}</p>
+      </div>
+    </div>
+
+    <div class="container-card" *ngIf="!loading">
+      <a class="card-btn" href="">Voir les transferts</a>
+      <a class="card-btn delete" href="">Supprimer ce compte</a>
+    </div>
+
+  </section>
+
+</section>

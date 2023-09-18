@@ -40,7 +40,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.httpClientService.isAuthenticated$.subscribe((loggedIn) => {
       this.isAuthenticated = loggedIn;
-      if (this.cookieService.get('token') && this.jwtService.getUserRole() === 'ADMIN') {
+      if (this.jwtService.getUserRole() === 'ADMIN') {
        this.isAdministrator = true;
       }
     });
