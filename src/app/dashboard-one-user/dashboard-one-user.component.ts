@@ -36,9 +36,9 @@ export class DashboardOneUserComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private httpClientService: HttpClientService,
     private flashMessageService: FlashMessageService,
-    private router: Router,
-    private httpClientService: HttpClientService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +59,20 @@ export class DashboardOneUserComponent implements OnInit {
       next: (response: any) => {
         this.user = response;
         this.loading = false;
+      }, error: () => {
+        this.loading = false;
+        this.errorMessage = true;
+      }
+    })
+  }
+
+  deleteAUserByID() {
+    this.httpClientService.deleteAUserByID(environment.apiURL + 'admin/user/' + this.userID).subscribe( {
+      next: () => {
+        this.loading = false;
+        this.router.navigate(['/admin/dashboard/utilisateurs']).then(() => {
+          this.flashMessageService.addMessage(`L'utilisateur a été supprimé avec succès`, 'success', 4000);
+        });
       }, error: () => {
         this.loading = false;
         this.errorMessage = true;

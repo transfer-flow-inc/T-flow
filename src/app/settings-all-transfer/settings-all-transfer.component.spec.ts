@@ -92,6 +92,7 @@ describe('SettingsAllTransferComponent', () => {
     const validData: FolderInterface[] = [
       {
         id: '1',
+        folderOwnerID: '1',
         folderName: 'folder1',
         expiresAt: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
         folderSize: 100,
@@ -106,6 +107,7 @@ describe('SettingsAllTransferComponent', () => {
       },
       {
         id: '2',
+        folderOwnerID: '1',
         folderName: 'folder2',
         expiresAt: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
         folderSize: 100,
@@ -131,6 +133,7 @@ describe('SettingsAllTransferComponent', () => {
     const nullData: FolderInterface[] = [
       {
         id: null,
+        folderOwnerID: '1',
         folderName: 'test',
         expiresAt: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
         folderSize: 10,
@@ -156,6 +159,7 @@ describe('SettingsAllTransferComponent', () => {
     // Given a folder and an API URL
     const folder: FolderInterface =  {
       id: '1',
+      folderOwnerID: '1',
       folderName: 'folder1',
       expiresAt: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
       folderSize: 100,
@@ -188,6 +192,7 @@ describe('SettingsAllTransferComponent', () => {
     // Given a folder and an API URL
     const folder: FolderInterface = {
       id: '1',
+      folderOwnerID: '1',
       folderName: 'folder1',
       expiresAt: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
       folderSize: 100,

@@ -18,7 +18,7 @@
         <p class="card-name">{{ user.lastName }} {{ user.firstName }}</p>
         <p class="card-email">{{ user.mail }}</p>
         <p class="tag"
-           [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? 'Compte vérifié' : 'Compte non vérifier' }}</p>
+           [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? 'Compte vérifié' : 'Compte non vérifié' }}</p>
         <p>Nombre{{ user.userFolders.length > 1 ? 's' : '' }} de transfert{{ user.userFolders.length > 1 ? 's' : '' }}
           : {{ user.userFolders.length }}</p>
       </div>
@@ -26,7 +26,7 @@
 
     <div class="container-card" *ngIf="!loading">
       <a class="card-btn" routerLink="/admin/dashboard/utilisateurs/transferts/{{ user.id }}">Voir les transferts</a>
-      <a class="card-btn delete" routerLink="">Supprimer ce compte</a>
+      <a class="card-btn delete" (click)="deleteAUserByID()">Supprimer ce compte</a>
     </div>
 
   </section>

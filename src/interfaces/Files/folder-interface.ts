@@ -13,4 +13,5 @@ export interface FolderInterface {
   shared: boolean;
   url: string;
   accessKey: string;
+  folderOwnerID: string;
 }

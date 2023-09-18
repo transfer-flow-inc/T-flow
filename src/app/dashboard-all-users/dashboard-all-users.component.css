@@ -30,9 +30,6 @@
   color: var(--background);
   background-color: var(--color);
 }
-.card-name {
-  margin: 0 1rem;
-}
 .img-user {
   margin: auto;
   width: 4rem;
@@ -46,6 +43,7 @@
 }
 .dashboard-card-text{
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   flex-wrap: wrap;
   align-items: center;
