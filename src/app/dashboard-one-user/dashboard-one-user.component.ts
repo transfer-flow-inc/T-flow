@@ -17,6 +17,7 @@ export class DashboardOneUserComponent implements OnInit {
   userID: string = '';
   loading: boolean = true;
   loadingImg: string = "assets/images/logo_light.png";
+  errorMessage: boolean = false;
   returnIcon: IconDefinition = faArrowLeft
   user: UserApiInterface = {
     id: 0,
@@ -42,7 +43,7 @@ export class DashboardOneUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQueryParams();
-    this.getUserInfoByID(this.userID);
+    this.getOneUserByID();
   }
 
   getQueryParams() {
@@ -51,19 +52,16 @@ export class DashboardOneUserComponent implements OnInit {
     });
   }
 
-  handleError() {
-    this.router.navigate(['/admin/dashboard/tout-les-utilisateurs']).then(() => {
-      this.flashMessageService.addMessage("Cet utilisateur n'existe pas", 'error', 4000);
-    });
-  }
 
-  getUserInfoByID(id : string) {
-    this.httpClientService.getOneUserByID(environment.apiURL + 'admin/user/' + id).subscribe( {
+
+  getOneUserByID() {
+    this.httpClientService.getOneUserByID(environment.apiURL + 'admin/user/' + this.userID).subscribe( {
       next: (response: any) => {
         this.user = response;
         this.loading = false;
       }, error: () => {
-        this.handleError();
+        this.loading = false;
+        this.errorMessage = true;
       }
     })
   }

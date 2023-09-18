@@ -56,6 +56,7 @@ export class DashboardAllSupportComponent implements OnInit {
   ngOnInit():void {
 
     this.getAllSupports();
+
   }
 
   getAllSupports() {
@@ -69,7 +70,9 @@ export class DashboardAllSupportComponent implements OnInit {
         }
       },
       (error) => {
-        console.log(error);
+        this.isDataFound = false;
+        this.errorMessage = true;
+        this.loading = false;
       });
 
   }
