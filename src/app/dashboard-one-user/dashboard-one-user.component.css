@@ -16,6 +16,7 @@
   padding: 2rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 2rem;
@@ -144,6 +145,10 @@
 
   .return {
     position: unset;
+  }
+
+  .dashboard-container-all {
+    width: 95vw;
   }
 
 }
