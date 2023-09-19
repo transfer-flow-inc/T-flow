@@ -7,7 +7,6 @@ import {FolderPagesInterface} from "../../interfaces/Files/folder-pages-interfac
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faArrowLeft, faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
-import {formatDate} from "@angular/common";
 import {UserApiInterface} from "../../interfaces/User/user-api-interface";
 
 @Component({
@@ -131,6 +130,4 @@ export class DashboardAllTransferComponent implements OnInit{
     return expired < new Date();
   }
 
-  protected readonly formatDate = formatDate;
-  protected readonly faArrowLeft = faArrowLeft;
 }

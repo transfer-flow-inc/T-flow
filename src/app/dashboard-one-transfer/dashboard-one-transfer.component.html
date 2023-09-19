@@ -19,8 +19,8 @@
         <p>
           <fa-icon [icon]="isFolderShared(transfer.shared)"></fa-icon>
           {{ transfer.shared ? 'Dossier partagé' : 'Dossier non partagé' }}</p>
-        <p>Crée le : {{ formatDate(transfer.uploadedAt, 'longDate', 'fr-FR') }}</p>
-        <p>Expire le : {{ formatDate(transfer.expiresAt, 'longDate', 'fr-FR') }}</p>
+        <p>Crée le : {{ transfer.uploadedAt | date : 'longDate' }}</p>
+        <p>Expire le : {{ transfer.expiresAt | date : 'longDate' }}</p>
         <p class="tag"
            [ngClass]="isFolderExpired(transfer.expiresAt) ? 'unvalid' : 'valid' ">{{ isFolderExpired(transfer.expiresAt) ? 'Expirée' : 'Valide' }}</p>
       </div>

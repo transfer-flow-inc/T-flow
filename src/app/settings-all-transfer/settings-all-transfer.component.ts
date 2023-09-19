@@ -7,7 +7,6 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import {formatDate} from "@angular/common";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 
 @Component({
@@ -106,5 +105,4 @@ export class SettingsAllTransferComponent implements OnInit {
     }
   }
 
-  protected readonly formatDate = formatDate;
 }

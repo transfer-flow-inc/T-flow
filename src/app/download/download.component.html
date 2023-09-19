@@ -4,7 +4,7 @@
   <img class="download-logo" [src]="imgTheme" alt="Logo de T-Flow">
   <div class="download-folder">
     <p class="download-folder-name">Nom du dossier : {{ folder.folderName }}</p>
-    <p class="download-folder-date">Date de création : {{ formatDate(folder.uploadedAt, "longDate", 'fr-FR')}}</p>
+    <p class="download-folder-date">Date de création : {{ folder.uploadedAt | date : 'longDate'}}</p>
     <p class="download-folder-count">Nombre{{folder.fileCount > 1 ? 's' : ''}} de fichier{{folder.fileCount > 1 ? 's' : ''}} : {{ folder.fileCount }}</p>
     <p class="download-folder-size">Taille du dossier : {{ this.folderSize }}</p>
   </div>

@@ -3,7 +3,6 @@ import {Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment";
 import {AllSupportsInterface} from "../../interfaces/Support/all-supports-interface";
-import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-dashboard-all-support',
@@ -69,7 +68,7 @@ export class DashboardAllSupportComponent implements OnInit {
           this.isDataFound = false;
         }
       },
-      (error) => {
+      () => {
         this.isDataFound = false;
         this.errorMessage = true;
         this.loading = false;
@@ -78,5 +77,4 @@ export class DashboardAllSupportComponent implements OnInit {
   }
 
 
-  protected readonly formatDate = formatDate;
 }

@@ -6,7 +6,6 @@ import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
-import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-download',
@@ -143,5 +142,4 @@ downloadBlob(blob: Blob) {
   }
 
 
-  protected readonly formatDate = formatDate;
 }
