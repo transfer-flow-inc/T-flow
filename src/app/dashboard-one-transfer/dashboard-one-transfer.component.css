@@ -15,10 +15,26 @@
   border-radius: 1rem;
   padding: 2rem;
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 2rem;
+}
+
+.tag {
+  padding: 0.3rem 0.5rem;
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600 ;
+}
+
+.valid {
+  background-color: green;
+}
+.unvalid {
+  background-color: red;
 }
 .card-btn {
   width: fit-content;
@@ -51,12 +67,57 @@
   padding: 0.5rem 1rem;
 }
 
+.img-loader {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spinner 3s linear infinite;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 17rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: var(--background);
+  background-color: var(--color);
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @media screen and (max-width: 1020px) {
 
 
   .return {
     position: unset;
+  }
+
+  .dashboard-container-all {
+    width: 95vw;
+  }
+
+  .card {
+    width: 100%;
   }
 
 }

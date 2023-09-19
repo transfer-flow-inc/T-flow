@@ -65,7 +65,7 @@ export class DashboardAllSupportComponent implements OnInit {
       (response) => {
         this.supports.content = response.content;
         this.loading = false;
-        if (this.supports.content[0]?.subject === null) {
+        if (this.supports.content.length === 0) {
           this.isDataFound = false;
         }
       },

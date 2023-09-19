@@ -4,17 +4,20 @@ import { DashboardOneUserComponent } from './dashboard-one-user.component';
 import {DashboardNavbarComponent} from "../dashboard-navbar/dashboard-navbar.component";
 import {HttpClient, HttpHandler} from "@angular/common/http";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Observable, of, throwError} from "rxjs";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 
 describe('DashboardOneUserComponent', () => {
   let component: DashboardOneUserComponent;
   let fixture: ComponentFixture<DashboardOneUserComponent>;
   let activatedRoute: { params: Observable<{ id: string }> };
   let httpClientService: HttpClientService;
+  let flashMessageService: FlashMessageService;
+  let router: Router;
 
   beforeEach(async () => {
     activatedRoute = {
@@ -29,6 +32,8 @@ describe('DashboardOneUserComponent', () => {
     })
     .compileComponents();
 
+    router = TestBed.inject(Router);
+    flashMessageService = TestBed.inject(FlashMessageService);
     httpClientService = TestBed.inject(HttpClientService);
     fixture = TestBed.createComponent(DashboardOneUserComponent);
     component = fixture.componentInstance;
@@ -61,5 +66,16 @@ describe('DashboardOneUserComponent', () => {
   });
 
 
+
+
+  it('should set errorMessage to true when deleteAUserByID fails', () => {
+    spyOn(httpClientService, 'deleteAUserByID').and.returnValue(throwError('error'));
+
+    component.userID = 'someId';
+    component.deleteAUserByID();
+
+    expect(component.errorMessage).toBeTruthy();
+    expect(component.loading).toBeFalsy();
+  });
 
 });

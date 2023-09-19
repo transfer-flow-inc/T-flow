@@ -44,7 +44,7 @@
 }
 
 .message {
-  height: 5rem;
+  max-height: 5rem;
   text-align: center;
   overflow: hidden;
 }
@@ -79,4 +79,12 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+@media screen and (max-width: 1020px) {
+
+  .dashboard-container-all {
+    width: 95vw;
+  }
+
 }

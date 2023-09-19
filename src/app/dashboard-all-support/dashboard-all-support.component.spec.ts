@@ -40,14 +40,6 @@ describe('DashboardAllSupportComponent', () => {
     expect(component.loading).toBeFalsy();
   });
 
-  it('should set isDataFound to false when getAllUsers returns null id', () => {
-    spyOn(httpClientService, 'getAllSupports').and.returnValue(
-      of({ content: [{ subject: null }] })
-    );
-    component.getAllSupports();
-    expect(component.isDataFound).toBeFalsy();
-    expect(component.loading).toBeFalsy();
-  });
 
   it('should set errorMessage to true when getAllUsers fails', () => {
     spyOn(httpClientService, 'getAllSupports').and.returnValue(throwError('error'));
