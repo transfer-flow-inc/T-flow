@@ -4,7 +4,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NgcCookieConsentModule} from 'ngx-cookieconsent';
 import {NavbarComponent} from './navbar/navbar.component';
-import {NgOptimizedImage} from "@angular/common";
+import {NgOptimizedImage, registerLocaleData} from "@angular/common";
+import localeFr from '@angular/common/locales/fr';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {HomepageComponent} from './homepage/homepage.component';
 import {CguComponent} from './cgu/cgu.component';
@@ -41,7 +42,7 @@ import { DashboardOneTransferComponent } from './dashboard-one-transfer/dashboar
 import { DashboardAllSupportComponent } from './dashboard-all-support/dashboard-all-support.component';
 import { DashboardOneSupportComponent } from './dashboard-one-support/dashboard-one-support.component';
 import { DashboardAllProvidersComponent } from './dashboard-all-providers/dashboard-all-providers.component';
-
+registerLocaleData(localeFr);
 @NgModule({
   declarations: [
     AppComponent,
