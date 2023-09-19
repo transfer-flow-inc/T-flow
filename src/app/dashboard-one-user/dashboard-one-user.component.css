@@ -145,10 +145,30 @@
 
   .return {
     position: unset;
+    margin: auto;
+    width: max-content;
   }
 
   .dashboard-container-all {
     width: 95vw;
+    padding: 1rem;
+  }
+
+  .dashboard-container {
+    padding: 0;
+  }
+
+  .card-btn {
+    margin-top: 1rem;
+  }
+
+  .container-card {
+    margin: 1rem auto;
+  }
+
+  .card {
+    width: 13rem;
+    font-size: 0.8rem;
   }
 
 }

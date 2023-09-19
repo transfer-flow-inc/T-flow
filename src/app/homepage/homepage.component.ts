@@ -24,16 +24,22 @@ export class HomepageComponent implements OnInit {
     this.animateText();
   }
 
-  private animateText() {
-    const textLength = this.text.length;
-    let i = 0;
-    setInterval(() => {
-      if (i < textLength) {
-        this.textToShow += this.text.charAt(i);
-        i++;
+  animateText(callback?: (text: string) => void) {
+  const textLength = this.text.length;
+  let i = 0;
+  const intervalId = setInterval(() => {
+    if (i < textLength) {
+      this.textToShow += this.text.charAt(i);
+      if (callback) {
+        callback(this.textToShow);
       }
-    }, 50);
+      i++;
+    } else {
+      clearInterval(intervalId);
+    }
+  }, 50);
+}
 
-  }
+
 
 }

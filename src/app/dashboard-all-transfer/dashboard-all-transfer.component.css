@@ -130,10 +130,37 @@
 
   .return {
     position: unset;
+    margin: auto;
+    width: max-content;
   }
 
   .dashboard-container-all {
     width: 95vw;
+    padding: 1rem;
+  }
+
+  .dashboard-container {
+    padding: 0;
+    max-height: 34rem;
+    overflow-x: auto;
+    overflow-y: unset;
+  }
+
+  .card-btn {
+    margin-top: 1rem;
+  }
+
+  .container {
+    margin: 2rem auto ;
+  }
+  .card {
+    font-size: 0.8rem;
+    width: 14rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin: auto 1rem;
   }
 
 }

@@ -1,11 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {faArrowLeft, faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faLockOpen,
+  faUnlock,
+  faUpRightFromSquare
+} from "@fortawesome/free-solid-svg-icons";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
+import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 
 @Component({
   selector: 'app-dashboard-one-transfer',
@@ -17,6 +23,7 @@ export class DashboardOneTransferComponent implements OnInit {
   returnIcon: IconDefinition = faArrowLeft;
   transferID: string = '';
   lockIcon: IconDefinition = faArrowLeft;
+  exitIcon: IconDefinition = faUpRightFromSquare;
   loading: boolean = true;
   loadingImg: string = 'assets/images/logo_light.png';
   transfer: FolderInterface = {
@@ -37,8 +44,10 @@ export class DashboardOneTransferComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private httpClient: HttpClientService,
-    private formatSizeService: FormatSizeService
+    private formatSizeService: FormatSizeService,
+    private flashMessageService: FlashMessageService
   ) {
   }
 
@@ -77,5 +86,18 @@ export class DashboardOneTransferComponent implements OnInit {
     return expired < new Date();
   }
 
+  deleteTransferByID() {
+    this.httpClient.deleteATransferByID( environment.apiURL + 'admin/folder/' +  this.transferID).subscribe({
+      next: () => {
+        this.router.navigate(['/admin/dashboard/utilisateurs/transferts/' + this.transfer.folderOwnerID]).then( () => {
+          this.flashMessageService.addMessage('Le transfert a bien été supprimé', 'success', 4000);
+        });
+      }, error: () => {
+        this.router.navigate(['/admin/dashboard/utilisateurs/transferts/' + this.transfer.folderOwnerID]).then( () => {
+          this.flashMessageService.addMessage('Une erreur est survenue', 'error', 4000);
+        });
+      }
+    })
+  }
 
 }

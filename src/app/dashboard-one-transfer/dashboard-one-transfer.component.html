@@ -5,24 +5,41 @@
 
     <a class="card-btn return" routerLink="/admin/dashboard/utilisateurs/transferts/{{ transfer.folderOwnerID }}"> <fa-icon [icon]="returnIcon"></fa-icon> Revenir a tout les transferts</a>
 
-
-    <div class="container-loader" *ngIf="loading">
+      <div class="container-loader" *ngIf="loading">
         <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">
       </div>
 
       <div class="card" *ngIf="!loading">
 
+        <section class="card-section left">
+
         <p class="card-name">{{ transfer.folderName }}</p>
         <p>Nombre{{ transfer.fileCount > 1 ? 's' : '' }} de fichier{{ transfer.fileCount > 1 ? 's' : '' }}
           : {{ transfer.fileCount}}</p>
         <p>Taille du dossier : {{ formatSize(transfer.folderSize) }}</p>
+
         <p>
           <fa-icon [icon]="isFolderShared(transfer.shared)"></fa-icon>
           {{ transfer.shared ? 'Dossier partagé' : 'Dossier non partagé' }}</p>
+
         <p>Crée le : {{ transfer.uploadedAt | date : 'longDate' }}</p>
+
         <p>Expire le : {{ transfer.expiresAt | date : 'longDate' }}</p>
+
         <p class="tag"
-           [ngClass]="isFolderExpired(transfer.expiresAt) ? 'unvalid' : 'valid' ">{{ isFolderExpired(transfer.expiresAt) ? 'Expirée' : 'Valide' }}</p>
+           [ngClass]="isFolderExpired(transfer.expiresAt) ? 'unvalid' : 'valid' ">
+          {{ isFolderExpired(transfer.expiresAt) ? 'Expirée' : 'Valide' }}
+        </p>
+
+        </section>
+
+        <section class="card-section">
+
+          <a class="card-btn reverse download" rel="noopener" target="_blank" routerLink="/telechargement/{{ transfer.url }}/{{ transfer.accessKey }}">Lien de téléchargement <fa-icon [icon]="exitIcon"></fa-icon> </a>
+          <a class="card-btn reverse delete" (click)="deleteTransferByID()">Supprimer le transfert</a>
+
+        </section>
+
       </div>
 
 

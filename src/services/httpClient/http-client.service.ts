@@ -126,6 +126,9 @@ export class HttpClientService {
     return this.httpClient.get<FolderInterface>(url);
   }
 
+  deleteATransferByID(url: string) {
+    return this.httpClient.delete(url);
+  }
 
 
 }
