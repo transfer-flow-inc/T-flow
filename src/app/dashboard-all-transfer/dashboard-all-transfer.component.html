@@ -28,8 +28,8 @@
         <p>
           <fa-icon [icon]="isFolderShared(folder.shared)"></fa-icon>
           {{ folder.shared ? 'Dossier partagé' : 'Dossier non partagé' }}</p>
-        <p>Crée le : {{ formatDate(folder.uploadedAt, 'longDate', 'fr-FR') }}</p>
-        <p>Expire le : {{ formatDate(folder.expiresAt, 'longDate', 'fr-FR') }}</p>
+        <p>Crée le : {{ folder.uploadedAt | date : 'longDate' }}</p>
+        <p>Expire le : {{ folder.expiresAt | date : 'longDate' }}</p>
         <p class="tag"
            [ngClass]="isFolderExpired(folder.expiresAt) ? 'unvalid' : 'valid' ">{{ isFolderExpired(folder.expiresAt) ? 'Expirée' : 'Valide' }}</p>
         <a class="card-btn" routerLink="/admin/dashboard/utilisateurs/transferts/detail/{{ folder.id }}">Voir en détail</a>

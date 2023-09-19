@@ -5,7 +5,6 @@ import {ActivatedRoute} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
-import {formatDate} from "@angular/common";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 
 @Component({
@@ -62,7 +61,6 @@ export class DashboardOneTransferComponent implements OnInit {
         this.transfer = response;
       }, error: (error) => {
         this.loading = false;
-        console.log(error);
       }
     })
   }
@@ -80,5 +78,4 @@ export class DashboardOneTransferComponent implements OnInit {
   }
 
 
-  protected readonly formatDate = formatDate;
 }

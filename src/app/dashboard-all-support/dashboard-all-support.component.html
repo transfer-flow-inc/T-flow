@@ -19,7 +19,7 @@
           <p>Sujet : {{ support.subject }}</p>
           <p>Envoyé de : {{ support.user.mail }}</p>
           <p class="message">Message : {{ support.message }}</p>
-          <p class="tag">{{ formatDate(support.sentAt, "longDate", 'fr-FR') }}</p>
+          <p class="tag">{{ support.sentAt | date : 'longDate' }}</p>
           <a routerLink="/idk" class="card-btn">Voir ce support</a>
       </div>
 
