@@ -29,6 +29,7 @@
   border-radius: 1rem;
   color: var(--background);
   background-color: var(--color);
+  text-align: center  ;
 }
 .card-btn {
   width: fit-content;
@@ -43,11 +44,6 @@
   text-decoration: none;
 }
 
-.message {
-  max-height: 5rem;
-  text-align: center;
-  overflow: hidden;
-}
 
 .card-btn:hover {
   cursor: pointer;
@@ -85,6 +81,32 @@
 
   .dashboard-container-all {
     width: 95vw;
+    padding: 1rem;
   }
+
+  .return {
+    position: unset;
+    margin: auto;
+    width: max-content;
+  }
+
+  .dashboard-container {
+    padding: 0;
+    max-height: 35rem;
+    overflow-y: scroll;
+  }
+
+  .dashboard-card {
+    width: 14rem;
+    margin: 1rem auto;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+
 
 }

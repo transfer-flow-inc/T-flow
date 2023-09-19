@@ -41,7 +41,9 @@ export class NavbarComponent implements OnInit {
     this.httpClientService.isAuthenticated$.subscribe((loggedIn) => {
       this.isAuthenticated = loggedIn;
       if (this.jwtService.getUserRole() === 'ADMIN') {
-       this.isAdministrator = true;
+          this.isAdministrator = true;
+      } else if (this.jwtService.getUserRole() === 'USER') {
+          this.isAdministrator = false;
       }
     });
 

@@ -112,11 +112,30 @@
 
 @media screen and (max-width: 1020px) {
     .dashboard-container-all {
-        width: 90vw;
-    }
-}
-@media screen and (max-width: 425px) {
-    .dashboard-container-all {
-        width: 95vw;
-    }
+    width: 95vw;
+    padding: 1rem;
+  }
+
+  .dashboard-container {
+    padding: 1rem;
+    max-height: 34rem;
+    overflow-x: auto;
+    overflow-y: unset;
+  }
+
+  .return {
+    position: unset;
+    margin: auto;
+    width: max-content;
+  }
+
+  .dashboard-card {
+    width: 13rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
 }

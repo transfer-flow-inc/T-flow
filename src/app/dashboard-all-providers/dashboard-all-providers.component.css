@@ -71,10 +71,14 @@
 
   .dashboard-container-all {
     width: 95vw;
+    padding: 1rem;
   }
 
   .dashboard-container {
     padding: 1rem;
+    max-height: 35rem;
+    overflow-y: scroll;
   }
+
 
 }
