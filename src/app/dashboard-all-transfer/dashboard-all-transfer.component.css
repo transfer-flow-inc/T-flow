@@ -11,15 +11,12 @@
 
 
 .dashboard-container {
+    max-height: 35rem;
+    overflow-y: scroll;
     margin: auto;
-    position: relative;
     background-color: var(--background);
     border-radius: 1rem;
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 1rem;
 }
 
@@ -89,30 +86,29 @@
 }
 
 
-.card-btn.return {
-  color: var(--color);
-  border: 0.1rem solid var(--color);
-}
-.card-btn.return:hover {
-  background-color: var(--color);
-  color: var(--background);
-}
 
 .return {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  position: absolute;
   font-weight: 600;
-  margin: 1rem;
-  top: 0;
-  left: 0;
   padding: 0.5rem 1rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 3rem;
+  position: relative;
+  margin: 1rem;
 }
 
 .username {
   text-align: center;
+  color: var(--background);
 }
 
 @keyframes spinner {
@@ -130,8 +126,16 @@
 
   .return {
     position: unset;
-    margin: auto;
+    margin: 0 auto !important;
     width: max-content;
+  }
+
+  .nav {
+    padding: 0 1rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
   }
 
   .dashboard-container-all {

@@ -2,9 +2,14 @@
 
   <app-dashboard-navbar></app-dashboard-navbar>
 
+  <div class="nav">
+    <a class="card-btn return" routerLink="/admin/dashboard/utilisateurs"> <fa-icon [icon]="returnIcon"></fa-icon> Revenir a tout les utilisateurs</a>
+
+    <h2 class="username" *ngIf="user.firstName != ''">{{ user.lastName }} {{ user.firstName }}</h2>
+  </div>
+
   <section class="dashboard-container  unselectable">
 
-    <a class="card-btn return" routerLink="/admin/dashboard/utilisateurs"> <fa-icon [icon]="returnIcon"></fa-icon> Revenir a tout les utilisateurs</a>
 
     <div class="container-loader" *ngIf="loading">
       <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">

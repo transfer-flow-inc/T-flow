@@ -27,24 +27,26 @@
   color: white;
   border-radius: 1rem;
   font-size: 0.8rem;
-  font-weight: 600 ;
+  font-weight: 600;
 }
 
 .valid {
   background-color: green;
 }
+
 .unvalid {
   background-color: red;
 }
+
 .card-btn {
   width: fit-content;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   font-size: 0.8rem;
   font-weight: 500;
-  border: 0.1rem solid var(--color);
+  border: 0.1rem solid var(--background);
   border-radius: 0.5rem;
-  color: var(--color);
+  color: var(--background);
   background-color: transparent;
   text-decoration: none;
   display: flex;
@@ -55,8 +57,9 @@
 
 .reverse {
   border: 0.1rem solid var(--background);
-   color: var(--background);
+  color: var(--background);
 }
+
 .reverse:hover {
   cursor: pointer;
   background-color: var(--background) !important;
@@ -79,21 +82,29 @@
 
 .card-btn:hover {
   cursor: pointer;
-  background-color: var(--color);
-  color: var(--background);
+  background-color: var(--background);
+  color: var(--color);
 }
+
 .return {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  position: absolute;
   font-weight: 600;
-  margin: 1rem;
-  top: 0;
-  left: 0;
   padding: 0.5rem 1rem;
 }
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 3rem;
+  position: relative;
+  margin: 1rem;
+}
+
 
 .img-loader {
   width: 10rem;
@@ -115,6 +126,7 @@
   color: var(--background);
   background-color: var(--color);
 }
+
 .card-section {
   display: flex;
   align-items: center;
@@ -129,11 +141,11 @@
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 @keyframes spinner {
@@ -150,7 +162,7 @@
 
   .return {
     position: unset;
-    margin: auto;
+    margin: 0 auto !important;
     width: max-content;
   }
 
@@ -161,6 +173,14 @@
 
   .dashboard-container {
     padding: 0;
+  }
+
+  .nav {
+    padding: 0 1rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
   }
 
   .card {

@@ -1,23 +1,26 @@
 .dashboard-container-all {
-    position: relative;
-    margin: auto;
-    width: 80vw;
-    background-color: var(--color);
-    min-height: 80vh;
-    border-radius: 1rem;
-    padding: 2rem;
+  position: relative;
+  margin: auto;
+  width: 80vw;
+  background-color: var(--color);
+  min-height: 80vh;
+  border-radius: 1rem;
+  padding: 2rem;
 }
 
 .dashboard-container {
-    margin: auto;
-    background-color: var(--background);
-    border-radius: 1rem;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
+  max-height: 35rem;
+  overflow-y: scroll;
+  margin: auto;
+  background-color: var(--background);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
+
 .dashboard-card {
   display: flex;
   flex-direction: column;
@@ -30,6 +33,7 @@
   color: var(--background);
   background-color: var(--color);
 }
+
 .img-user {
   margin: auto;
   width: 4rem;
@@ -41,7 +45,8 @@
   justify-content: center;
   align-items: center;
 }
-.dashboard-card-text{
+
+.dashboard-card-text {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -49,6 +54,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .card-btn {
   width: fit-content;
   margin-top: 1rem;
@@ -73,12 +79,13 @@
   color: white;
   border-radius: 1rem;
   font-size: 0.8rem;
-  font-weight: 600 ;
+  font-weight: 600;
 }
 
 .valid {
   background-color: green;
 }
+
 .unvalid {
   background-color: red;
 }
@@ -102,18 +109,18 @@
 }
 
 
-
-
-
-
-
-
-
-
 @media screen and (max-width: 1020px) {
-    .dashboard-container-all {
+  .dashboard-container-all {
     width: 95vw;
     padding: 1rem;
+  }
+
+  .nav {
+    padding: 0 1rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
   }
 
   .dashboard-container {
@@ -125,7 +132,7 @@
 
   .return {
     position: unset;
-    margin: auto;
+    margin: 0 auto !important;
     width: max-content;
   }
 
@@ -136,6 +143,10 @@
   p {
     font-size: 0.8rem;
     text-align: center;
+  }
+  h2 {
+    font-size: 1rem;
+    margin: auto 1rem;
   }
 
 }

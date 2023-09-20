@@ -3,6 +3,7 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {AllUsersInterface} from "../../interfaces/User/all-users-interface";
 import {environment} from "../../environments/environment";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-dashboard-all-users',
@@ -80,4 +81,5 @@ export class DashboardAllUsersComponent implements OnInit {
     });
   }
 
+  protected readonly faArrowLeft = faArrowLeft;
 }
