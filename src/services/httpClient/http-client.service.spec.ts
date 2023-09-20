@@ -249,5 +249,34 @@ it('should send an email', () => {
   req.flush(mockResponse); // Provide the mock response as the response to complete the request
 });
 
+  it('should delete a User by his ID', () => {
+
+    const url = 'http://example.com/user/1'; // Replace this with your actual API URL
+
+    service.deleteAUserByID(url).subscribe(); // Subscribe to complete the observable
+
+    const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+
+    expect(req.request.method).toBe('DELETE'); // Expect that the request method should be DELETE
+
+    req.flush({}); // Provide an empty object as the response to complete the request
+
+
+  });
+
+  it('should delete a transfer by his ID', () => {
+
+    const url = 'http://example.com/transfer/1'; // Replace this with your actual API URL
+
+    service.deleteATransferByID(url).subscribe(); // Subscribe to complete the observable
+
+    const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+
+    expect(req.request.method).toBe('DELETE'); // Expect that the request method should be DELETE
+
+    req.flush({}); // Provide an empty object as the response to complete the request
+
+  });
+
 
 });

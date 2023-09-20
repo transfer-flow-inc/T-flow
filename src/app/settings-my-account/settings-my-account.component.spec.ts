@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {of, throwError} from "rxjs";
 import {environment} from "../../environments/environment";
+import {isReadableStreamLike} from "rxjs/internal/util/isReadableStreamLike";
 describe('SettingsMyAccountComponent', () => {
   let component: SettingsMyAccountComponent;
   let fixture: ComponentFixture<SettingsMyAccountComponent>;
@@ -126,9 +127,35 @@ it('should submit user updates correctly', () => {
   });
 
 
+  it('should create a user Object', () => {
+    const userUpdate = {
+      lastName: 'Doe',
+      firstName: 'John',
+      email: 'test@est.fr',
+      oldPassword: 'oldPassword',
+      password: 'password'
+    };
+    component.lastNameValue = 'Doe';
+    component.firstNameValue = 'John';
+    component.emailValue = 'test@est.fr';
+    component.oldPasswordValue = 'oldPassword';
+    component.newPasswordValue = 'password';
+
+    const result = component.createUserUpdateObject();
+    expect(result).toEqual(userUpdate);
 
 
+  });
 
+  it('should build user update url', () => {
+    component.user.userEmail = 'test@test.fr';
+    component.oldPasswordValue = 'oldPassword';
+
+    component.buildUpdateUserUrl();
+
+    expect(component.buildUpdateUserUrl()).toEqual(`${environment.apiURL}user/${component.user.userEmail}?oldPassword=${component.oldPasswordValue}`);
+
+  });
 
 
 });

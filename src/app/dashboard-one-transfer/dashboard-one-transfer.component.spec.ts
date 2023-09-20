@@ -82,8 +82,10 @@ describe('DashboardOneTransferComponent', () => {
   });
 
   it('should return false if folder is not expired', () => {
-    const expired = component.isFolderExpired(new Date());
-    expect(expired).toBeFalsy();
-  });
+  const futureDate = new Date();
+  futureDate.setDate(futureDate.getDate() + 1); // set the date to one day in the future
+  const expired = component.isFolderExpired(futureDate);
+  expect(expired).toBeFalsy();
+});
 
 });
