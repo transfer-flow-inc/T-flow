@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {AllUsersInterface} from "../../interfaces/User/all-users-interface";
 import {environment} from "../../environments/environment";
+import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 
 @Component({
   selector: 'app-dashboard-all-users',
@@ -11,7 +12,7 @@ import {environment} from "../../environments/environment";
 export class DashboardAllUsersComponent implements OnInit {
 
   loading: boolean = true;
-  loadingImg: string = "assets/images/logo_light.png";
+  loadingImg: string = "";
   isDataFound: boolean = true;
   users: AllUsersInterface = {
     content: [],
@@ -46,12 +47,14 @@ export class DashboardAllUsersComponent implements OnInit {
 
   constructor(
     private httpClientService: HttpClientService,
+    private themeService: ThemeServiceService,
   ) {
   }
 
   ngOnInit(): void {
 
     this.getAllUsers(this.page);
+    this.getTheme();
 
   }
 
@@ -68,6 +71,12 @@ export class DashboardAllUsersComponent implements OnInit {
         this.loading = false;
         this.errorMessage = true;
       }
+    });
+  }
+
+  getTheme() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.loadingImg = theme === 'light' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
     });
   }
 

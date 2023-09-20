@@ -6,6 +6,7 @@ import {environment} from "../../environments/environment";
 import {UserApiInterface} from "../../interfaces/User/user-api-interface";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 
 @Component({
   selector: 'app-dashboard-one-user',
@@ -16,7 +17,7 @@ export class DashboardOneUserComponent implements OnInit {
 
   userID: string = '';
   loading: boolean = true;
-  loadingImg: string = "assets/images/logo_light.png";
+  loadingImg: string = "";
   errorMessage: boolean = false;
   returnIcon: IconDefinition = faArrowLeft
   user: UserApiInterface = {
@@ -38,12 +39,14 @@ export class DashboardOneUserComponent implements OnInit {
     private route: ActivatedRoute,
     private httpClientService: HttpClientService,
     private flashMessageService: FlashMessageService,
-    private router: Router
+    private router: Router,
+    private themeService: ThemeServiceService,
   ) {}
 
   ngOnInit(): void {
     this.getQueryParams();
     this.getOneUserByID();
+    this.getTheme();
   }
 
   getQueryParams() {
@@ -80,5 +83,10 @@ export class DashboardOneUserComponent implements OnInit {
     })
   }
 
+  getTheme() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.loadingImg = theme === 'light' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
+    });
+  }
 
 }

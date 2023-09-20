@@ -79,7 +79,6 @@ export class DownloadComponent implements OnInit {
 
 
 
-  // Refactor this method to extract out the logic that uses window object.
 createABlobAndDownload(data: Blob) {
   const blob = this.createBlob(data);
   this.downloadBlob(blob);

@@ -12,6 +12,7 @@ import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 
 @Component({
   selector: 'app-dashboard-one-transfer',
@@ -25,7 +26,7 @@ export class DashboardOneTransferComponent implements OnInit {
   lockIcon: IconDefinition = faArrowLeft;
   exitIcon: IconDefinition = faUpRightFromSquare;
   loading: boolean = true;
-  loadingImg: string = 'assets/images/logo_light.png';
+  loadingImg: string = '';
   transfer: FolderInterface = {
     id: '',
     folderName: '',
@@ -47,7 +48,8 @@ export class DashboardOneTransferComponent implements OnInit {
     private router: Router,
     private httpClient: HttpClientService,
     private formatSizeService: FormatSizeService,
-    private flashMessageService: FlashMessageService
+    private flashMessageService: FlashMessageService,
+    private themeService: ThemeServiceService,
   ) {
   }
 
@@ -55,6 +57,8 @@ export class DashboardOneTransferComponent implements OnInit {
     this.getQueryParams();
 
     this.getTransferByID();
+
+    this.getTheme();
   }
 
   getQueryParams() {
@@ -98,6 +102,12 @@ export class DashboardOneTransferComponent implements OnInit {
         });
       }
     })
+  }
+
+  getTheme() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.loadingImg = theme === 'light' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
+    });
   }
 
 }

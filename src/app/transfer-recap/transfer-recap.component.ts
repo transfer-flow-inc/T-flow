@@ -55,10 +55,14 @@ export class TransferRecapComponent implements OnInit{
       next: (response: FolderInterface) => {
         this.folder = response;
       }, error: () => {
-        this.router.navigate(['/accueil']).then( () => {
-          this.flashMessageService.addMessage('Une erreur est survenue lors de la récupération du dossier', 'error', 4000);
-        });
+        this.navigateAndShowFlashMessage('Une erreur est survenue lors de la récupération du dossier', 'error', 3000);
       }
+    });
+  }
+
+  navigateAndShowFlashMessage(message : string, type : string, duration : number) {
+    this.router.navigate(['/accueil']).then( () => {
+      this.flashMessageService.addMessage(message, type, duration);
     });
   }
 
