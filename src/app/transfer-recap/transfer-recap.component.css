@@ -1,0 +1,83 @@
+.container {
+  background-color: var(--color);
+  color: var(--background);
+  height: 30rem;
+  width: 50vw;
+  margin: auto;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.tag {
+  padding: 0.3rem 0.5rem;
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600 ;
+}
+
+.valid {
+  background-color: green;
+}
+
+.card-btn {
+  width: fit-content;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 0.1rem solid var(--background);
+  border-radius: 0.5rem;
+  color: var(--background);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.card-btn:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--color);
+}
+
+h2::after {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  content: 'Merci d\'utiliser notre service !';
+  font-size: 0.8rem;
+  font-weight: 400 ;
+  color: #888888;
+}
+
+@media screen and (max-width: 1020px) {
+  .container {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 450px)  {
+  .container {
+    width: 90vw;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}

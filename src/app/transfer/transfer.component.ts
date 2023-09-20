@@ -8,6 +8,7 @@ import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {environment} from "../../environments/environment";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-transfer',
@@ -29,7 +30,6 @@ export class TransferComponent implements OnInit {
 
   binIcon: IconDefinition = faTrashAlt;
   sizeAllFile: number = 0;
-  typeSizeFormat: string = 'Ko';
   emailInput: string = '';
   emails: string[] = [];
   suppressEmailIcon: IconDefinition = faXmark;
@@ -39,18 +39,18 @@ export class TransferComponent implements OnInit {
   files: FileItem[] = [];
   loaderProgress: number = 0;
   uploader: FileUploader;
-  showOrUpload: string = '';
-  showTimeout: boolean = false;
   token: string = '';
   folderName: string = '';
   folderSize: number = 0;
   isUploadable: boolean = false;
+  folderID: string | null = '';
 
   constructor(
     private httpClient: HttpClientService,
     private cookiesService: CookiesService,
     private flashService: FlashMessageService,
-    private formatSize: FormatSizeService
+    private formatSize: FormatSizeService,
+    private router: Router
   ) {
     this.uploader = new FileUploader({
       url: environment.apiURL + 'file/',
@@ -60,17 +60,8 @@ export class TransferComponent implements OnInit {
 
       this.loaderProgress = progress;
       if (this.loaderProgress === 100) {
+        this.router.navigate(['/transfert/recapitulatif/' + this.folderID]).then();
         this.loaderProgress = 0;
-        this.showTimeout = true;
-        setTimeout(() => {
-          this.showOrUpload = '';
-          this.showTimeout = false;
-        }, 1500)
-      } else {
-
-        this.showOrUpload = 'hide';
-
-
       }
 
     }
@@ -106,6 +97,7 @@ export class TransferComponent implements OnInit {
         })
         .subscribe({
           next: (folder) => {
+            this.folderID = folder.id;
             this.uploader.setOptions({
               url: environment.apiURL + 'file/' + folder.id,
               headers: [
