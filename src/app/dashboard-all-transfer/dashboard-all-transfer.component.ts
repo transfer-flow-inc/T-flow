@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {FlashMessageService} from "../../services/flash-message/flash-message.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {environment} from "../../environments/environment";
 import {FolderPagesInterface} from "../../interfaces/Files/folder-pages-interface";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
