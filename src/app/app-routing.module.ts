@@ -25,6 +25,7 @@ import {DashboardOneUserComponent} from "./dashboard-one-user/dashboard-one-user
 import {DashboardAllTransferComponent} from "./dashboard-all-transfer/dashboard-all-transfer.component";
 import {DashboardOneTransferComponent} from "./dashboard-one-transfer/dashboard-one-transfer.component";
 import {DashboardAllProvidersComponent} from "./dashboard-all-providers/dashboard-all-providers.component";
+import {TransferRecapComponent} from "./transfer-recap/transfer-recap.component";
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   { 'path' : "s'inscrire", component: RegisterComponent, data: { title: 'S\'inscrire'}},
   { 'path' : "se-deconnecter", component: LogoutComponent, data: { title: 'Se déconnecter'}},
   { 'path' : "transfert", component : TransferComponent,canActivate : [AutorizeGuardService], data: { title: 'Transfert'}},
+  { 'path' : "transfert/recapitulatif/:folderID" , component : TransferRecapComponent, canActivate : [AutorizeGuardService], data: { title: 'Récapitulatif du transfert'}},
   { 'path' : "tout-les-abonnements", component: SubscriptionsComponent, data: { title: 'Tout les abonnements'}},
   { 'path' : "reglages", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Réglages'}},
   { 'path' : "nous-contacter", component: ContactUsComponent, canActivate: [AutorizeGuardService], data: { title: 'Nous contacter'}},

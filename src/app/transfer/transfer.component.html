@@ -1,4 +1,4 @@
-<section class="card-container" [ngClass]="showOrUpload">
+<section class="card-container" *ngIf="!loaderProgress">
 
   <div class="card card-left">
     <p class="title-file unselectable">Envoyer</p>
@@ -22,7 +22,7 @@
       <input class="input-text" [(ngModel)]="folderName" name="folderName" placeholder="Nom du dossier :">
       <textarea [(ngModel)]="message" name="message" class="input-textarea" [rows]="3" [cols]="3"
                 placeholder="Votre message :"></textarea>
-      <button *ngIf="uploader.queue.length > 0 && emails.length > 0" [disabled]="isUploadable" class="btn-send" type="submit">Envoyer</button>
+      <button *ngIf="uploader.queue.length > 0 && emails.length > 0" [disabled]="uploader.queue.length < 1 && emails.length < 1" class="btn-send" type="submit">Envoyer</button>
     </form>
 
   </div>
@@ -64,7 +64,7 @@
 </section>
 
 
-<div class="loader" *ngIf="loaderProgress > 0">
+<div class="loader" *ngIf="loaderProgress">
   <div class="loader-container">
     <div class="loader-view" [style.width.rem]="loaderProgress/2"></div>
   </div>
@@ -72,7 +72,3 @@
   <p class="loader-progress">{{loaderProgress}}%</p>
 </div>
 
-<div class="show-timeout" *ngIf="showTimeout">
-  <p class="success-message">Fichier envoyé avec succès.</p>
-  <p class="thanks-message">Merci pour votre confiance !</p>
-</div>

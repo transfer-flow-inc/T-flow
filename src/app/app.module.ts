@@ -42,6 +42,7 @@ import { DashboardOneTransferComponent } from './dashboard-one-transfer/dashboar
 import { DashboardAllSupportComponent } from './dashboard-all-support/dashboard-all-support.component';
 import { DashboardOneSupportComponent } from './dashboard-one-support/dashboard-one-support.component';
 import { DashboardAllProvidersComponent } from './dashboard-all-providers/dashboard-all-providers.component';
+import { TransferRecapComponent } from './transfer-recap/transfer-recap.component';
 registerLocaleData(localeFr);
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ registerLocaleData(localeFr);
     DashboardAllSupportComponent,
     DashboardOneSupportComponent,
     DashboardAllProvidersComponent,
+    TransferRecapComponent,
   ],
     imports: [
         BrowserModule,

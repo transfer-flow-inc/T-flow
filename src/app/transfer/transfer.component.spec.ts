@@ -4,10 +4,11 @@ import {TransferComponent} from './transfer.component';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
-import {of, throwError} from 'rxjs';
+import {of} from 'rxjs';
 import {FormsModule} from "@angular/forms";
 import {FileUploader} from "ng2-file-upload";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('TransferComponent', () => {
   let component: TransferComponent;
@@ -224,26 +225,7 @@ describe('TransferComponent', () => {
 
   });
 
-  it('should reset loaderProgress and showOrUpload after timeout when loaderProgress is 100', fakeAsync(() => {
 
-    // Arrange
-    component.loaderProgress = 100;
-
-    // Act
-    // (trigger the code path that includes the logic you're interested in)
-    // For demonstration, assuming that code is inside a function named 'updateLoaderProgress'
-    component.uploader.onProgressAll(100);
-
-    // Assert initial state changes
-    expect(component.loaderProgress).toBe(0);
-    expect(component.showTimeout).toBe(true);
-
-    // Assert that 'showOrUpload' is empty and 'showTimeout' is false after 1500ms
-    tick(1500);
-    expect(component.showOrUpload).toBe('');
-    expect(component.showTimeout).toBe(false);
-
-  }));
 
 
   it('should return this.sizeAllFile in Ko', () => {

@@ -1,0 +1,17 @@
+<section class="container" *ngIf="folder.folderSize">
+
+  <h2>Récapitulatif du transfert</h2>
+
+
+  <div class="card">
+    <p>{{ folder.folderName }}</p>
+    <p class="tag valid">{{ formatSizeFile(folder.folderSize) }}</p>
+    <p>Expire le : </p>
+    <p class="tag valid">{{ folder.expiresAt | date : 'longDate' }}</p>
+    <p>Le transfert contient :</p>
+    <p class="tag valid">{{ folder.fileCount }} fichier{{ folder.fileCount < 1 ? '' : 's' }}</p>
+  </div>
+
+  <a class="card-btn" routerLink="/accueil">Retour vers l'accueil</a>
+
+</section>
