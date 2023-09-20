@@ -7,6 +7,8 @@
     padding: 2rem;
 }
 .dashboard-container {
+    max-height: 35rem;
+    overflow-y: scroll;
     margin: auto;
     background-color: var(--background);
     border-radius: 1rem;

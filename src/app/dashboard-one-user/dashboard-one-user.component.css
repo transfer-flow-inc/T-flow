@@ -104,6 +104,7 @@
   color: white;
   border: 0.1rem solid red;
 }
+
 .img-loader {
   width: 10rem;
   height: 10rem;
@@ -119,12 +120,32 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  position: absolute;
   font-weight: 600;
-  margin: 1rem;
-  top: 0;
-  left: 0;
   padding: 0.5rem 1rem;
+  color: var(--background);
+  border: 0.1rem solid var(--background);
+}
+
+.return:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--color);
+}
+
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 3rem;
+  position: relative;
+  margin: 1rem;
+}
+
+.username {
+  text-align: center;
+  color: var(--background);
 }
 
 .container-loader {
@@ -145,7 +166,7 @@
 
   .return {
     position: unset;
-    margin: auto;
+    margin: 0 auto !important;
     width: max-content;
   }
 
@@ -156,6 +177,14 @@
 
   .dashboard-container {
     padding: 0;
+  }
+
+  .nav {
+    padding: 0 1rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
   }
 
   .card-btn {
@@ -169,6 +198,10 @@
   .card {
     width: 13rem;
     font-size: 0.8rem;
+  }
+  h2 {
+    font-size: 1rem;
+    margin: auto 1rem;
   }
 
 }

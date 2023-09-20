@@ -1,9 +1,13 @@
 <section class="dashboard-container-all">
 <app-dashboard-navbar></app-dashboard-navbar>
+<div class="nav">
+    <a class="card-btn return" routerLink="/admin/dashboard/utilisateurs/transferts/{{ transfer.folderOwnerID }}"> <fa-icon [icon]="returnIcon"></fa-icon> Revenir a tout les transferts</a>
 
+  </div>
   <section class="dashboard-container  unselectable">
 
-    <a class="card-btn return" routerLink="/admin/dashboard/utilisateurs/transferts/{{ transfer.folderOwnerID }}"> <fa-icon [icon]="returnIcon"></fa-icon> Revenir a tout les transferts</a>
+
+
 
       <div class="container-loader" *ngIf="loading">
         <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">

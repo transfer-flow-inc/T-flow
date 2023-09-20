@@ -1,14 +1,17 @@
 <section class="dashboard-container-all">
   <app-dashboard-navbar></app-dashboard-navbar>
 
-  <section class="dashboard-container unselectable">
-
+  <div class="nav">
     <a class="card-btn return" routerLink="/admin/dashboard/utilisateurs/detail/{{ user.id }}"> <fa-icon [icon]="returnIcon"></fa-icon> Revenir vers l'utilisateur</a>
 
+    <h2 class="username" *ngIf="user.firstName != '' && isDataFound">{{ user.lastName }} {{ user.firstName }}</h2>
+  </div>
 
-    <h2 class="username" *ngIf="user.firstName != '' && isDataFound">Tout les transferts de {{ user.lastName }} {{ user.firstName }}</h2>
+  <section class="dashboard-container unselectable">
+
 
     <section class="container">
+
 
       <div class="container-loader" *ngIf="loading">
         <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">

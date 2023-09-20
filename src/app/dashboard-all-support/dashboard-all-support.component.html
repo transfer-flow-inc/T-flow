@@ -14,11 +14,9 @@
 
     <div class="dashboard-card unselectable" *ngFor="let support of supports.content">
 
-
-
-          <p>Sujet : {{ support.subject }}</p>
-          <p>Envoyé de : {{ support.user.mail }}</p>
-          <p class="message">Message : {{ support.message }}</p>
+          <p class="support-subject">{{ support.subject }}</p>
+          <p class="support-sender">{{ support.user.mail }}</p>
+          <p class="message">{{ support.message }}</p>
           <p class="tag">{{ support.sentAt | date : 'longDate' }}</p>
           <a routerLink="/idk" class="card-btn">Voir ce support</a>
 
