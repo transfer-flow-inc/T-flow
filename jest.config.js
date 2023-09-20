@@ -10,7 +10,6 @@ module.exports = {
   testRunner: 'jest-jasmine2',
   testEnvironment: 'jsdom',
   coverageDirectory: './coverage',
-  reporters: ['default', 'jest'],
   coverageReporters: ["clover", "json", "lcov", "text", "text-summary"],
   collectCoverageFrom: [
     "src/**/*.ts"  // Adjust the pattern to match your project structure
