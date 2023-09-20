@@ -8,6 +8,7 @@ import {FormatSizeService} from "../../services/format-size-file/format-size.ser
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faArrowLeft, faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
 import {UserApiInterface} from "../../interfaces/User/user-api-interface";
+import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 
 @Component({
   selector: 'app-dashboard-all-transfer',
@@ -18,7 +19,7 @@ export class DashboardAllTransferComponent implements OnInit{
 
   userID: string = '';
   loading: boolean = true;
-  loadingImg: string = "assets/images/logo_light.png";
+  loadingImg: string = "";
   isDataFound: boolean = true;
   errorMessage: boolean = false;
   folders : FolderPagesInterface = {
@@ -68,11 +69,10 @@ export class DashboardAllTransferComponent implements OnInit{
   returnIcon: IconDefinition = faArrowLeft;
 
   constructor(
-    private router: Router,
     public route: ActivatedRoute,
     private httpClientService: HttpClientService,
-    private flashMessageService: FlashMessageService,
-    private formatSizeService: FormatSizeService
+    private formatSizeService: FormatSizeService,
+    private themeService: ThemeServiceService,
   ) {
   }
 
@@ -81,6 +81,8 @@ export class DashboardAllTransferComponent implements OnInit{
 
     this.getUserByID();
     this.getAllTransfersByUserID();
+
+    this.getTheme();
   }
 
   getQueryParams() {
@@ -128,6 +130,12 @@ export class DashboardAllTransferComponent implements OnInit{
 
   isFolderExpired(expired: Date) {
     return expired < new Date();
+  }
+
+  getTheme() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.loadingImg = theme === 'light' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
+    });
   }
 
 }

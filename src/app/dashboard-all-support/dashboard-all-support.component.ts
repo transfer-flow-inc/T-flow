@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment";
 import {AllSupportsInterface} from "../../interfaces/Support/all-supports-interface";
+import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 
 @Component({
   selector: 'app-dashboard-all-support',
@@ -42,19 +42,21 @@ export class DashboardAllSupportComponent implements OnInit {
   page: number = 0;
   errorMessage: boolean = false
   loading: boolean = true;
-  loadingImg: string = "assets/images/logo_light.png";
+  loadingImg: string = "";
   isDataFound: boolean = true;
 
 
   constructor(
-    private router: Router,
     private httpClientService: HttpClientService,
+    private themeService: ThemeServiceService,
   ) {
   }
 
   ngOnInit():void {
 
     this.getAllSupports();
+
+    this.getTheme();
 
   }
 
@@ -74,6 +76,12 @@ export class DashboardAllSupportComponent implements OnInit {
         this.loading = false;
       });
 
+  }
+
+  getTheme() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.loadingImg = theme === 'light' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
+    });
   }
 
 
