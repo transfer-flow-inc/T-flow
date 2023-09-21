@@ -1,1 +1,0 @@
-G 2cssXŒhrAsrc/app/settings-all-transfer/settings-all-transfer.component.css

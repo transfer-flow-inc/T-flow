@@ -1,1 +1,0 @@
-X 2tsXÏhr&src/app/transfer/transfer.component.ts

@@ -1,6 +1,0 @@
-<section class="container">
-  <h1 class="title-not-found">404</h1>
-  <p class="text-not-found">Look like you lost in space</p>
-
-  <a class="user-button" routerLink="/accueil">Revenir à l'accueil</a>
-</section>

@@ -2,5 +2,5 @@ projectKey=transfer-flow-inc_t-flow_AYpwkJtAXot6655Pl1ad
 serverUrl=https://sonar.transfer-flow.studio
 serverVersion=10.1.0.73491
 dashboardUrl=https://sonar.transfer-flow.studio/dashboard?id=transfer-flow-inc_t-flow_AYpwkJtAXot6655Pl1ad
-ceTaskId=AYq4fU8MyWKXcyZb66KU
-ceTaskUrl=https://sonar.transfer-flow.studio/api/ce/task?id=AYq4fU8MyWKXcyZb66KU
+ceTaskId=AYq48K5FyWKXcyZb66Km
+ceTaskUrl=https://sonar.transfer-flow.studio/api/ce/task?id=AYq48K5FyWKXcyZb66Km
