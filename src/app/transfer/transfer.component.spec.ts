@@ -203,24 +203,18 @@ describe('TransferComponent', () => {
   });
 
   it('should initialize uploader in constructor', () => {
-    // Check if FileUploader instance is created
+
     expect(component.uploader).toBeDefined();
     expect(component.uploader).toBeInstanceOf(FileUploader);
 
-    // Further checks on uploader options, if necessary
   });
 
   it('should use onProgressAll to update progress', () => {
 
-    // Arrange
     const progress = 50;
     const event = {total: 100, loaded: 50};
     component.uploader.progress = progress;
-
-    // Act
     component.uploader.onProgressAll(event);
-
-    // Assert
     expect(component.uploader.progress).toEqual(progress);
 
   });

@@ -24,6 +24,11 @@ body, html, app-root, app-homepage {
   width: 100%;
   display: inline-block;
 }
+app-transfer {
+  min-height: 100%;
+  width: 100%;
+  display: inline-block ;
+}
 
 @media screen and (max-width: 1020px) {
   body, html, app-root {
