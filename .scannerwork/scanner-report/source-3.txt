@@ -1,0 +1,80 @@
+<section class="about-container unselectable">
+
+  <h1 class="about-title-h1">Qui sommes-nous ?</h1>
+
+  <h2 class="about-title">Notre équipe</h2>
+  <p class="about-text">Nous sommes une équipe de deux développeurs passionnés par la technologie et l'innovation. Notre
+    objectif est de simplifier le partage de fichiers en ligne en offrant une solution efficace et conviviale.
+  </p>
+  <p class="about-text">Notre équipe est composée de deux membres :
+  </p>
+
+
+  <section class="about-dev">
+    <div class="about-card">
+      <img class="card-img" src="assets/images/thibzee.jpg" alt="Photo de profil de Thibzee">
+      <p class="about-card-title">Thibault BRUHAT</p>
+      <p class="about-pseudo">aka Thibzee</p>
+
+      <div class="list-tag">
+        <p class="tag">DevOps</p>
+        <p class="tag">Graphic Designer</p>
+        <p class="tag">Developpeur Fullstack</p>
+      </div>
+
+
+      <a class="about-button" rel="noopener" target="_blank" href="https://github.com/thibzee"> <fa-icon [icon]="githubIcon"></fa-icon> GitHub</a>
+    </div>
+
+    <p class="operator">
+      +
+    </p>
+
+    <div class="about-card">
+      <img class="card-img" src="assets/images/nil.jpg" alt="Photo de profil Nil">
+      <p class="about-card-title">Nil MALHOMME</p>
+      <p class="about-pseudo">aka Le Nil</p>
+
+      <div class="list-tag">
+        <p class="tag">DevOps</p>
+        <p class="tag">Linux Nerd</p>
+        <p class="tag">Developpeur Backend Java</p>
+      </div>
+
+
+      <a class="about-button" rel="noopener" target="_blank" href="https://github.com/nil-malh"> <fa-icon [icon]="githubIcon"></fa-icon> GitHub</a>
+    </div>
+
+    <p class="operator">
+      =
+    </p>
+
+    <div class="about-card">
+      <img class="card-img" [src]="imgTheme" alt="Logo T-Flow">
+      <p class="about-card-title">T-Flow</p>
+      <p class="about-pseudo">Organisation</p>
+
+      <p class="about-organization-description"><i>""Le flux de fichiers sécurisé, à la vitesse française.""</i>
+      </p>
+
+
+      <a class="about-button" rel="noopener" target="_blank" href="https://github.com/transfer-flow-inc"> <fa-icon [icon]="githubIcon"></fa-icon> GitHub</a>
+    </div>
+
+  </section>
+
+  <h2 class="about-title">Notre histoire</h2>
+  <p class="about-text">Notre aventure a débuté avec une simple idée : simplifier le transfert de fichiers en ligne.
+    Fatigués des processus compliqués et des limitations de nombreuses plateformes de partage de fichiers, nous avons
+    décidé de créer notre propre solution. Au fil du temps, notre projet a évolué et s'est transformé en une plateforme
+    de transfert de fichiers rapide, sécurisée et conviviale, à l'image de notre vision.
+  </p>
+
+  <h2 class="about-title">Comprendre le projet</h2>
+  <p class="about-text">Nous avons conçu une plateforme intuitive qui permet aux utilisateurs d'envoyer rapidement et
+    facilement des fichiers volumineux à leurs destinataires. Nous accordons une grande importance à la simplicité
+    d'utilisation, à la sécurité des données et à la rapidité de transfert. Notre objectif est de faciliter le partage
+    de fichiers pour tous, que ce soit pour des besoins personnels ou professionnels.
+  </p>
+
+</section>

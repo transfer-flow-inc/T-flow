@@ -1,0 +1,1 @@
+1 2tsX#hr"src/app/footer/footer.component.ts

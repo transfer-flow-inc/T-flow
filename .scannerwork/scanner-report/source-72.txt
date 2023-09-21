@@ -1,0 +1,34 @@
+<section class="container-settings unselectable">
+
+  <app-settings-navbar></app-settings-navbar>
+
+  <section class="container-transfer">
+
+    <div class="container-loader" *ngIf="loading">
+      <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement" fill>
+    </div>
+
+    <div *ngIf="!isDataFound">
+      <p
+        class="no-data">{{ !errorMessage ? "Aucun dossier trouvé" : "Une erreur est survenue, veuillez rafraichir la page" }}</p>
+    </div>
+    <section *ngIf="!isFolderEmpty">
+      <div class="transfer" *ngFor="let transfer of allFolder">
+        <div class="transfer-component">
+          <p class="">Nom : {{ transfer.folderName }}</p>
+          <p>Crée le : {{ transfer.uploadedAt | date : 'longDate'}}</p>
+          <p>{{ transfer.shared ? "Ce dossier est publique" : "Ce dossier est privé" }}</p>
+          <p>Expire le : {{ transfer.expiresAt | date : 'longDate'}}</p>
+          <p>Nombre de fichier{{ transfer.fileCount > 1 ? 's' : '' }} : {{ transfer.fileCount }}</p>
+          <p>Taille du dossier : {{ formatSize(transfer.folderSize) }}</p>
+          <fa-icon (click)="deleteFolder(transfer)" class="binIcon" [icon]="binIcon"></fa-icon>
+          <a class="transfer-link transfer-button" *ngIf="!checkIfFolderIsExpired(transfer)"
+             [href]="'telechargement/' +transfer.url + '/' + transfer.accessKey">Accéder à la page de téléchargement</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+
+
+</section>

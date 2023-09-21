@@ -1,0 +1,39 @@
+<section class="dashboard-container-all">
+
+  <app-dashboard-navbar></app-dashboard-navbar>
+
+  <div class="nav">
+    <a class="card-btn return" routerLink="/admin/dashboard/utilisateurs"> <fa-icon [icon]="returnIcon"></fa-icon> Revenir a tout les utilisateurs</a>
+
+    <h2 class="username" *ngIf="user.firstName != ''">{{ user.lastName }} {{ user.firstName }}</h2>
+  </div>
+
+  <section class="dashboard-container  unselectable">
+
+
+    <div class="container-loader" *ngIf="loading">
+      <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">
+    </div>
+
+    <div class="container-card" *ngIf="!loading">
+
+      <img class="card-img" [src]="user.avatar" alt="photo">
+
+      <div class="card">
+        <p class="card-name">{{ user.lastName }} {{ user.firstName }}</p>
+        <p class="card-email">{{ user.mail }}</p>
+        <p class="tag"
+           [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? 'Compte vérifié' : 'Compte non vérifié' }}</p>
+        <p>Nombre{{ user.userFolders.length > 1 ? 's' : '' }} de transfert{{ user.userFolders.length > 1 ? 's' : '' }}
+          : {{ user.userFolders.length }}</p>
+      </div>
+    </div>
+
+    <div class="container-card" *ngIf="!loading">
+      <a class="card-btn" routerLink="/admin/dashboard/utilisateurs/transferts/{{ user.id }}">Voir les transferts</a>
+      <a class="card-btn delete" (click)="deleteAUserByID()">Supprimer ce compte</a>
+    </div>
+
+  </section>
+
+</section>

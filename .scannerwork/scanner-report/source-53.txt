@@ -1,0 +1,288 @@
+h1 {
+  text-align: center;
+  margin: 1rem;
+  color: var(--background);
+}
+
+.need-validation {
+  color: red;
+}
+
+.credential-error {
+  color: red;
+  font-weight: 600;
+}
+
+
+.section-login {
+  padding: 1rem;
+  width: 80vw;
+  margin: auto;
+  height: 75vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color);
+  border-radius: 1rem;
+}
+
+.section-left {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-right {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-input {
+  font-size: 1rem;
+  width: 19rem;
+  padding: 1rem 1.5rem;
+  height: 3.5rem;
+  margin: 0.6rem;
+  border: 0;
+  border-bottom: 0.1rem solid #212121;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.form-button {
+  width: 70%;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: 0.2rem solid var(--background);
+  border-radius: 0.5rem;
+  color: var(--background);
+  background-color: transparent;
+}
+
+.form-button:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--color);
+}
+
+.no-account {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: var(--background);
+}
+
+.invalid {
+  border-bottom: 0.2rem solid red;
+}
+
+.valid {
+  border-bottom: 0.2rem solid green;
+}
+
+.valid.form-button {
+  border-bottom: 0.2rem solid var(--background);
+  cursor: pointer;
+}
+
+.invalid.form-button {
+  background-color: grey;
+  border-bottom: 0.2rem solid var(--background);
+  cursor: not-allowed;
+}
+
+.sso-login {
+  color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  min-width: 20rem;
+  width: auto;
+  font-weight: bold;
+  background-color: transparent;
+  margin: 1rem;
+  text-align: center;
+  text-decoration: none;
+  border: 0.2rem solid var(--background);
+  border-radius: 0.5rem;
+}
+
+.sso-login:hover {
+  background-color: var(--background);
+  color: var(--color);
+  cursor: pointer;
+}
+
+.sso-login img.sso-apple {
+  filter: var(--filter-login);
+}
+
+.sso-login:hover img.sso-apple {
+  filter: var(--filter-login-reverse);
+}
+
+.password-container {
+  position: relative;
+}
+
+.eyes {
+  color: #212121;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.sso-img {
+  height: 2rem;
+  width: 2rem;
+  object-fit: contain;
+}
+
+.sso-text {
+  margin: auto auto auto 0.8rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+hr {
+  all: initial;
+}
+
+.vertical-line {
+  margin: auto !important;
+  height: 10rem !important;
+  width: 0 !important;
+  border: 0.10rem solid var(--background) !important;
+  border-radius: 5rem;
+}
+
+.section-center {
+  display: flex;
+  flex-direction: column;
+}
+
+.or {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 1rem;
+  color: var(--background);
+}
+
+.title {
+  font-weight: 600;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+
+@media screen and (max-width: 1023px) {
+  * {
+    width: auto;
+    height: auto;
+  }
+
+  .section-login {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    height: fit-content;
+  }
+
+  .section-center {
+    rotate: 90deg;
+    margin: -10rem;
+  }
+
+  .form-input {
+    width: 20rem;
+  }
+
+  .form-button {
+    width: fit-content;
+  }
+
+  .sso-login {
+    width: 21rem;
+  }
+
+  .or {
+    rotate: -90deg;
+    text-align: center;
+  }
+
+  .section-right {
+    width: 100%;
+  }
+
+  .section-left {
+    width: 100%;
+  }
+
+  .form-left {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 426px) {
+  .form-input {
+    width: 15rem;
+  }
+
+  .sso-login {
+    min-width: 15rem !important;
+    width: 15rem;
+    font-size: 0.8rem;
+  }
+
+  .vertical-line {
+    all: unset;
+    rotate: 90deg;
+    z-index: 0;
+    margin: auto;
+  }
+
+  .section-center {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .or {
+    rotate: initial;
+    display: block;
+    margin: 1rem auto;
+    background-color: var(--color);
+    z-index: 1;
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+}

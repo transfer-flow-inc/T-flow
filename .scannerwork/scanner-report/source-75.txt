@@ -1,0 +1,111 @@
+<section class="container-settings unselectable">
+
+  <app-settings-navbar></app-settings-navbar>
+
+
+  <div class="section-settings" *ngIf="!isUpdateUser">
+
+    <img class="img-user" [src]="user.avatar" alt="Image de profil">
+    <p *ngIf="asLastname">Nom : {{this.user.lastName}}</p>
+    <p>Prénom : {{this.user.firstName}}</p>
+    <p>Email : {{this.user.userEmail}}</p>
+    <p>Type de compte : {{this.user.authMethod === "spring_database" ? "crée sur le site" : "crée avec google" }}</p>
+    <p>Abonnement : {{this.user.plan}}</p>
+    <p>Etat du compte : {{ this.user.isAccountVerified ? "compte vérifié" : "compte non vérifié"}}</p>
+
+    <button *ngIf="this.user.authMethod === 'spring_database'" class="user-button-update" (click)="toggleUpdateUser()">Modifier mon compte</button>
+
+  </div>
+
+  <form class="update-container" #updateUser='ngForm' (submit)="submitUpdateUser()" *ngIf="isUpdateUser">
+
+    <p>Veuillez modifier uniquement les champs que vous souhaitez</p>
+
+    <div class="update-name-container">
+
+    <input class="update-input"
+           type="text"
+           placeholder="Nom"
+           [(ngModel)]="lastNameValue"
+           name="lastName"
+           #lastName="ngModel"
+    >
+
+    <input class="update-input"
+           type="text"
+           placeholder="Prénom"
+           [(ngModel)]="firstNameValue"
+           name="firstName"
+           #firstName="ngModel"
+    >
+
+    </div>
+
+    <input class="update-input"
+           type="email"
+           placeholder="Email"
+           [(ngModel)]="emailValue"
+           name="email"
+           #email="ngModel"
+           email
+    >
+
+    <section class="password-container">
+
+        <input class="update-input"
+               [type]="showOldPassword ? 'text' : 'password'"
+               placeholder="Ancien mot de passe"
+               [(ngModel)]="oldPasswordValue"
+               name="oldPassword"
+               #oldPassword="ngModel"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}"
+               required
+        >
+
+
+      <a (click)="showOldPassword = !showOldPassword">
+          <fa-icon class="eyes" [icon]="showOldPassword ? faEyeSlash : faEye"></fa-icon>
+        </a>
+    </section>
+
+    <section class="password-container">
+
+        <input class="update-input"
+               [type]="showNewPassword ? 'text' : 'password'"
+               placeholder="Nouveau mot de passe"
+               [(ngModel)]="newPasswordValue"
+               name="newPassword"
+               #newPassword="ngModel"
+        >
+
+
+      <a (click)="showNewPassword = !showNewPassword">
+          <fa-icon class="eyes" [icon]="showNewPassword ? faEyeSlash : faEye"></fa-icon>
+        </a>
+    </section>
+
+    <section class="password-container">
+
+        <input class="update-input"
+               [type]="showConfirmPassword ? 'text' : 'password'"
+               placeholder="Confirmer nouveau mot de passe"
+               [(ngModel)]="confirmPasswordValue"
+               name="confirmPassword"
+               #confirmPassword="ngModel"
+        >
+
+
+      <a (click)="showConfirmPassword = !showConfirmPassword">
+          <fa-icon class="eyes" [icon]="showConfirmPassword ? faEyeSlash : faEye"></fa-icon>
+        </a>
+    </section>
+
+
+    <div class="update-button-container">
+    <button class="user-button update" type="submit">Modifier</button>
+    <button class="user-button cancel" (click)="toggleUpdateUser()">Annuler</button>
+    </div>
+
+  </form>
+
+</section>
