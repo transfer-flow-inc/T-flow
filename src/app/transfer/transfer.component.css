@@ -312,6 +312,14 @@ label {
     gap: 2rem;
   }
 
+  .loader {
+    width: 70vw;
+  }
+
+  .loader-container {
+    width: auto;
+  }
+
   .list-file {
     width: 80%;
   }
