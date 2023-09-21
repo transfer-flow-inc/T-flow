@@ -23,26 +23,13 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Run tests and collect coverage
-        run: npm test -- --coverage
-
-      - name: Upload coverage reports
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage
-          path: coverage
-          # This uploads the "coverage" directory as an artifact
-
-      - name: Download coverage and test reports
-        uses: actions/download-artifact@v2
-        with:
-          name: coverage
-          path: ./
+        run: cd ${{ github.workspace }} && npm test -- --coverage
 
       - name: Analyze with SonarQube
         uses: sonarsource/sonarqube-scan-action@master
         with:
           args: >
-            -Dsonar.testExecutionReportPaths=./coverage/test-report.xml
+            -Dsonar.testExecutionReportPaths=${{ github.workspace }}/coverage/test-report.xml
             -X
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
