@@ -42,5 +42,5 @@ testem.log
 Thumbs.db
 /dist/
 
-.test-report.xml
+./test-report.xml
 .scannerwork/
