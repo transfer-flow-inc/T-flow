@@ -1,1 +1,0 @@
- 2webX/hrDsrc/app/dashboard-all-transfer/dashboard-all-transfer.component.html

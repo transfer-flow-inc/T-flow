@@ -1,4 +1,0 @@
-<app-navbar></app-navbar>
-<app-flash-message></app-flash-message>
-<app-cookies-consent></app-cookies-consent>
-<router-outlet></router-outlet>

@@ -1,1 +1,0 @@
-	 2webXùhrsrc/app/cgu/cgu.component.html

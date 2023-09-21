@@ -1,1 +1,0 @@
-ª (2tsXéhrEsrc/app/settings-all-transfer/settings-all-transfer.component.spec.ts

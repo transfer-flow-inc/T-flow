@@ -1,1 +1,0 @@
-x 2tsXhr(src/interfaces/Files/folder-interface.ts
