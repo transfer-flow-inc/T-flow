@@ -1,0 +1,207 @@
+.dashboard-container-all {
+  position: relative;
+  margin: auto;
+  width: 80vw;
+  background-color: var(--color);
+  min-height: 80vh;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.dashboard-container {
+  position: relative;
+  margin: auto;
+  background-color: var(--background);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.container-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: fit-content;
+  margin: auto;
+}
+
+.card-img {
+  margin: auto;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  object-fit: cover;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tag {
+  padding: 0.3rem 0.5rem;
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.valid {
+  background-color: green;
+}
+
+.unvalid {
+  background-color: red;
+}
+
+.card-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.cesure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-btn {
+  width: fit-content;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 0.1rem solid var(--color);
+  border-radius: 0.5rem;
+  color: var(--color);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.card-btn:hover {
+  cursor: pointer;
+  background-color: var(--color);
+  color: var(--background);
+}
+
+.card-btn.delete:hover {
+  background-color: red;
+  color: white;
+  border: 0.1rem solid red;
+}
+
+.img-loader {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spinner 3s linear infinite;
+}
+
+
+.return {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  color: var(--background);
+  border: 0.1rem solid var(--background);
+}
+
+.return:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--color);
+}
+
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 3rem;
+  position: relative;
+  margin: 1rem;
+}
+
+.username {
+  text-align: center;
+  color: var(--background);
+}
+
+.container-loader {
+  margin: auto;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 1020px) {
+
+
+  .return {
+    position: unset;
+    margin: 0 auto !important;
+    width: max-content;
+  }
+
+  .dashboard-container-all {
+    width: 95vw;
+    padding: 1rem;
+  }
+
+  .dashboard-container {
+    padding: 0;
+  }
+
+  .nav {
+    padding: 0 1rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+  }
+
+  .card-btn {
+    margin-top: 1rem;
+  }
+
+  .container-card {
+    margin: 1rem auto;
+  }
+
+  .card {
+    width: 13rem;
+    font-size: 0.8rem;
+  }
+  h2 {
+    font-size: 1rem;
+    margin: auto 1rem;
+  }
+
+}

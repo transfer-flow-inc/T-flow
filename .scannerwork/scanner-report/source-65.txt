@@ -1,0 +1,108 @@
+.privacy-list {
+  width: 80vw;
+  margin: 2rem auto;
+  list-style: decimal;
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+ol {
+  counter-reset: item;
+}
+
+li {
+  display: block;
+  margin: 1rem;
+}
+
+li:before {
+  content: counters(item, ".") " ";
+  counter-increment: item
+}
+
+.privacy-list-min {
+  font-size: 1rem;
+  margin: 1rem auto;
+  list-style: decimal;
+  font-weight: 300;
+}
+
+.privacy-title {
+  font-size: 3rem;
+  text-align: center;
+  margin: 2rem;
+}
+
+.privacy-date {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.privacy-description {
+  font-size: 1rem;
+  width: 50vw;
+  margin: 2rem auto;
+  font-weight: 300;
+  text-align: center;
+}
+
+.privacy-finisher {
+  width: 60vw;
+  margin: 2rem auto;
+  font-size: 1.2rem;
+}
+
+.privacy-signer {
+  width: 60vw;
+  margin: 2rem auto;
+  font-size: 1.6rem;
+}
+
+@media screen and (max-width: 965px ) {
+  .privacy-title {
+    font-size: 2rem;
+  }
+
+  .privacy-date {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .privacy-title {
+    font-size: 1.4rem;
+    margin: 0.5rem;
+  }
+
+  .privacy-date {
+    font-size: 1rem;
+  }
+
+  .privacy-description {
+    font-size: 0.8rem;
+    width: 80vw;
+  }
+
+  li {
+    font-size: 0.8rem;
+    margin: 0.3rem 0;
+  }
+
+  .privacy-finisher {
+    width: 80vw;
+    margin: 0.5rem auto;
+    font-size: 0.8rem;
+  }
+
+  .privacy-signer {
+    width: 100%;
+    margin: 3rem 0 15rem 0;
+    font-size: 1rem;
+    text-align: center;
+  }
+}

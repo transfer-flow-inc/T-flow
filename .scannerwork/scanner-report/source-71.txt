@@ -1,0 +1,139 @@
+.container-settings {
+  display: flex;
+  width: 80vw;
+  margin: auto;
+  height: 80vh;
+  background-color: var(--color);
+  border-radius: 1rem;
+  color: var(--background);
+}
+
+.container-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.img-loader {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spinner 3s linear infinite;
+}
+
+app-settings-navbar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container-transfer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+  background-color: var(--background);
+  height: 70%;
+  width: 70%;
+  margin: auto;
+  border-radius: 1rem;
+  overflow-x: auto;
+}
+
+.transfer {
+  width: 30rem;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.binIcon {
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  font-size: 2rem;
+}
+.binIcon:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.no-data {
+  font-size: 2rem;
+  color: var(--color);
+}
+
+.transfer-component {
+  margin: 1rem 1rem 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color);
+}
+
+.transfer-link {
+  text-decoration: none;
+}
+
+.transfer-button {
+  width: fit-content;
+  margin: auto;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 0.2rem solid var(--background);
+  border-radius: 0.5rem;
+  color: var(--background);
+  background-color: transparent;
+}
+
+.transfer-button:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--color);
+}
+
+@media screen and (max-width: 1020px) {
+  app-settings-navbar {
+    justify-content: center;
+  }
+
+  .container-settings {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .container-transfer {
+    min-height: 15rem;
+    margin: 2rem auto;
+    width: 90%;
+    max-height: 20rem;
+    scroll-behavior: smooth;
+  }
+
+  .transfer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container-settings {
+    width: 100%;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

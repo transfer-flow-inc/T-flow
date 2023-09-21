@@ -1,0 +1,38 @@
+<section class="dashboard-container-all">
+<app-dashboard-navbar></app-dashboard-navbar>
+
+
+
+    <section class="dashboard-container  unselectable">
+
+
+      <div class="container-loader" *ngIf="loading">
+      <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">
+      </div>
+
+      <div *ngIf="!isDataFound">
+      <p
+        class="no-data">{{ !errorMessage ? "Aucun utilisateurs trouvé" : "Une erreur est survenue, veuillez rafraichir la page" }}</p>
+      </div>
+
+
+        <div *ngFor="let user of users.content">
+
+            <div class="dashboard-card unselectable">
+                <img class="img-user" [src]="user.avatar" alt="photo">
+              <div class="dashboard-card-text">
+                <p class="card-name">{{ user.lastName | uppercase }} {{ user.firstName | titlecase }}</p>
+                <p>{{ user.userEmail }}</p>
+                <p class="tag" [ngClass]="user.isAccountVerified ? 'valid' : 'unvalid'">{{ user.isAccountVerified ? "Compte vérifié" : "Compte non vérifié" }}</p>
+                <p>Nombre de transfert : {{ user.userFolders.length }}</p>
+                <a routerLink="/admin/dashboard/utilisateurs/detail/{{user.id}}" class="card-btn">Voir ce compte</a>
+              </div>
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+</section>

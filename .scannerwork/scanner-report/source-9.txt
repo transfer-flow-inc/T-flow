@@ -1,0 +1,156 @@
+<h1 class="cgu-title">
+  Conditions Générales d'Utilisation (CGU) pour T - flow
+</h1>
+
+<p class="cgu-date">Date d'entrée en vigueur : 19/07/2023</p>
+
+<p class="cgu-description">
+  En accédant et en utilisant T-flow , vous acceptez
+  les présentes Conditions Générales d'Utilisation
+  (CGU) dans leur intégralité. Si vous n'acceptez pas
+  ces CGU, veuillez ne pas utiliser notre service
+</p>
+
+<ol class="cgu-list">
+
+  <li>
+    Description du service :
+
+    <ol class="cgu-list-min">
+
+      <li class="cgu-element-min">
+        T-flow est une plateforme de transfert de fichiers qui permet
+        aux utilisateurs d'envoyer et de recevoir des
+        fichiers de manière sécurisée.
+      </li>
+
+    </ol>
+
+  </li>
+
+  <li>
+    Utilisation du service :
+
+    <ol class="cgu-list-min">
+
+      <li>
+        Vous êtes responsable de votre utilisation du service, y compris du contenu que vous transférez via T-flow.
+      </li>
+
+      <li>
+        Vous ne devez pas utiliser T-flow pour transmettre des fichiers contenant des virus, des logiciels malveillants,
+        du contenu illégal ou offensant, ou toute autre forme de contenu nuisible.
+      </li>
+
+    </ol>
+
+  </li>
+
+  <li>
+    Propriété intellectuelle :
+
+    <ol class="cgu-list-min">
+
+      <li>
+        T-flow et son contenu, y compris mais sans s'y limiter, les textes, graphiques, logos, images, vidéos, logiciels
+        et codes, sont protégés par des droits d'auteur, des marques de commerce et d'autres lois sur la propriété
+        intellectuelle.
+      </li>
+
+      <li>
+        Vous n'êtes pas autorisé à copier, modifier, distribuer, vendre ou exploiter de quelque manière que ce soit le
+        contenu de T-flow sans notre autorisation écrite préalable.
+      </li>
+
+    </ol>
+
+  </li>
+
+  <li>
+    Collecte et utilisation des données personnelles :
+    <ol class="cgu-list-min">
+
+      <li>
+        T-flow collecte et traite certaines données personnelles conformément à sa politique de confidentialité. En
+        utilisant le service, vous consentez à la collecte et au traitement de vos données personnelles conformément à
+        cette politique.
+      </li>
+
+    </ol>
+
+  </li>
+
+  <li>
+    Sécurité :
+
+    <ol class="cgu-list-min">
+
+      <li>
+        Nous prenons des mesures raisonnables pour assurer la sécurité de T-flow, mais nous ne pouvons pas garantir une
+        sécurité absolue. Vous utilisez notre service à vos propres risques.
+      </li>
+
+    </ol>
+
+  </li>
+
+  <li>
+    Limitation de responsabilité :
+
+    <ol class="cgu-list-min">
+
+      <li>
+        T-flow ne peut être tenu responsable des dommages directs, indirects, spéciaux, consécutifs ou exemplaires
+        résoltant de l'utilisation ou de l'incapacité à utiliser le service.
+      </li>
+
+      <li>
+        Nous ne sommes pas responsables des fichiers perdus ou endommagés lors du transfert via T-flow.
+      </li>
+
+    </ol>
+
+  </li>
+
+  <li>
+    Modifications des CGU :
+
+    <ol class="cgu-list-min">
+
+      <li>
+        Nous nous réservons le droit de modifier ces CGU à tout moment. Toute modification prendra effet dès sa
+        publication sur T-flow.
+      </li>
+
+      <li>
+        En continuant à utiliser le service après la publication des modifications, vous acceptez les CGU révisées
+      </li>
+
+    </ol>
+
+  </li>
+
+  <li>
+    Loi applicable et juridiction :
+
+    <ol class="cgu-list-min">
+
+      <li>
+        Les présentes CGU sont régies par les lois en vigueur en France et tout litige décoolant de ces CGU sera soumis
+        à la juridiction exclusive des tribunaux de Paris, France.
+      </li>
+
+    </ol>
+
+  </li>
+
+</ol>
+
+<p class="cgu-finisher">
+  En acceptant les présentes CGU, vous reconnaissez avoir lu, compris et accepté les termes et conditions décrits dans
+  ce document.
+</p>
+
+<p class="cgu-signer">
+  L’équipe de T-flow.
+</p>

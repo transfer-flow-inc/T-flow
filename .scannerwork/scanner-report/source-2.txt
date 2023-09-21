@@ -1,0 +1,114 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 70vw;
+  margin: auto auto 3rem auto;
+}
+.about-title-h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+.about-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+.about-text {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+}
+.about-dev {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.about-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 1rem;
+  width: 17rem;
+  height: 25rem;
+  border-radius: 1rem;
+  border: 0.2rem solid var(--color);
+  font-weight: 600;
+  margin: 0.5rem auto;
+}
+
+.card-img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-pseudo {
+  font-weight: unset;
+  color: #888888;
+  margin-bottom: 1rem;
+}
+
+.operator {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.about-button {
+  width: fit-content;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: 0.2rem solid var(--color);
+  border-radius: 0.5rem;
+  color: var(--color );
+  background-color: transparent;
+  text-decoration: none;
+}
+.tag {
+  padding: 0.3rem 0.5rem;
+  background-color: orange;
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.7rem;
+}
+.list-tag {
+  display: flex;
+  gap: 0.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.about-button:hover {
+  cursor: pointer;
+  background-color: var(--color);
+  color: var(--background);
+}
+.about-organization-description {
+  width: 80%;
+  text-align: center;
+  font-weight: 500;
+}
+@media screen and (max-width: 1020px){
+  .about-container {
+    width: 90vw;
+  }
+  .about-dev {
+    display: flex;
+    flex-direction: column;
+  }
+  .about-organization {
+    width: 17rem;
+  }
+}

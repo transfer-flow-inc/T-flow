@@ -1,0 +1,1 @@
+H 2webX#hrBsrc/app/settings-all-transfer/settings-all-transfer.component.html

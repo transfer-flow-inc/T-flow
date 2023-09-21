@@ -1,0 +1,15 @@
+<ul class="dashboard-navbar  unselectable">
+
+    <li class="dashboard-element">
+      <a class="dashboard-link" routerLink="/admin/dashboard/gestionnaires" routerLinkActive="active">Gestionnaires</a>
+    </li>
+
+    <li class="dashboard-element">
+        <a class="dashboard-link" routerLinkActive="active" routerLink="/admin/dashboard/utilisateurs">Utilisateurs</a>
+    </li>
+
+    <li class="dashboard-element">
+        <a class="dashboard-link" routerLinkActive="active" routerLink="/admin/dashboard/supports">Support</a>
+    </li>
+
+</ul>

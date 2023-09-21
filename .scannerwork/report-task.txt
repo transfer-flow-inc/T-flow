@@ -1,6 +1,6 @@
-projectKey=T-flow-local-
+projectKey=transfer-flow-inc_t-flow_AYpwkJtAXot6655Pl1ad
 serverUrl=https://sonar.transfer-flow.studio
 serverVersion=10.1.0.73491
-dashboardUrl=https://sonar.transfer-flow.studio/dashboard?id=T-flow-local-
-ceTaskId=AYpzsrATXot6655Pl1dE
-ceTaskUrl=https://sonar.transfer-flow.studio/api/ce/task?id=AYpzsrATXot6655Pl1dE
+dashboardUrl=https://sonar.transfer-flow.studio/dashboard?id=transfer-flow-inc_t-flow_AYpwkJtAXot6655Pl1ad
+ceTaskId=AYq4fU8MyWKXcyZb66KU
+ceTaskUrl=https://sonar.transfer-flow.studio/api/ce/task?id=AYq4fU8MyWKXcyZb66KU

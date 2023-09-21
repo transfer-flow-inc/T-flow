@@ -1,0 +1,1 @@
+I 2tsXmhr@src/app/settings-all-transfer/settings-all-transfer.component.ts

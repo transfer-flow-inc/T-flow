@@ -1,0 +1,23 @@
+<section class="download-container unselectable" *ngIf="folder.url != ''">
+
+  <p class="download-title">Télécharger ce dossier</p>
+  <img class="download-logo" [src]="imgTheme" alt="Logo de T-Flow">
+  <div class="download-folder">
+    <p class="download-folder-name">Nom du dossier : {{ folder.folderName }}</p>
+    <p class="download-folder-date">Date de création : {{ folder.uploadedAt | date : 'longDate'}}</p>
+    <p class="download-folder-count">Nombre{{folder.fileCount > 1 ? 's' : ''}} de fichier{{folder.fileCount > 1 ? 's' : ''}} : {{ folder.fileCount }}</p>
+    <p class="download-folder-size">Taille du dossier : {{ this.folderSize }}</p>
+  </div>
+
+  <a class="download-button" (click)="downloadFolder()">Télécharger</a>
+</section>
+
+<section class="download-container unselectable" *ngIf="loading">
+
+  <div class="download-loader">
+    <img class="img-loader" [src]="loadingImg" alt="Image de chargement">
+  </div>
+
+
+
+</section>

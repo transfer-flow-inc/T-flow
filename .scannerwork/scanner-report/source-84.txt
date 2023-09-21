@@ -1,0 +1,44 @@
+<section class="container unselectable">
+
+
+  <div class="card">
+    <h2 class="title">Gratuit</h2>
+    <p class="price">0€</p>
+    <ul class="list-option">
+      <li class="list-element"><span>*</span> Stockage : 5 Go</li>
+      <li class="list-element"><span>*</span> Nombre de transferts mensuels : Illimité</li>
+      <li class="list-element"><span>*</span> Taille maximale de fichier par transfert : 2 Go</li>
+    </ul>
+    <p class="description">Ce plan est idéal pour les utilisateurs occasionnels qui souhaitent transférer des fichiers
+      de taille modérée de manière simple et gratuite.</p>
+    <a class="subscription-button">Choisir cet abonnement</a>
+  </div>
+
+  <div class="card">
+    <h2 class="title">Premium</h2>
+    <p class="price">5€</p>
+    <ul class="list-option">
+      <li class="list-element"><span>*</span> Stockage : 15 Go</li>
+      <li class="list-element"><span>*</span> Nombre de transferts mensuels : Illimité</li>
+      <li class="list-element"><span>*</span> Taille maximale de fichier par transfert : 5 Go</li>
+    </ul>
+    <p class="description">Le plan Premium est conçu pour les professionnels et les petites entreprises qui ont besoin
+      de transférer régulièrement des fichiers de taille moyenne.</p>
+    <a class="subscription-button">Choisir cet abonnement</a>
+  </div>
+
+  <div class="card">
+    <h2 class="title">Ultimate</h2>
+    <p class="price">15€</p>
+    <ul class="list-option">
+      <li class="list-element"><span>*</span> Stockage : 50 Go</li>
+      <li class="list-element"><span>*</span> Nombre de transferts mensuels : Illimité</li>
+      <li class="list-element"><span>*</span> Taille maximale de fichier : 10 Go</li>
+    </ul>
+    <p class="description">Le plan Ultimate est parfait pour les entreprises, les créateurs de contenu, et tous ceux qui
+      ont besoin de partager et de stocker un grand volume de fichiers en toute sécurité. </p>
+    <a class="subscription-button">Choisir cet abonnement</a>
+  </div>
+
+</section>
+
