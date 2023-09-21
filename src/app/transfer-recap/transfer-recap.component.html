@@ -1,4 +1,4 @@
-<section class="container" *ngIf="folder.folderSize">
+<section class="container" *ngIf="folder">
 
   <h2>Récapitulatif du transfert</h2>
 
@@ -10,6 +10,8 @@
     <p class="tag valid">{{ folder.expiresAt | date : 'longDate' }}</p>
     <p>Le transfert contient :</p>
     <p class="tag valid">{{ folder.fileCount }} fichier{{ folder.fileCount < 1 ? '' : 's' }}</p>
+    <p>Liste des destinataires :</p>
+     <div class="list-email"><p class="tag valid" *ngFor="let email of folder.recipientsEmails">{{ email }}</p></div>
   </div>
 
   <a class="card-btn" routerLink="/accueil">Retour vers l'accueil</a>

@@ -66,7 +66,7 @@
 
 <div class="loader" *ngIf="loaderProgress">
   <div class="loader-container">
-    <div class="loader-view" [style.width.rem]="loaderProgress/2"></div>
+    <div class="loader-view" [style.width.%]="loaderProgress"></div>
   </div>
 
   <p class="loader-progress">{{loaderProgress}}%</p>
