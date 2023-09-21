@@ -24,14 +24,12 @@ jobs:
 
       - name: Run tests and collect coverage
         run: npm test -- --coverage
-        # This command should run your tests and generate coverage reports in the "coverage" directory
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v2
         with:
           name: coverage
           path: coverage
-          # This uploads the "coverage" directory as an artifact
 
       - name: Analyze with SonarQube
         uses: sonarsource/sonarqube-scan-action@master
