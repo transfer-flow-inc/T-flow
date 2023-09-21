@@ -38,6 +38,7 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@master
         with:
           args:
+            -Dsonar.testExecutionReportPaths=${{ github.workspace }}/test-report.xml
             -X
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
