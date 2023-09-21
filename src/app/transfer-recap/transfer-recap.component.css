@@ -53,6 +53,14 @@ align-items: center;
   color: var(--color);
 }
 
+.list-email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 h2::after {
   display: flex;
   flex-direction: column;
@@ -80,4 +88,9 @@ h2::after {
   p {
     font-size: 1rem;
   }
+
+  .list-email {
+    flex-direction: column;
+  }
+
 }
