@@ -29,7 +29,7 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@master
         with:
           args: >
-            -Dsonar.testExecutionReportPaths=${{ github.workspace }}/coverage/test-report.xml
+            -Dsonar.testExecutionReportPaths=/home/runner/work/t-flow/coverage/test-report.xml
             -X
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
