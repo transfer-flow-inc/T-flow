@@ -130,5 +130,9 @@ export class HttpClientService {
     return this.httpClient.delete(url);
   }
 
+  getSupportInfo(url: string) {
+    return this.httpClient.get(url);
+  }
+
 
 }
