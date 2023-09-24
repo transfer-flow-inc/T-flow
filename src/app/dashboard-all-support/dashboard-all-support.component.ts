@@ -62,20 +62,18 @@ export class DashboardAllSupportComponent implements OnInit {
 
   getAllSupports() {
 
-    this.httpClientService.getAllSupports(environment.apiURL + 'admin/tickets?page=' + this.page + '&size=20').subscribe(
-      (response) => {
+    this.httpClientService.getAllSupports(environment.apiURL + 'admin/tickets?page=' + this.page + '&size=20').subscribe( {
+      next :(response) => {
         this.supports.content = response.content;
         this.loading = false;
         if (this.supports.content.length === 0) {
           this.isDataFound = false;
         }
-      },
-      () => {
+      }, error: () => {
         this.isDataFound = false;
         this.errorMessage = true;
         this.loading = false;
-      });
-
+      } });
   }
 
   getTheme() {

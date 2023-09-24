@@ -1,1 +1,18 @@
-<p>dashboard-one-support works!</p>
+<section class="dashboard-container-all">
+<app-dashboard-navbar></app-dashboard-navbar>
+
+  <div class="nav">
+    <a class="card-btn return" routerLink="/admin/dashboard/supports"> <fa-icon [icon]="returnIcon"></fa-icon> Revenir a tout les supports</a>
+
+   <!-- <h2 class="username" *ngIf="user.firstName != ''">{{ user.lastName }} {{ user.firstName }}</h2> -->
+  </div>
+
+    <section class="dashboard-container  unselectable">
+
+      <div class="container-loader " *ngIf="isLoading">
+        <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">
+      </div>
+
+    </section>
+
+</section>
