@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DashboardAllTransferComponent } from './dashboard-all-transfer.component';
+import {DashboardAllTransferComponent} from './dashboard-all-transfer.component';
 import {DashboardNavbarComponent} from "../dashboard-navbar/dashboard-navbar.component";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {HttpClient, HttpHandler} from "@angular/common/http";
@@ -22,17 +22,17 @@ describe('DashboardAllTransferComponent', () => {
 
   beforeEach(async () => {
     mockActivatedRoute = {
-    params: of({ id: 'someId' })  // Using RxJS 'of' to create an Observable
+      params: of({id: 'someId'})
     };
     await TestBed.configureTestingModule({
-      declarations: [ DashboardAllTransferComponent, DashboardNavbarComponent ],
-       imports: [HttpClientTestingModule, FontAwesomeTestingModule, RouterTestingModule],
+      declarations: [DashboardAllTransferComponent, DashboardNavbarComponent],
+      imports: [HttpClientTestingModule, FontAwesomeTestingModule, RouterTestingModule],
       providers: [HttpClient, HttpHandler, OAuthService, UrlHelperService, OAuthLogger, DateTimeProvider,
-        {provide: ActivatedRoute, useValue:  mockActivatedRoute }
+        {provide: ActivatedRoute, useValue: mockActivatedRoute}
       ],
 
     })
-    .compileComponents();
+      .compileComponents();
 
     formatSizeService = TestBed.inject(FormatSizeService);
     httpClientService = TestBed.inject(HttpClientService);
@@ -45,7 +45,7 @@ describe('DashboardAllTransferComponent', () => {
     expect(component).toBeTruthy();
   });
 
- it('should get query params correctly', () => {
+  it('should get query params correctly', () => {
     const routeParamsSpy = spyOn(mockActivatedRoute.params, 'subscribe').and.callThrough();
 
     component.getQueryParams();
@@ -54,18 +54,18 @@ describe('DashboardAllTransferComponent', () => {
     expect(component.userID).toEqual('someId');
   });
 
- it('should set folders when getAllTransfersByUserID is successful', () => {
+  it('should set folders when getAllTransfersByUserID is successful', () => {
     spyOn(httpClientService, 'getAllTransfersByUserID').and.returnValue(
-      of({ content: [{"id": 1}, {"id": 2}]} )
+      of({content: [{"id": 1}, {"id": 2}]})
     );
     component.getAllTransfersByUserID();
-    expect(component.folders).toEqual( {"content": [{"id": 1}, {"id": 2}]});
+    expect(component.folders).toEqual({"content": [{"id": 1}, {"id": 2}]});
     expect(component.loading).toBeFalsy();
   });
 
   it('should set isDataFound to false when getAllTransfersByUserID returns null id', () => {
     spyOn(httpClientService, 'getAllTransfersByUserID').and.returnValue(
-      of({ content: [{ id: undefined }] })
+      of({content: [{id: undefined}]})
     );
     component.getAllTransfersByUserID();
     expect(component.isDataFound).toBeFalsy();
@@ -81,10 +81,10 @@ describe('DashboardAllTransferComponent', () => {
 
   it('should getUserByID', () => {
     spyOn(httpClientService, 'getOneUserByID').and.returnValue(
-      of({ id: 1 })
+      of({id: 1})
     );
     component.getUserByID();
-    expect(component.user).toEqual({ id: 1 });
+    expect(component.user).toEqual({id: 1});
 
   });
 

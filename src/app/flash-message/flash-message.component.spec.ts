@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { FlashMessageService } from '../../services/flash-message/flash-message.service';
-import { FlashMessageComponent } from './flash-message.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {of} from 'rxjs';
+import {FlashMessageService} from '../../services/flash-message/flash-message.service';
+import {FlashMessageComponent} from './flash-message.component';
 
 const mockFlashMessageService = {
-  getMessage: jest.fn().mockReturnValue(of({ message: 'Test', type: 'info', duration: 1000 })),
+  getMessage: jest.fn().mockReturnValue(of({message: 'Test', type: 'info', duration: 1000})),
   deleteFlashMessage: jest.fn()
 };
 
@@ -14,12 +14,12 @@ describe('FlashMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlashMessageComponent ],
+      declarations: [FlashMessageComponent],
       providers: [
-        { provide: FlashMessageService, useValue: mockFlashMessageService }
+        {provide: FlashMessageService, useValue: mockFlashMessageService}
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FlashMessageComponent);
     component = fixture.componentInstance;
@@ -37,10 +37,8 @@ describe('FlashMessageComponent', () => {
   it('should start animation when flash message is received', () => {
     const spy = jest.spyOn(component, 'startAnimation');
 
-    // Trigger ngOnInit to subscribe to the observable.
     component.ngOnInit();
 
-    // It should have started the animation.
     expect(spy).toHaveBeenCalled();
   });
 
@@ -50,10 +48,8 @@ describe('FlashMessageComponent', () => {
       done();
     });
 
-    // Trigger ngOnInit to subscribe to the observable.
     component.ngOnInit();
 
-    // Here you might need to simulate time passing and call your animation function
   });
 
   it('should update flashMessage when new message is received', () => {

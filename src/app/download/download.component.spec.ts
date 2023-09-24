@@ -1,12 +1,12 @@
-import { TestBed, ComponentFixture, waitForAsync, fakeAsync, tick } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {ActivatedRoute, Router} from '@angular/router';
 import {of, throwError} from 'rxjs';
-import { DownloadComponent } from './download.component';
-import { HttpClientService } from '../../services/httpClient/http-client.service';
-import { FlashMessageService } from '../../services/flash-message/flash-message.service';
-import { ThemeServiceService } from '../../services/theme-service/theme-service.service';
+import {DownloadComponent} from './download.component';
+import {HttpClientService} from '../../services/httpClient/http-client.service';
+import {FlashMessageService} from '../../services/flash-message/flash-message.service';
+import {ThemeServiceService} from '../../services/theme-service/theme-service.service';
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 
 describe('DownloadComponent', () => {
@@ -18,13 +18,13 @@ describe('DownloadComponent', () => {
   let router: Router;
 
   beforeEach(async () => {
-    Object.defineProperty(window.URL, 'createObjectURL', { value: jest.fn(() => 'mockObjectUrl') });
+    Object.defineProperty(window.URL, 'createObjectURL', {value: jest.fn(() => 'mockObjectUrl')});
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
       ],
-      declarations: [ DownloadComponent ],
+      declarations: [DownloadComponent],
       providers: [
         HttpClientService,
         FlashMessageService,
@@ -36,12 +36,11 @@ describe('DownloadComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            params: of({ folderUrl: 'testFolderUrl', accessKey: 'testAccessKey' })
+            params: of({folderUrl: 'testFolderUrl', accessKey: 'testAccessKey'})
           }
         }
       ]
     }).compileComponents();
-
 
 
     httpClientService = TestBed.inject(HttpClientService);
@@ -59,21 +58,21 @@ describe('DownloadComponent', () => {
   });
 
   it('should initialize folderUrl and accessKey from route params', () => {
-  component.ngOnInit();
-  expect(component.folderUrl).toBe('testFolderUrl');
-  expect(component.accessKey).toBe('testAccessKey');
-});
+    component.ngOnInit();
+    expect(component.folderUrl).toBe('testFolderUrl');
+    expect(component.accessKey).toBe('testAccessKey');
+  });
 
-it('should fetch folder details on init', fakeAsync(() => {
-  const mockFolderData = { /* your mock folder data here */ };
-  spyOn(httpClientService, 'getAFolderByUrl').and.returnValue(of(mockFolderData));
-  component.ngOnInit();
-  tick();
-  expect(component.folder).toBe(mockFolderData);
-}));
+  it('should fetch folder details on init', fakeAsync(() => {
+    const mockFolderData = { /* your mock folder data here */};
+    spyOn(httpClientService, 'getAFolderByUrl').and.returnValue(of(mockFolderData));
+    component.ngOnInit();
+    tick();
+    expect(component.folder).toBe(mockFolderData);
+  }));
 
   it('should download folder and show success message', () => {
-    const mockData = { /* your mock folder data here */ };
+    const mockData = { /* your mock folder data here */};
 
     spyOn(httpClientService, 'downloadFolder').and.returnValue(of(mockData));
     spyOn(component, 'createABlobAndDownload');
@@ -115,62 +114,55 @@ it('should fetch folder details on init', fakeAsync(() => {
   });
 
   it('should set current theme on init', () => {
-  spyOn(themeService.currentThemeSubject, 'subscribe').and.callThrough();
-  component.ngOnInit();
-  expect(themeService.currentThemeSubject.subscribe).toHaveBeenCalled();
-});
+    spyOn(themeService.currentThemeSubject, 'subscribe').and.callThrough();
+    component.ngOnInit();
+    expect(themeService.currentThemeSubject.subscribe).toHaveBeenCalled();
+  });
 
-it('should create a Blob from data', () => {
-  const mockData = new Blob(['some content'], { type: 'application/zip' });
-  const result = component.createBlob(mockData);
-  expect(result).toEqual(jasmine.any(Blob));  // replace with your assertion library
-});
+  it('should create a Blob from data', () => {
+    const mockData = new Blob(['some content'], {type: 'application/zip'});
+    const result = component.createBlob(mockData);
+    expect(result).toEqual(jasmine.any(Blob));
+  });
 
-it('should call downloadBlob when createABlobAndDownload is called', () => {
-  const mockData = new Blob(['some content'], { type: 'application/zip' });
-  spyOn(component, 'downloadBlob');
-  component.createABlobAndDownload(mockData);
-  expect(component.downloadBlob).toHaveBeenCalledWith(jasmine.any(Blob));
-});
+  it('should call downloadBlob when createABlobAndDownload is called', () => {
+    const mockData = new Blob(['some content'], {type: 'application/zip'});
+    spyOn(component, 'downloadBlob');
+    component.createABlobAndDownload(mockData);
+    expect(component.downloadBlob).toHaveBeenCalledWith(jasmine.any(Blob));
+  });
 
 
   it('should navigate to "/accueil" and show a flash message', async () => {
-  // Arrange
-  const message = 'Test message';
-  const type = 'success';
-  const time = 5000;
+    const message = 'Test message';
+    const type = 'success';
+    const time = 5000;
 
-  spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
-  spyOn(flashMessageService, 'addMessage');
+    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
+    spyOn(flashMessageService, 'addMessage');
 
-  // Act
-  await component.navigateAndShowFlashMessage(message, type, time);
+    await component.navigateAndShowFlashMessage(message, type, time);
 
-  // Assert
-  expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
-  expect(flashMessageService.addMessage).toHaveBeenCalledWith(message, type, time);
-});
+    expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
+    expect(flashMessageService.addMessage).toHaveBeenCalledWith(message, type, time);
+  });
 
   it('should download a Blob when downloadBlob is called', async () => {
-    // Create a Blob mock
+
     const blob = new Blob(['some content'], {type: 'application/zip'});
 
-    // Mock window.URL.createObjectURL to return a fake URL
     const mockObjectUrl = 'blob:http://mock-url';
-    Object.defineProperty(window.URL, 'createObjectURL', { value: jest.fn(() => mockObjectUrl) });
+    Object.defineProperty(window.URL, 'createObjectURL', {value: jest.fn(() => mockObjectUrl)});
 
-    // Mock window.fetch to return a resolved Promise with a blob
-    const mockFetchResponse = { blob: () => Promise.resolve(blob) };
+
+    const mockFetchResponse = {blob: () => Promise.resolve(blob)};
     window.fetch = jest.fn().mockResolvedValue(mockFetchResponse);
 
-    // Mock document.createElement to return a fake anchor element
-    const mockAnchor = { click: jest.fn(), href: '', download: '' };
+    const mockAnchor = {click: jest.fn(), href: '', download: ''};
     jest.spyOn(document, 'createElement').mockReturnValue(mockAnchor as any);
 
-    // Call the method
     await component.downloadBlob(blob);
 
-    // Verify the mocks were called with the expected arguments
     expect(window.URL.createObjectURL).toHaveBeenCalledWith(blob);
     expect(window.fetch).toHaveBeenCalledWith(mockObjectUrl);
     expect(document.createElement).toHaveBeenCalledWith('a');
@@ -178,7 +170,6 @@ it('should call downloadBlob when createABlobAndDownload is called', () => {
     expect(mockAnchor.download).toBe(`${component.folder.folderName}.zip`);
     expect(mockAnchor.click).toHaveBeenCalled();
   });
-
 
 
 });

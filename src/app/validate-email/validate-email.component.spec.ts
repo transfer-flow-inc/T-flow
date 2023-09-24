@@ -64,7 +64,6 @@ describe('ValidateEmailComponent', () => {
 
   component.handleFailedVerification();
 
-  // Assert
   expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
 
   });

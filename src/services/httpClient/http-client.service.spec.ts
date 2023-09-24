@@ -48,233 +48,233 @@ describe('HttpClientService', () => {
 
 
   it('should perform login and return a token', () => {
-  const mockToken = { access_token: 'some_token' }; // Mock token that you expect from the backend
-  const url = 'http://example.com/login'; // Replace this with your actual API URL
+  const mockToken = { access_token: 'some_token' };
+  const url = 'http://example.com/login';
   const email = 'test@example.com';
   const password = 'testPassword';
 
   service.login(url, email, password).subscribe(token => {
-    expect(token).toEqual(mockToken); // Check if the service returns the expected mock token
+    expect(token).toEqual(mockToken);
   });
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('POST'); // Expect that the request method should be POST
-  expect(req.request.body).toEqual({ email, password }); // Expect that the request body should contain the provided email and password
+  expect(req.request.method).toBe('POST');
+  expect(req.request.body).toEqual({ email, password });
 
-  req.flush(mockToken); // Provide the mock token as the response to complete the request
+  req.flush(mockToken);
 });
 
   it('should perform Google login and return a token', () => {
-  const mockToken = { access_token: 'some_google_token' }; // Mock token that you expect from the backend
-  const url = 'http://example.com/login/google'; // Replace this with your actual API URL
-  const googleSsoInterface = { idToken: 'some_id_token' }; // Replace this with the actual object you use
+  const mockToken = { access_token: 'some_google_token' };
+  const url = 'http://example.com/login/google';
+  const googleSsoInterface = { idToken: 'some_id_token' };
 
   service.loginWithGoogle(url, googleSsoInterface).subscribe(token => {
-    expect(token).toEqual(mockToken); // Check if the service returns the expected mock token
+    expect(token).toEqual(mockToken);
   });
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('POST'); // Expect that the request method should be POST
-  expect(req.request.body).toEqual(googleSsoInterface); // Expect that the request body should contain the provided googleSsoInterface object
+  expect(req.request.method).toBe('POST');
+  expect(req.request.body).toEqual(googleSsoInterface);
 
-  req.flush(mockToken); // Provide the mock token as the response to complete the request
+  req.flush(mockToken);
 });
 
 
   it('should perform registration and return a token', () => {
-  const mockToken = { access_token: 'some_token' }; // Mock token that you expect from the backend
-  const url = 'http://example.com/register'; // Replace this with your actual API URL
+  const mockToken = { access_token: 'some_token' };
+  const url = 'http://example.com/register';
   const firstName = 'John';
   const lastName = 'Doe';
   const email = 'john.doe@example.com';
   const password = 'password123';
 
   service.register(url, firstName, lastName, email, password).subscribe(token => {
-    expect(token).toEqual(mockToken); // Check if the service returns the expected mock token
+    expect(token).toEqual(mockToken);
   });
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('POST'); // Expect that the request method should be POST
-  expect(req.request.body).toEqual({ firstName, lastName, email, password }); // Expect that the request body should contain the provided fields
+  expect(req.request.method).toBe('POST');
+  expect(req.request.body).toEqual({ firstName, lastName, email, password });
 
-  req.flush(mockToken); // Provide the mock token as the response to complete the request
+  req.flush(mockToken);
 });
 
   it('should send a DELETE request to delete the folder', () => {
-  const url = 'http://example.com/folder/1'; // Replace this with your actual API URL
+  const url = 'http://example.com/folder/1';
 
-  service.deleteFolder(url).subscribe(); // Subscribe to complete the observable
+  service.deleteFolder(url).subscribe();
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('DELETE'); // Expect that the request method should be DELETE
+  expect(req.request.method).toBe('DELETE');
 
-  req.flush({}); // Provide an empty object as the response to complete the request
+  req.flush({});
 });
 
   it('should delete a user', () => {
-    const url = 'http://example.com/folder/1'; // Replace this with your actual API URL
+    const url = 'http://example.com/folder/1';
 
-    service.deleteUser(url).subscribe(); // Subscribe to complete the observable
+    service.deleteUser(url).subscribe();
 
-    const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+    const req = httpMock.expectOne(url);
 
-    expect(req.request.method).toBe('DELETE'); // Expect that the request method should be DELETE
+    expect(req.request.method).toBe('DELETE');
 
-    req.flush({}); // Provide an empty object as the response to complete the request
+    req.flush({});
 
   });
 
   it('should update the user with PATCH request', () => {
-  const mockResponse = { firstName: 'John', lastName: 'Doe' }; // Mock response that you expect from the backend
-  const url = 'http://example.com/user/1'; // Replace this with your actual API URL
-  const user = { firstName: 'John', lastName: 'Doe' }; // Replace this with the actual object you use
+  const mockResponse = { firstName: 'John', lastName: 'Doe' };
+  const url = 'http://example.com/user/1';
+  const user = { firstName: 'John', lastName: 'Doe' };
 
   service.updateUser(url, user).subscribe(response => {
-    expect(response).toEqual(mockResponse); // Check if the service returns the expected mock response
+    expect(response).toEqual(mockResponse);
 
   });
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('PATCH'); // Expect that the request method should be PATCH
+  expect(req.request.method).toBe('PATCH');
 
-  req.flush(mockResponse); // Provide the mock response as the response to complete the request
+  req.flush(mockResponse);
 
   });
 
 it('should validate an email with a token', () => {
-  const mockResponse = { status: 'Email validated successfully' }; // Mock response that you expect from the backend
-  const url = 'http://example.com/validate-email'; // Replace this with your actual API URL
-  const token: TokenInterface = { token: 'value' }; // Replace with your actual TokenInterface object
+  const mockResponse = { status: 'Email validated successfully' };
+  const url = 'http://example.com/validate-email';
+  const token: TokenInterface = { token: 'value' };
 
   service.validateEmail(url, token).subscribe(response => {
-    expect(response).toEqual(mockResponse); // Check if the service returns the expected mock response
+    expect(response).toEqual(mockResponse);
   });
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('POST'); // Expect that the request method should be POST
-  expect(req.request.body).toEqual(token); // Expect that the request body should contain the provided token
+  expect(req.request.method).toBe('POST');
+  expect(req.request.body).toEqual(token);
 
-  req.flush(mockResponse); // Provide the mock response as the response to complete the request
+  req.flush(mockResponse);
 });
 
 it('should get all folders by user ID', () => {
   const mockFolders: FolderInterface[] = [
     { id : '1', url: 'test', uploadedAt : new Date(), expiresAt : new Date(), folderOwnerID : 'test', recipientsEmails : ['test'], files : [], shared : false, accessKey : 'test', folderName : 'test', folderSize : 1, fileCount : 1, folderViews : 1},
     { id : '2', url: 'oui', uploadedAt : new Date(), expiresAt : new Date(),folderOwnerID : 'test', recipientsEmails : ['test'], files : [], shared : false, accessKey : 'test', folderName : 'test', folderSize : 1, fileCount : 1, folderViews : 1}
-  ]; // Mock FolderInterface array that you expect from the backend
+  ];
 
-  const url = 'http://example.com/folders/user/1'; // Replace this with your actual API URL
+  const url = 'http://example.com/folders/user/1';
 
   service.getAllFolderByUserId(url).subscribe(folders => {
-    expect(folders).toEqual(mockFolders); // Check if the service returns the expected mock folders
+    expect(folders).toEqual(mockFolders);
   });
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('GET'); // Expect that the request method should be GET
+  expect(req.request.method).toBe('GET');
 
-  req.flush(mockFolders); // Provide the mock folders as the response to complete the request
+  req.flush(mockFolders);
 });
 
 it('should download a folder as a Blob', () => {
-  const mockBlob = new Blob(['mock data'], { type: 'application/zip' }); // Replace the type with the actual type of Blob you expect
+  const mockBlob = new Blob(['mock data'], { type: 'application/zip' });
 
-  const url = 'http://example.com/download/folder/1'; // Replace this with your actual API URL
+  const url = 'http://example.com/download/folder/1';
 
   service.downloadFolder(url).subscribe(blob => {
-    expect(blob).toEqual(mockBlob); // Check if the service returns the expected Blob
+    expect(blob).toEqual(mockBlob);
   });
 
   const req = httpMock.expectOne(req => req.url === url && req.responseType === 'blob');
 
-  expect(req.request.method).toBe('GET'); // Expect that the request method should be GET
+  expect(req.request.method).toBe('GET');
 
-  req.flush(mockBlob); // Provide the mock Blob as the response to complete the request
+  req.flush(mockBlob);
 });
 
 it('should create a folder and return it', () => {
   const mockFolder: FolderInterface = { id: '1', folderOwnerID: 'test', folderName: 'New Folder', url : 'test', uploadedAt : new Date(), expiresAt : new Date(), folderSize: 2, folderViews : 3, accessKey : 'test', recipientsEmails : ['test'], files : [], shared : false, fileCount : 3 }; // Mock FolderInterface that you expect from the backend
   const createFolderPayload: CreateFolderInterface = { folderSize : 3, folderName : "name", message : "test", fileCount: 3, recipientsEmails : ['test^', 'esfsef'] }; // Mock CreateFolderInterface that you send to the backend
 
-  const url = 'http://example.com/create/folder'; // Replace this with your actual API URL
+  const url = 'http://example.com/create/folder';
 
   service.createFolder(url, createFolderPayload).subscribe(folder => {
-    expect(folder).toEqual(mockFolder); // Check if the service returns the expected mock folder
+    expect(folder).toEqual(mockFolder);
   });
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('POST'); // Expect that the request method should be POST
-  expect(req.request.body).toEqual(createFolderPayload); // Expect that the request body should contain the provided folder
+  expect(req.request.method).toBe('POST');
+  expect(req.request.body).toEqual(createFolderPayload);
 
-  req.flush(mockFolder); // Provide the mock folder as the response to complete the request
+  req.flush(mockFolder);
 });
 
 
 
   it('should send a DELETE request to delete the user as admin', () => {
-  const url = 'http://example.com/admin/user/1'; // Replace this with your actual API URL
+  const url = 'http://example.com/admin/user/1';
 
-  service.deleteUserAsAdmin(url).subscribe(); // Subscribe to complete the observable
+  service.deleteUserAsAdmin(url).subscribe();
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('DELETE'); // Expect that the request method should be DELETE
+  expect(req.request.method).toBe('DELETE');
 
-  req.flush({}); // Provide an empty object as the response to complete the request
+  req.flush({});
 });
 
 it('should send an email', () => {
-  const mockResponse = { status: 'Email sent successfully' }; // Mock response that you expect from the backend
-  const url = 'http://example.com/send-email'; // Replace this with your actual API URL
+  const mockResponse = { status: 'Email sent successfully' };
+  const url = 'http://example.com/send-email';
   const userEmail = 'user@example.com';
   const subject = 'Test Subject';
   const message = 'Test Message';
 
   service.sendEmail(url, userEmail, subject, message).subscribe(response => {
-    expect(response).toEqual(mockResponse); // Check if the service returns the expected mock response
+    expect(response).toEqual(mockResponse);
   });
 
-  const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+  const req = httpMock.expectOne(url);
 
-  expect(req.request.method).toBe('POST'); // Expect that the request method should be POST
-  expect(req.request.body).toEqual({ userEmail, subject, message }); // Expect that the request body should contain the provided fields
+  expect(req.request.method).toBe('POST');
+  expect(req.request.body).toEqual({ userEmail, subject, message });
 
-  req.flush(mockResponse); // Provide the mock response as the response to complete the request
+  req.flush(mockResponse);
 });
 
   it('should delete a User by his ID', () => {
 
-    const url = 'http://example.com/user/1'; // Replace this with your actual API URL
+    const url = 'http://example.com/user/1';
 
-    service.deleteAUserByID(url).subscribe(); // Subscribe to complete the observable
+    service.deleteAUserByID(url).subscribe();
 
-    const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+    const req = httpMock.expectOne(url);
 
-    expect(req.request.method).toBe('DELETE'); // Expect that the request method should be DELETE
+    expect(req.request.method).toBe('DELETE');
 
-    req.flush({}); // Provide an empty object as the response to complete the request
+    req.flush({});
 
 
   });
 
   it('should delete a transfer by his ID', () => {
 
-    const url = 'http://example.com/transfer/1'; // Replace this with your actual API URL
+    const url = 'http://example.com/transfer/1';
 
-    service.deleteATransferByID(url).subscribe(); // Subscribe to complete the observable
+    service.deleteATransferByID(url).subscribe();
 
-    const req = httpMock.expectOne(url); // Expect that one and only one request is made to the provided URL
+    const req = httpMock.expectOne(url);
 
-    expect(req.request.method).toBe('DELETE'); // Expect that the request method should be DELETE
+    expect(req.request.method).toBe('DELETE');
 
-    req.flush({}); // Provide an empty object as the response to complete the request
+    req.flush({});
 
   });
 

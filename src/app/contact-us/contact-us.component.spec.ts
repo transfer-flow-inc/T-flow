@@ -37,42 +37,42 @@ describe('ContactUsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-    it('should return false if any input field is empty', () => {
-      component.emailValue = '';
-      component.subjectValue = '';
-      component.messageValue = '';
-      expect(component.isValidInput()).toBeFalsy();
+  it('should return false if any input field is empty', () => {
+    component.emailValue = '';
+    component.subjectValue = '';
+    component.messageValue = '';
+    expect(component.isValidInput()).toBeFalsy();
 
-      component.emailValue = 'test@email.com';
-      expect(component.isValidInput()).toBeFalsy();
+    component.emailValue = 'test@email.com';
+    expect(component.isValidInput()).toBeFalsy();
 
-      component.subjectValue = 'subject';
-      expect(component.isValidInput()).toBeFalsy();
-    });
+    component.subjectValue = 'subject';
+    expect(component.isValidInput()).toBeFalsy();
+  });
 
-    it('should return true if all input fields are non-empty', () => {
-      component.emailValue = 'test@email.com';
-      component.subjectValue = 'subject';
-      component.messageValue = 'message';
-      expect(component.isValidInput()).toBeTruthy();
-    });
+  it('should return true if all input fields are non-empty', () => {
+    component.emailValue = 'test@email.com';
+    component.subjectValue = 'subject';
+    component.messageValue = 'message';
+    expect(component.isValidInput()).toBeTruthy();
+  });
 
 
-    it('should send an email successfully and navigate to home with a success message', async () => {
-      spyOn(httpClientService, 'sendEmail').and.returnValue(of(null));
-      spyOn(flashMessageService, 'addMessage');
-      spyOn(router, 'navigate');
+  it('should send an email successfully and navigate to home with a success message', async () => {
+    spyOn(httpClientService, 'sendEmail').and.returnValue(of(null));
+    spyOn(flashMessageService, 'addMessage');
+    spyOn(router, 'navigate');
 
-      component.emailValue = 'test@email.com';
-      component.subjectValue = 'subject';
-      component.messageValue = 'message';
+    component.emailValue = 'test@email.com';
+    component.subjectValue = 'subject';
+    component.messageValue = 'message';
 
-      await component.sendEmail();
+    await component.sendEmail();
 
-      expect(httpClientService.sendEmail).toHaveBeenCalled();
-      expect(flashMessageService.addMessage).toHaveBeenCalledWith('Votre message a bien été envoyé.', 'success', 4000);
-      expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
-    });
+    expect(httpClientService.sendEmail).toHaveBeenCalled();
+    expect(flashMessageService.addMessage).toHaveBeenCalledWith('Votre message a bien été envoyé.', 'success', 4000);
+    expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
+  });
 
 
 });

@@ -1,4 +1,4 @@
-import {TestBed, ComponentFixture, tick, fakeAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TransferComponent} from './transfer.component';
 import {HttpClientService} from "../../services/httpClient/http-client.service";
@@ -8,7 +8,6 @@ import {of} from 'rxjs';
 import {FormsModule} from "@angular/forms";
 import {FileUploader} from "ng2-file-upload";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
-import {RouterTestingModule} from "@angular/router/testing";
 
 describe('TransferComponent', () => {
   let component: TransferComponent;
@@ -58,7 +57,7 @@ describe('TransferComponent', () => {
 
   it('should not modify folderName if it is not empty', () => {
     component.folderName = 'ExistingName';
-    component.uploadFile() // Replace with the actual method that contains the logic
+    component.uploadFile()
     expect(component.folderName).toBe('ExistingName');
   });
 
@@ -126,17 +125,15 @@ describe('TransferComponent', () => {
   });
 
   it('should remove duplicate files when checkFile is called', () => {
-    // Arrange
+
     component.uploader.queue = [
       {file: {name: 'file1', size: 1000, rawFile: {name: 'file1'}}},
-      {file: {name: 'file1', size: 1000, rawFile: {name: 'file1'}}}, // duplicate
+      {file: {name: 'file1', size: 1000, rawFile: {name: 'file1'}}},
       {file: {name: 'file2', size: 2000, rawFile: {name: 'file2'}}}
     ] as any[];
 
-    // Act
     component.checkFile();
 
-    // Assert
     const uniqueFileNames = Array.from(new Set(component.uploader.queue.map(f => f.file.name)));
     expect(uniqueFileNames.length).toEqual(component.uploader.queue.length);
   });
@@ -218,8 +215,6 @@ describe('TransferComponent', () => {
     expect(component.uploader.progress).toEqual(progress);
 
   });
-
-
 
 
   it('should return this.sizeAllFile in Ko', () => {

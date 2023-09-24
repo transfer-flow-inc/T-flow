@@ -77,7 +77,7 @@ describe('TransferRecapComponent', () => {
   });
 
   it('should navigate to "/accueil" and show a flash message', async () => {
-  // Arrange
+
   const message = 'Test message';
   const type = 'success';
   const time = 5000;
@@ -85,10 +85,8 @@ describe('TransferRecapComponent', () => {
   spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
   spyOn(flashMessageService, 'addMessage');
 
-  // Act
   await component.navigateAndShowFlashMessage(message, type, time);
 
-  // Assert
   expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
   expect(flashMessageService.addMessage).toHaveBeenCalledWith(message, type, time);
 });

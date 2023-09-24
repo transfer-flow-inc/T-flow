@@ -1,16 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { SettingsMyAccountComponent } from './settings-my-account.component';
-import { SettingsNavbarComponent } from '../settings-navbar/settings-navbar.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {SettingsMyAccountComponent} from './settings-my-account.component';
+import {SettingsNavbarComponent} from '../settings-navbar/settings-navbar.component';
 import {HttpClient, HttpHandler} from "@angular/common/http";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {of, throwError} from "rxjs";
+import {of} from "rxjs";
 import {environment} from "../../environments/environment";
-import {isReadableStreamLike} from "rxjs/internal/util/isReadableStreamLike";
+
 describe('SettingsMyAccountComponent', () => {
   let component: SettingsMyAccountComponent;
   let fixture: ComponentFixture<SettingsMyAccountComponent>;
@@ -19,7 +19,7 @@ describe('SettingsMyAccountComponent', () => {
   let router: Router;
   let httpClient: HttpClientService;
 
-  beforeEach( () => {
+  beforeEach(() => {
 
     const mockJwtService = {
       getAllUserInfos: jest.fn()
@@ -37,8 +37,8 @@ describe('SettingsMyAccountComponent', () => {
       declarations: [SettingsMyAccountComponent, SettingsNavbarComponent],
       imports: [RouterTestingModule],
       providers: [HttpClient, HttpHandler, OAuthService, UrlHelperService, OAuthLogger, DateTimeProvider,
-      { provide: JwtTokenService, useValue: mockJwtService },
-      { provide: CookiesService, useValue: mockCookiesService },
+        {provide: JwtTokenService, useValue: mockJwtService},
+        {provide: CookiesService, useValue: mockCookiesService},
         {provide: HttpClientService, useValue: mockHttpClient},
       ],
     }).compileComponents();
@@ -56,27 +56,22 @@ describe('SettingsMyAccountComponent', () => {
     expect(component).toBeTruthy();
   });
 
-   it('should fetch user info correctly', () => {
-    // Setup the mock
+  it('should fetch user info correctly', () => {
     (jwtService.getAllUserInfos as jest.Mock).mockReturnValue({
       lastName: 'Doe',
       firstName: 'John',
       userEmail: 'john.doe@example.com'
     });
 
-    // Execute the function
     component.getAllUserInfos();
 
-    // Verify behavior
     expect(component.lastNameValue).toBe('Doe');
     expect(component.firstNameValue).toBe('John');
     expect(component.emailValue).toBe('john.doe@example.com');
   });
 
 
-
   it('should call getAllUserInfos if token is found', () => {
-    // Setup the mock
     (cookiesService.get as jest.Mock).mockReturnValue('token');
     (jwtService.getAllUserInfos as jest.Mock).mockReturnValue({
       lastName: 'Doe',
@@ -89,15 +84,15 @@ describe('SettingsMyAccountComponent', () => {
   });
 
   it('should toggle isUpdateUser', () => {
-    component.isUpdateUser = false; // set initial state
-    component.toggleUpdateUser(); // call the method
-    expect(component.isUpdateUser).toBe(true); // verify that it was toggled to true
+    component.isUpdateUser = false;
+    component.toggleUpdateUser();
+    expect(component.isUpdateUser).toBe(true);
 
-    component.toggleUpdateUser(); // call the method again
-    expect(component.isUpdateUser).toBe(false); // verify that it was toggled back to false
+    component.toggleUpdateUser();
+    expect(component.isUpdateUser).toBe(false);
   });
 
-it('should submit user updates correctly', () => {
+  it('should submit user updates correctly', () => {
     const userUpdate = {
       lastName: 'Doe',
       firstName: 'John',
@@ -106,7 +101,7 @@ it('should submit user updates correctly', () => {
       password: 'password'
     };
     const updateUserUrl = 'http://updateUserUrl.com';
-    const mockResponse = { token: 'Update successful' };
+    const mockResponse = {token: 'Update successful'};
 
     component.userUpdate = userUpdate;
 

@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DashboardOneUserComponent } from './dashboard-one-user.component';
+import {DashboardOneUserComponent} from './dashboard-one-user.component';
 import {DashboardNavbarComponent} from "../dashboard-navbar/dashboard-navbar.component";
-import {HttpClient, HttpHandler} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Observable, of, throwError} from "rxjs";
@@ -21,16 +21,16 @@ describe('DashboardOneUserComponent', () => {
 
   beforeEach(async () => {
     activatedRoute = {
-    params: of({ id: 'someId' })  // Using RxJS 'of' to create an Observable
+      params: of({id: 'someId'})
     };
     await TestBed.configureTestingModule({
-      declarations: [ DashboardOneUserComponent, DashboardNavbarComponent ],
+      declarations: [DashboardOneUserComponent, DashboardNavbarComponent],
       providers: [HttpClient, OAuthService, UrlHelperService, OAuthLogger, DateTimeProvider,
-        { provide: ActivatedRoute, useValue: activatedRoute }
+        {provide: ActivatedRoute, useValue: activatedRoute}
       ],
       imports: [HttpClientTestingModule, FontAwesomeTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
 
     router = TestBed.inject(Router);
     flashMessageService = TestBed.inject(FlashMessageService);
@@ -45,16 +45,16 @@ describe('DashboardOneUserComponent', () => {
   });
 
   it('should get query parameters correctly', () => {
-  component.getQueryParams();
-  expect(component.userID).toBe('someId');
-});
+    component.getQueryParams();
+    expect(component.userID).toBe('someId');
+  });
 
   it('should set user when getOneUserByID is successful', () => {
     spyOn(httpClientService, 'getOneUserByID').and.returnValue(
-      of({ id: 1 } )
+      of({id: 1})
     );
     component.getOneUserByID();
-    expect(component.user).toEqual( {"id": 1});
+    expect(component.user).toEqual({"id": 1});
     expect(component.loading).toBeFalsy();
   });
 
@@ -64,8 +64,6 @@ describe('DashboardOneUserComponent', () => {
     expect(component.errorMessage).toBeTruthy();
     expect(component.loading).toBeFalsy();
   });
-
-
 
 
   it('should set errorMessage to true when deleteAUserByID fails', () => {

@@ -21,7 +21,7 @@ describe('DashboardOneTransferComponent', () => {
 
   beforeEach(async () => {
     activatedRoute = {
-    params: of({ id: 'someId' })  // Using RxJS 'of' to create an Observable
+    params: of({ id: 'someId' })
     };
     await TestBed.configureTestingModule({
       declarations: [ DashboardOneTransferComponent, DashboardNavbarComponent ],

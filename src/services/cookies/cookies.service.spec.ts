@@ -22,54 +22,46 @@ describe('CookiesService', () => {
     const originalDocumentCookie = Object.getOwnPropertyDescriptor(document, 'cookie');
     Object.defineProperty(document, 'cookie', {
       writable: true,
-      value: '',  // initial cookie value
+      value: '',
     });
 
-    service.set('testName', 'testValue', 1);  // Call your 'set' function
+    service.set('testName', 'testValue', 1);
 
-    expect(setDateSpy).toHaveBeenCalled();  // Verify that 'setTime' was called on a Date object
+    expect(setDateSpy).toHaveBeenCalled();
 
-    // The following checks if the cookie string contains all the necessary parts
     expect(document.cookie).toContain('testName=testValue');
     expect(document.cookie).toContain('expires=');
     expect(document.cookie).toContain('path=/');
     expect(document.cookie).toContain('SameSite=Strict');
 
-    // Restore original document.cookie property
     Object.defineProperty(document, 'cookie', originalDocumentCookie || {});
   });
 
   it('should get a cookie value by name', () => {
     const originalDocumentCookie = Object.getOwnPropertyDescriptor(document, 'cookie');
 
-    // Mock a cookie
     Object.defineProperty(document, 'cookie', {
       writable: true,
-      value: 'testName=testValue; otherName=otherValue',  // Mock cookie string
+      value: 'testName=testValue; otherName=otherValue',
     });
 
-    // Call the 'get' function and check if it correctly fetches the cookie value
     const cookieValue = service.get('testName');
     expect(cookieValue).toBe('testValue');
 
-    // Restore original document.cookie property
     Object.defineProperty(document, 'cookie', originalDocumentCookie || {});
   });
 
   it('should return an empty string if the cookie does not exist', () => {
     const originalDocumentCookie = Object.getOwnPropertyDescriptor(document, 'cookie');
 
-    // Mock a cookie
     Object.defineProperty(document, 'cookie', {
       writable: true,
-      value: 'otherName=otherValue',  // Mock cookie string without the target cookie
+      value: 'otherName=otherValue',
     });
 
-    // Call the 'get' function and check if it correctly returns an empty string
     const cookieValue = service.get('testName');
     expect(cookieValue).toBe('');
 
-    // Restore original document.cookie property
     Object.defineProperty(document, 'cookie', originalDocumentCookie || {});
   });
 

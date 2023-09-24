@@ -35,8 +35,8 @@ describe('RegisterComponent', () => {
       addMessage: jest.fn()
     }
     mockOAuthService = {
-      events: of({ type: 'token_received' }),  // Simulate the event stream
-      getIdentityClaims: jest.fn().mockReturnValue({ /* your mocked claims */ })
+      events: of({ type: 'token_received' }),
+      getIdentityClaims: jest.fn().mockReturnValue({})
     };
     mockGoogleSsoService = {
       signInWithGoogle: jest.fn()
@@ -74,24 +74,15 @@ describe('RegisterComponent', () => {
   });
 
    it('should handle 403 error correctly', () => {
-    // Arrange: Prepare the mock error object
     const mockError = { status: 403 };
 
-    // Act: Call the function to test
     component.handleError(mockError);
-
-    // Assert: Verify expected behavior
     expect(component.error).toBe("Email ou mot de passe incorrect !");
   });
 
   it('should handle non-403 error correctly', () => {
-    // Arrange: Prepare the mock error object
     const mockError = { status: 500 };
-
-    // Act: Call the function to test
     component.handleError(mockError);
-
-    // Assert: Verify expected behavior
     expect(component.error).toBe("Une erreur est survenue !");
   });
 
@@ -101,31 +92,22 @@ describe('RegisterComponent', () => {
   });
 
   it('should toggle isChecked when changeIsChecked is called', () => {
-    // Given that isChecked is initially false
     component.isChecked = false;
 
-    // When changeIsChecked is called
     component.changeIsChecked();
-
-    // Then isChecked should now be true
     expect(component.isChecked).toBe(true);
 
-    // When changeIsChecked is called again
     component.changeIsChecked();
 
-    // Then isChecked should now be false
     expect(component.isChecked).toBe(false);
   });
 
   it('should handle OAuthEvent of type "token_received"', () => {
-    // Arrange
     const fakeToken = { token: 'fake-token' };
     mockHttpClientService.loginWithGoogle.mockReturnValue(of(fakeToken));
 
-    // Act
     component.ngOnInit();
 
-    // Assert
     expect(mockOAuthService.getIdentityClaims).toHaveBeenCalled();
     expect(mockHttpClientService.loginWithGoogle).toHaveBeenCalled();
     expect(mockCookiesService.set).toHaveBeenCalledWith('token', fakeToken.token, 30);
