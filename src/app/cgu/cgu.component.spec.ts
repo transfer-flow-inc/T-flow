@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CguComponent } from './cgu.component';
+import {CguComponent} from './cgu.component';
 
 describe('CguComponent', () => {
   let component: CguComponent;
@@ -8,9 +8,9 @@ describe('CguComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CguComponent ]
+      declarations: [CguComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(CguComponent);
     component = fixture.componentInstance;

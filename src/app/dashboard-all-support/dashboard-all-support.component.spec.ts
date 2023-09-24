@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DashboardAllSupportComponent } from './dashboard-all-support.component';
+import {DashboardAllSupportComponent} from './dashboard-all-support.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 import {DashboardNavbarComponent} from "../dashboard-navbar/dashboard-navbar.component";
@@ -14,11 +14,11 @@ describe('DashboardAllSupportComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardAllSupportComponent, DashboardNavbarComponent ],
+      declarations: [DashboardAllSupportComponent, DashboardNavbarComponent],
       imports: [HttpClientTestingModule],
-      providers: [ OAuthService, OAuthLogger, UrlHelperService, DateTimeProvider],
+      providers: [OAuthService, OAuthLogger, UrlHelperService, DateTimeProvider],
     })
-    .compileComponents();
+      .compileComponents();
 
     httpClientService = TestBed.inject(HttpClientService);
     fixture = TestBed.createComponent(DashboardAllSupportComponent);
@@ -32,10 +32,10 @@ describe('DashboardAllSupportComponent', () => {
 
   it('should set users when getAllSupports is successful', () => {
     spyOn(httpClientService, 'getAllSupports').and.returnValue(
-      of({ content: [{ id: 1 }, { id: 2 }] })
+      of({content: [{id: 1}, {id: 2}]})
     );
     component.getAllSupports();
-    expect(component.supports.content).toEqual([{ id: 1 }, { id: 2 }]);
+    expect(component.supports.content).toEqual([{id: 1}, {id: 2}]);
     expect(component.isDataFound).toBeTruthy();
     expect(component.loading).toBeFalsy();
   });

@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NavbarComponent } from './navbar.component';
-import { ThemeServiceService } from '../../services/theme-service/theme-service.service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {NavbarComponent} from './navbar.component';
+import {ThemeServiceService} from '../../services/theme-service/theme-service.service';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {HttpClient} from "@angular/common/http";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
@@ -37,22 +37,23 @@ describe('NavbarComponent', () => {
 
     mockThemeService = {
       getCurrentTheme: () => 'light',
-      toggleTheme: () => {},
+      toggleTheme: () => {
+      },
     };
 
     mockFooterComponent = {
-      ngOnInit: () => {},
+      ngOnInit: () => {
+      },
     };
-
 
 
     TestBed.configureTestingModule({
       declarations: [NavbarComponent],
       imports: [FontAwesomeModule, HttpClientTestingModule],
       providers: [
-        { provide: HttpClientService, useValue: mockHttpClientService },
-        { provide: JwtTokenService, useValue: mockJwtTokenService },
-        { provide: CookiesService, useValue: mockCookiesService },
+        {provide: HttpClientService, useValue: mockHttpClientService},
+        {provide: JwtTokenService, useValue: mockJwtTokenService},
+        {provide: CookiesService, useValue: mockCookiesService},
         ThemeServiceService,
         HttpClient,
         OAuthService,
@@ -73,29 +74,29 @@ describe('NavbarComponent', () => {
   });
 
   it('should toggle isPopupOpen and update popupToggleValue', () => {
-  expect(component.isPopupOpen).toBe(false);
-  expect(component.popupToggleValue).toBe('hidden');
-  component.togglePopup();
-  expect(component.isPopupOpen).toBe(true);
-  expect(component.popupToggleValue).toBe('show');
-  component.togglePopup();
-  expect(component.isPopupOpen).toBe(false);
-  expect(component.popupToggleValue).toBe('reversePopup');
-});
+    expect(component.isPopupOpen).toBe(false);
+    expect(component.popupToggleValue).toBe('hidden');
+    component.togglePopup();
+    expect(component.isPopupOpen).toBe(true);
+    expect(component.popupToggleValue).toBe('show');
+    component.togglePopup();
+    expect(component.isPopupOpen).toBe(false);
+    expect(component.popupToggleValue).toBe('reversePopup');
+  });
 
   it('should toggle isMenuOpen and update navbarToggleValue and iconShow', () => {
-  expect(component.isMenuOpen).toBe(false);
-  expect(component.navbarToggleValue).toBe('hide');
-  expect(component.iconShow).toBe('show');
-  component.openMenu();
-  expect(component.isMenuOpen).toBe(true);
-  expect(component.navbarToggleValue).toBe('showNav');
-  expect(component.iconShow).toBe('hidden');
-  component.openMenu();
-  expect(component.isMenuOpen).toBe(false);
-  expect(component.navbarToggleValue).toBe('reverse');
-  expect(component.iconShow).toBe('hidden');
-});
+    expect(component.isMenuOpen).toBe(false);
+    expect(component.navbarToggleValue).toBe('hide');
+    expect(component.iconShow).toBe('show');
+    component.openMenu();
+    expect(component.isMenuOpen).toBe(true);
+    expect(component.navbarToggleValue).toBe('showNav');
+    expect(component.iconShow).toBe('hidden');
+    component.openMenu();
+    expect(component.isMenuOpen).toBe(false);
+    expect(component.navbarToggleValue).toBe('reverse');
+    expect(component.iconShow).toBe('hidden');
+  });
 
   it('should initialize isAuthenticated based on HttpClientService', () => {
     expect(component.isAuthenticated).toBe(false);
@@ -119,14 +120,10 @@ describe('NavbarComponent', () => {
   });
 
   it('should initialize isDarkTheme and imgTheme based on localStorage', () => {
-  localStorage.setItem('theme', 'light');
-  expect(component.isDarkTheme).toBe(true);
-  expect(component.imgTheme).toBe('assets/images/logo_with_text_dark.png');
-});
-
-
-
-
+    localStorage.setItem('theme', 'light');
+    expect(component.isDarkTheme).toBe(true);
+    expect(component.imgTheme).toBe('assets/images/logo_with_text_dark.png');
+  });
 
 
 });

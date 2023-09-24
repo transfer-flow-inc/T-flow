@@ -6,7 +6,6 @@ import { CookiesService } from '../../cookies/cookies.service';
 import { Router } from '@angular/router';
 import { FlashMessageService } from '../../flash-message/flash-message.service';
 
-// Mocked services
 const mockOAuthService = {
   configure: jest.fn(),
   loadDiscoveryDocumentAndTryLogin: jest.fn(),

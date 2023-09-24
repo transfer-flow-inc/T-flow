@@ -1,16 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LoginComponent } from './login.component';
-import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {LoginComponent} from './login.component';
+import {FontAwesomeTestingModule} from '@fortawesome/angular-fontawesome/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OAuthEvent, OAuthModule, OAuthService} from 'angular-oauth2-oidc';
-import { Router } from "@angular/router";
-import { HttpClientService } from "../../services/httpClient/http-client.service";
+import {Router} from "@angular/router";
+import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {BehaviorSubject, of, throwError} from "rxjs";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
-import mock = jest.mock;
+
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -33,8 +33,8 @@ describe('LoginComponent', () => {
       addMessage: jest.fn()
     }
     mockOAuthService = {
-      events: of({ type: 'token_received' }),  // Simulate the event stream
-      getIdentityClaims: jest.fn().mockReturnValue({ /* your mocked claims */ })
+      events: of({type: 'token_received'}),
+      getIdentityClaims: jest.fn().mockReturnValue({})
     };
     mockGoogleSsoService = {
       signInWithGoogle: jest.fn()
@@ -49,15 +49,15 @@ describe('LoginComponent', () => {
     }
 
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      imports: [ FontAwesomeTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule, OAuthModule.forRoot() ],
+      declarations: [LoginComponent],
+      imports: [FontAwesomeTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule, OAuthModule.forRoot()],
       providers: [
-        { provide: HttpClientService, useValue: mockHttpClientService },
-        { provide: Router, useValue: mockRouter },
-        { provide: CookiesService, useValue: mockCookiesService },
-        { provide: FlashMessageService, useValue: mockFlashMessageService },
-        { provide: GoogleSsoService, useValue: mockGoogleSsoService },
-        { provide: OAuthService, useValue: mockOAuthService },
+        {provide: HttpClientService, useValue: mockHttpClientService},
+        {provide: Router, useValue: mockRouter},
+        {provide: CookiesService, useValue: mockCookiesService},
+        {provide: FlashMessageService, useValue: mockFlashMessageService},
+        {provide: GoogleSsoService, useValue: mockGoogleSsoService},
+        {provide: OAuthService, useValue: mockOAuthService},
       ]
     }).compileComponents();
 
@@ -100,14 +100,12 @@ describe('LoginComponent', () => {
   });
 
   it('should handle OAuthEvent of type "token_received"', () => {
-    // Arrange
-    const fakeToken = { token: 'fake-token' };
+
+    const fakeToken = {token: 'fake-token'};
     mockHttpClientService.loginWithGoogle.mockReturnValue(of(fakeToken));
 
-    // Act
     component.ngOnInit();
 
-    // Assert
     expect(mockOAuthService.getIdentityClaims).toHaveBeenCalled();
     expect(mockHttpClientService.loginWithGoogle).toHaveBeenCalled();
     expect(mockHttpClientService.isAuthenticated.next).toHaveBeenCalledWith(true);
@@ -131,51 +129,38 @@ describe('LoginComponent', () => {
   });
 
   it('should handle 403 error correctly', () => {
-    // Arrange: Prepare the mock error object
-    const mockError = { status: 403 };
+    const mockError = {status: 403};
 
-    // Act: Call the function to test
     component.handleLoginError(mockError);
 
-    // Assert: Verify expected behavior
     expect(component.error).toBe("Email ou mot de passe incorrect !");
     expect(mockHttpClientService.isAuthenticated.next).toHaveBeenCalledWith(false);
   });
 
   it('should handle non-403 error correctly', () => {
-    // Arrange: Prepare the mock error object
-    const mockError = { status: 500 };
+    const mockError = {status: 500};
 
-    // Act: Call the function to test
     component.handleLoginError(mockError);
-
-    // Assert: Verify expected behavior
     expect(component.error).toBe("Une erreur est survenue !");
     expect(mockHttpClientService.isAuthenticated.next).toHaveBeenCalledWith(false);
   });
 
-   it('should call handleLoginSuccess on login success', () => {
-    // Arrange: Mock the httpService.login method to simulate successful login
-    mockHttpClientService.login.mockReturnValue(of({ token: 'fakeToken' }));
+  it('should call handleLoginSuccess on login success', () => {
+    mockHttpClientService.login.mockReturnValue(of({token: 'fakeToken'}));
     const handleLoginSuccessSpy = jest.spyOn(component, 'handleLoginSuccess');
 
-    // Act: Call the login method
     component.login();
 
-    // Assert: Verify handleLoginSuccess was called with the fake token
-    expect(handleLoginSuccessSpy).toHaveBeenCalledWith({ token: 'fakeToken' });
+    expect(handleLoginSuccessSpy).toHaveBeenCalledWith({token: 'fakeToken'});
   });
 
   it('should call handleLoginError on login error', () => {
-    // Arrange: Mock the httpService.login method to simulate login failure
-    const mockError = { status: 403 };
+    const mockError = {status: 403};
     mockHttpClientService.login.mockReturnValue(throwError(mockError));
     const handleLoginErrorSpy = jest.spyOn(component, 'handleLoginError');
 
-    // Act: Call the login method
     component.login();
 
-    // Assert: Verify handleLoginError was called with the mock error
     expect(handleLoginErrorSpy).toHaveBeenCalledWith(mockError);
   });
 

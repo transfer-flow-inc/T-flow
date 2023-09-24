@@ -118,7 +118,7 @@ it('should return the correct expiration time', () => {
 
   it('should correctly identify if the token is expired', () => {
     const mockDecodedToken = {
-      exp: ((Date.now() / 1000) - 100).toString(), // some past time
+      exp: ((Date.now() / 1000) - 100).toString(),
     };
 
     (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
@@ -129,7 +129,7 @@ it('should return the correct expiration time', () => {
 
   it('should correctly identify if the token is not expired', () => {
     const mockDecodedToken = {
-      exp: ((Date.now() / 1000) + 100).toString(), // some future time
+      exp: ((Date.now() / 1000) + 100).toString(),
     };
 
     (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
@@ -168,15 +168,12 @@ it('should return the correct jwtToken value', () => {
 });
 
 it('should decode jwtToken and populate decodedToken when jwtToken is set', () => {
-  // Arrange: Mock jwt_decode and set jwtToken
   const mockDecodedToken = { some: 'data' };
   (jwt_decode as jest.Mock).mockReturnValue(mockDecodedToken);
   component.jwtToken = 'someJwtToken';
 
-  // Act: Call decodeToken()
   component.decodeToken();
 
-  // Assert: Check that decodedToken is populated correctly
   expect(component.decodedToken).toEqual(mockDecodedToken);
 });
 

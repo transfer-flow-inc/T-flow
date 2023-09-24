@@ -23,9 +23,9 @@ describe('ThemeServiceService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(ThemeServiceService);
 
-    service.currentThemeSubject = new BehaviorSubject('light');  // assuming it's public or you may have to spyOn this
+    service.currentThemeSubject = new BehaviorSubject('light');
     applyThemeSpy = jest.spyOn(service, 'applyTheme');
-    jest.spyOn(service, 'saveThemeToStorage'); // Spying on this method too
+    jest.spyOn(service, 'saveThemeToStorage');
   });
 
   afterEach(() => {
@@ -49,7 +49,6 @@ describe('ThemeServiceService', () => {
     expect(service.currentThemeSubject.value).toBe('dark');
     expect(window.localStorage.setItem).toHaveBeenCalledWith('theme', 'dark');
 
-    // Toggling again to check if it switches back to 'light'
     service.toggleTheme();
 
     expect(applyThemeSpy).toHaveBeenCalledWith('light');
@@ -58,12 +57,11 @@ describe('ThemeServiceService', () => {
   });
 
   it('should get current theme', () => {
-    service.currentThemeSubject.next('light'); // Set the current theme to 'light'
+    service.currentThemeSubject.next('light');
     const theme = service.getCurrentTheme();
     expect(theme).toBe('light');
 
-    // Optionally, you could also test for 'dark'
-    service.currentThemeSubject.next('dark'); // Set the current theme to 'dark'
+    service.currentThemeSubject.next('dark');
     const darkTheme = service.getCurrentTheme();
     expect(darkTheme).toBe('dark');
   });
