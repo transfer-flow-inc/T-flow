@@ -58,7 +58,7 @@ describe('DashboardAllTransferComponent', () => {
     spyOn(httpClientService, 'getAllTransfersByUserID').and.returnValue(
       of({content: [{"id": 1}, {"id": 2}]})
     );
-    component.getAllTransfersByUserID();
+    component.getAllTransfersByUserID(1);
     expect(component.folders).toEqual({"content": [{"id": 1}, {"id": 2}]});
     expect(component.loading).toBeFalsy();
   });
@@ -67,14 +67,14 @@ describe('DashboardAllTransferComponent', () => {
     spyOn(httpClientService, 'getAllTransfersByUserID').and.returnValue(
       of({content: [{id: undefined}]})
     );
-    component.getAllTransfersByUserID();
+    component.getAllTransfersByUserID(1);
     expect(component.isDataFound).toBeFalsy();
     expect(component.loading).toBeFalsy();
   });
 
   it('should set errorMessage to true when getAllTransfersByUserID fails', () => {
     spyOn(httpClientService, 'getAllTransfersByUserID').and.returnValue(throwError('error'));
-    component.getAllTransfersByUserID();
+    component.getAllTransfersByUserID(1);
     expect(component.errorMessage).toBeTruthy();
     expect(component.loading).toBeFalsy();
   });

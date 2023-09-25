@@ -42,5 +42,23 @@
 
   </section>
 
+  <div class="nav page" *ngIf="!loading">
+    <fa-icon class="icon-page"
+             [ngClass]="folders.pageable.pageNumber + 1 == 1  ? 'disabled' : undefined"
+             [icon]="leftIcon"
+             (click)="pageNumber - 1 > 0 ? getAllTransfersByUserID(pageNumber = pageNumber - 1) : pageNumber + 1"
+    >
+    </fa-icon>
+
+    <p>{{ folders.pageable.pageNumber + 1 }}/{{ folders.totalPages }}</p>
+
+    <fa-icon class="icon-page"
+             [ngClass]="folders.pageable.pageNumber + 1 == folders.totalPages ? 'disabled' : ''"
+             [icon]="rightIcon"
+             (click)="pageNumber + 1 <= folders.totalPages ? getAllTransfersByUserID(pageNumber = pageNumber + 1) : pageNumber - 1"
+    >
+    </fa-icon>
+  </div>
+
 
 </section>
