@@ -3,7 +3,8 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {AllUsersInterface} from "../../interfaces/User/all-users-interface";
 import {environment} from "../../environments/environment";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
-import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
+import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-dashboard-all-users',
@@ -15,6 +16,9 @@ export class DashboardAllUsersComponent implements OnInit {
   loading: boolean = true;
   loadingImg: string = "";
   isDataFound: boolean = true;
+  leftIcon : IconDefinition = faArrowLeft;
+  rightIcon : IconDefinition = faArrowRight;
+  pageNumber: number = 1;
   users: AllUsersInterface = {
     content: [],
     pageable: {
@@ -43,7 +47,6 @@ export class DashboardAllUsersComponent implements OnInit {
     numberOfElements: 0,
     empty: false,
   }
-  page: number = 0;
   errorMessage: boolean = false;
 
   constructor(
@@ -54,16 +57,16 @@ export class DashboardAllUsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getAllUsers(this.page);
+    this.getAllUsers(this.pageNumber);
     this.getTheme();
 
   }
 
-  getAllUsers(page: number) {
-    this.httpClientService.getAllUsers(environment.apiURL + 'admin/users?page=' + page + '&size=20').subscribe({
+  getAllUsers(pageNumber: number) {
+    this.httpClientService.getAllUsers(environment.apiURL + 'admin/users?page=' + (pageNumber - 1) + '&size=20').subscribe({
       next: (response) => {
         this.loading = false;
-        this.users.content = response.content;
+        this.users = response;
         if (this.users.content[0]?.id === null) {
           this.isDataFound = false;
         }
@@ -81,5 +84,4 @@ export class DashboardAllUsersComponent implements OnInit {
     });
   }
 
-  protected readonly faArrowLeft = faArrowLeft;
 }
