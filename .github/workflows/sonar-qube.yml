@@ -27,8 +27,7 @@ jobs:
 
       - name: Upload coverage to SonarQube
         run: |
-          npm run sonar
-          -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+          npm run sonar -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
           -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
 
