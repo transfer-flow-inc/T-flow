@@ -21,6 +21,9 @@ export class HttpClientService {
   isAuthenticated = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticated.asObservable();
 
+  isAdministrator = new BehaviorSubject<boolean>(false);
+  isAdministrator$ = this.isAdministrator.asObservable();
+
   constructor(
     private httpClient: HttpClient,
     private cookiesService: CookiesService,

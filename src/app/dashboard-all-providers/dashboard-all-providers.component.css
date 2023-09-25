@@ -7,7 +7,7 @@
     padding: 2rem;
 }
 .dashboard-container {
-    max-height: 35rem;
+    max-height: 60vh;
     overflow-y: scroll;
     margin: auto;
     background-color: var(--background);

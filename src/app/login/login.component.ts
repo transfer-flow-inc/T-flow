@@ -56,6 +56,11 @@ export class LoginComponent implements OnInit {
     if (this.token) {
       this.setAuthenticationState(true, this.token.token);
       this.navigateToHomeWithMessage('Vous vous êtes connecté avec succès', 'success');
+
+      if (this.jwtService.getUserRole()=== 'ADMIN') {
+        this.httpService.isAdministrator.next(true);
+      }
+
     }
   }
 

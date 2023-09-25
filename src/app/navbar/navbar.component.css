@@ -91,8 +91,8 @@ body.dark.nav-link::before {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 100rem;
-  background-color: var(--color);
   display: flex;
+  background-color: var(--color);
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
@@ -108,24 +108,6 @@ body.dark.nav-link::before {
   cursor: pointer;
 }
 
-.popup-help {
-  border-radius: 1rem;
-  font-size: 1rem;
-  background-color: var(--color);
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  height: 15rem;
-  padding: 2rem;
-  width: 15rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  border: 0.01rem solid var(--background);
-  color: var(--background);
-  z-index: -1;
-}
 
 .close {
   position: absolute;
