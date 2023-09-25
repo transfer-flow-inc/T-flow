@@ -35,4 +35,22 @@
 
     </section>
 
+  <div class="nav page" *ngIf="!loading">
+    <fa-icon class="icon-page"
+             [ngClass]="users.pageable.pageNumber + 1 == 1  ? 'disabled' : undefined"
+             [icon]="leftIcon"
+             (click)="pageNumber - 1 > 0 ? getAllUsers(pageNumber = pageNumber - 1) : pageNumber + 1"
+    >
+    </fa-icon>
+
+    <p>{{ users.pageable.pageNumber + 1 }}/{{ users.totalPages }}</p>
+
+    <fa-icon class="icon-page"
+             [ngClass]="users.pageable.pageNumber + 1 == users.totalPages ? 'disabled' : ''"
+             [icon]="rightIcon"
+             (click)="pageNumber + 1 <= users.totalPages ? getAllUsers(pageNumber = pageNumber + 1) : pageNumber - 1"
+    >
+    </fa-icon>
+  </div>
+
 </section>

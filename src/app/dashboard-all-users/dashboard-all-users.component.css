@@ -99,6 +99,34 @@
   animation: spinner 3s linear infinite;
 }
 
+.icon-page:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.disabled {
+  color: var(--background) !important;
+  cursor: not-allowed !important;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 3rem;
+  position: relative;
+  margin: 1rem;
+}
+
+.page {
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  color: var(--background);
+}
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);

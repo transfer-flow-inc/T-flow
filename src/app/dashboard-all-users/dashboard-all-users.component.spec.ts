@@ -7,6 +7,7 @@ import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "ang
 import {HttpClient, HttpHandler} from "@angular/common/http";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {of, throwError} from "rxjs";
+import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
 
 describe('DashboardAllUsersComponent', () => {
   let component: DashboardAllUsersComponent;
@@ -16,7 +17,7 @@ describe('DashboardAllUsersComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ DashboardAllUsersComponent, DashboardNavbarComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, FontAwesomeTestingModule],
       providers: [HttpClient, HttpHandler, OAuthService, UrlHelperService, OAuthLogger, DateTimeProvider,
       ],
     })

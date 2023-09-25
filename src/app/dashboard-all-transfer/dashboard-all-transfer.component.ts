@@ -95,7 +95,7 @@ export class DashboardAllTransferComponent implements OnInit{
 
 
   getAllTransfersByUserID(pageNumber: number) {
-    this.httpClientService.getAllTransfersByUserID(environment.apiURL + 'admin/user/' + this.userID + '/folders?page='+ (pageNumber - 1) +'&size=5').subscribe( {
+    this.httpClientService.getAllTransfersByUserID(environment.apiURL + 'admin/user/' + this.userID + '/folders?page='+ (pageNumber - 1) +'&size=20').subscribe( {
       next: (response: FolderPagesInterface) => {
         this.loading = false;
         this.errorMessage = false;
@@ -139,5 +139,6 @@ export class DashboardAllTransferComponent implements OnInit{
       this.loadingImg = theme === 'light' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
     });
   }
+
 
 }
