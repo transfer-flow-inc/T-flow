@@ -33,6 +33,10 @@ export class AppComponent implements OnInit {
     if (this.cookiesService.get('token')) {
       this.httpClientService.isAuthenticated.next(true);
 
+      if (this.jwtService.getUserRole() === 'ADMIN') {
+        this.httpClientService.isAdministrator.next(true);
+      }
+
       this.jwtService.setToken(this.cookiesService.get('token'));
       if (this.jwtService.isTokenExpired()) {
         this.clearAuthData();

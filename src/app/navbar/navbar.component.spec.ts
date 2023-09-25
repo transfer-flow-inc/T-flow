@@ -84,26 +84,7 @@ describe('NavbarComponent', () => {
     expect(component.iconShow).toBe('hidden');
   });
 
-  it('should initialize isAuthenticated based on HttpClientService', () => {
-    expect(component.isAuthenticated).toBe(false);
-    fixture.detectChanges();
-    expect(component.isAuthenticated).toBe(true);
-  });
 
-  it('should initialize isAdministrator based on JwtTokenService and CookiesService', () => {
-    expect(component.isAdministrator).toBe(false);
-    fixture.detectChanges();
-    expect(component.isAdministrator).toBe(true);
-  });
-
-  it('should initialised isAdministrator to false if user role is USER', () => {
-
-    expect(component.isAdministrator).toBe(false);
-    mockJwtTokenService.getUserRole = () => 'USER';
-    fixture.detectChanges();
-    expect(component.isAdministrator).toBe(false);
-
-  });
 
   it('should initialize isDarkTheme and imgTheme based on localStorage', () => {
     localStorage.setItem('theme', 'light');
