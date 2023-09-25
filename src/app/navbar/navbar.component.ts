@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   isMenuOpen: boolean = false;
   isPopupOpen: boolean = false;
   imgTheme: string = 'assets/images/logo_with_text_dark.png';
-  helpIcon: IconDefinition = faLightbulb;
+  helpIcon: IconDefinition = faSun;
   popup: string = 'hidden';
   closeIcon: IconDefinition = faXmark;
   isDarkTheme: boolean = true;
@@ -76,15 +76,13 @@ export class NavbarComponent implements OnInit {
 
   toggleTheme(): void {
 
-    if (this.themeService.getCurrentTheme() === 'light') {
-      this.imgTheme = 'assets/images/logo_with_text_dark.png'
-      this.helpIcon = faSun;
-    } else {
-      this.imgTheme = 'assets/images/logo_with_text_light.png';
-      this.helpIcon = faMoon;
-    }
+    this.themeService.currentThemeSubject.subscribe((theme) => {
 
-    this.footer.ngOnInit();
+      this.imgTheme = theme === 'dark' ? 'assets/images/logo_with_text_dark.png' : 'assets/images/logo_with_text_light.png';
+      this.helpIcon = theme === 'dark' ? faSun : faMoon;
+
+    });
+
     this.themeService.toggleTheme();
 
   }

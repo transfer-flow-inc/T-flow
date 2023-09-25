@@ -93,10 +93,12 @@ export class DashboardOneTransferComponent implements OnInit {
   deleteTransferByID() {
     this.httpClient.deleteATransferByID( environment.apiURL + 'admin/folder/' +  this.transferID).subscribe({
       next: () => {
+        this.loading = false;
         this.router.navigate(['/admin/dashboard/utilisateurs/transferts/' + this.transfer.folderOwnerID]).then( () => {
           this.flashMessageService.addMessage('Le transfert a bien été supprimé', 'success', 4000);
         });
       }, error: () => {
+        this.loading = false;
         this.router.navigate(['/admin/dashboard/utilisateurs/transferts/' + this.transfer.folderOwnerID]).then( () => {
           this.flashMessageService.addMessage('Une erreur est survenue', 'error', 4000);
         });
