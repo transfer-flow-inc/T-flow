@@ -146,30 +146,13 @@ describe('DownloadComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
     expect(flashMessageService.addMessage).toHaveBeenCalledWith(message, type, time);
   });
-/*
-  it('should download a Blob when downloadBlob is called', async () => {
-
-    const blob = new Blob(['some content'], {type: 'application/zip'});
-
-    const mockObjectUrl = 'blob:http://mock-url';
-    Object.defineProperty(window.URL, 'createObjectURL', {value: jest.fn(() => mockObjectUrl)});
 
 
-    const mockFetchResponse = {blob: () => Promise.resolve(blob)};
-    window.fetch = jest.fn().mockResolvedValue(mockFetchResponse);
+  it('should use download blob', () => {
 
-    const mockAnchor = {click: jest.fn(), href: '', download: ''};
-    jest.spyOn(document, 'createElement').mockReturnValue(mockAnchor as any);
+    component.downloadBlob(new Blob(['some content'], {type: 'application/zip'}));
+    expect(window.URL.createObjectURL).toHaveBeenCalled();
 
-    await component.downloadBlob(blob);
-
-    expect(window.URL.createObjectURL).toHaveBeenCalledWith(blob);
-    expect(window.fetch).toHaveBeenCalledWith(mockObjectUrl);
-    expect(document.createElement).toHaveBeenCalledWith('a');
-    expect(mockAnchor.href).toBe(mockObjectUrl);
-    expect(mockAnchor.download).toBe(`${component.folder.folderName}.zip`);
-    expect(mockAnchor.click).toHaveBeenCalled();
-  });*/
-
+  });
 
 });

@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardOneTransferComponent } from './dashboard-one-transfer.component';
 import {DashboardNavbarComponent} from "../dashboard-navbar/dashboard-navbar.component";
 import {Observable, of, throwError} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
@@ -11,6 +11,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
+import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 
 describe('DashboardOneTransferComponent', () => {
   let component: DashboardOneTransferComponent;
@@ -18,6 +19,8 @@ describe('DashboardOneTransferComponent', () => {
   let activatedRoute: { params: Observable<{ id: string }> };
   let httpClientService: HttpClientService;
   let formatSizeService: FormatSizeService;
+  let flashMessageService: FlashMessageService;
+  let router: Router;
 
   beforeEach(async () => {
     activatedRoute = {
@@ -33,6 +36,8 @@ describe('DashboardOneTransferComponent', () => {
     })
     .compileComponents();
 
+    router = TestBed.inject(Router);
+    flashMessageService = TestBed.inject(FlashMessageService);
     formatSizeService = TestBed.inject(FormatSizeService);
     httpClientService = TestBed.inject(HttpClientService);
     fixture = TestBed.createComponent(DashboardOneTransferComponent);
@@ -87,5 +92,24 @@ describe('DashboardOneTransferComponent', () => {
   const expired = component.isFolderExpired(futureDate);
   expect(expired).toBeFalsy();
 });
+
+  it('should delete a transfer by his ID', () => {
+    spyOn(httpClientService, 'deleteATransferByID').and.returnValue(of({}));
+    spyOn(router, 'navigate');
+    spyOn(flashMessageService, 'addMessage');
+    component.deleteTransferByID();
+    expect(component.loading).toBeFalsy();
+    expect(router.navigate).toHaveBeenCalledWith(['/admin/dashboard/utilisateurs/transferts/' + component.transfer.folderOwnerID]);
+
+  });
+
+  it('should redirect when an error exist', () => {
+    spyOn(httpClientService, 'deleteATransferByID').and.returnValue(throwError('error'));
+    spyOn(router, 'navigate');
+    component.deleteTransferByID();
+    expect(component.loading).toBeFalsy();
+    expect(router.navigate).toHaveBeenCalledWith(['/admin/dashboard/utilisateurs/transferts/' + component.transfer.folderOwnerID]);
+
+  });
 
 });

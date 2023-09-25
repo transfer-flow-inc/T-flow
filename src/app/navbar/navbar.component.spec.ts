@@ -10,6 +10,7 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {of} from "rxjs";
+import {faMoon, faSun} from "@fortawesome/free-solid-svg-icons";
 
 
 describe('NavbarComponent', () => {
@@ -18,7 +19,7 @@ describe('NavbarComponent', () => {
   let mockHttpClientService: Partial<HttpClientService>;
   let mockJwtTokenService: Partial<JwtTokenService>;
   let mockCookiesService: Partial<CookiesService>;
-  let mockThemeService: Partial<ThemeServiceService>;
+  let themeService : ThemeServiceService;
   let mockFooterComponent: Partial<FooterComponent>;
 
   beforeEach(() => {
@@ -35,11 +36,6 @@ describe('NavbarComponent', () => {
       get: () => 'mock-token',
     };
 
-    mockThemeService = {
-      getCurrentTheme: () => 'light',
-      toggleTheme: () => {
-      },
-    };
 
     mockFooterComponent = {
       ngOnInit: () => {
@@ -64,6 +60,7 @@ describe('NavbarComponent', () => {
       ],
     });
 
+    themeService = TestBed.inject(ThemeServiceService);
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     spyOn(FooterComponent.prototype, 'ngOnInit').and.callThrough();
@@ -113,6 +110,15 @@ describe('NavbarComponent', () => {
     expect(component.isDarkTheme).toBe(true);
     expect(component.imgTheme).toBe('assets/images/logo_with_text_dark.png');
   });
+
+  it('should get the light theme', () => {
+    spyOn(themeService, 'currentThemeSubject').and.returnValue(of('light'));
+    component.toggleTheme();
+    expect(component.imgTheme).toBe('assets/images/logo_with_text_light.png');
+    expect(component.helpIcon).toBe(faMoon);
+  });
+
+
 
 
 });
