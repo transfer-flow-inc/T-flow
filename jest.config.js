@@ -12,9 +12,8 @@ module.exports = {
   coverageDirectory: './coverage',
   coverageReporters: ["clover", "json", "lcov", "text", "text-summary"],
   collectCoverageFrom: [
-    "src/**/*.ts"  // Adjust the pattern to match your project structure
+    "src/**/*.ts"
   ],
-  // exclude files from coverage
   coveragePathIgnorePatterns: [
     "/node_modules/",
     "/src/main.ts",
@@ -27,6 +26,6 @@ module.exports = {
     ],
   collectCoverage: true,
   testResultsProcessor: "jest-sonar-reporter",
-  clearMocks: true
-
+  clearMocks: true,
+  silent: true,
 }

@@ -29,7 +29,7 @@ describe('AboutComponent', () => {
 
   it('should set correct path to imgTheme if dark theme', () => {
 
-    themeService.currentTheme$ = of('dark');
+    themeService.currentThemeSubject.next('dark');
     component.ngOnInit();
     expect(component.imgTheme).toEqual('assets/images/logo_light.png');
 
@@ -37,7 +37,7 @@ describe('AboutComponent', () => {
 
   it('should set correct path to imgTheme if light theme', () => {
 
-    themeService.currentTheme$ = of('light');
+    themeService.currentThemeSubject.next('light');
     component.ngOnInit();
     expect(component.imgTheme).toEqual('assets/images/logo_dark.png');
 

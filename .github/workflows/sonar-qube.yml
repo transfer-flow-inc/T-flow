@@ -22,6 +22,14 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Run tests and collect coverage
+      - name: Run tests
         run: npm test -- --coverage && npm run sonar
+
+      - name: Upload coverage to SonarQube
+        run: npm run sonar
+        with:
+          args:
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
 
