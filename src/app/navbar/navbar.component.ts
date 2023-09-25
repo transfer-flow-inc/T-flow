@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
-import {faBars, faLightbulb, faMoon, faSun, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faMoon, faSun, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
-import {FooterComponent} from "../footer/footer.component";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
-import {CookiesService} from "../../services/cookies/cookies.service";
 
 @Component({
   selector: 'app-navbar',
@@ -16,13 +14,9 @@ export class NavbarComponent implements OnInit {
 
   navIcon: IconDefinition = faBars;
   navbarToggleValue: string = 'hide';
-  popupToggleValue: string = 'hidden';
   isMenuOpen: boolean = false;
-  isPopupOpen: boolean = false;
   imgTheme: string = 'assets/images/logo_with_text_dark.png';
   helpIcon: IconDefinition = faSun;
-  popup: string = 'hidden';
-  closeIcon: IconDefinition = faXmark;
   isDarkTheme: boolean = true;
   isAuthenticated: boolean = false;
   iconShow: string = 'show';
@@ -31,9 +25,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private httpClientService: HttpClientService,
     private themeService: ThemeServiceService,
-    private footer: FooterComponent,
     private jwtService: JwtTokenService,
-    private cookieService: CookiesService,
   ) {
   }
 

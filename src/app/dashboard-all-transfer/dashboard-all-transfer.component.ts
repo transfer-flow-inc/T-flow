@@ -5,7 +5,7 @@ import {environment} from "../../environments/environment";
 import {FolderPagesInterface} from "../../interfaces/Files/folder-pages-interface";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
-import {faArrowLeft, faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faArrowRight, faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
 import {UserApiInterface} from "../../interfaces/User/user-api-interface";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 
@@ -21,6 +21,9 @@ export class DashboardAllTransferComponent implements OnInit{
   loadingImg: string = "";
   isDataFound: boolean = true;
   errorMessage: boolean = false;
+  rightIcon: IconDefinition = faArrowRight;
+  leftIcon: IconDefinition = faArrowLeft;
+  pageNumber: number = 1;
   folders : FolderPagesInterface = {
     content: [],
     pageable: {
@@ -79,7 +82,7 @@ export class DashboardAllTransferComponent implements OnInit{
     this.getQueryParams();
 
     this.getUserByID();
-    this.getAllTransfersByUserID();
+    this.getAllTransfersByUserID(this.pageNumber);
 
     this.getTheme();
   }
@@ -91,8 +94,8 @@ export class DashboardAllTransferComponent implements OnInit{
   }
 
 
-  getAllTransfersByUserID() {
-    this.httpClientService.getAllTransfersByUserID(environment.apiURL + 'admin/user/' + this.userID + '/folders?page=0&size=20').subscribe( {
+  getAllTransfersByUserID(pageNumber: number) {
+    this.httpClientService.getAllTransfersByUserID(environment.apiURL + 'admin/user/' + this.userID + '/folders?page='+ (pageNumber - 1) +'&size=5').subscribe( {
       next: (response: FolderPagesInterface) => {
         this.loading = false;
         this.errorMessage = false;

@@ -11,13 +11,23 @@
 
 
 .dashboard-container {
-    max-height: 35rem;
+    max-height: 45vh;
     overflow-y: auto;
     margin: auto;
     background-color: var(--background);
     border-radius: 1rem;
     padding: 2rem;
     gap: 1rem;
+}
+
+.icon-page:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.disabled {
+  color: var(--background) !important;
+  cursor: not-allowed !important;
 }
 
 .container {
@@ -108,6 +118,14 @@
 
 .username {
   text-align: center;
+  color: var(--background);
+}
+
+.page {
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.5rem;
   color: var(--background);
 }
 
