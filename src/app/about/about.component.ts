@@ -20,12 +20,8 @@ export class AboutComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.themeService.currentTheme$.subscribe((theme) => {
-      if (theme === 'dark') {
-        this.imgTheme = 'assets/images/logo_light.png';
-      } else {
-        this.imgTheme = 'assets/images/logo_dark.png';
-      }
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.imgTheme = theme === 'light' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
     });
   }
 
