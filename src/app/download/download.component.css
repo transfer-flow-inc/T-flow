@@ -81,8 +81,13 @@
 @media screen and (max-width: 768px) {
   .download-container {
     width: 90%;
+    height: auto;
+    gap: 1rem;
   }
 
+  .img-loader {
+    width: 15rem;
+  }
   .download-folder {
     width: 90%;
     padding: 1rem 0;
