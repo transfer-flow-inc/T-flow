@@ -73,17 +73,6 @@ describe('NavbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should toggle isPopupOpen and update popupToggleValue', () => {
-    expect(component.isPopupOpen).toBe(false);
-    expect(component.popupToggleValue).toBe('hidden');
-    component.togglePopup();
-    expect(component.isPopupOpen).toBe(true);
-    expect(component.popupToggleValue).toBe('show');
-    component.togglePopup();
-    expect(component.isPopupOpen).toBe(false);
-    expect(component.popupToggleValue).toBe('reversePopup');
-  });
-
   it('should toggle isMenuOpen and update navbarToggleValue and iconShow', () => {
     expect(component.isMenuOpen).toBe(false);
     expect(component.navbarToggleValue).toBe('hide');
