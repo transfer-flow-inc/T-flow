@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
-import {faBars, faGear, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faLightbulb, faMoon, faSun, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 import {FooterComponent} from "../footer/footer.component";
@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   isMenuOpen: boolean = false;
   isPopupOpen: boolean = false;
   imgTheme: string = 'assets/images/logo_with_text_dark.png';
-  helpIcon: IconDefinition = faGear;
+  helpIcon: IconDefinition = faLightbulb;
   popup: string = 'hidden';
   closeIcon: IconDefinition = faXmark;
   isDarkTheme: boolean = true;
@@ -50,6 +50,7 @@ export class NavbarComponent implements OnInit {
 
     this.isDarkTheme = localStorage.getItem('theme') !== 'light';
     this.imgTheme = this.isDarkTheme ? 'assets/images/logo_with_text_dark.png' : 'assets/images/logo_with_text_light.png';
+    this.helpIcon = this.isDarkTheme ? faSun : faMoon;
 
   }
 
@@ -70,28 +71,17 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  togglePopup() {
 
-    this.isPopupOpen = !this.isPopupOpen;
-
-    if (!this.isPopupOpen) {
-      setTimeout(() => {
-        this.popupToggleValue = 'hidden';
-      }, 200);
-      this.popupToggleValue = 'reversePopup';
-    } else {
-      this.popupToggleValue = 'show';
-    }
-
-  }
 
 
   toggleTheme(): void {
 
     if (this.themeService.getCurrentTheme() === 'light') {
       this.imgTheme = 'assets/images/logo_with_text_dark.png'
+      this.helpIcon = faSun;
     } else {
       this.imgTheme = 'assets/images/logo_with_text_light.png';
+      this.helpIcon = faMoon;
     }
 
     this.footer.ngOnInit();

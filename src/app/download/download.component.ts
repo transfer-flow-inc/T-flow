@@ -88,13 +88,10 @@ createBlob(data: Blob): Blob {
 }
 
 downloadBlob(blob: Blob) {
-  const url = window.URL.createObjectURL(blob);
-  window.fetch(url).then(res => res.blob()).then(blob => {
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.download = this.folder.folderName + '.zip';
-    link.click();
-  });
+  const link = document.createElement('a');
+  link.href = window.URL.createObjectURL(blob);
+  link.download = this.folder.folderName + '.zip';
+  link.click();
 }
 
 
