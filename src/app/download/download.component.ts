@@ -64,6 +64,7 @@ export class DownloadComponent implements OnInit {
       .subscribe({
         next: (data) => {
 
+
           this.createABlobAndDownload(data);
 
           this.navigateAndShowFlashMessage('Téléchargement du dossier en cours', 'success', 4000);
