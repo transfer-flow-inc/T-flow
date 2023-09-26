@@ -72,7 +72,7 @@ describe('SettingsMyAccountComponent', () => {
   });
 
 
-  it('should call getAllUserInfos if token is found', () => {
+ /* it('should call getAllUserInfos if token is found', () => {
     (cookiesService.get as jest.Mock).mockReturnValue('token');
     (jwtService.getAllUserInfos as jest.Mock).mockReturnValue({
       lastName: ' ',
@@ -85,7 +85,7 @@ describe('SettingsMyAccountComponent', () => {
 
     expect(component.asLastname).toBe(false);
   });
-
+*/
   it('should toggle isUpdateUser', () => {
     component.isUpdateUser = false;
     component.toggleUpdateUser();

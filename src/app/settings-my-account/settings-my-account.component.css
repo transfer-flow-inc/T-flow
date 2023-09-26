@@ -8,6 +8,38 @@
   color: var(--background);
 }
 
+.storage {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 1rem;
+  width: 10rem;
+  background-color: var(--background);
+}
+
+.percentage {
+  color: white;
+  margin: auto;
+}
+.storage-user {
+  height: 1rem;
+  width: 10%;
+}
+.green {
+  background-color: green;
+}
+.orange {
+  background-color: orange;
+}
+.red {
+  background-color: red;
+}
+.storage-text {
+  margin: 1rem auto;
+
+}
+
 app-settings-navbar {
   height: 100%;
   display: flex;
