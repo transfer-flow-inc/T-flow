@@ -16,7 +16,7 @@
       <section class="card-container">
 
       <div class="card user" *ngIf="!isLoading">
-        <img class="card-img" [src]="supportInfo.user.avatar">
+        <img class="card-img" [src]="supportInfo.user.avatar" alt="avatar">
         <p class="text">{{ supportInfo.user.lastName }} {{ supportInfo.user.firstName }}</p>
         <p class="text">Envoyé le : {{ supportInfo.sentAt | date : 'longDate' }}</p>
         <p class="text">{{ supportInfo.user.mail }}</p>
