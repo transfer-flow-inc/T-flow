@@ -25,7 +25,9 @@ module.exports = {
     "/src/app/app.module.ts",
     ],
   collectCoverage: true,
-  reporters: ['default',  'jest-sonar'],
+  reporters: ['default',  'jest-sonar', {
+    outputName: 'test-report.xml',
+  }],
   clearMocks: true,
   silent: true,
 }
