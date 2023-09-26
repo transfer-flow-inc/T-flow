@@ -54,6 +54,6 @@
   },
   "jestSonar": {
     "reportPath": "coverage",
-    "reportFile": "thibzee.xml"
+    "reportFile": "test-report.xml"
   }
 }
