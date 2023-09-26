@@ -32,3 +32,6 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           projectBaseDir: ${{ github.workspace }}
+
+      - name : Sonar Analysis
+        run : npm run sonar
