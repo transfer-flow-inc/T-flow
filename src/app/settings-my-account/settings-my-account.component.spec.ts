@@ -8,8 +8,9 @@ import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {of} from "rxjs";
+import {of, throwError} from "rxjs";
 import {environment} from "../../environments/environment";
+import mock = jest.mock;
 
 describe('SettingsMyAccountComponent', () => {
   let component: SettingsMyAccountComponent;
@@ -74,13 +75,15 @@ describe('SettingsMyAccountComponent', () => {
   it('should call getAllUserInfos if token is found', () => {
     (cookiesService.get as jest.Mock).mockReturnValue('token');
     (jwtService.getAllUserInfos as jest.Mock).mockReturnValue({
-      lastName: 'Doe',
+      lastName: ' ',
       firstName: 'John',
       userEmail: 'test@set.fr'
     });
 
 
     component.ngOnInit();
+
+    expect(component.asLastname).toBe(false);
   });
 
   it('should toggle isUpdateUser', () => {
@@ -149,6 +152,14 @@ describe('SettingsMyAccountComponent', () => {
     component.buildUpdateUserUrl();
 
     expect(component.buildUpdateUserUrl()).toEqual(`${environment.apiURL}user/${component.user.userEmail}?oldPassword=${component.oldPasswordValue}`);
+
+  });
+
+  it('should handle error', () => {
+    spyOn(httpClient, 'updateUser').and.returnValue(throwError({error: 'error'}));
+
+    component.submitUpdateUser();
+
 
   });
 

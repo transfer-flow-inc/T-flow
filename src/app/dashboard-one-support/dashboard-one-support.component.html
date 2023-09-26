@@ -4,7 +4,7 @@
   <div class="nav">
     <a class="card-btn return" routerLink="/admin/dashboard/supports"> <fa-icon [icon]="returnIcon"></fa-icon> Revenir a tout les supports</a>
 
-   <!-- <h2 class="username" *ngIf="user.firstName != ''">{{ user.lastName }} {{ user.firstName }}</h2> -->
+    <h2 class="username" *ngIf="supportInfo.user.firstName != ''">{{ supportInfo.user.lastName }} {{ supportInfo.user.firstName }}</h2>
   </div>
 
     <section class="dashboard-container  unselectable">

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 
-import { DashboardOneTransferComponent } from './dashboard-one-transfer.component';
+import {DashboardOneTransferComponent} from './dashboard-one-transfer.component';
 import {DashboardNavbarComponent} from "../dashboard-navbar/dashboard-navbar.component";
 import {Observable, of, throwError} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -24,17 +24,17 @@ describe('DashboardOneTransferComponent', () => {
 
   beforeEach(async () => {
     activatedRoute = {
-    params: of({ id: 'someId' })
+      params: of({id: 'someId'})
     };
     await TestBed.configureTestingModule({
-      declarations: [ DashboardOneTransferComponent, DashboardNavbarComponent ],
+      declarations: [DashboardOneTransferComponent, DashboardNavbarComponent],
       imports: [HttpClientTestingModule, FontAwesomeTestingModule, RouterTestingModule],
       providers: [
         OAuthService, OAuthLogger, DateTimeProvider, UrlHelperService,
-        { provide: ActivatedRoute, useValue: activatedRoute }
+        {provide: ActivatedRoute, useValue: activatedRoute}
       ],
     })
-    .compileComponents();
+      .compileComponents();
 
     router = TestBed.inject(Router);
     flashMessageService = TestBed.inject(FlashMessageService);
@@ -50,16 +50,16 @@ describe('DashboardOneTransferComponent', () => {
   });
 
   it('should get query parameters correctly', () => {
-  component.getQueryParams();
-  expect(component.transferID).toBe('someId');
-});
+    component.getQueryParams();
+    expect(component.transferID).toBe('someId');
+  });
 
   it('should set user when getOneUserByID is successful', () => {
     spyOn(httpClientService, 'getTransferByID').and.returnValue(
-      of({ id: 1 } )
+      of({id: 1})
     );
     component.getTransferByID();
-    expect(component.transfer).toEqual( {"id": 1});
+    expect(component.transfer).toEqual({"id": 1});
     expect(component.loading).toBeFalsy();
   });
 
@@ -87,11 +87,11 @@ describe('DashboardOneTransferComponent', () => {
   });
 
   it('should return false if folder is not expired', () => {
-  const futureDate = new Date();
-  futureDate.setDate(futureDate.getDate() + 1); // set the date to one day in the future
-  const expired = component.isFolderExpired(futureDate);
-  expect(expired).toBeFalsy();
-});
+    const futureDate = new Date();
+    futureDate.setDate(futureDate.getDate() + 1); // set the date to one day in the future
+    const expired = component.isFolderExpired(futureDate);
+    expect(expired).toBeFalsy();
+  });
 
   it('should delete a transfer by his ID', () => {
     spyOn(httpClientService, 'deleteATransferByID').and.returnValue(of({}));
@@ -111,5 +111,42 @@ describe('DashboardOneTransferComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/admin/dashboard/utilisateurs/transferts/' + component.transfer.folderOwnerID]);
 
   });
+
+  it('should set flash message after deletion and navigation', fakeAsync(() => {
+    spyOn(httpClientService, 'deleteATransferByID').and.returnValue(of({}));
+
+    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
+
+    const flashMessageSpy = spyOn(flashMessageService, 'addMessage');
+
+    component.transferID = 'someId';
+
+    component.deleteTransferByID();
+
+    tick();
+
+    expect(httpClientService.deleteATransferByID).toHaveBeenCalled();
+    expect(router.navigate).toHaveBeenCalledWith(['/admin/dashboard/utilisateurs/transferts/' + component.transfer.folderOwnerID]);
+    expect(flashMessageSpy).toHaveBeenCalledWith('Le transfert a bien été supprimé', 'success', 4000);
+  }));
+
+  it('should set flash message after error and navigation', fakeAsync(() => {
+    spyOn(httpClientService, 'deleteATransferByID').and.returnValue(throwError('error'));
+
+    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
+
+    const flashMessageSpy = spyOn(flashMessageService, 'addMessage');
+
+    component.transferID = 'someId';
+
+    component.deleteTransferByID();
+
+    tick();
+
+    expect(httpClientService.deleteATransferByID).toHaveBeenCalled();
+    expect(router.navigate).toHaveBeenCalledWith(['/admin/dashboard/utilisateurs/transferts/' + component.transfer.folderOwnerID]);
+    expect(flashMessageSpy).toHaveBeenCalledWith("Une erreur est survenue", "error", 4000);
+  }));
+
 
 });
