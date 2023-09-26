@@ -138,5 +138,8 @@ export class HttpClientService {
     return this.httpClient.get<SupportInterface>(url);
   }
 
+  getStorageInfo(url: string) {
+    return this.httpClient.get(url);
+  }
 
 }

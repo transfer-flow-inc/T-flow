@@ -71,6 +71,7 @@ export class SettingsMyAccountComponent implements OnInit {
     this.getAllUserInfos();
 
 
+
   }
 
   getAllUserInfos() {
@@ -109,6 +110,8 @@ createUserUpdateObject() {
     password: this.newPasswordValue
   };
 }
+
+
 
 buildUpdateUserUrl() {
   return `${environment.apiURL}user/${this.user.userEmail}?oldPassword=${this.oldPasswordValue}`;
