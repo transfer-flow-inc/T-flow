@@ -94,6 +94,8 @@ export class RegisterComponent implements OnInit {
   handleError(err: any): void {
     if (err.status === 403) {
       this.error = "Email ou mot de passe incorrect !";
+    } else if (err.status === 423) {
+      this.error = "Vous devez valider votre compte !";
     } else {
       this.error = "Une erreur est survenue !";
     }

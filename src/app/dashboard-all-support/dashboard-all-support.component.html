@@ -18,7 +18,7 @@
           <p class="support-sender">{{ support.user.mail }}</p>
           <p class="message">{{ support.message }}</p>
           <p class="tag">{{ support.sentAt | date : 'longDate' }}</p>
-          <a routerLink="/admin/dashboard/supports/detail/{{ support.user.id }}" class="card-btn">Voir ce support</a>
+          <a routerLink="/admin/dashboard/supports/detail/{{ support.id }}" class="card-btn">Voir ce support</a>
 
     </div>
 
