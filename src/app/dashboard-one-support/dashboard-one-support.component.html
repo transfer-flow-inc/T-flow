@@ -13,6 +13,28 @@
         <img class="img-loader" [attr.src]="loadingImg" alt="Image de chargement">
       </div>
 
+      <section class="card-container">
+
+      <div class="card user" *ngIf="!isLoading">
+        <img class="card-img" [src]="supportInfo.user.avatar">
+        <p class="text">{{ supportInfo.user.lastName }} {{ supportInfo.user.firstName }}</p>
+        <p class="text">Envoyé le : {{ supportInfo.sentAt | date : 'longDate' }}</p>
+        <p class="text">{{ supportInfo.user.mail }}</p>
+      </div>
+
+      <div class="card" *ngIf="!isLoading">
+        <p class="text">{{ supportInfo.subject }}</p>
+        <p class="text">{{ supportInfo.message }}</p>
+
+        <div class="button-container">
+          <a class="card-btn">Répondre <fa-icon [icon]="exitIcon"></fa-icon> </a>
+          <a class="card-btn delete">Supprimer</a>
+        </div>
+
+      </div>
+
+      </section>
+
     </section>
 
 </section>

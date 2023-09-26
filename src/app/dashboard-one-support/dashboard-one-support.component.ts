@@ -3,8 +3,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {environment} from "../../environments/environment";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
-import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faUpRightFromSquare} from "@fortawesome/free-solid-svg-icons";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
+import {SupportInterface} from "../../interfaces/Support/support-interface";
 
 @Component({
   selector: 'app-dashboard-one-support',
@@ -17,6 +18,28 @@ export class DashboardOneSupportComponent implements OnInit {
   isLoading: boolean = true;
   loadingImg: string = "";
   returnIcon: IconDefinition = faArrowLeft;
+  exitIcon : IconDefinition = faUpRightFromSquare;
+  supportInfo: SupportInterface = {
+    id: 0,
+    sentAt: new Date(),
+    subject: "",
+    message: "",
+    email: "",
+    user: {
+      id : 0,
+      username: "",
+      firstName: "",
+      lastName: "",
+      mail: "",
+      password: "",
+      avatar: "",
+      authMethod: "",
+      roles: [''],
+      isAccountVerified: false,
+      plan: "",
+      userFolders: [],
+    }
+  }
 
   constructor(
     private router: Router,
@@ -49,7 +72,7 @@ export class DashboardOneSupportComponent implements OnInit {
     this.httpClientService.getSupportInfo( environment.apiURL + 'admin/ticket/' + this.userID).subscribe({
       next: (data) => {
         this.isLoading = false;
-        console.log(data);
+        this.supportInfo = data;
       }, error: (err) => {
         this.isLoading = false;
         console.log(err);

@@ -110,7 +110,7 @@
   .dashboard-container {
     padding: 0;
     max-height: 35rem;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .dashboard-card {

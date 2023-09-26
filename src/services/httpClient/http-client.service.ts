@@ -12,6 +12,7 @@ import {AllUsersInterface} from "../../interfaces/User/all-users-interface";
 import {AllSupportsInterface} from "../../interfaces/Support/all-supports-interface";
 import {UserApiInterface} from "../../interfaces/User/user-api-interface";
 import {FolderPagesInterface} from "../../interfaces/Files/folder-pages-interface";
+import {SupportInterface} from "../../interfaces/Support/support-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -134,7 +135,7 @@ export class HttpClientService {
   }
 
   getSupportInfo(url: string) {
-    return this.httpClient.get(url);
+    return this.httpClient.get<SupportInterface>(url);
   }
 
 

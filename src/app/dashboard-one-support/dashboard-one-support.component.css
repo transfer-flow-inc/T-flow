@@ -10,7 +10,7 @@
 
 .dashboard-container {
   max-height: 35rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin: auto;
   background-color: var(--background);
   border-radius: 1rem;
@@ -40,6 +40,10 @@
   color: var(--color);
   background-color: transparent;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .card-btn:hover {
@@ -65,7 +69,47 @@
   color: var(--color);
 }
 
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
 
+.text {
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: calc(100% / 2 - 2rem);
+}
+
+.delete:hover {
+  border: 0.1rem solid red !important;
+  background-color: red;
+  color: white;
+}
+
+.user {
+  border-right: 0.1rem solid var(--color);
+}
+
+.card-img {
+  height: 5rem;
+  width: 5rem;
+  background-color: white;
+  border-radius: 50%;
+}
 
 .nav {
   display: flex;
@@ -84,4 +128,52 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+@media screen and (max-width: 1020px) {
+
+  .dashboard-container-all {
+    width: 95vw;
+    padding: 1rem;
+  }
+
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .card-container {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .user {
+    padding-bottom: 1rem;
+    border-right: 0;
+    border-bottom: 0.1rem solid var(--color);
+  }
+
+  .nav {
+    padding: 0 1rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+  }
+
+}
+
+@media screen and (max-width: 425px){
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
 }
