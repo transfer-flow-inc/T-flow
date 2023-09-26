@@ -9,6 +9,8 @@ import {environment} from "../../environments/environment.development";
 import {UpdateUserInterface} from "../../interfaces/User/update/update-user-interface";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
+import {FormatSizeService} from "../../services/format-size-file/format-size.service";
+import {UserStorageInterface} from "../../interfaces/User/user-storage-interface";
 
 @Component({
   selector: 'app-settings-my-account',
@@ -31,7 +33,11 @@ export class SettingsMyAccountComponent implements OnInit {
     authMethod: "",
     userFolders: []
   }
-
+  storageInfo: UserStorageInterface = {
+    usedStorage: 0,
+    maxStorage: 0
+  }
+  storagePercentage : number = 0;
   userUpdate: UpdateUserInterface = {
     lastName: "",
     firstName: "",
@@ -57,7 +63,8 @@ export class SettingsMyAccountComponent implements OnInit {
     private jwtService: JwtTokenService,
     private router: Router,
     private httpClient: HttpClientService,
-    private flashMessageService: FlashMessageService
+    private flashMessageService: FlashMessageService,
+    private formatSizeService: FormatSizeService
   ) {
   }
 
@@ -65,11 +72,12 @@ export class SettingsMyAccountComponent implements OnInit {
   ngOnInit(): void {
 
     if (!this.cookiesService.get('token')) {
-        this.router.navigate(['/se-connecter']).then();
-        return;
+      this.router.navigate(['/se-connecter']).then();
+      return;
     }
     this.getAllUserInfos();
 
+    this.getStorageInfo();
 
 
   }
@@ -90,47 +98,67 @@ export class SettingsMyAccountComponent implements OnInit {
   }
 
   submitUpdateUser() {
-  this.userUpdate = this.createUserUpdateObject();
+    this.userUpdate = this.createUserUpdateObject();
 
-  const updateUserUrl = this.buildUpdateUserUrl();
+    const updateUserUrl = this.buildUpdateUserUrl();
 
-  this.httpClient.updateUser(updateUserUrl, this.userUpdate)
-    .subscribe({
-      next: response => this.handleUpdateSuccess(response),
-      error: error => this.handleUpdateError(error)
+    this.httpClient.updateUser(updateUserUrl, this.userUpdate)
+      .subscribe({
+        next: response => this.handleUpdateSuccess(response),
+        error: error => this.handleUpdateError(error)
+      });
+  }
+
+  createUserUpdateObject() {
+    return {
+      lastName: this.lastNameValue,
+      firstName: this.firstNameValue,
+      email: this.emailValue,
+      oldPassword: this.oldPasswordValue,
+      password: this.newPasswordValue
+    };
+  }
+
+
+  buildUpdateUserUrl() {
+    return `${environment.apiURL}user/${this.user.userEmail}?oldPassword=${this.oldPasswordValue}`;
+  }
+
+  handleUpdateSuccess(response: TokenInterface) {
+    this.cookiesService.delete('token');
+    this.cookiesService.set('token', response.token, 30);
+    this.router.navigate(['/accueil']).then(() => {
+      this.flashMessageService.addMessage('Votre compte a bien été mis à jour', 'success', 4000);
+      this.isUpdateUser = false;
     });
-}
+  }
 
-createUserUpdateObject() {
-  return {
-    lastName: this.lastNameValue,
-    firstName: this.firstNameValue,
-    email: this.emailValue,
-    oldPassword: this.oldPasswordValue,
-    password: this.newPasswordValue
-  };
-}
+  handleUpdateError(error: Error) {
+    this.router.navigate(['/accueil']).then(() => {
+      this.flashMessageService.addMessage('Une erreur est survenue', 'error', 4000);
+    });
+  }
 
+  getStorageInfo() {
+    this.httpClient.getStorageInfo(environment.apiURL + 'user/' + this.jwtService.getUserId() + '/storage')
+      .subscribe({
+        next: (response) => {
+          this.storageInfo = response;
+          this.storagePercentage = (this.storageInfo.usedStorage / this.storageInfo.maxStorage) * 100;
+          console.log(this.storagePercentage)
+        },
+        error: (error) => {
+          console.log(error);
+        }
 
+      });
 
-buildUpdateUserUrl() {
-  return `${environment.apiURL}user/${this.user.userEmail}?oldPassword=${this.oldPasswordValue}`;
-}
+  }
 
-handleUpdateSuccess(response: TokenInterface) {
-  this.cookiesService.delete('token');
-  this.cookiesService.set('token', response.token, 30);
-  this.router.navigate(['/accueil']).then(() => {
-    this.flashMessageService.addMessage('Votre compte a bien été mis à jour', 'success', 4000);
-    this.isUpdateUser = false;
-  });
-}
+  formatSize(size: number) {
+    return this.formatSizeService.formatSize(size);
+  }
 
-handleUpdateError(error : Error) {
-  this.router.navigate(['/accueil']).then(() => {
-    this.flashMessageService.addMessage('Une erreur est survenue', 'error', 4000);
-  });
-}
 
 
 

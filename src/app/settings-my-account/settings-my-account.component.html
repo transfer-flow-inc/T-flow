@@ -5,6 +5,10 @@
 
   <div class="section-settings" *ngIf="!isUpdateUser">
 
+    <div class="storage">
+      <div class="storage-user" [ngClass]="storagePercentage < 50 ? 'green' : (storagePercentage <= 80 ? 'orange' : 'red')" [style.width.%]="storagePercentage"></div>
+    </div>
+    <p class="storage-text">{{ formatSize(storageInfo.usedStorage) }} / {{ formatSize(storageInfo.maxStorage) }}</p>
     <img class="img-user" [src]="user.avatar" alt="Image de profil">
     <p *ngIf="asLastname">Nom : {{this.user.lastName}}</p>
     <p>Prénom : {{this.user.firstName}}</p>

@@ -13,6 +13,7 @@ import {AllSupportsInterface} from "../../interfaces/Support/all-supports-interf
 import {UserApiInterface} from "../../interfaces/User/user-api-interface";
 import {FolderPagesInterface} from "../../interfaces/Files/folder-pages-interface";
 import {SupportInterface} from "../../interfaces/Support/support-interface";
+import {UserStorageInterface} from "../../interfaces/User/user-storage-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -139,7 +140,7 @@ export class HttpClientService {
   }
 
   getStorageInfo(url: string) {
-    return this.httpClient.get(url);
+    return this.httpClient.get<UserStorageInterface>(url);
   }
 
 }
