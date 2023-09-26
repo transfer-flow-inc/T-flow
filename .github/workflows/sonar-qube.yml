@@ -30,10 +30,3 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
-      - name : Sonar Analysis
-        env :
-          SONAR_TOKEN : ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL : ${{ secrets.SONAR_HOST_URL }}
-          SONAR_PROJECT_KEY : ${{ secrets.SONAR_PROJECT_KEY }}
-        run : npm run sonar -Dsonar.token=$SONAR_TOKEN -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.projectKey=$SONAR_PROJECT_KEY

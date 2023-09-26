@@ -10,7 +10,7 @@ module.exports = {
   testRunner: 'jest-jasmine2',
   testEnvironment: 'jsdom',
   coverageDirectory: './coverage',
-  coverageReporters: ["json", "lcov", 'text'],
+  coverageReporters: ["json", "lcov", 'text', 'text-summary'],
   collectCoverageFrom: [
     "src/**/*.ts"
   ],
@@ -25,7 +25,7 @@ module.exports = {
     "/src/app/app.module.ts",
     ],
   collectCoverage: true,
-  testResultsProcessor: "jest-sonar-reporter",
+  reporters: ['default',  'jest-sonar'],
   clearMocks: true,
   silent: true,
 }
