@@ -34,4 +34,4 @@ jobs:
           projectBaseDir: ${{ github.workspace }}
 
       - name : Sonar Analysis
-        run : npm run sonar
+        run : npm run sonar -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
