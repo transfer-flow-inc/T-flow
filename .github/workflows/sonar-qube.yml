@@ -23,8 +23,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Run tests
-        run: npm test -- --coverage --prefix ${{ github.workspace }}
-
+        run: npm test
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
