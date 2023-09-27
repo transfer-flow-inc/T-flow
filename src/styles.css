@@ -24,7 +24,7 @@ body, html, app-root, app-homepage {
   width: 100%;
   display: inline-block;
 }
-app-transfer {
+app-transfer, app-validate-email {
   min-height: 100%;
   width: 100%;
   display: inline-block ;

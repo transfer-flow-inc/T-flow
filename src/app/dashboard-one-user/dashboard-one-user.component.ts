@@ -33,6 +33,7 @@ export class DashboardOneUserComponent implements OnInit {
     plan : '',
     authMethod: '',
     userFolders: [],
+    createdAt: new Date()
   }
 
   constructor(

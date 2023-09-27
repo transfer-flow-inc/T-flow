@@ -5,7 +5,6 @@
   background-color: var(--color);
   color: var(--background);
   width: 50rem;
-  gap: 3rem;
   border-radius: 1rem;
   padding: 3rem;
   margin: auto;
@@ -16,7 +15,7 @@
 }
 
 .container-all {
-  height: 100%;
+  height: fit-content;
   position: relative;
 }
 
@@ -52,15 +51,19 @@ p {
 
 @media screen and (max-width: 1020px) {
   .container {
-    width: 100%;
-    position: relative;
-    top: unset;
-    left: unset;
-    transform: unset;
+    width: 80vw;
+  }
+
+  .button {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
   }
 
   .container-all {
-    height: 100%;
-    position: relative;
+    height: fit-content;
   }
+
 }
