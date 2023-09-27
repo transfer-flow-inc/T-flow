@@ -86,7 +86,7 @@ export class SettingsMyAccountComponent implements OnInit {
     this.user = this.jwtService.getAllUserInfos();
 
     this.lastNameValue = this.user.lastName;
-    if (this.user.lastName == ' ') {
+    if (this.user.lastName == ` `) {
       this.asLastname = false;
     }
     this.firstNameValue = this.user.firstName;
@@ -105,7 +105,7 @@ export class SettingsMyAccountComponent implements OnInit {
     this.httpClient.updateUser(updateUserUrl, this.userUpdate)
       .subscribe({
         next: response => this.handleUpdateSuccess(response),
-        error: error => this.handleUpdateError(error)
+        error: error => this.navigateToHomeAndFlashMessage('Une erreur est survenue lors de la mise à jour de votre compte', 'error', 4000),
       });
   }
 
@@ -127,36 +127,29 @@ export class SettingsMyAccountComponent implements OnInit {
   handleUpdateSuccess(response: TokenInterface) {
     this.cookiesService.delete('token');
     this.cookiesService.set('token', response.token, 30);
-    this.router.navigate(['/accueil']).then(() => {
-      this.flashMessageService.addMessage('Votre compte a bien été mis à jour', 'success', 4000);
-      this.isUpdateUser = false;
-    });
+    this.navigateToHomeAndFlashMessage('Votre compte a bien été mis à jour', 'success', 4000);
   }
 
-  handleUpdateError(error: Error) {
-    this.router.navigate(['/accueil']).then(() => {
-      this.flashMessageService.addMessage('Une erreur est survenue', 'error', 4000);
-    });
-  }
 
   getStorageInfo() {
     this.httpClient.getStorageInfo(environment.apiURL + 'user/' + this.jwtService.getUserId() + '/storage')
       .subscribe({
         next: (response) => {
           this.storageInfo = response;
-          this.storagePercentage = (this.storageInfo.usedStorage / this.storageInfo.maxStorage) * 100;
-          console.log(this.storagePercentage)
-        },
-        error: (error) => {
-          console.log(error);
+          this.storagePercentage = (this.storageInfo.usedStorage * 100) / this.storageInfo.maxStorage;
         }
-
       });
 
   }
 
   formatSize(size: number) {
     return this.formatSizeService.formatSize(size);
+  }
+
+  navigateToHomeAndFlashMessage(message: string, type: string, time: number) {
+    this.router.navigate(['/accueil']).then(() => {
+      this.flashMessageService.addMessage(message, type, time);
+    });
   }
 
 

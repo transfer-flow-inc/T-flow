@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {of, throwError} from "rxjs";
 import {environment} from "../../environments/environment";
-import mock = jest.mock;
+import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 
 describe('SettingsMyAccountComponent', () => {
   let component: SettingsMyAccountComponent;
@@ -19,35 +19,23 @@ describe('SettingsMyAccountComponent', () => {
   let cookiesService: CookiesService;
   let router: Router;
   let httpClient: HttpClientService;
+  let flashMessageService: FlashMessageService;
 
   beforeEach(() => {
 
-    const mockJwtService = {
-      getAllUserInfos: jest.fn()
-    };
-    const mockCookiesService = {
-      get: jest.fn()
-    }
-    const mockRouter = {
-      navigate: jest.fn()
-    }
-    const mockHttpClient = {
-      updateUser: jest.fn()
-    }
+
     TestBed.configureTestingModule({
       declarations: [SettingsMyAccountComponent, SettingsNavbarComponent],
       imports: [RouterTestingModule],
       providers: [HttpClient, HttpHandler, OAuthService, UrlHelperService, OAuthLogger, DateTimeProvider,
-        {provide: JwtTokenService, useValue: mockJwtService},
-        {provide: CookiesService, useValue: mockCookiesService},
-        {provide: HttpClientService, useValue: mockHttpClient},
       ],
     }).compileComponents();
 
+    flashMessageService = TestBed.inject(FlashMessageService);
     jwtService = TestBed.inject(JwtTokenService);
     cookiesService = TestBed.inject(CookiesService);
     httpClient = TestBed.inject(HttpClientService);
-
+    router = TestBed.inject(Router);
     fixture = TestBed.createComponent(SettingsMyAccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -58,34 +46,16 @@ describe('SettingsMyAccountComponent', () => {
   });
 
   it('should fetch user info correctly', () => {
-    (jwtService.getAllUserInfos as jest.Mock).mockReturnValue({
-      lastName: 'Doe',
-      firstName: 'John',
-      userEmail: 'john.doe@example.com'
-    });
+    spyOn(jwtService, 'getAllUserInfos').and.returnValue({ email: 'test@test.fr', lastName: 'Doe', firstName: 'John' });
 
     component.getAllUserInfos();
 
-    expect(component.lastNameValue).toBe('Doe');
-    expect(component.firstNameValue).toBe('John');
-    expect(component.emailValue).toBe('john.doe@example.com');
+    expect(component.user).toEqual({ email: 'test@test.fr', lastName: 'Doe', firstName: 'John' });
+
   });
 
 
- /* it('should call getAllUserInfos if token is found', () => {
-    (cookiesService.get as jest.Mock).mockReturnValue('token');
-    (jwtService.getAllUserInfos as jest.Mock).mockReturnValue({
-      lastName: ' ',
-      firstName: 'John',
-      userEmail: 'test@set.fr'
-    });
 
-
-    component.ngOnInit();
-
-    expect(component.asLastname).toBe(false);
-  });
-*/
   it('should toggle isUpdateUser', () => {
     component.isUpdateUser = false;
     component.toggleUpdateUser();
@@ -94,6 +64,81 @@ describe('SettingsMyAccountComponent', () => {
     component.toggleUpdateUser();
     expect(component.isUpdateUser).toBe(false);
   });
+
+   it('should create a user Object', () => {
+    const userUpdate = {
+      lastName: 'Doe',
+      firstName: 'John',
+      email: 'test@est.fr',
+      oldPassword: 'oldPassword',
+      password: 'password'
+    };
+
+    component.lastNameValue = 'Doe';
+    component.firstNameValue = 'John';
+    component.emailValue = 'test@est.fr';
+    component.oldPasswordValue = 'oldPassword';
+    component.newPasswordValue = 'password';
+
+    const result = component.createUserUpdateObject();
+
+    expect(result).toEqual(userUpdate);
+});
+
+     it('should build user update url', () => {
+    component.user.userEmail = 'test@test.fr';
+    component.oldPasswordValue = 'oldPassword';
+
+    component.buildUpdateUserUrl();
+
+    expect(component.buildUpdateUserUrl()).toEqual('https://api.transfer-flow.studio/api/v1/user/test@test.fr?oldPassword=oldPassword');
+
+  });
+
+  it('should handle error', () => {
+    spyOn(httpClient, 'updateUser').and.returnValue(throwError({error: 'error'}));
+
+
+    component.submitUpdateUser();
+
+  });
+
+  it('should get storage info correctly', () => {
+    spyOn(httpClient, 'getStorageInfo').and.returnValue(of({storageUsed: 100, storageLimit: 1000}));
+
+    component.getStorageInfo();
+
+    expect(component.storageInfo).toEqual({storageUsed: 100, storageLimit: 1000});
+
+  });
+
+ it('should navigate to home and flash message', (done) => {
+    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
+
+    spyOn(flashMessageService, 'addMessage');
+
+    component.navigateToHomeAndFlashMessage('message', 'type', 5000);
+
+    expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
+
+    router.navigate([]).then(() => {
+        expect(flashMessageService.addMessage).toHaveBeenCalledWith('message', 'type', 5000);
+        done();
+    });
+});
+
+ it('should fetch user and storage info if token is present', () => {
+    spyOn(cookiesService, 'get').and.returnValue('token');
+    spyOn(component, 'getAllUserInfos').and.callThrough(); // Call actual method
+    spyOn(component, 'getStorageInfo').and.callThrough(); // Call actual method
+    spyOn(router, 'navigate');
+
+    component.ngOnInit();
+
+    expect(router.navigate).not.toHaveBeenCalledWith(['/se-connecter']);
+    expect(component.getAllUserInfos).toHaveBeenCalled();
+    expect(component.getStorageInfo).toHaveBeenCalled();
+});
 
   it('should submit user updates correctly', () => {
     const userUpdate = {
@@ -108,11 +153,10 @@ describe('SettingsMyAccountComponent', () => {
 
     component.userUpdate = userUpdate;
 
-    // Mock the component methods and httpClient method
     jest.spyOn(component, 'createUserUpdateObject').mockReturnValue(userUpdate);
     jest.spyOn(component, 'buildUpdateUserUrl').mockReturnValue(updateUserUrl);
     jest.spyOn(component, 'handleUpdateSuccess');
-    jest.spyOn(component, 'handleUpdateError');
+    jest.spyOn(component, 'navigateToHomeAndFlashMessage');
     jest.spyOn(httpClient, 'updateUser').mockReturnValue(of(mockResponse));
 
     component.submitUpdateUser();
@@ -121,47 +165,12 @@ describe('SettingsMyAccountComponent', () => {
     expect(component.buildUpdateUserUrl).toHaveBeenCalled();
     expect(httpClient.updateUser).toHaveBeenCalledWith(updateUserUrl, userUpdate);
     expect(component.handleUpdateSuccess).toHaveBeenCalledWith(mockResponse);
-    expect(component.handleUpdateError).not.toHaveBeenCalled();
+    expect(component.navigateToHomeAndFlashMessage).toHaveBeenCalled();
   });
 
 
-  it('should create a user Object', () => {
-    const userUpdate = {
-      lastName: 'Doe',
-      firstName: 'John',
-      email: 'test@est.fr',
-      oldPassword: 'oldPassword',
-      password: 'password'
-    };
-    component.lastNameValue = 'Doe';
-    component.firstNameValue = 'John';
-    component.emailValue = 'test@est.fr';
-    component.oldPasswordValue = 'oldPassword';
-    component.newPasswordValue = 'password';
-
-    const result = component.createUserUpdateObject();
-    expect(result).toEqual(userUpdate);
 
 
-  });
-
-  it('should build user update url', () => {
-    component.user.userEmail = 'test@test.fr';
-    component.oldPasswordValue = 'oldPassword';
-
-    component.buildUpdateUserUrl();
-
-    expect(component.buildUpdateUserUrl()).toEqual(`${environment.apiURL}user/${component.user.userEmail}?oldPassword=${component.oldPasswordValue}`);
-
-  });
-
-  it('should handle error', () => {
-    spyOn(httpClient, 'updateUser').and.returnValue(throwError({error: 'error'}));
-
-    component.submitUpdateUser();
-
-
-  });
 
 
 });
