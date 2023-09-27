@@ -19,7 +19,7 @@
         <div *ngFor="let user of users.content">
 
             <div class="dashboard-card unselectable">
-                <img class="img-user" [src]="user.avatar" alt="photo">
+                <img class="img-user" [src]="user.avatar" alt="photo" (error)="handleImageError($event)">
               <div class="dashboard-card-text">
                 <p class="card-name">{{ user.lastName | uppercase }} {{ user.firstName | titlecase }}</p>
                 <p>{{ user.userEmail }}</p>
