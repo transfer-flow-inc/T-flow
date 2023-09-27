@@ -63,7 +63,7 @@ export class DashboardAllUsersComponent implements OnInit {
   }
 
   getAllUsers(pageNumber: number) {
-    this.httpClientService.getAllUsers(environment.apiURL + 'admin/users?page=' + (pageNumber - 1) + '&size=20').subscribe({
+    this.httpClientService.getAllUsers(environment.apiURL + 'admin/users?page=' + (pageNumber - 1) + '&size=5').subscribe({
       next: (response) => {
         this.loading = false;
         this.users = response;
@@ -82,6 +82,10 @@ export class DashboardAllUsersComponent implements OnInit {
     this.themeService.currentThemeSubject.subscribe((theme) => {
       this.loadingImg = theme === 'light' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
     });
+  }
+
+  handleImageError(event: any) {
+    event.target.src = 'assets/images/logo_dark.png';
   }
 
 }
