@@ -145,7 +145,6 @@ export class SettingsMyAccountComponent implements OnInit {
         next: (response) => {
           this.storageInfo = response;
           this.storagePercentage = (this.storageInfo.usedStorage / this.storageInfo.maxStorage) * 100;
-          console.log(this.storagePercentage)
         },
         error: (error) => {
           console.log(error);

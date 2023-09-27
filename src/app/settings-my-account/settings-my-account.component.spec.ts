@@ -159,9 +159,9 @@ describe('SettingsMyAccountComponent', () => {
     spyOn(httpClient, 'updateUser').and.returnValue(throwError({error: 'error'}));
 
     component.submitUpdateUser();
-
-
   });
+
+
 
 
 });

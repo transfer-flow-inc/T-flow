@@ -120,7 +120,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  width: 20rem;
+  min-width: 20rem;
+  width: auto;
   font-weight: bold;
   background-color: transparent;
   margin: 1rem;
@@ -165,7 +166,7 @@
 }
 
 .sso-text {
-  margin: auto;
+  margin: auto auto auto 0.8rem ;
 }
 
 .text-center {
