@@ -45,6 +45,7 @@ export class DownloadComponent implements OnInit {
   loading: boolean = true;
   loadingImg: string = "";
   imgTheme: string = '';
+  isDownloading: boolean = false;
 
 
   ngOnInit() {
@@ -60,13 +61,14 @@ export class DownloadComponent implements OnInit {
 
   downloadFolder() {
 
+    this.loading = true;
+    this.isDownloading = true;
     this.httpClient.downloadFolder(environment.apiURL + 'folder/download/' + this.folderUrl + '?accessKey=' + this.accessKey)
       .subscribe({
         next: (data) => {
 
 
           this.createABlobAndDownload(data);
-
           this.navigateAndShowFlashMessage('Téléchargement du dossier en cours', 'success', 4000);
 
         }, error: () => {

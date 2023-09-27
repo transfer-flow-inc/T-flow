@@ -170,7 +170,4 @@ describe('SettingsMyAccountComponent', () => {
 
 
 
-
-
-
 });
