@@ -66,6 +66,7 @@ export class DashboardAllTransferComponent implements OnInit{
     plan: '',
     authMethod: '',
     userFolders: [],
+    createdAt: new Date()
   }
   lockIcon: IconDefinition = faLockOpen;
   returnIcon: IconDefinition = faArrowLeft;

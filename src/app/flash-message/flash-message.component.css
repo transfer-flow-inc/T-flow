@@ -42,3 +42,11 @@
 .error {
   background-color: red;
 }
+
+@media screen and (max-width: 475px){
+
+  .flash {
+    width: 20rem;
+  }
+
+}

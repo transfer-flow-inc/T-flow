@@ -38,6 +38,7 @@ export class DashboardOneSupportComponent implements OnInit {
       isAccountVerified: false,
       plan: "",
       userFolders: [],
+      createdAt: new Date()
     }
   }
 

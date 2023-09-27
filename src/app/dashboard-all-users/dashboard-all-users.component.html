@@ -35,7 +35,7 @@
 
     </section>
 
-  <div class="nav page" *ngIf="!loading">
+  <div class="nav page" *ngIf="!loading && isDataFound">
     <fa-icon class="icon-page"
              [ngClass]="users.pageable.pageNumber + 1 == 1  ? 'disabled' : undefined"
              [icon]="leftIcon"

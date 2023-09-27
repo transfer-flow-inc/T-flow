@@ -15,6 +15,7 @@ export class ValidateEmailComponent implements OnInit {
   token: TokenInterface = { token: '' };
   isConnected: boolean = false;
   isVerified: boolean = false;
+  isLoading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,6 +50,7 @@ export class ValidateEmailComponent implements OnInit {
   }
 
   handleSuccessfulVerification(): void {
+    this.isLoading = false;
     this.isVerified = true;
   }
 

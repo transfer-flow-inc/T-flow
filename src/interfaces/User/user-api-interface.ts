@@ -13,4 +13,5 @@ export interface UserApiInterface {
     plan: string;
     authMethod: string;
     userFolders: FolderInterface[];
+    createdAt: Date;
 }
