@@ -1,0 +1,119 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color);
+  color: var(--background);
+  width: fit-content;
+  margin: auto;
+  padding: 3rem;
+  gap: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.button {
+  width: fit-content;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 0.1rem solid var(--background);
+  border-radius: 0.5rem;
+  color: var(--background);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.dismiss:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  color: var(--color);
+}
+
+.confirm:hover {
+  border: 0.1rem solid red;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+
+.disabled {
+  background-color: grey;
+  color: white;
+  border: 0.1rem solid grey;
+}
+.disabled:hover {
+  cursor: not-allowed;
+}
+
+.text {
+  width: 70%;
+  margin: auto;
+}
+
+.confirm-container {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.confirm-text {
+  margin: 0;
+}
+
+.confirm-checkbox {
+   justify-self: start;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 0.15rem solid red;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+.confirm-checkbox:before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  transform: scale(0);
+  box-shadow: inset 1rem 1rem red;
+  transition: 120ms transform ease-in-out;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.confirm-checkbox:checked::before {
+  transform: scale(1);
+  box-shadow: inset 1rem 1rem green;
+}
+
+.confirm-checkbox:checked {
+  border-color: green !important;
+}
+
+@media screen and (max-width: 1020px){
+
+  .text {
+    width: 100%;
+    margin: auto;
+  }
+
+}
