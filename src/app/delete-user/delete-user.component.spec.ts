@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteUserComponent } from './delete-user.component';
 import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 
 describe('DeleteUserComponent', () => {
   let component: DeleteUserComponent;
@@ -10,7 +12,8 @@ describe('DeleteUserComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ DeleteUserComponent ],
-      imports: [RouterTestingModule]
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      providers: [OAuthLogger, OAuthService, DateTimeProvider, UrlHelperService]
     })
     .compileComponents();
 
