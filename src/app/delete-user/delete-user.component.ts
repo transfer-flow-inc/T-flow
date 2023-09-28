@@ -39,12 +39,12 @@ export class DeleteUserComponent implements OnInit {
   }
 
   deleteUser() {
-    this.httpClientService.deleteAUserByIDAndDeletionKey( environment.apiURL + 'verify/delete/' + this.userID + '/' + this.deletionKey )
+    this.httpClientService.deleteAUserByIDAndDeletionKey(environment.apiURL + 'verify/delete/' + this.userID + '/' + this.deletionKey )
       .subscribe({
         next: () => {
           this.navigateToHomeAndFlashMessage('Votre compte a bien été supprimé', 'success', 4000)
         }, error: () => {
-          this.navigateToHomeAndFlashMessage('Une erreur est survenue lors de la suppression de votre compte', 'danger', 4000)
+          this.navigateToHomeAndFlashMessage('Une erreur est survenue lors de la suppression de votre compte', 'error', 4000)
         }
       })
   }
