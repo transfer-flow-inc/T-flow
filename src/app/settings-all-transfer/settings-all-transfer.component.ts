@@ -5,8 +5,6 @@ import { environment } from "../../environments/environment.development";
 import { FolderInterface } from "../../interfaces/Files/folder-interface";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 
