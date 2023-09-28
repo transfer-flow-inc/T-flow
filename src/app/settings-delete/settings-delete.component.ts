@@ -27,11 +27,11 @@ export class SettingsDeleteComponent {
   }
 
   processDeleteRequest() {
-    this.httpClientService.requestDeleteAUser(environment.apiURL + '/user/delete/' + this.jwtTokenService.getUserEmail() ).subscribe({
+    this.httpClientService.requestDeleteAUser(environment.apiURL + 'user/delete/' + this.jwtTokenService.getUserEmail() ).subscribe({
       next: () => {
         this.navigateToHomeAndFlashMessage("Veuillez vérifier vos mails pour la suppression de votre compte", "success", 4000);
-      }, error: () => {
-        this.navigateToHomeAndFlashMessage("Une erreur est survenue lors de la suppression de votre compte", "danger", 4000)
+      }, error: (err) => {
+        console.log(err)
       }
     });
   }

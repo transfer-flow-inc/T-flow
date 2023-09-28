@@ -21,6 +21,8 @@ app-settings-navbar {
   margin: auto;
   overflow: auto;
   gap: 1rem;
+  width: 70%;
+  height: 70%;
   color: var(--background);
   background-color: var(--color);
 }
