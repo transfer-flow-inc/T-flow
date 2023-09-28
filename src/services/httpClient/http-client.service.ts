@@ -127,9 +127,6 @@ export class HttpClientService {
     return this.httpClient.delete(url);
   }
 
-  deleteAUserByIDAndDeletionKey(url: string) {
-    return this.httpClient.delete(url);
-  }
 
   getTransferByID(url: string) {
     return this.httpClient.get<FolderInterface>(url);
@@ -146,5 +143,15 @@ export class HttpClientService {
   getStorageInfo(url: string) {
     return this.httpClient.get<UserStorageInterface>(url);
   }
+
+  deleteAUserByIDAndDeletionKey(url: string) {
+    return this.httpClient.delete(url);
+  }
+
+  requestDeleteAUser(url: string) {
+    return this.httpClient.post(url, {});
+  }
+
+
 
 }

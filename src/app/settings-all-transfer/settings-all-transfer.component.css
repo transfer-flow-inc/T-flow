@@ -41,7 +41,7 @@ app-settings-navbar {
   background-color: var(--background);
   height: 70%;
   width: 70%;
-  margin: auto;
+  margin: auto 2rem;
   border-radius: 1rem;
   overflow-x: auto;
 }

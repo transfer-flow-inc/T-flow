@@ -27,6 +27,7 @@ import {DashboardOneTransferComponent} from "./dashboard-one-transfer/dashboard-
 import {DashboardAllProvidersComponent} from "./dashboard-all-providers/dashboard-all-providers.component";
 import {TransferRecapComponent} from "./transfer-recap/transfer-recap.component";
 import {DeleteUserComponent} from "./delete-user/delete-user.component";
+import {SettingsDeleteComponent} from "./settings-delete/settings-delete.component";
 
 
 const routes: Routes = [
@@ -56,6 +57,7 @@ const routes: Routes = [
   { 'path' : "reglages/mon-compte", component: SettingsMyAccountComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon compte'}},
   { 'path' : "reglages/mes-transferts", component: SettingsAllTransferComponent, canActivate : [AutorizeGuardService], data: { title: 'Mes Transferts'}},
   { 'path' : "reglages/mon-abonnement", component: SettingsSubscriptionComponent, canActivate : [AutorizeGuardService], data: { title: 'Mon abonnement'}},
+  { 'path' : "reglages/supprimer-mon-compte", component: SettingsDeleteComponent, canActivate : [AutorizeGuardService], data: { title: 'Supprimer mon compte'}},
   { 'path' : "supprimer-mon-compte/:userID/:deletionKey", component: DeleteUserComponent, data: { title: 'Supprimer mon compte'}},
   { 'path' : "" , redirectTo: "accueil", pathMatch: "full"},
   { 'path' : "**" , component: NotFoundComponent, data: { title: 'Cette page n\'existe pas'}},

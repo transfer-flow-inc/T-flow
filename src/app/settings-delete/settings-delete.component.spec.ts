@@ -1,39 +1,48 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteUserComponent } from './delete-user.component';
-import {RouterTestingModule} from "@angular/router/testing";
+import { SettingsDeleteComponent } from './settings-delete.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
-import {Router} from "@angular/router";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {Router} from "@angular/router";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {of, throwError} from "rxjs";
 
-describe('DeleteUserComponent', () => {
-  let component: DeleteUserComponent;
-  let fixture: ComponentFixture<DeleteUserComponent>;
-  let router : Router;
-  let flashMessageService : FlashMessageService;
-  let httpClientService : HttpClientService;
+describe('SettingsDeleteComponent', () => {
+  let component: SettingsDeleteComponent;
+  let fixture: ComponentFixture<SettingsDeleteComponent>;
+  let flashMessageService: FlashMessageService;
+  let router: Router;
+  let httpClientService: HttpClientService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteUserComponent ],
-      imports: [RouterTestingModule, HttpClientTestingModule],
-      providers: [OAuthLogger, OAuthService, DateTimeProvider, UrlHelperService]
+      declarations: [ SettingsDeleteComponent ],
+      imports: [ HttpClientTestingModule ],
+      providers: [ OAuthService, OAuthLogger, DateTimeProvider, UrlHelperService]
     })
     .compileComponents();
 
+    httpClientService = TestBed.inject(HttpClientService);
     router = TestBed.inject(Router);
     flashMessageService = TestBed.inject(FlashMessageService);
-    httpClientService = TestBed.inject(HttpClientService);
-    fixture = TestBed.createComponent(DeleteUserComponent);
+    fixture = TestBed.createComponent(SettingsDeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should toggle isConfirmed', () => {
+
+    component.isConfirmed = false;
+    component.toggleConfirmation();
+    expect(component.isConfirmed).toBeTruthy();
+    component.toggleConfirmation();
+    expect(component.isConfirmed).toBeFalsy();
+
   });
 
   it('should navigate to "/accueil" and show a flash message', async () => {
@@ -50,33 +59,25 @@ describe('DeleteUserComponent', () => {
     expect(flashMessageService.addMessage).toHaveBeenCalledWith(message, type, time);
   });
 
-  it('should toggle isConfirmed', () => {
-    component.isConfirmed = false;
-    component.toggleConfirmation();
-    expect(component.isConfirmed).toBeTruthy();
-    component.toggleConfirmation();
-    expect(component.isConfirmed).toBeFalsy();
+  it('should handle success deletion', () => {
+    spyOn(httpClientService, 'requestDeleteAUser').and.returnValue(of({}));
+    spyOn(component, 'navigateToHomeAndFlashMessage');
+
+    component.processDeleteRequest();
+
+    expect(httpClientService.requestDeleteAUser).toHaveBeenCalled();
+    expect(component.navigateToHomeAndFlashMessage).toHaveBeenCalledWith('Veuillez vérifier vos mails pour la suppression de votre compte', 'success', 4000);
 
   });
 
-  it('should handle success', () => {
+  it('should handle error deletion', () => {
+    spyOn(httpClientService, 'requestDeleteAUser').and.returnValue(throwError('error'));
     spyOn(component, 'navigateToHomeAndFlashMessage');
-    spyOn(httpClientService, 'deleteAUserByIDAndDeletionKey').and.returnValue(of({}));
 
-    component.deleteUser();
+    component.processDeleteRequest();
 
-    expect(component.navigateToHomeAndFlashMessage).toHaveBeenCalledWith('Votre compte a bien été supprimé', 'success', 4000);
-
-  });
-
-  it('should handle error', () => {
-    spyOn(component, 'navigateToHomeAndFlashMessage');
-    spyOn(httpClientService, 'deleteAUserByIDAndDeletionKey').and.returnValue(throwError('error'));
-
-    component.deleteUser();
-
+    expect(httpClientService.requestDeleteAUser).toHaveBeenCalled();
     expect(component.navigateToHomeAndFlashMessage).toHaveBeenCalledWith('Une erreur est survenue lors de la suppression de votre compte', 'danger', 4000);
-
   });
 
 });
