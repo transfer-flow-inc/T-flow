@@ -278,5 +278,31 @@ it('should send an email', () => {
 
   });
 
+  it('should deleteAUserByIDAndDeletionKey', () => {
+    const url = 'http://example.com/user/1/deletion-key/123456';
+
+    service.deleteAUserByIDAndDeletionKey(url).subscribe();
+
+    const req = httpMock.expectOne(url);
+
+    expect(req.request.method).toBe('DELETE');
+
+    req.flush({});
+
+  });
+
+  it('should requestDeleteAUser', () => {
+    const url = 'http://example.com/user/1/request-delete';
+
+    service.requestDeleteAUser(url).subscribe();
+
+    const req = httpMock.expectOne(url);
+
+    expect(req.request.method).toBe('POST');
+
+    req.flush({});
+
+  });
+
 
 });

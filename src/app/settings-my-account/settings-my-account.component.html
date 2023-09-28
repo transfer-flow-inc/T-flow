@@ -10,7 +10,7 @@
     </div>
     <p class="storage-text">{{ formatSize(storageInfo.usedStorage) }} / {{ formatSize(storageInfo.maxStorage) }}</p>
     <img class="img-user" [src]="user.avatar" alt="Image de profil">
-    <p *ngIf="asLastname">Nom : {{this.user.lastName}}</p>
+    <p *ngIf="this.user.lastName != ' '">Nom : {{this.user.lastName}}</p>
     <p>Prénom : {{this.user.firstName}}</p>
     <p>Email : {{this.user.userEmail}}</p>
     <p>Type de compte : {{this.user.authMethod === "spring_database" ? "crée sur le site" : "crée avec google" }}</p>

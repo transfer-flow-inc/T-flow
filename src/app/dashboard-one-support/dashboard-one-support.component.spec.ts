@@ -7,7 +7,7 @@ import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 import {DashboardNavbarComponent} from "../dashboard-navbar/dashboard-navbar.component";
 import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {of} from "rxjs";
+import {of, throwError} from "rxjs";
 
 describe('DashboardOneSupportComponent', () => {
   let component: DashboardOneSupportComponent;
@@ -30,6 +30,19 @@ describe('DashboardOneSupportComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should handle success', () => {
+    spyOn(httpClientService, 'getSupportInfo').and.returnValue(of({data: {}}));
+    component.getSupportInfo();
+    expect(component.isLoading).toBeFalsy();
+
+  });
+
+  it('should handle error', () => {
+    spyOn(httpClientService, 'getSupportInfo').and.returnValue(throwError('error'));
+    component.getSupportInfo();
+    expect(component.isLoading).toBeFalsy();
   });
 
 
