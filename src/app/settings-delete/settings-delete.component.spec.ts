@@ -77,7 +77,7 @@ describe('SettingsDeleteComponent', () => {
     component.processDeleteRequest();
 
     expect(httpClientService.requestDeleteAUser).toHaveBeenCalled();
-    expect(component.navigateToHomeAndFlashMessage).toHaveBeenCalledWith('Une erreur est survenue lors de la suppression de votre compte', 'danger', 4000);
+    expect(component.navigateToHomeAndFlashMessage).toHaveBeenCalledWith('Une erreur est survenue lors de la demande de suppression de votre compte', 'error', 4000);
   });
 
 });

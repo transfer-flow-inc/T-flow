@@ -75,7 +75,7 @@ describe('DeleteUserComponent', () => {
 
     component.deleteUser();
 
-    expect(component.navigateToHomeAndFlashMessage).toHaveBeenCalledWith('Une erreur est survenue lors de la suppression de votre compte', 'danger', 4000);
+    expect(component.navigateToHomeAndFlashMessage).toHaveBeenCalledWith('Une erreur est survenue lors de la suppression de votre compte', 'error', 4000);
 
   });
 
