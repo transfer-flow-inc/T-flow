@@ -1,0 +1,37 @@
+<section class="container-settings unselectable">
+
+  <app-settings-navbar></app-settings-navbar>
+
+  <section class="section-settings">
+
+    <p class="text title">Voulez vous faire la demande de supression de compte ?</p>
+
+    <div>
+      <p class="text">Une fois que vous aurez confirmé la suppression de votre compte, cette action sera définitive et
+        ne pourra pas être annulée.</p>
+      <p class="text">Vous ne pourrez plus accéder à votre compte ni récupérer les informations ou données
+        associées. </p>
+    </div>
+
+
+    <div>
+      <p class="text">Toutes les informations, données et contenus associés à votre compte seront définitivement effacés
+        de notre base de données.</p>
+      <p class="text">Nous ne serons pas en mesure de restaurer ou de vous fournir une copie de ces données à
+        l'avenir.</p>
+    </div>
+
+
+    <p class="text">Si vous êtes certain de vouloir supprimer votre compte et comprendre les conséquences, veuillez
+      confirmer ci-dessous.</p>
+
+    <div class="confirm-container">
+      <input id="checkbox" class="confirm-checkbox" type="checkbox" (click)="toggleConfirmation()">
+      <label for="checkbox">J'ai lu et compris les implications de la suppression de mon compte et je souhaite procéder.</label>
+    </div>
+
+    <a class="button confirm" [ngClass]="!isConfirmed ? 'disabled' : 'confirm' " (click)="isConfirmed ? processDeleteRequest() : ''">Faire la demande de suppression de mon compte</a>
+
+  </section>
+
+</section>

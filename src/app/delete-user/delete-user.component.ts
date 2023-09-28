@@ -39,12 +39,12 @@ export class DeleteUserComponent implements OnInit {
   }
 
   deleteUser() {
-    this.httpClientService.deleteAUserByIDAndDeletionKey( environment.apiURL + 'user/delete/' + this.userID + '/' + this.deletionKey )
+    this.httpClientService.deleteAUserByIDAndDeletionKey( environment.apiURL + 'verify/delete/' + this.userID + '/' + this.deletionKey )
       .subscribe({
-        next: (response: any) => {
-          console.log(response);
-        }, error: (error: any) => {
-          console.log(error);
+        next: () => {
+          this.navigateToHomeAndFlashMessage('Votre compte a bien été supprimé', 'success', 4000)
+        }, error: () => {
+          this.navigateToHomeAndFlashMessage('Une erreur est survenue lors de la suppression de votre compte', 'danger', 4000)
         }
       })
   }
@@ -54,7 +54,7 @@ export class DeleteUserComponent implements OnInit {
   }
 
   navigateToHomeAndFlashMessage(message: string, type: string, time: number) {
-    this.router.navigate(['accueil']).then(() => {
+    this.router.navigate(['/accueil']).then(() => {
       this.flashMessageService.addMessage(message, type, time);
       });
   }

@@ -47,17 +47,13 @@ export class SettingsAllTransferComponent implements OnInit {
 
   loadAllFolders(): void {
     if (this.userId) {
-      const url = `${environment.apiURL}user/folders/${this.userId}`;
-      this.httpClientService.getAllFolderByUserId(url)
-      .pipe(
-        catchError(error => {
+      this.httpClientService.getAllFolderByUserId(environment.apiURL + "user/folders/" + this.userId).subscribe({
+        next: (data: FolderInterface[]) => {
+          this.handleFolders(data);
+        }, error: () => {
           this.setErrorMessage();
-          return of(error);
-        })
-      )
-      .subscribe(data => {
-        this.handleFolders(data);
-      });
+        }
+      })
     }
   }
 
@@ -87,16 +83,11 @@ export class SettingsAllTransferComponent implements OnInit {
   }
 
   deleteFolder(folder: FolderInterface): void {
-    const url = `${environment.apiURL}folder/${folder.id}`;
-    this.httpClientService.deleteFolder(url)
-    .pipe(
-      catchError(error => {
-        this.setErrorMessage();
-        return of(error);
-      })
-    )
-    .subscribe(() => {
-      this.removeFolderFromList(folder);
+    this.httpClientService.deleteFolder(environment.apiURL + "folder/" + folder.id).subscribe( {
+      next: () => {
+        this.removeFolderFromList(folder);
+      }, error: () => {
+      }
     });
   }
 

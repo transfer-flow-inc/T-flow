@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SettingsNavbarComponent } from './settings-navbar.component';
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
+import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
 
 describe('SettingsNavbarComponent', () => {
   let component: SettingsNavbarComponent;
@@ -12,7 +13,8 @@ describe('SettingsNavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingsNavbarComponent ]
+      declarations: [ SettingsNavbarComponent ],
+      imports: [FontAwesomeTestingModule],
     })
     .compileComponents();
 

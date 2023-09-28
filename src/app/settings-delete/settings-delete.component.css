@@ -1,0 +1,148 @@
+.container-settings {
+  display: flex;
+  width: 80vw;
+  margin: auto;
+  height: 80vh;
+  background-color: var(--color);
+  border-radius: 1rem;
+  color: var(--background);
+}
+app-settings-navbar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.section-settings {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  overflow: auto;
+  gap: 1rem;
+  color: var(--background);
+  background-color: var(--color);
+}
+
+.confirm-container {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: center;
+  gap: 0.8rem;
+  margin: auto;
+  width: 80%;
+}
+
+.confirm-text {
+  margin: 0;
+}
+
+.confirm-checkbox {
+   justify-self: start;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 0.15rem solid red;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+.confirm-checkbox:before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  transform: scale(0);
+  box-shadow: inset 1rem 1rem red;
+  transition: 120ms transform ease-in-out;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.confirm-checkbox:checked::before {
+  transform: scale(1);
+  box-shadow: inset 1rem 1rem green;
+}
+
+.confirm-checkbox:checked {
+  border-color: green !important;
+}
+
+.text {
+  width: 70%;
+  text-align: center;
+  margin: auto;
+}
+
+.confirm:hover {
+  border: 0.1rem solid red;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+.button {
+  width: fit-content;
+  margin: 1rem auto;
+  padding: 0.5rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 0.1rem solid var(--background);
+  border-radius: 0.5rem;
+  color: var(--background);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.disabled {
+  background-color: grey;
+  color: white;
+  border: 0.1rem solid grey;
+}
+.disabled:hover {
+  cursor: not-allowed;
+  background-color: grey;
+  border: 0.1rem solid grey;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1020px) {
+  .container-settings {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .section-settings {
+    margin: 4rem auto;
+    overflow: unset;
+  }
+
+  .text {
+    width: 90%;
+    margin: auto;
+  }
+
+
+
+  app-settings-navbar {
+    justify-content: center;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .container-settings {
+    width: 100%;
+  }
+}

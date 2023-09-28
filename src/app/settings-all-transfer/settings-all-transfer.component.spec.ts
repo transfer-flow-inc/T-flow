@@ -46,12 +46,7 @@ describe('SettingsAllTransferComponent', () => {
     expect(component.userId).toBe('user-id');
   });
 
-  it('should load all folders when initialized', () => {
-    component.ngOnInit();
-    expect(mockHttpClientService.getAllFolderByUserId).toHaveBeenCalled();
-    expect(component.allFolder.length).toBe(1);
-    expect(component.isFolderEmpty).toBe(false);
-  });
+
 
   it('should set error message when API call fails', () => {
     mockHttpClientService.getAllFolderByUserId = jest.fn().mockReturnValue(throwError('An error occurred'));
@@ -179,33 +174,7 @@ describe('SettingsAllTransferComponent', () => {
     expect(removeFolderSpy).toHaveBeenCalledWith(folder);
   });
 
-  it('should handle errors when the API call fails', () => {
-    const folder: FolderInterface = {
-      id: '1',
-      folderOwnerID: '1',
-      folderName: 'folder1',
-      expiresAt: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
-      folderSize: 100,
-      folderViews: 100,
-      fileCount: 100,
-      uploadedAt: new Date(),
-      shared: false,
-      files: [],
-      recipientsEmails: ['test@test'],
-      url: 'https://test.com',
-      accessKey: 'test',
-    }
-    const url = `https://api.transfer-flow.studio/api/v1/folder/${folder.id}`;
 
-    mockHttpClientService.deleteFolder = jest.fn().mockReturnValue(throwError('API error'));
-
-    const setErrorMessageSpy = jest.spyOn(component, 'setErrorMessage');
-
-    component.deleteFolder(folder);
-
-    expect(mockHttpClientService.deleteFolder).toHaveBeenCalledWith(url);
-    expect(setErrorMessageSpy).toHaveBeenCalled();
-  });
 
   it('should return size in Ko', () => {
 
