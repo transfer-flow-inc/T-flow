@@ -47,7 +47,6 @@ export class SettingsMyAccountComponent implements OnInit {
   }
 
   isUpdateUser: boolean = false;
-  asLastname: boolean = true;
   showOldPassword: boolean = false;
   showNewPassword: boolean = false;
   showConfirmPassword: boolean = false;
@@ -84,11 +83,7 @@ export class SettingsMyAccountComponent implements OnInit {
 
   getAllUserInfos() {
     this.user = this.jwtService.getAllUserInfos();
-
     this.lastNameValue = this.user.lastName;
-    if (this.user.lastName == ` `) {
-      this.asLastname = false;
-    }
     this.firstNameValue = this.user.firstName;
     this.emailValue = this.user.userEmail;
   }

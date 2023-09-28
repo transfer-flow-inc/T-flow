@@ -12,6 +12,7 @@ import {HttpClientService} from "../../services/httpClient/http-client.service";
 import {faLockOpen, faUnlock} from "@fortawesome/free-solid-svg-icons";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
+import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 
 describe('DashboardOneTransferComponent', () => {
   let component: DashboardOneTransferComponent;
@@ -21,6 +22,7 @@ describe('DashboardOneTransferComponent', () => {
   let formatSizeService: FormatSizeService;
   let flashMessageService: FlashMessageService;
   let router: Router;
+  let themeService: ThemeServiceService;
 
   beforeEach(async () => {
     activatedRoute = {
@@ -36,6 +38,8 @@ describe('DashboardOneTransferComponent', () => {
     })
       .compileComponents();
 
+
+    themeService = TestBed.inject(ThemeServiceService);
     router = TestBed.inject(Router);
     flashMessageService = TestBed.inject(FlashMessageService);
     formatSizeService = TestBed.inject(FormatSizeService);
@@ -48,6 +52,7 @@ describe('DashboardOneTransferComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 
   it('should get query parameters correctly', () => {
     component.getQueryParams();
@@ -147,6 +152,8 @@ describe('DashboardOneTransferComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/admin/dashboard/utilisateurs/transferts/' + component.transfer.folderOwnerID]);
     expect(flashMessageSpy).toHaveBeenCalledWith("Une erreur est survenue", "error", 4000);
   }));
+
+
 
 
 });

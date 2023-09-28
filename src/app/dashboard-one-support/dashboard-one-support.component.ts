@@ -76,7 +76,6 @@ export class DashboardOneSupportComponent implements OnInit {
         this.supportInfo = data;
       }, error: (err) => {
         this.isLoading = false;
-        console.log(err);
       }
     });
   }
