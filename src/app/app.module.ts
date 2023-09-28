@@ -43,6 +43,7 @@ import { DashboardAllSupportComponent } from './dashboard-all-support/dashboard-
 import { DashboardOneSupportComponent } from './dashboard-one-support/dashboard-one-support.component';
 import { DashboardAllProvidersComponent } from './dashboard-all-providers/dashboard-all-providers.component';
 import { TransferRecapComponent } from './transfer-recap/transfer-recap.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 registerLocaleData(localeFr);
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ registerLocaleData(localeFr);
     DashboardOneSupportComponent,
     DashboardAllProvidersComponent,
     TransferRecapComponent,
+    DeleteUserComponent,
   ],
     imports: [
         BrowserModule,
