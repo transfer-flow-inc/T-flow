@@ -8,6 +8,7 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
+import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
 
 @Component({
   selector: 'app-settings-all-transfer',
@@ -18,7 +19,7 @@ export class SettingsAllTransferComponent implements OnInit {
   userId: string | null = "";
   allFolder: FolderInterface[] = [];
   loading: boolean = true;
-  loadingImg: string = "assets/images/logo_light.png";
+  loadingImg: string = "";
   isDataFound: boolean = true;
   isFolderEmpty: boolean = true;
   errorMessage: boolean = false;
@@ -28,12 +29,14 @@ export class SettingsAllTransferComponent implements OnInit {
   constructor(
     private httpClientService: HttpClientService,
     private JwtService: JwtTokenService,
-    private formatSizeService: FormatSizeService
+    private formatSizeService: FormatSizeService,
+    private themeService: ThemeServiceService
   ) { }
 
   ngOnInit(): void {
     this.initializeUserId();
     this.loadAllFolders();
+    this.getTheme();
   }
 
   initializeUserId(): void {
@@ -103,6 +106,12 @@ export class SettingsAllTransferComponent implements OnInit {
       this.isFolderEmpty = true;
       this.isDataFound = false;
     }
+  }
+
+  getTheme() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+        this.loadingImg = (theme) === "light" ? "assets/images/logo_dark.png" : "assets/images/logo_light.png";
+    });
   }
 
 }
