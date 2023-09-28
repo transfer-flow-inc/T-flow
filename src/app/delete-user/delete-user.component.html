@@ -16,13 +16,13 @@
   <p class="">Si vous êtes certain de vouloir supprimer votre compte et comprendre les conséquences, veuillez confirmer ci-dessous.</p>
 
   <div class="confirm-container">
-    <input class="confirm-checkbox" type="checkbox" (click)="toggleConfirmation()">
-    <p class="confirm-text">J'ai lu et compris les implications de la suppression de mon compte et je souhaite procéder.</p>
+    <input id="checkbox" class="confirm-checkbox" type="checkbox" (click)="toggleConfirmation()">
+    <label for="checkbox">J'ai lu et compris les implications de la suppression de mon compte et je souhaite procéder.</label>
   </div>
 
   <div class="button-container">
-  <a class="button" [ngClass]="!isConfirmed ? 'disabled' : 'confirm' ">Oui</a>
-  <a class="button dismiss">Non</a>
+  <a class="button" [ngClass]="!isConfirmed ? 'disabled' : 'confirm' " (click)="isConfirmed ? deleteUser() : ''">Oui</a>
+  <a class="button dismiss" routerLink="/accueil">Non</a>
   </div>
 
 </section>
