@@ -69,7 +69,6 @@ export class AppComponent implements OnInit {
 
   handleTheme() {
     const theme = this.localStorage.get('theme') ?? 'dark';
-    this.document.body.classList.remove('dark', 'light');
     this.document.body.classList.add(theme);
   }
 

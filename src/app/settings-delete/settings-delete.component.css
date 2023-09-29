@@ -22,7 +22,7 @@ app-settings-navbar {
   overflow: auto;
   gap: 1rem;
   width: 70%;
-  height: 70%;
+  height: auto;
   color: var(--background);
   background-color: var(--color);
 }
@@ -107,6 +107,7 @@ app-settings-navbar {
   background-color: grey;
   color: white;
   border: 0.1rem solid grey;
+  text-align: center;
 }
 .disabled:hover {
   cursor: not-allowed;
@@ -145,6 +146,11 @@ app-settings-navbar {
 
 @media screen and (max-width: 450px) {
   .container-settings {
+    width: 100%;
+  }
+
+  .section-settings {
+    margin: auto;
     width: 100%;
   }
 }
