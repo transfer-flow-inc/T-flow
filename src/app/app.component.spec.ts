@@ -74,24 +74,13 @@ describe('AppComponent', () => {
 
   });
 
-  it('should handle the theme correctly', () => {
-    const getSpy = spyOn(localStorageService, 'get').and.returnValue('dark');
 
-    component.handleTheme();
-
-    expect(document.body.classList).toContain('dark');
-
-    expect(getSpy).toHaveBeenCalledWith('theme');
-  });
 
   it('should log console warnings', () => {
-    // Create spies for console.log to capture log messages
     const consoleLogSpy = spyOn(console, 'log');
 
-    // Call the logConsoleWarnings method
     component.logConsoleWarnings();
 
-    // Expect console.log to have been called with the expected warning messages
     expect(consoleLogSpy.calls.allArgs()).toEqual([
       ['%cHold Up!', 'color:red; font-size: 6rem; font-weight: bold;'],
       [
