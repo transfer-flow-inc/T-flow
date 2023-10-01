@@ -1,12 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {filter, map} from 'rxjs/operators';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
-import {DOCUMENT} from '@angular/common';
 import {CookiesService} from '../services/cookies/cookies.service';
 import {HttpClientService} from '../services/httpClient/http-client.service';
 import {JwtTokenService} from '../services/jwt-token/jwt-token.service';
-import {LocalStorageService} from '../services/local-storage/local-storage.service';
 import {NavbarComponent} from "./navbar/navbar.component";
 
 @Component({
