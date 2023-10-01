@@ -10,7 +10,7 @@ import {HttpClientService} from "../../services/http-client/http-client.service"
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {of} from "rxjs";
-import {faMoon, faSun} from "@fortawesome/free-solid-svg-icons";
+import {faMoon} from "@fortawesome/free-solid-svg-icons";
 
 
 describe('NavbarComponent', () => {
