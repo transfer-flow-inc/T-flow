@@ -4,7 +4,7 @@ import { TransferRecapComponent } from './transfer-recap.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {of, throwError} from "rxjs";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";

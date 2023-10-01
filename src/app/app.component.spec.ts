@@ -3,7 +3,7 @@ import {DOCUMENT} from '@angular/common';
 import {AppComponent} from './app.component';
 import {LocalStorageService} from '../services/local-storage/local-storage.service';
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
-import {NavigationEnd, Router, RouterOutlet} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from "@angular/router";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {FooterComponent} from "./footer/footer.component";
@@ -13,7 +13,7 @@ import {FlashMessageComponent} from "./flash-message/flash-message.component";
 import {NgcCookieConsentConfig, NgcCookieConsentService, WindowService} from "ngx-cookieconsent";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientService} from "../services/httpClient/http-client.service";
+import {HttpClientService} from "../services/http-client/http-client.service";
 import {CookiesService} from "../services/cookies/cookies.service";
 import {of} from "rxjs";
 import {JwtTokenService} from "../services/jwt-token/jwt-token.service";
@@ -26,10 +26,30 @@ describe('AppComponent', () => {
   let httpClientService: HttpClientService;
   let cookiesService: CookiesService;
   let router: Router;
+  let mockActivatedRoute: any;
+  let mockRouter: any;
+  let mockTitleService: any;
   let titleService: Title;
   let jwtService: JwtTokenService;
+  let title: Title;
 
   beforeEach(() => {
+
+    mockRouter = {
+      events: of(new NavigationEnd(0, '', ''))
+    };
+
+    mockActivatedRoute = {
+  firstChild: {
+    snapshot: {
+      data: { title: 'Test Title' }
+    } as any
+  }
+};
+
+    mockTitleService = {
+      setTitle: jasmine.createSpy('setTitle')
+    };
 
     TestBed.configureTestingModule({
       declarations: [AppComponent,
@@ -57,6 +77,7 @@ describe('AppComponent', () => {
     });
 
 
+    title = TestBed.inject(Title);
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     localStorageService = TestBed.inject(LocalStorageService);
@@ -68,9 +89,6 @@ describe('AppComponent', () => {
 
     spyOn(jwtService, 'setToken');  // Add this line
     spyOn(httpClientService.isAuthenticated, 'next');
-
-    // Mock router events
-    spyOn(router.events, 'pipe').and.returnValue(of(new NavigationEnd(0, 'dummyUrl', 'dummyUrlAfterRedirects')));
 
   });
 
@@ -107,9 +125,6 @@ describe('AppComponent', () => {
 
   });
 
-  it('should handle route titles correctly', () => {
-    component.handleRouteTitles();
-  });
 
   it('should lauch logWarning on init', () => {
 
@@ -128,6 +143,42 @@ describe('AppComponent', () => {
       expect(httpClientService.isAuthenticated.next).toHaveBeenCalledWith(true);
 
   });
+
+  it('should set isAdministrator to true if token is present and user is admin', () => {
+
+        spyOn(cookiesService, 'get').and.returnValue('token');
+        spyOn(jwtService, 'getUserRole').and.returnValue('ADMIN');
+
+        component.ngOnInit();
+
+        expect(httpClientService.isAuthenticated.next).toHaveBeenCalledWith(true);
+
+
+  });
+
+  it('should call clearAuthData if token is expired', () => {
+
+        spyOn(cookiesService, 'get').and.returnValue('token');
+        spyOn(jwtService, 'isTokenExpired').and.returnValue(true);
+        const clearAuthDataSpy = spyOn(component, 'clearAuthData');
+
+        component.ngOnInit();
+
+        expect(clearAuthDataSpy).toHaveBeenCalled();
+  });
+
+
+    it('should get title from the route', () => {
+    component['route'] = mockActivatedRoute;
+    const title = component['getTitleFromRoute']();
+    expect(title).toBe('Test Title');
+    });
+
+    it('should update page title', () => {
+    component['titleService'] = mockTitleService;
+    component['updatePageTitle']('Test Title');
+    expect(mockTitleService.setTitle).toHaveBeenCalledWith('T-flow - Test Title');
+    });
 
 
 

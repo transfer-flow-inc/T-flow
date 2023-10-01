@@ -11,6 +11,7 @@
   font-weight: 600;
   z-index: 10000;
   color: white;
+  text-align: center;
 }
 
 .flash-message {

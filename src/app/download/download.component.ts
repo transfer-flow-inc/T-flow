@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
-import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
+import {ThemeService} from "../../services/theme/theme.service";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
 
 @Component({
@@ -19,7 +19,7 @@ export class DownloadComponent implements OnInit {
     public httpClient: HttpClientService,
     private router: Router,
     private flashMessageService: FlashMessageService,
-    private themeService: ThemeServiceService,
+    private themeService: ThemeService,
     private formatSizeService: FormatSizeService
   ) {
   }

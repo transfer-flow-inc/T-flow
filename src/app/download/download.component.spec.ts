@@ -4,9 +4,9 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ActivatedRoute, Router} from '@angular/router';
 import {of, throwError} from 'rxjs';
 import {DownloadComponent} from './download.component';
-import {HttpClientService} from '../../services/httpClient/http-client.service';
+import {HttpClientService} from '../../services/http-client/http-client.service';
 import {FlashMessageService} from '../../services/flash-message/flash-message.service';
-import {ThemeServiceService} from '../../services/theme-service/theme-service.service';
+import {ThemeService} from '../../services/theme/theme.service';
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 
 describe('DownloadComponent', () => {
@@ -14,7 +14,7 @@ describe('DownloadComponent', () => {
   let fixture: ComponentFixture<DownloadComponent>;
   let httpClientService: HttpClientService;
   let flashMessageService: FlashMessageService;
-  let themeService: ThemeServiceService;
+  let themeService: ThemeService;
   let router: Router;
 
   beforeEach(async () => {
@@ -28,7 +28,7 @@ describe('DownloadComponent', () => {
       providers: [
         HttpClientService,
         FlashMessageService,
-        ThemeServiceService,
+        ThemeService,
         OAuthService,
         UrlHelperService,
         OAuthLogger,
@@ -45,7 +45,7 @@ describe('DownloadComponent', () => {
 
     httpClientService = TestBed.inject(HttpClientService);
     flashMessageService = TestBed.inject(FlashMessageService);
-    themeService = TestBed.inject(ThemeServiceService);
+    themeService = TestBed.inject(ThemeService);
     router = TestBed.inject(Router);
     fixture = TestBed.createComponent(DownloadComponent);
     component = fixture.componentInstance;

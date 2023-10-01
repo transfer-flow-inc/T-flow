@@ -3,9 +3,10 @@ import {filter, map} from 'rxjs/operators';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {CookiesService} from '../services/cookies/cookies.service';
-import {HttpClientService} from '../services/httpClient/http-client.service';
+import {HttpClientService} from '../services/http-client/http-client.service';
 import {JwtTokenService} from '../services/jwt-token/jwt-token.service';
 import {NavbarComponent} from "./navbar/navbar.component";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  private titleSubscription: Subscription | null = null;
 
   constructor(
     private cookiesService: CookiesService,
@@ -23,6 +25,7 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute,
     public navbar: NavbarComponent,
   ) {
+    this.subscribeToRouteChanges();
   }
 
   ngOnInit() {
@@ -42,7 +45,6 @@ export class AppComponent implements OnInit {
 
     this.logConsoleWarnings();
 
-    this.handleRouteTitles();
 
   }
 
@@ -62,15 +64,21 @@ export class AppComponent implements OnInit {
 
 
 
-  handleRouteTitles() {
-    this.router.events.pipe(
+  subscribeToRouteChanges(): void {
+    this.titleSubscription = this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      map(() => this.route.firstChild?.snapshot.data['title'])
-    ).subscribe((title) => {
-      if (title) {
-        this.titleService.setTitle(`T-flow - ${title}`);
-      }
-    });
+      map(this.getTitleFromRoute)
+    ).subscribe(this.updatePageTitle);
+  }
+
+  getTitleFromRoute = (): string | undefined => {
+    return this.route.firstChild?.snapshot.data['title'];
+  }
+
+  updatePageTitle = (title?: string): void => {
+    if (title) {
+      this.titleService.setTitle(`T-flow - ${title}`);
+    }
   }
 
 }

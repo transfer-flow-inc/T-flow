@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";

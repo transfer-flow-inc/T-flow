@@ -2,13 +2,13 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AboutComponent} from './about.component';
 import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
-import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
+import {ThemeService} from "../../services/theme/theme.service";
 import {of} from "rxjs";
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
-  let themeService: ThemeServiceService;
+  let themeService: ThemeService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -17,7 +17,7 @@ describe('AboutComponent', () => {
     })
       .compileComponents();
 
-    themeService = TestBed.inject(ThemeServiceService);
+    themeService = TestBed.inject(ThemeService);
     fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

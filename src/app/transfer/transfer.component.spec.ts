@@ -1,19 +1,21 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TransferComponent} from './transfer.component';
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {of} from 'rxjs';
 import {FormsModule} from "@angular/forms";
 import {FileUploader} from "ng2-file-upload";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
+import {Router} from "@angular/router";
 
 describe('TransferComponent', () => {
   let component: TransferComponent;
   let fixture: ComponentFixture<TransferComponent>;
   let mockHttpClientService: { createFolder: any; }, mockCookiesService: { get: any; },
-    mockFlashMessageService: { addMessage: any; }, mockFormatSizeService: { formatSize: any; }
+    mockFlashMessageService: { addMessage: any; }, mockFormatSizeService: { formatSize: any; };
+  let router: Router;
 
   beforeEach(async () => {
     mockHttpClientService = {
@@ -41,6 +43,7 @@ describe('TransferComponent', () => {
       ],
     }).compileComponents();
 
+    router = TestBed.inject(Router);
     fixture = TestBed.createComponent(TransferComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -216,13 +219,20 @@ describe('TransferComponent', () => {
 
   });
 
+  it('should navigate when progress is 100', () => {
+    spyOn(router, 'navigate').and.callThrough();
+    component.uploader.onProgressAll(100);
+    expect(router.navigate).toHaveBeenCalledWith(['/transfert/recapitulatif/' + component.folderID]);
+
+  });
+
 
   it('should return this.sizeAllFile in Ko', () => {
 
     component.sizeAllFile = 1000;
     component.formatSizeFile(component.sizeAllFile);
 
-
   });
+
 
 });

@@ -7,27 +7,27 @@ import {TransferComponent} from "./transfer/transfer.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {AutorizeGuardService} from "../services/autorize-guard/autorize-guard.service";
-import {SettingsMyAccountComponent} from "./settings-my-account/settings-my-account.component";
-import {SettingsSubscriptionComponent} from "./settings-subscription/settings-subscription.component";
+import {SettingsMyAccountComponent} from "./settings/settings-my-account/settings-my-account.component";
+import {SettingsSubscriptionComponent} from "./settings/settings-subscription/settings-subscription.component";
 import {LogoutComponent} from "./logout/logout.component";
-import {SettingsAllTransferComponent} from "./settings-all-transfer/settings-all-transfer.component";
+import {SettingsAllTransferComponent} from "./settings/settings-all-transfer/settings-all-transfer.component";
 import {SubscriptionsComponent} from "./subscriptions/subscriptions.component";
 import {DownloadComponent} from "./download/download.component";
 import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
 import {ValidateEmailComponent} from "./validate-email/validate-email.component";
 import {AboutComponent} from "./about/about.component";
 import {ContactUsComponent} from "./contact-us/contact-us.component";
-import {DashboardAllUsersComponent} from "./dashboard-all-users/dashboard-all-users.component";
+import {DashboardAllUsersComponent} from "./dashboard/dashboard-all-users/dashboard-all-users.component";
 import {AdminAutorizeGuardService} from "../services/admin-autorize-guard/admin-autorize-guard.service";
-import {DashboardAllSupportComponent} from "./dashboard-all-support/dashboard-all-support.component";
-import {DashboardOneSupportComponent} from "./dashboard-one-support/dashboard-one-support.component";
-import {DashboardOneUserComponent} from "./dashboard-one-user/dashboard-one-user.component";
-import {DashboardAllTransferComponent} from "./dashboard-all-transfer/dashboard-all-transfer.component";
-import {DashboardOneTransferComponent} from "./dashboard-one-transfer/dashboard-one-transfer.component";
-import {DashboardAllProvidersComponent} from "./dashboard-all-providers/dashboard-all-providers.component";
+import {DashboardAllSupportComponent} from "./dashboard/dashboard-all-support/dashboard-all-support.component";
+import {DashboardOneSupportComponent} from "./dashboard/dashboard-one-support/dashboard-one-support.component";
+import {DashboardOneUserComponent} from "./dashboard/dashboard-one-user/dashboard-one-user.component";
+import {DashboardAllTransferComponent} from "./dashboard/dashboard-all-transfer/dashboard-all-transfer.component";
+import {DashboardOneTransferComponent} from "./dashboard/dashboard-one-transfer/dashboard-one-transfer.component";
+import {DashboardAllProvidersComponent} from "./dashboard/dashboard-all-providers/dashboard-all-providers.component";
 import {TransferRecapComponent} from "./transfer-recap/transfer-recap.component";
 import {DeleteUserComponent} from "./delete-user/delete-user.component";
-import {SettingsDeleteComponent} from "./settings-delete/settings-delete.component";
+import {SettingsDeleteComponent} from "./settings/settings-delete/settings-delete.component";
 
 
 const routes: Routes = [

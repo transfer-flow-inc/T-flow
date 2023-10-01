@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {TokenInterface} from "../../interfaces/Token/token-interface";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
