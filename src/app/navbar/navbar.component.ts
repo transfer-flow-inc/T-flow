@@ -3,7 +3,6 @@ import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faBars, faMoon, faSun, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {HttpClientService} from "../../services/http-client/http-client.service";
 import {ThemeService} from "../../services/theme/theme.service";
-import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 
 @Component({
   selector: 'app-navbar',
