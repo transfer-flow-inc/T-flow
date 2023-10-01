@@ -1,19 +1,19 @@
 <footer class="footer">
 
   <div class="card card-container-link">
-    <a class="card-link" routerLinkActive="active" routerLink="conditions-generales-utilisation">Nos conditions
+    <a class="card-link" routerLinkActive="active" routerLink="/conditions-generales-utilisation">Nos conditions
       d'utilisation</a>
-    <a class="card-link" routerLinkActive="active" routerLink="politique-de-confidentialite">Notre politique de
+    <a class="card-link" routerLinkActive="active" routerLink="/politique-de-confidentialite">Notre politique de
       confidentialité</a>
   </div>
 
   <div class="card">
-    <img class="card-img" [src]="imgTheme" alt="Logo de T-flow">
+    <img class="card-img" routerLink="/accueil" [src]="imgTheme" alt="Logo de T-flow">
   </div>
 
   <div class="card card-container-link">
-    <a class="card-link" routerLinkActive="active" routerLink="a-propos">A propos</a>
-    <a *ngIf="isAuthenticated" class="card-link" routerLinkActive="active" routerLink="nous-contacter">Nous contacter</a>
+    <a class="card-link" routerLinkActive="active" routerLink="/a-propos">A propos</a>
+    <a *ngIf="isAuthenticated" class="card-link" routerLinkActive="active" routerLink="/nous-contacter">Nous contacter</a>
   </div>
 
 

@@ -26,7 +26,7 @@ body, html, app-root, app-homepage {
 app-transfer, app-validate-email, app-delete-user {
   min-height: 100%;
   width: 100%;
-  display: inline-block ;
+  display: inline-block;
 }
 
 @media screen and (max-width: 1020px) {
@@ -53,8 +53,8 @@ app-transfer, app-validate-email, app-delete-user {
   color: whitesmoke !important;
   --color: whitesmoke;
   --background: #15202b;
-  --filter-login: none !important;
   --filter-login-reverse: invert();
+  --filter-login: none !important;
 }
 
 .unselectable {

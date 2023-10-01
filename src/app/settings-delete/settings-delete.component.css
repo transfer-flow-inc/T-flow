@@ -18,11 +18,10 @@ app-settings-navbar {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  margin: 1rem auto;
+  margin:auto;
   overflow: auto;
-  gap: 1rem;
+  gap: 0.5rem;
   width: 70%;
-
   height: auto;
   color: var(--background);
   background-color: var(--color);
@@ -56,6 +55,11 @@ app-settings-navbar {
   transform: translateY(-0.075em);
   display: grid;
   place-content: center;
+}
+
+label {
+  text-align: center;
+  width: max-content;
 }
 
 .confirm-checkbox:before {
@@ -94,7 +98,7 @@ app-settings-navbar {
 .button {
   width: fit-content;
   margin: 1rem auto;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
   font-size: 0.8rem;
   font-weight: 500;
   border: 0.1rem solid var(--background);
