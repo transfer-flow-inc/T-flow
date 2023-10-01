@@ -202,10 +202,22 @@ app-settings-navbar {
   width: -moz-available;
 }
 
+.text-center {
+  text-align: center;
+  margin: 1rem 0.5rem;
+}
+
 @media screen and (max-width: 1020px) {
   .container-settings {
     flex-direction: column;
     height: auto;
+  }
+
+  .update-name-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
   .section-settings {

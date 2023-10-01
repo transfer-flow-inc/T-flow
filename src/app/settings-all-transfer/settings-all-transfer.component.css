@@ -111,10 +111,9 @@ app-settings-navbar {
   }
 
   .container-transfer {
-    min-height: 15rem;
+    height: 30rem;
     margin: 2rem auto;
     width: 90%;
-    max-height: 20rem;
     scroll-behavior: smooth;
   }
 

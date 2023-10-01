@@ -23,9 +23,7 @@ export class AppComponent implements OnInit {
     private router: Router,
     public titleService: Title,
     private route: ActivatedRoute,
-    private localStorage: LocalStorageService,
     public navbar: NavbarComponent,
-    @Inject(DOCUMENT) private document: Document
   ) {
   }
 

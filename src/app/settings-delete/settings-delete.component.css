@@ -18,10 +18,11 @@ app-settings-navbar {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  margin: auto;
+  margin: 1rem auto;
   overflow: auto;
   gap: 1rem;
   width: 70%;
+
   height: auto;
   color: var(--background);
   background-color: var(--color);
@@ -136,7 +137,9 @@ app-settings-navbar {
     margin: auto;
   }
 
-
+  .confirm {
+    text-align: center;
+  }
 
   app-settings-navbar {
     justify-content: center;
