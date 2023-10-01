@@ -1,7 +1,7 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { ValidateEmailComponent } from './validate-email.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClientService } from '../../services/httpClient/http-client.service';
+import { HttpClientService } from '../../services/http-client/http-client.service';
 import { FlashMessageService } from '../../services/flash-message/flash-message.service';
 import { of, throwError } from 'rxjs';
 

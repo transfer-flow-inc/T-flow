@@ -4,7 +4,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {of} from 'rxjs';
 
 import {ContactUsComponent} from './contact-us.component';
-import {HttpClientService} from '../../services/httpClient/http-client.service';
+import {HttpClientService} from '../../services/http-client/http-client.service';
 import {FlashMessageService} from '../../services/flash-message/flash-message.service';
 import {Router} from '@angular/router';
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";

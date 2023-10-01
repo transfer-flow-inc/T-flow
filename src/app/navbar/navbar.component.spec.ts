@@ -1,12 +1,12 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NavbarComponent} from './navbar.component';
-import {ThemeServiceService} from '../../services/theme-service/theme-service.service';
+import {ThemeService} from '../../services/theme/theme.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {HttpClient} from "@angular/common/http";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 import {FooterComponent} from "../footer/footer.component";
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {of} from "rxjs";
@@ -19,7 +19,7 @@ describe('NavbarComponent', () => {
   let mockHttpClientService: Partial<HttpClientService>;
   let mockJwtTokenService: Partial<JwtTokenService>;
   let mockCookiesService: Partial<CookiesService>;
-  let themeService : ThemeServiceService;
+  let themeService : ThemeService;
   let mockFooterComponent: Partial<FooterComponent>;
 
   beforeEach(() => {
@@ -51,7 +51,7 @@ describe('NavbarComponent', () => {
         {provide: HttpClientService, useValue: mockHttpClientService},
         {provide: JwtTokenService, useValue: mockJwtTokenService},
         {provide: CookiesService, useValue: mockCookiesService},
-        ThemeServiceService,
+        ThemeService,
         HttpClient,
         OAuthService,
         DateTimeProvider,
@@ -61,7 +61,7 @@ describe('NavbarComponent', () => {
       ],
     });
 
-    themeService = TestBed.inject(ThemeServiceService);
+    themeService = TestBed.inject(ThemeService);
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     spyOn(FooterComponent.prototype, 'ngOnInit').and.callThrough();

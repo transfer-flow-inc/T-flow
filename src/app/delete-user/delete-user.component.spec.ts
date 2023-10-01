@@ -6,7 +6,7 @@ import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {of, throwError} from "rxjs";
 
 describe('DeleteUserComponent', () => {

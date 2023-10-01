@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
-import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
+import {ThemeService} from "../../services/theme/theme.service";
 
 @Component({
   selector: 'app-about',
@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit{
   imgTheme: string = '';
 
   constructor(
-    private themeService: ThemeServiceService
+    private themeService: ThemeService
   ) {
 
   }

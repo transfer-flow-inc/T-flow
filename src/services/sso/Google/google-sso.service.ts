@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthConfig, OAuthService } from "angular-oauth2-oidc";
-import { HttpClientService } from "../../httpClient/http-client.service";
+import { HttpClientService } from "../../http-client/http-client.service";
 import { TokenInterface } from "../../../interfaces/Token/token-interface";
 import { CookiesService } from "../../cookies/cookies.service";
 import { Router } from "@angular/router";

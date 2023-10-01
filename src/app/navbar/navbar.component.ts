@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faBars, faMoon, faSun, faXmark} from "@fortawesome/free-solid-svg-icons";
-import {HttpClientService} from "../../services/httpClient/http-client.service";
-import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
+import {ThemeService} from "../../services/theme/theme.service";
 import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 
 @Component({
@@ -24,8 +24,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private httpClientService: HttpClientService,
-    private themeService: ThemeServiceService,
-    private jwtService: JwtTokenService,
+    private themeService: ThemeService,
   ) {
   }
 

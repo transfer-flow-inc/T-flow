@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { GoogleSsoService } from './google-sso.service';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { HttpClientService } from '../../httpClient/http-client.service';
+import { HttpClientService } from '../../http-client/http-client.service';
 import { CookiesService } from '../../cookies/cookies.service';
 import { Router } from '@angular/router';
 import { FlashMessageService } from '../../flash-message/flash-message.service';

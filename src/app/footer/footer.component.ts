@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ThemeServiceService} from "../../services/theme-service/theme-service.service";
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {ThemeService} from "../../services/theme/theme.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 
 
 @Component({
@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
   isAuthenticated: boolean = false;
 
   constructor(
-    private themeService: ThemeServiceService,
+    private themeService: ThemeService,
     private httpClientService : HttpClientService
   ) {
   }

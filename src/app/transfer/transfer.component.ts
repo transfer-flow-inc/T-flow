@@ -3,7 +3,7 @@ import {FileItem, FileUploader} from "ng2-file-upload";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faTrashAlt, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {animate, style, transition, trigger} from "@angular/animations";
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {environment} from "../../environments/environment";
@@ -16,12 +16,11 @@ import {Router} from "@angular/router";
   styleUrls: ['./transfer.component.css'],
   animations: [
     trigger('fileCard', [
-      transition(':enter', [   // :enter is alias to 'void => *'
-        //make slide animate
+      transition(':enter', [
         style({opacity: 0}),
         animate(500, style({opacity: 1}))
       ]),
-      transition(':leave', [   // :leave is alias to '* => void'
+      transition(':leave', [
         animate(500, style({opacity: 0}))
       ])
     ])]
@@ -60,7 +59,7 @@ export class TransferComponent implements OnInit {
 
       this.loaderProgress = progress;
       if (this.loaderProgress === 100) {
-        this.router.navigate(['/transfert/recapitulatif/' + this.folderID]).then();
+        this.router.navigate(['/transfert/recapitulatif/' + this.folderID]);
         this.loaderProgress = 0;
       }
 

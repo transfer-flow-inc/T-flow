@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClientService} from "../../services/httpClient/http-client.service";
+import {HttpClientService} from "../../services/http-client/http-client.service";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {BehaviorSubject} from "rxjs";
 
