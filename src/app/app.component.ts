@@ -46,11 +46,8 @@ export class AppComponent implements OnInit {
 
     this.logConsoleWarnings();
 
-    this.handleTheme();
-
     this.handleRouteTitles();
 
-    this.navbar.ngOnInit();
   }
 
   clearAuthData() {
@@ -67,10 +64,7 @@ export class AppComponent implements OnInit {
     console.log("%cSi quelqu'un vous a dit de copier et coller quelque chose ici, il essaie de vous pirater. Ne le faites pas!", "color: white; font-size: 20px; font-weight: bold;");
   }
 
-  handleTheme() {
-    const theme = this.localStorage.get('theme') ?? 'dark';
-    this.document.body.classList.add(theme);
-  }
+
 
   handleRouteTitles() {
     this.router.events.pipe(

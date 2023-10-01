@@ -26,6 +26,7 @@ describe('NavbarComponent', () => {
 
     mockHttpClientService = {
       isAuthenticated$: of(true),
+      isAdministrator$: of(true),
     };
 
     mockJwtTokenService = {
@@ -99,6 +100,17 @@ describe('NavbarComponent', () => {
     expect(component.helpIcon).toBe(faMoon);
   });
 
+  it('should get the isAdministrator', () => {
+
+    spyOn(mockHttpClientService, 'isAuthenticated$').and.returnValue(of(true));
+    spyOn(mockHttpClientService, 'isAdministrator$').and.returnValue(of(true));
+
+    component.ngOnInit();
+
+    expect(component.isAuthenticated).toBe(true);
+    expect(component.isAdministrator).toBe(true);
+
+  });
 
 
 
