@@ -10,16 +10,6 @@
     background-color: transparent !important;
 }
 
-.screen_env_d {
-    filter: var(--filter-aide);
-    margin-top: 1.5rem;
-    height: 30vw;
-}
-.screen_env_l {
-  margin-top: 1.5rem;
-  height: 30vw;
-  filter: var(--filter-aide);
-}
 .accordion-header {
     font-size: 2rem;
     width: 100vw;
@@ -52,18 +42,31 @@
     animation-duration: 1s;
     animation-name: slidein;
 }
+
+@media (max-width: 660px) {
+    .accordion-header {
+        font-size: 1.2rem;
+    }
+    .accordion-content {
+        font-size: 1.2rem;
+    }
+}
+
 @keyframes slidein {
     from {
       margin-top: -1.7rem;
+      opacity: 0%;
     }
     50% {
-      margin-top: 0.05rem;
-    } /* ignorée */
-    to {
-      margin-top: 0.15rem;
+      margin-top: 0.05rem !important;
+      opacity: 20%;
+    }
+     to {
+      margin-top: 0.15rem; 
+      opacity: 100%;
     }
   }
-
+  
 .hide {
     display: none;
 }
@@ -99,4 +102,13 @@
     height: 30vw;
     filter: var(--filter-aide);
 }
-
+.screen_env_d {
+    filter: var(--filter-aide);
+    margin-top: 1.5rem;
+    height: 30vw;
+}
+.screen_env_l {
+    margin-top: 1.5rem;
+    height: 30vw;
+    filter: var(--filter-aide);
+}
