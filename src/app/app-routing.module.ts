@@ -28,9 +28,11 @@ import {DashboardAllProvidersComponent} from "./dashboard/dashboard-all-provider
 import {TransferRecapComponent} from "./transfer-recap/transfer-recap.component";
 import {DeleteUserComponent} from "./delete-user/delete-user.component";
 import {SettingsDeleteComponent} from "./settings/settings-delete/settings-delete.component";
+import {HelperComponent} from "./helper/helper.component";
 
 
 const routes: Routes = [
+  { 'path' : "aide", component: HelperComponent, data: { title: 'Aide'}},
   { 'path' : "accueil" , component: HomepageComponent, data: { title: 'Accueil'}},
   { 'path' : "conditions-generales-utilisation" , component: CguComponent, data: { title: 'CGU'}},
   { 'path' : "politique-de-confidentialite" , component: PrivacyPolicyComponent, data: { title: 'Politique de confidentialité'}},
