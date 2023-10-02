@@ -18,12 +18,12 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-body, html, app-root, app-homepage {
+body, html, app-root {
   min-height: 100vh;
   width: 100%;
   display: inline-block;
 }
-app-transfer, app-validate-email, app-delete-user {
+app-transfer, app-validate-email, app-delete-user, app-homepage {
   min-height: 100%;
   width: 100%;
   display: inline-block;
@@ -39,8 +39,8 @@ app-transfer, app-validate-email, app-delete-user {
 
 .light {
   transition: 0.7s linear;
-  background-color: whitesmoke !important;
-  color: #15202b !important;
+  background-color: whitesmoke;
+  color: #15202b;
   --color: #15202b;
   --background: whitesmoke;
   --filter-login: invert();
@@ -49,12 +49,12 @@ app-transfer, app-validate-email, app-delete-user {
 
 .dark {
   transition: 0.7s linear;
-  background-color: #15202b !important;
-  color: whitesmoke !important;
+  background-color: #15202b;
+  color: whitesmoke;
   --color: whitesmoke;
   --background: #15202b;
   --filter-login-reverse: invert();
-  --filter-login: none !important;
+  --filter-login: none;
 }
 
 .unselectable {

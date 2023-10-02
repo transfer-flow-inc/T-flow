@@ -1,4 +1,4 @@
-<section class="card-container" *ngIf="!loaderProgress">
+<section class="card-container" *ngIf="!isProgressVisible">
 
   <div class="card card-left">
     <p class="title-file unselectable">Envoyer</p>
@@ -64,7 +64,7 @@
 </section>
 
 
-<div class="loader" *ngIf="loaderProgress">
+<div class="loader" *ngIf="isProgressVisible">
   <div class="loader-container">
     <div class="loader-view" [style.width.%]="loaderProgress"></div>
   </div>
