@@ -70,9 +70,13 @@
       <p class="credential-error">{{error}}</p>
 
 
-      <p class="text-condition"><input class="input-checkbox " type="checkbox" [checked]="isChecked"
-                                       (click)="changeIsChecked()"> J'ai lu et j'accepte </p> <a
-      class="link" routerLink="/conditions-generales-utilisation">les conditions d'utilisation*</a>
+      <div class="confirm-container">
+      <input id="checkbox" class="input-checkbox " type="checkbox" [checked]="isChecked" (click)="changeIsChecked()">
+      <label class="label-check" for="checkbox">J'ai lu et j'accepte
+        <a class="link" routerLink="/conditions-generales-utilisation">les conditions d'utilisation*</a>
+      </label>
+      </div>
+
 
       <button [disabled]="loginForm.invalid || !isChecked"
               [class.invalid]="loginForm.invalid || (loginForm.dirty && loginForm.touched) && !isChecked"

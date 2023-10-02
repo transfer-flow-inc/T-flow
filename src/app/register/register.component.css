@@ -196,12 +196,18 @@ hr {
   color: var(--background);
 }
 
-.text-condition {
-  color: var(--background);
-  display: flex;
+.confirm-container {
+  display: grid;
+  grid-template-columns: min-content auto;
   align-items: center;
-  gap: 0.5rem;
-  margin: 0.5rem;
+  gap: 0.4rem;
+  margin: 0.5rem auto;
+  width: auto;
+  color: var(--background);
+}
+
+.label-check {
+  text-align: center;
 }
 
 .input-checkbox {
@@ -294,6 +300,9 @@ h1 {
   }
 
 
+  .confirm-container {
+    width: 90%;
+  }
 
   .or {
     rotate: -90deg;
