@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import { faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import {ThemeService} from "../../services/theme/theme.service";
