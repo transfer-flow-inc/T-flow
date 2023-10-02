@@ -1,0 +1,69 @@
+<div class="section-help">
+  <div class="fp">
+    <div class="accordion-container" (click)="changeIcon(1)">
+      <div class="accordion-header">
+        <fa-icon class="icon" [icon]="first ? angleDown : angleRight"></fa-icon>
+        Qu'est ce que T-flow ?
+      </div>
+    </div>
+  </div>
+  <div class="accordion-content" [class.hide]="!first">
+    T-flow est un site qui permet de transférer des fichiers ou des dossiers dans une limite de poid définie
+    grâce à une simple adresse mail qui sera la destination des éléments envoyé.
+  </div>
+
+  <div class="sp">
+    <div class="accordion-container" (click)="changeIcon(2)">
+      <div class="accordion-header">
+        <fa-icon class="icon" [icon]="second ? angleDown : angleRight"></fa-icon>
+        Comment s'inscrire ?
+      </div>
+    </div>
+  </div>
+  <div class="accordion-content" [class.hide]="!second">
+    Il suffit de <a class="sa" routerLink="/se-connecter">se connecter</a>
+    à l'aide de Google, Facebook ou encore Apple, ou alors
+    <a class="sa" routerLink="/s'inscrire">s'inscrire</a>
+    à même le site, ce qui vous permettera d'accéder à l'éxecution du transfert de fichiers.
+    <img class="screen_co_d" src="assets/images/screen_co_in.png" alt="" *ngIf="isDarkTheme; else imgLightLogin">
+  </div>
+
+  <div class="tp">
+    <div class="accordion-container" (click)="changeIcon(3)">
+      <div class="accordion-header">
+        <fa-icon class="icon" [icon]="third ? angleDown : angleRight"></fa-icon>
+        Comment envoyer vos fichiers ?
+      </div>
+    </div>
+  </div>
+  <div class="accordion-content" [class.hide]="!third">
+    Il suffit de cliquer sur la zone prévu à cet effet ou simplement de prendre votre dossier ou vos fichiers
+    directement sur votre appareil, et de les glisser dans l'encadrer directement.
+    Vous pourrez aussi déposer un message text avec l'envoie des fichiers afin de personnalisé votre envoie,
+    que ça soit pour préciser le contenue de votre envoie, ou simplement un message pour votre destinataire.
+    <img class="screen_env_d" src="assets/images/screen_env.png" alt="" *ngIf="isDarkTheme; else imgLight">
+  </div>
+
+  <div class="sfp">
+    <div class="accordion-container" (click)="changeIcon(4)">
+      <div class="accordion-header">
+        <fa-icon class="icon" [icon]="fourth ? angleDown : angleRight"></fa-icon>
+        Comment T-flow gère la suite ?
+      </div>
+    </div>
+  </div>
+  <div class="accordion-content" [class.hide]="!fourth">
+    Le site va simplement télécharger vos éléments afin de les envoyer à l'adresse que vous aurez donné
+    précedement,
+    si le téléchargement est un succès, alors,
+    l'adresse recevra une notification avec les élements et votre message text si vous en avez mit un avant
+    l'envoie.
+  </div>
+</div>
+
+<ng-template #imgLightLogin>
+  <img class="screen_co_l" src="assets/images/screen_co_in_light.png" alt="">
+</ng-template>
+<ng-template #imgLight>
+  <img class="screen_env_l" src="assets/images/screen_env_light.png" alt="">
+</ng-template>
