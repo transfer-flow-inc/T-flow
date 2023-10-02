@@ -76,4 +76,28 @@ describe('DashboardOneUserComponent', () => {
     expect(component.loading).toBeFalsy();
   });
 
+  it('should navigate to "/accueil" and show a flash message', async () => {
+    const message = 'Test message';
+    const type = 'success';
+    const time = 5000;
+
+    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
+    spyOn(flashMessageService, 'addMessage');
+
+    await component.navigateToDashboardAndFlashMessage(message, type, time);
+
+    expect(router.navigate).toHaveBeenCalledWith(['/admin/dashboard/utilisateurs']);
+    expect(flashMessageService.addMessage).toHaveBeenCalledWith(message, type, time);
+  });
+
+  it('should set isLoading flash and call navigateToDashboardAndFlashMessage', () => {
+    spyOn(httpClientService, 'deleteAUserByID').and.returnValue(of({}));
+    spyOn(component, 'navigateToDashboardAndFlashMessage');
+    component.userID = 'someId';
+    component.deleteAUserByID();
+    expect(component.loading).toBeFalsy();
+    expect(component.navigateToDashboardAndFlashMessage).toHaveBeenCalledWith('Utilisateur supprimé avec succès', 'success', 4000);
+
+  });
+
 });
