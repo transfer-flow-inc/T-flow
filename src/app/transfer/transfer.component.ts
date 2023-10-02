@@ -43,6 +43,7 @@ export class TransferComponent implements OnInit {
   folderSize: number = 0;
   isUploadable: boolean = false;
   folderID: string | null = '';
+  isProgressVisible: boolean = false;
 
   constructor(
     private httpClient: HttpClientService,
@@ -81,6 +82,7 @@ export class TransferComponent implements OnInit {
 
 
   uploadFile() {
+    this.isProgressVisible = true;
     if (this.uploader.queue.length >= 1 && this.emails.length >= 1) {
       this.isUploadable = true;
       if (this.folderName === '') {
@@ -202,4 +204,5 @@ checkFile() {
   }
 
 
+  protected readonly onsubmit = onsubmit;
 }

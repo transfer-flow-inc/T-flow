@@ -1,4 +1,4 @@
-<section class="container" *ngIf="folder">
+<section class="container" *ngIf="folder && !isLoading">
 
   <h2>Récapitulatif du transfert</h2>
 
@@ -15,5 +15,13 @@
   </div>
 
   <a class="card-btn" routerLink="/accueil">Retour vers l'accueil</a>
+
+</section>
+
+<section class="container" *ngIf="isLoading">
+
+  <div class="loader">
+    <img class="img-loader" [src]="loadingImg" alt="Image de chargement">
+  </div>
 
 </section>

@@ -5,6 +5,7 @@ import {environment} from "../../environments/environment";
 import {FolderInterface} from "../../interfaces/Files/folder-interface";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {FormatSizeService} from "../../services/format-size-file/format-size.service";
+import {ThemeService} from "../../services/theme/theme.service";
 
 @Component({
   selector: 'app-transfer-recap',
@@ -14,6 +15,8 @@ import {FormatSizeService} from "../../services/format-size-file/format-size.ser
 export class TransferRecapComponent implements OnInit{
 
   folderID : string = '';
+  isLoading : boolean = true;
+  loadingImg : string = '';
   folder : FolderInterface = {
     id: '',
     folderName : '',
@@ -35,10 +38,12 @@ export class TransferRecapComponent implements OnInit{
     private router: Router,
     private httpClientService : HttpClientService,
     private flashMessageService : FlashMessageService,
-    private formatSize : FormatSizeService
+    private formatSize : FormatSizeService,
+    private themeService : ThemeService
   ) {}
 
   ngOnInit(): void {
+    this.getTheme();
     this.getQueryParams();
 
     this.getFolderByID()
@@ -53,8 +58,10 @@ export class TransferRecapComponent implements OnInit{
   getFolderByID() {
     this.httpClientService.getTransferByID( environment.apiURL + 'folder/' + this.folderID).subscribe({
       next: (response: FolderInterface) => {
+        this.isLoading = false;
         this.folder = response;
       }, error: () => {
+        this.isLoading = false;
         this.navigateAndShowFlashMessage('Une erreur est survenue lors de la récupération du dossier', 'error', 3000);
       }
     });
@@ -68,6 +75,12 @@ export class TransferRecapComponent implements OnInit{
 
   formatSizeFile(size : number) {
     return this.formatSize.formatSize(size);
+  }
+
+  getTheme() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.loadingImg = theme === 'light' ? 'assets/images/logo_light.png' : 'assets/images/logo_dark.png';
+    });
   }
 
 

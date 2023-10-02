@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   passwordValue: string = "";
   token: TokenInterface = {token: ""};
   error: string = "";
-  needValidation: boolean = false;
 
 
   constructor(private httpService: HttpClientService,
