@@ -74,9 +74,7 @@ export class DashboardOneUserComponent implements OnInit {
     this.httpClientService.deleteAUserByID(environment.apiURL + 'admin/user/' + this.userID).subscribe( {
       next: () => {
         this.loading = false;
-        this.router.navigate(['/admin/dashboard/utilisateurs']).then(() => {
-          this.flashMessageService.addMessage(`L'utilisateur a été supprimé avec succès`, 'success', 4000);
-        });
+        this.navigateToDashboardAndFlashMessage('Utilisateur supprimé avec succès', 'success', 4000);
       }, error: () => {
         this.loading = false;
         this.errorMessage = true;
@@ -87,6 +85,12 @@ export class DashboardOneUserComponent implements OnInit {
   getTheme() {
     this.themeService.currentThemeSubject.subscribe((theme) => {
       this.loadingImg = theme === 'light' ? 'assets/images/logo_dark.png' : 'assets/images/logo_light.png';
+    });
+  }
+
+  navigateToDashboardAndFlashMessage(message:string, type:string, time:number) {
+    this.router.navigate(['/admin/dashboard/utilisateurs']).then(() => {
+      this.flashMessageService.addMessage(message, type, time);
     });
   }
 

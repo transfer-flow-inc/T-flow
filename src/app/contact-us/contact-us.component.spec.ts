@@ -74,5 +74,15 @@ describe('ContactUsComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
   });
 
+  it('should add flash message', () => {
+    spyOn(flashMessageService, 'addMessage').and.callThrough();
+    spyOn(component, 'isValidInput').and.returnValue(false);
+
+    component.sendEmail();
+
+    expect(flashMessageService.addMessage).toHaveBeenCalledWith('Veuillez remplir tous les champs.', 'error', 4000);
+
+  });
+
 
 });

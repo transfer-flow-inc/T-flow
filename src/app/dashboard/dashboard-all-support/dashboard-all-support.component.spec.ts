@@ -6,11 +6,13 @@ import {DateTimeProvider, OAuthLogger, OAuthService, UrlHelperService} from "ang
 import {DashboardNavbarComponent} from "../dashboard-navbar/dashboard-navbar.component";
 import {HttpClientService} from "../../../services/http-client/http-client.service";
 import {of, throwError} from "rxjs";
+import {ThemeService} from "../../../services/theme/theme.service";
 
 describe('DashboardAllSupportComponent', () => {
   let component: DashboardAllSupportComponent;
   let fixture: ComponentFixture<DashboardAllSupportComponent>;
   let httpClientService: HttpClientService;
+  let themeService: ThemeService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,6 +22,7 @@ describe('DashboardAllSupportComponent', () => {
     })
       .compileComponents();
 
+    themeService = TestBed.inject(ThemeService);
     httpClientService = TestBed.inject(HttpClientService);
     fixture = TestBed.createComponent(DashboardAllSupportComponent);
     component = fixture.componentInstance;
@@ -40,6 +43,14 @@ describe('DashboardAllSupportComponent', () => {
     expect(component.loading).toBeFalsy();
   });
 
+  it('should set isDataFound to false if support.content.length = 0', () => {
+    spyOn(httpClientService, 'getAllSupports').and.returnValue(of({content: []}));
+
+    component.getAllSupports();
+
+    expect(component.isDataFound).toBeFalsy();
+
+  });
 
   it('should set errorMessage to true when getAllUsers fails', () => {
     spyOn(httpClientService, 'getAllSupports').and.returnValue(throwError('error'));
@@ -48,5 +59,6 @@ describe('DashboardAllSupportComponent', () => {
     expect(component.errorMessage).toBeTruthy();
     expect(component.loading).toBeFalsy();
   });
+
 
 });
