@@ -28,10 +28,10 @@ export class AppComponent implements OnInit {
     private themeService: ThemeService
   ) {
     this.subscribeToRouteChanges();
+    this.themeService.applyTheme(this.themeService.currentThemeSubject.value);
   }
 
   ngOnInit() {
-    this.themeService.applyTheme(this.themeService.currentThemeSubject.value);
     if (this.cookiesService.get('token')) {
       this.httpClientService.isAuthenticated.next(true);
 

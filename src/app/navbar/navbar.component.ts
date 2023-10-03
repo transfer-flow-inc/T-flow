@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
     private httpClientService: HttpClientService,
     private themeService: ThemeService,
   ) {
+    this.themeService.applyTheme(this.themeService.currentThemeSubject.value);
   }
 
   ngOnInit() {
