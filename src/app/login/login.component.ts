@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
 
     if (this.token) {
       this.setAuthenticationState(true, this.token.token);
-      this.navigateToHomeWithMessage('Vous vous êtes connecté avec succès', 'success');
+      this.navigateToHomeWithMessage('Vous vous êtes connecté avec succès', 'success', 4000);
 
       if (this.jwtService.getUserRole()=== 'ADMIN') {
         this.httpService.isAdministrator.next(true);
@@ -85,9 +85,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  navigateToHomeWithMessage(message: string, type: string) {
+  navigateToHomeWithMessage(message: string, type: string, time : number) {
     this.router.navigate(['/accueil']).then(() => {
-      this.flashMessageService.addMessage(message, type, 4000);
+      this.flashMessageService.addMessage(message, type, time);
     });
   }
 
@@ -104,9 +104,7 @@ export class LoginComponent implements OnInit {
           next: (token) => {
             this.httpService.isAuthenticated.next(true);
             this.cookiesService.set("token", token.token, 30);
-            this.router.navigate(['/accueil']).then(() => {
-              this.flashMessageService.addMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
-            });
+            this.navigateToHomeWithMessage(`Vous vous êtes connecté avec succès`, 'success', 4000);
           }, error: (err) => {
             this.httpService.isAuthenticated.next(false);
           }
@@ -114,6 +112,7 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
 
 
 }

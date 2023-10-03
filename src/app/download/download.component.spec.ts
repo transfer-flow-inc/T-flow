@@ -71,19 +71,7 @@ describe('DownloadComponent', () => {
     expect(component.folder).toBe(mockFolderData);
   }));
 
-  it('should download folder and show success message', () => {
-    const mockData = { /* your mock folder data here */};
 
-    spyOn(httpClientService, 'downloadFolder').and.returnValue(of(mockData));
-    spyOn(component, 'createABlobAndDownload');
-    spyOn(component, 'navigateAndShowFlashMessage');
-
-    component.downloadFolder();
-
-    expect(httpClientService.downloadFolder).toHaveBeenCalled();
-    expect(component.createABlobAndDownload).toHaveBeenCalledWith(mockData);
-    expect(component.navigateAndShowFlashMessage).toHaveBeenCalledWith('Téléchargement du dossier en cours', 'success', 4000);
-  });
 
   it('should handle error and show error message', () => {
     spyOn(httpClientService, 'downloadFolder').and.returnValue(throwError('error'));
@@ -153,6 +141,20 @@ describe('DownloadComponent', () => {
     component.downloadBlob(new Blob(['some content'], {type: 'application/zip'}));
     expect(window.URL.createObjectURL).toHaveBeenCalled();
 
+  });
+
+  it('should download folder and show success message', () => {
+    const mockData = { /* your mock folder data here */};
+
+    spyOn(httpClientService, 'downloadFolder').and.returnValue(of(mockData));
+    spyOn(component, 'createABlobAndDownload');
+    spyOn(component, 'navigateAndShowFlashMessage');
+
+    component.downloadFolder();
+
+    expect(httpClientService.downloadFolder).toHaveBeenCalled();
+    expect(component.createABlobAndDownload).toHaveBeenCalledWith(mockData);
+    expect(component.navigateAndShowFlashMessage).toHaveBeenCalledWith('Téléchargement du dossier en cours', 'success', 4000);
   });
 
 });

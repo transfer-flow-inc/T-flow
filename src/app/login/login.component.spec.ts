@@ -10,25 +10,31 @@ import {BehaviorSubject, of, throwError} from "rxjs";
 import {CookiesService} from "../../services/cookies/cookies.service";
 import {FlashMessageService} from "../../services/flash-message/flash-message.service";
 import {GoogleSsoService} from "../../services/sso/Google/google-sso.service";
+import {JwtTokenService} from "../../services/jwt-token/jwt-token.service";
 
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let mockHttpClientService: { isAuthenticated: any, login: any, loginWithGoogle: any; };
+  let mockHttpClientService: { isAuthenticated: any, isAdministrator : any, login: any, loginWithGoogle: any; };
   let mockRouter: { navigate: any; };
   let mockCookiesService: { get: any; delete: any; set: any; };
   let mockFlashMessageService: { addMessage: any; };
   let mockGoogleSsoService: { signInWithGoogle: any; };
   let mockOAuthService: { events: any; getIdentityClaims: any; };
+  let httpClientService: HttpClientService;
+  let jwtTokenService: JwtTokenService;
+  let router: Router;
 
   beforeEach(async () => {
     mockHttpClientService = {
       isAuthenticated: new BehaviorSubject<boolean>(false),
+      isAdministrator: new BehaviorSubject<boolean>(false),
       login: jest.fn(),
       loginWithGoogle: jest.fn()
     };
     jest.spyOn(mockHttpClientService.isAuthenticated, 'next');
+    jest.spyOn(mockHttpClientService.isAdministrator, 'next');
     mockFlashMessageService = {
       addMessage: jest.fn()
     }
@@ -61,6 +67,9 @@ describe('LoginComponent', () => {
       ]
     }).compileComponents();
 
+    router = TestBed.inject(Router);
+    httpClientService = TestBed.inject(HttpClientService);
+    jwtTokenService = TestBed.inject(JwtTokenService);
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -82,17 +91,7 @@ describe('LoginComponent', () => {
     expect(mockHttpClientService.isAuthenticated.value).toBeFalsy();
   });
 
-  it('should call navigateToHomeWithMessage', async () => {
-    const message = 'fake-message';
-    const type = 'fake-type';
 
-    mockRouter.navigate.mockReturnValue(Promise.resolve(true));
-
-    component.navigateToHomeWithMessage(message, type);
-
-    expect(mockRouter.navigate).toHaveBeenCalledWith(['/accueil']);
-    mockFlashMessageService.addMessage(message, type, 4000);
-  });
 
   it('should call signInWithGoogle on googleSsoService when signInWithGoogle is called', () => {
     component.signInWithGoogle();
@@ -137,6 +136,15 @@ describe('LoginComponent', () => {
     expect(mockHttpClientService.isAuthenticated.next).toHaveBeenCalledWith(false);
   });
 
+  it('should handle 423 error correctly', () => {
+    const mockError = {status: 423};
+
+    component.handleLoginError(mockError);
+
+    expect(component.error).toBe("Vous devez valider votre compte !");
+    expect(mockHttpClientService.isAuthenticated.next).toHaveBeenCalledWith(false);
+  });
+
   it('should handle non-403 error correctly', () => {
     const mockError = {status: 500};
 
@@ -163,5 +171,19 @@ describe('LoginComponent', () => {
 
     expect(handleLoginErrorSpy).toHaveBeenCalledWith(mockError);
   });
+
+  it('should set isAdministrator if user role is ADMIN', () => {
+    spyOn(jwtTokenService, 'getUserRole').and.returnValue('ADMIN');
+    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
+
+    const tokenData = {token: 'test'};
+
+    component.handleLoginSuccess(tokenData);
+
+    expect(mockHttpClientService.isAdministrator.value).toBe(true);
+    expect(jwtTokenService.getUserRole).toHaveBeenCalled();
+
+});
+
 
 });

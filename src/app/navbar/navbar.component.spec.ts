@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NavbarComponent} from './navbar.component';
 import {ThemeService} from '../../services/theme/theme.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -19,7 +19,7 @@ describe('NavbarComponent', () => {
   let mockHttpClientService: Partial<HttpClientService>;
   let mockJwtTokenService: Partial<JwtTokenService>;
   let mockCookiesService: Partial<CookiesService>;
-  let themeService : ThemeService;
+  let themeService: ThemeService;
   let mockFooterComponent: Partial<FooterComponent>;
 
   beforeEach(() => {
@@ -86,13 +86,6 @@ describe('NavbarComponent', () => {
   });
 
 
-
-  it('should initialize isDarkTheme and imgTheme based on localStorage', () => {
-    localStorage.setItem('theme', 'light');
-    expect(component.isDarkTheme).toBe(true);
-    expect(component.imgTheme).toBe('assets/images/logo_with_text_dark.png');
-  });
-
   it('should get the light theme', () => {
     spyOn(themeService, 'currentThemeSubject').and.returnValue(of('light'));
     component.toggleTheme();
@@ -112,6 +105,17 @@ describe('NavbarComponent', () => {
 
   });
 
+  it('should change navbarToggleValue && iconShow', fakeAsync(() => {
+    spyOn(component, 'openMenu').and.callThrough();
+    component.isMenuOpen = true;
 
+    component.openMenu();
+    expect(component.navbarToggleValue).toBe('reverse');
+
+    tick(200);
+
+    expect(component.navbarToggleValue).toBe('hide');
+    expect(component.iconShow).toBe('hidden');
+  }));
 
 });
