@@ -1,5 +1,5 @@
 export interface FlashMessage {
   message: string;
-  type: 'success' | 'error' | 'info' | 'warning' | 'null';
+  type: string;
   duration: number;
 }

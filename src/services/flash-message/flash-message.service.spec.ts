@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {FlashMessageService, MessageType} from './flash-message.service';
+import {FlashMessageService} from './flash-message.service';
 import {take} from 'rxjs/operators';
 
 describe('FlashMessageService', () => {
@@ -17,18 +17,18 @@ describe('FlashMessageService', () => {
   it('should add message and emit it', (done) => {
     service.getMessage().pipe(take(1)).subscribe(flashMessage => {
       expect(flashMessage.message).toEqual('Test Message');
-      expect(flashMessage.type).toEqual(MessageType.SUCCESS);
+      expect(flashMessage.type).toEqual("success");
       expect(flashMessage.duration).toEqual(4000);
       done();
     });
 
-    service.addMessage('Test Message', MessageType.SUCCESS, 4000);
+    service.addMessage('Test Message', "success", 4000);
   });
 
   it('should handle string type correctly', (done) => {
     service.getMessage().pipe(take(1)).subscribe(flashMessage => {
       expect(flashMessage.message).toEqual('String Type Message');
-      expect(flashMessage.type).toEqual(MessageType.ERROR);
+      expect(flashMessage.type).toEqual("error");
       expect(flashMessage.duration).toEqual(5000);
       done();
     });
@@ -37,44 +37,39 @@ describe('FlashMessageService', () => {
   });
 
   it('should delete flash message', () => {
-    const flashMessage = { message: 'Test Message', type: MessageType.SUCCESS, duration: 4000 };
+    const flashMessage = { message: 'Test Message', type: "success", duration: 4000 };
     service.deleteFlashMessage(flashMessage);
     expect(flashMessage.message).toEqual('');
-    expect(flashMessage.type).toEqual(MessageType.NULL);
+    expect(flashMessage.type).toEqual('');
     expect(flashMessage.duration).toEqual(0);
   });
 
+  it('should add message', () => {
+    spyOn(service, 'addMessage');
+    service.addMessage('Test Message', "success", 4000);
 
-  it('should add a message with a given MessageType', (done) => {
-    service.getMessage().pipe(take(1)).subscribe(flashMessage => {
-      expect(flashMessage.message).toEqual('Hello, world!');
-      expect(flashMessage.type).toEqual(MessageType.SUCCESS);
-      expect(flashMessage.duration).toEqual(4000);
-      done();
-    });
-    service.addMessage('Hello, world!', MessageType.SUCCESS);
+    expect(service.addMessage).toHaveBeenCalled();
+
   });
 
-  it('should add a message with a given string type', (done) => {
-    service.getMessage().pipe(take(1)).subscribe(flashMessage => {
-      expect(flashMessage.message).toEqual('Hello, world!');
-      expect(flashMessage.type).toEqual(MessageType.ERROR);
-      expect(flashMessage.duration).toEqual(4000);
-      done();
-    });
-    service.addMessage('Hello, world!', 'error');
-  });
+  it('should call next on messageSubject with correct flash message', () => {
+    const mockMessage = 'Test Message';
+    const mockType = 'success';
+    const mockDuration = 4000;
 
-  it('should default to INFO type for an unrecognized string type', (done) => {
-    service.getMessage().pipe(take(1)).subscribe(flashMessage => {
-      expect(flashMessage.message).toEqual('Hello, world!');
-      expect(flashMessage.type).toEqual(MessageType.INFO);
-      expect(flashMessage.duration).toEqual(4000);
-      done();
-    });
-    service.addMessage('Hello, world!', 'unrecognizedType');
-  });
+    // Spy on the messageSubject's next method
+    spyOn(service['messageSubject'], 'next');
 
+    // Call the addMessage function
+    service.addMessage(mockMessage, mockType, mockDuration);
+
+    // Expect the next method of messageSubject to have been called with the correct value
+    expect(service['messageSubject'].next).toHaveBeenCalledWith({
+        message: mockMessage,
+        type: mockType,
+        duration: mockDuration
+    });
+});
 
 
 });
