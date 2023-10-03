@@ -59,4 +59,15 @@ describe('DashboardAllUsersComponent', () => {
     expect(component.loading).toBeFalsy();
   });
 
+it('should handle image error', () => {
+    const mockEvent = {
+      target: {
+        src: ''
+      }
+    };
+
+    component.handleImageError(mockEvent);
+    expect(mockEvent.target.src).toBe('assets/images/logo_dark.png');
+  });
+
 });
