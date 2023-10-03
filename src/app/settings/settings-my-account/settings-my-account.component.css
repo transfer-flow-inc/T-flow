@@ -53,7 +53,6 @@ app-settings-navbar {
   flex-direction: column;
   margin: auto;
   overflow: auto;
-  color: var(--background);
 }
 
 .img-user {
@@ -70,11 +69,11 @@ app-settings-navbar {
 .user-button {
   padding: 0.5rem 1rem;
   border: 0.15rem solid var(--background);
+  color: var(--background);
   border-radius: 1rem;
   background-color: transparent;
   font-size: 1.2rem;
   font-weight: 500;
-  color: var(--background);
   margin: 1rem;
 }
 
@@ -84,7 +83,6 @@ app-settings-navbar {
 }
 
 .user-text {
-  color: var(--background);
   font-size: 1.5rem;
 }
 
@@ -93,7 +91,6 @@ app-settings-navbar {
 }
 
 .settings-component {
-  color: var(--background);
   padding-right: 3rem;
 }
 
