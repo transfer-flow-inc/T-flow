@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService } from "../../../services/http-client/http-client.service";
 import { JwtTokenService } from "../../../services/jwt-token/jwt-token.service";
-import { environment } from "../../../environments/environment.development";
+import { environment } from "../../../environments/environment";
 import { FolderInterface } from "../../../interfaces/Files/folder-interface";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";

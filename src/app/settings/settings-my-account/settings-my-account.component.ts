@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {UserInterface} from "../../../interfaces/User/user-interface";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {HttpClientService} from "../../../services/http-client/http-client.service";
-import {environment} from "../../../environments/environment.development";
+import {environment} from "../../../environments/environment";
 import {UpdateUserInterface} from "../../../interfaces/User/update/update-user-interface";
 import {FlashMessageService} from "../../../services/flash-message/flash-message.service";
 import {TokenInterface} from "../../../interfaces/Token/token-interface";
