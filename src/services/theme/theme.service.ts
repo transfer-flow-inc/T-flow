@@ -14,6 +14,7 @@ export class ThemeService {
   ) {
     const initialTheme = this.loadThemeFromStorage();
     this.currentThemeSubject = new BehaviorSubject<string>(initialTheme);
+    this.applyTheme(this.currentThemeSubject.value);
   }
 
   loadThemeFromStorage(): string {
