@@ -16,7 +16,6 @@ export class NavbarComponent implements OnInit {
   isMenuOpen: boolean = false;
   imgTheme: string = 'assets/images/logo_with_text_dark.png';
   helpIcon: IconDefinition = faSun;
-  isDarkTheme: boolean = true;
   isAuthenticated: boolean = false;
   iconShow: string = 'show';
   isAdministrator: boolean = false;
@@ -37,9 +36,7 @@ export class NavbarComponent implements OnInit {
     });
 
 
-    this.isDarkTheme = localStorage.getItem('theme') !== 'light';
-    this.imgTheme = this.isDarkTheme ? 'assets/images/logo_with_text_dark.png' : 'assets/images/logo_with_text_light.png';
-    this.helpIcon = this.isDarkTheme ? faSun : faMoon;
+    this.getTheme();
 
   }
 
@@ -61,6 +58,12 @@ export class NavbarComponent implements OnInit {
   }
 
 
+  getTheme() {
+    this.themeService.currentThemeSubject.subscribe((theme) => {
+      this.imgTheme = theme === 'dark' ? 'assets/images/logo_with_text_dark.png' : 'assets/images/logo_with_text_light.png';
+      this.helpIcon = theme === 'dark' ? faSun : faMoon;
+    });
+  }
 
 
   toggleTheme(): void {
