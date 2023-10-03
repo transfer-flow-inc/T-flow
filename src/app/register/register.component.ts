@@ -63,9 +63,14 @@ export class RegisterComponent implements OnInit {
     this.httpClientService.loginWithGoogle(environment.apiURL + "auth/google", userClaims)
       .subscribe((token) => {
         this.cookiesService.set("token", token.token, 30);
-        this.router.navigate(['/accueil'])
-          .then(() => this.flashMessageService.addMessage(LOGIN_SUCCESS_MSG, 'success', 4000));
+        this.navigateToHomeAndFlashMessage(LOGIN_SUCCESS_MSG, 'success', 4000)
       });
+  }
+
+  navigateToHomeAndFlashMessage(message: string, type:string,  time:number): void {
+    this.router.navigate(['/accueil']).then(() =>
+      this.flashMessageService.addMessage(message, type, time)
+    );
   }
 
   register(): void {

@@ -5,7 +5,7 @@ import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {OAuthModule, OAuthService} from "angular-oauth2-oidc";
-import {BehaviorSubject, of} from "rxjs";
+import {BehaviorSubject, of, throwError} from "rxjs";
 import {HttpClientService} from "../../services/http-client/http-client.service";
 import {Router} from "@angular/router";
 import {CookiesService} from "../../services/cookies/cookies.service";
@@ -21,6 +21,9 @@ describe('RegisterComponent', () => {
   let mockFlashMessageService: { addMessage: any; };
   let mockGoogleSsoService: { signInWithGoogle: any; };
   let mockOAuthService: { events: any; getIdentityClaims: any; };
+  let router: Router;
+  let flashMessageService: FlashMessageService;
+  let httpClientService : HttpClientService;
 
   beforeEach(async () => {
 
@@ -64,6 +67,9 @@ describe('RegisterComponent', () => {
     })
     .compileComponents();
 
+    router = TestBed.inject(Router);
+    httpClientService = TestBed.inject(HttpClientService);
+    flashMessageService = TestBed.inject(FlashMessageService);
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -78,6 +84,27 @@ describe('RegisterComponent', () => {
 
     component.handleError(mockError);
     expect(component.error).toBe("Email ou mot de passe incorrect !");
+  });
+
+  it('should handle 423 error correctly', () => {
+    const mockError = { status: 423 };
+    component.handleError(mockError);
+    expect(component.error).toBe("Vous devez valider votre compte !");
+
+  });
+
+  it('should navigate to "/accueil" and show a flash message', async () => {
+    const message = 'Test message';
+    const type = 'success';
+    const time = 5000;
+
+    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
+    spyOn(flashMessageService, 'addMessage');
+
+    await component.navigateToHomeAndFlashMessage(message, type, time);
+
+    expect(router.navigate).toHaveBeenCalledWith(['/accueil']);
+    expect(flashMessageService.addMessage).toHaveBeenCalledWith(message, type, time);
   });
 
   it('should handle non-403 error correctly', () => {
@@ -123,6 +150,17 @@ it('should call performRegistration when register is called and isChecked is tru
     component.register();
 
     expect(performRegistrationSpy).toHaveBeenCalled();
+  });
+
+  it('should handle performRegistration Error', () => {
+    spyOn(httpClientService, 'register').and.returnValue(throwError('error'));
+    spyOn(component, 'handleError');
+
+    component.performRegistration();
+
+    expect(component.handleError).toHaveBeenCalled();
+
+
   });
 
   it('should call httpClientService.register when performRegistration is called', () => {
