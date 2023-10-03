@@ -7,6 +7,7 @@ import {HttpClientService} from '../services/http-client/http-client.service';
 import {JwtTokenService} from '../services/jwt-token/jwt-token.service';
 import {NavbarComponent} from "./navbar/navbar.component";
 import {Subscription} from "rxjs";
+import {ThemeService} from "../services/theme/theme.service";
 
 @Component({
   selector: 'app-root',

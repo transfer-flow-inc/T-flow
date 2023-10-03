@@ -27,8 +27,8 @@ export class ThemeService {
 
   applyTheme(theme: string): void {
     const {classList} = this.document.body;
-    classList.remove('dark', 'light');
     classList.add(theme);
+    classList.remove(theme === 'light' ? 'dark' : 'light');
   }
 
   toggleTheme(): void {
