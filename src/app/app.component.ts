@@ -25,11 +25,13 @@ export class AppComponent implements OnInit {
     public titleService: Title,
     private route: ActivatedRoute,
     public navbar: NavbarComponent,
+    private themeService: ThemeService
   ) {
     this.subscribeToRouteChanges();
   }
 
   ngOnInit() {
+    this.themeService.applyTheme(this.themeService.currentThemeSubject.value);
     if (this.cookiesService.get('token')) {
       this.httpClientService.isAuthenticated.next(true);
 
