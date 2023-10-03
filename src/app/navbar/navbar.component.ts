@@ -68,16 +68,7 @@ export class NavbarComponent implements OnInit {
 
 
   toggleTheme(): void {
-
-    this.themeService.currentThemeSubject.subscribe((theme) => {
-
-      this.imgTheme = theme === 'dark' ? 'assets/images/logo_with_text_dark.png' : 'assets/images/logo_with_text_light.png';
-      this.helpIcon = theme === 'dark' ? faSun : faMoon;
-
-    });
-
     this.themeService.toggleTheme();
-
   }
 
 
