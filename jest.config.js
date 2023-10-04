@@ -19,7 +19,7 @@ module.exports = {
     "/src/main.ts",
     "/src/polyfills.ts",
     "/src/environments/environment.ts",
-    "/src/environments/environment.prod.ts",
+    "/src/environments/environment.development.ts",
     "/src/environments/environment.azure.ts",
     "/src/app/app-routing.module.ts",
     "/src/app/app.module.ts",

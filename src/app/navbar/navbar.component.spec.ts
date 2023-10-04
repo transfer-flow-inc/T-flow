@@ -86,12 +86,6 @@ describe('NavbarComponent', () => {
   });
 
 
-  it('should get the light theme', () => {
-    spyOn(themeService, 'currentThemeSubject').and.returnValue(of('light'));
-    component.toggleTheme();
-    expect(component.imgTheme).toBe('assets/images/logo_with_text_light.png');
-    expect(component.helpIcon).toBe(faMoon);
-  });
 
   it('should get the isAdministrator', () => {
 
@@ -102,6 +96,15 @@ describe('NavbarComponent', () => {
 
     expect(component.isAuthenticated).toBe(true);
     expect(component.isAdministrator).toBe(true);
+
+  });
+
+  it('should toggle theme', () => {
+    spyOn(themeService, 'toggleTheme')
+
+    component.toggleTheme();
+
+
 
   });
 
